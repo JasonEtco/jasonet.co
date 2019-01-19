@@ -30,6 +30,7 @@ class BlogPostTemplate extends React.Component {
         <p
           style={{
             ...scale(-1 / 5),
+            fontFamily: 'Inter UI, sans-serif',
             display: 'block',
             marginBottom: rhythm(1),
             marginTop: rhythm(-4 / 5),
@@ -48,24 +49,27 @@ class BlogPostTemplate extends React.Component {
             Edit on GitHub
           </a>
         </p>
-        <h3
-          style={{
-            fontFamily: 'Inter UI, sans-serif',
-            marginTop: rhythm(0.25),
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: '#ffa7c4',
-            }}
-            to={'/'}
-          >
-            Code as words
-          </Link>
-        </h3>
-        <Bio />
+
+        <div style={{
+          padding: rhythm(1.2),
+          marginTop: rhythm(1),
+          boxShadow: '0 2px 15px 0 rgba(210,214,220,.5)',
+          borderRadius: 5
+        }}>
+          <h3 style={{ marginTop: 0 }}>
+            <Link
+              style={{
+                boxShadow: 'none',
+                textDecoration: 'none',
+                color: '#f87000',
+              }}
+              to={'/'}
+            >
+              Code as words
+            </Link>
+          </h3>
+          <Bio marginBottom={0} />
+        </div>
         <ul
           style={{
             display: 'flex',

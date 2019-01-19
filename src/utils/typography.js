@@ -17,6 +17,9 @@ Theme.overrideThemeStyles = () => ({
   'li code': {
     fontSize: '1rem'
   },
+  p: {
+    marginBottom: '1.5rem'
+  }
 })
 
 Theme.headerFontFamily.unshift('Inter UI')

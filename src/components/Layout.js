@@ -5,65 +5,39 @@ import { rhythm, scale } from '../utils/typography'
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    let header
+    const { children } = this.props
 
-    if (location.pathname === rootPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.0),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-            to={'/'}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: 'Inter UI, sans-serif',
-            marginTop: 0,
-            marginBottom: rhythm(-1),
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: '#ffa7c4',
-            }}
-            to={'/'}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
-    }
     return (
-      <div
-        style={{
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        {header}
-        {children}
-      </div>
+      <main>
+        <div
+          style={{
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            maxWidth: rhythm(24),
+            padding: `${rhythm(1.5)} 0`,
+          }}
+        >
+          <h3
+            style={{
+              ...scale(0.1),
+              fontFamily: 'Inter UI, sans-serif',
+              margin: 0
+            }}
+          >
+            <Link
+              style={{
+                boxShadow: 'none',
+                textDecoration: 'none',
+                color: '#f87000',
+              }}
+              to={'/'}
+            >
+              ← Code as words
+            </Link>
+          </h3>
+          {children}
+        </div>
+      </main>
     )
   }
 }

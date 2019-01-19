@@ -12,7 +12,7 @@ class Bio extends React.Component {
       <div
         style={{
           display: 'flex',
-          marginBottom: rhythm(2.5),
+          marginBottom: 'marginBottom' in this.props ? this.props.marginBottom : rhythm(2.5)
         }}
       >
         <img

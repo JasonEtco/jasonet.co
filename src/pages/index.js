@@ -19,7 +19,14 @@ class BlogIndex extends React.Component {
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <main
+        style={{
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          maxWidth: rhythm(24),
+          padding: `${rhythm(1.5)} 0`,
+        }}
+      >
         <SEO />
         <Bio />
         {posts.map(({ node }) => {
@@ -46,7 +53,7 @@ class BlogIndex extends React.Component {
           )
         })}
         <Footer />
-      </Layout>
+      </main>
     )
   }
 }
