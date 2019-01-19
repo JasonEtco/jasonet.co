@@ -50,7 +50,7 @@ class BlogPostTemplate extends React.Component {
         </p>
         <h3
           style={{
-            fontFamily: 'Montserrat, sans-serif',
+            fontFamily: 'Inter UI, sans-serif',
             marginTop: rhythm(0.25),
           }}
         >
