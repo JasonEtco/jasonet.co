@@ -48,7 +48,8 @@ class BlogIndex extends React.Component {
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          borderBottom: '1px solid hsla(0,0%,0%,0.07)'
+          borderBottom: '1px solid hsla(0,0%,0%,0.07)',
+          paddingBottom: rhythm(0.5)
         }}>
           <h1 style={{
             ...scale(1.8),
@@ -69,33 +70,35 @@ class BlogIndex extends React.Component {
           </div>
         </div>
 
-        <h5 style={{ marginTop: rhythm(3) }}>Posts:</h5>
-        {posts.map(({ node }) => {
-          const title = get(node, 'frontmatter.title') || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>
-                {node.frontmatter.date}
-                {` • ${formatReadingTime(node.timeToRead)}`}
-              </small>
-              <p
-                dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }}
-              />
-            </div>
-          )
-        })}
+        <div style={{ paddingTop: rhythm(2), paddingBottom: rhythm(2), borderBottom: '1px solid hsla(0,0%,0%,0.07)' }}>
+          <h5>Posts:</h5>
+          {posts.map(({ node }) => {
+            const title = get(node, 'frontmatter.title') || node.fields.slug
+            return (
+              <div key={node.fields.slug}>
+                <h3
+                  style={{
+                    marginBottom: rhythm(1 / 4),
+                  }}
+                >
+                  <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
+                    {title}
+                  </Link>
+                </h3>
+                <small>
+                  {node.frontmatter.date}
+                  {` • ${formatReadingTime(node.timeToRead)}`}
+                </small>
+                <p
+                  dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }}
+                />
+              </div>
+            )
+          })}
+        </div>
 
         {loading ? null : (
-          <div style={{ marginTop: rhythm(4) }}>
+          <div style={{ marginTop: rhythm(3) }}>
             <h5>Recently worked on:</h5>
             <ul style={{ display: 'flex', listStyleType: 'none', padding: 0, margin: 0 }}>
               <div style={{ marginRight: 6 }}>
