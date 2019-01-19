@@ -33,7 +33,7 @@
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.13",
     "typography": "^0.16.17",
-    "typography-theme-wordpress-2016": "^0.15.10"
+    "typography-theme-github": "^0.16.18"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
