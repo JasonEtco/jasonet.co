@@ -6,7 +6,7 @@ import Bio from '../components/Bio'
 import SEO from '../components/SEO'
 import Repo from '../components/Repo'
 import { formatReadingTime } from '../utils/helpers'
-import { rhythm, colors } from '../utils/typography'
+import { rhythm, scale } from '../utils/typography'
 
 class BlogIndex extends React.Component {
   constructor (props) {
@@ -44,9 +44,32 @@ class BlogIndex extends React.Component {
         }}
       >
         <SEO />
-        <Bio />
 
-        <h5>Posts:</h5>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          borderBottom: '1px solid hsla(0,0%,0%,0.07)'
+        }}>
+          <h1 style={{
+            ...scale(1.8),
+            fontWeight: 900,
+            lineHeight: 0.9,
+            border: 'none',
+            margin: 0,
+            padding: 0
+          }}>
+            Jason<br />Etcovitch
+          </h1>
+
+          <div style={{ alignSelf: 'end' }}>
+            <p style={{ marginBottom: 0, marginLeft: 16 }}>
+              🐙 Engineer at <a href="https://github.com/JasonEtco">GitHub</a><br />
+              🐦 Follow me on <a href="https://twitter.com/JasonEtco">Twitter</a>
+            </p>
+          </div>
+        </div>
+
+        <h5 style={{ marginTop: rhythm(3) }}>Posts:</h5>
         {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug
           return (
@@ -72,7 +95,7 @@ class BlogIndex extends React.Component {
         })}
 
         {loading ? null : (
-          <div style={{ marginTop: rhythm(2) }}>
+          <div style={{ marginTop: rhythm(4) }}>
             <h5>Recently worked on:</h5>
             <ul style={{ display: 'flex', listStyleType: 'none', padding: 0, margin: 0 }}>
               <div style={{ marginRight: 6 }}>
@@ -84,6 +107,15 @@ class BlogIndex extends React.Component {
             </ul>
           </div>
         )}
+
+        <div style={{
+          padding: rhythm(1),
+          marginTop: rhythm(2),
+          boxShadow: '0 2px 15px 0 rgba(210,214,220,.5)',
+          borderRadius: 5
+        }}>
+          <Bio marginBottom={0} />
+        </div>
       </main>
     )
   }
