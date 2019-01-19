@@ -3,9 +3,7 @@ import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 
 import Bio from '../components/Bio'
-import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-import Footer from '../components/Footer'
 import { formatReadingTime } from '../utils/helpers'
 import { rhythm } from '../utils/typography'
 
@@ -52,7 +50,6 @@ class BlogIndex extends React.Component {
             </div>
           )
         })}
-        <Footer />
       </main>
     )
   }

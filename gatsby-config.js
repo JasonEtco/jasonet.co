@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Code as words',
+    title: 'Personal Blog',
     author: 'Jason Etcovitch',
     description: 'Personal blog by Jason Etcovitch.',
     siteUrl: 'https://jasonet.co',
@@ -56,11 +56,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Code as words`,
-        short_name: `Code as words`,
+        name: `jasonet.co`,
+        short_name: `jasonet.co`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#ffa7c4`,
+        theme_color: `#f87000`,
         display: `minimal-ui`,
         icon: `src/assets/icon.png`,
       },

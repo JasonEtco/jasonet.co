@@ -9,7 +9,7 @@ import { formatReadingTime } from '../utils/helpers'
 import { rhythm, scale } from '../utils/typography'
 
 const GITHUB_USERNAME = 'JasonEtco'
-const GITHUB_REPO_NAME = 'jasonetco.github.io'
+const GITHUB_REPO_NAME = 'jasonet.co'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -26,14 +26,14 @@ class BlogPostTemplate extends React.Component {
           description={post.frontmatter.spoiler}
           slug={post.fields.slug}
         />
-        <h1>{post.frontmatter.title}</h1>
+        <h1 style={{ fontWeight: 900 }}>{post.frontmatter.title}</h1>
         <p
           style={{
             ...scale(-1 / 5),
             fontFamily: 'Inter UI, sans-serif',
             display: 'block',
             marginBottom: rhythm(1),
-            marginTop: rhythm(-4 / 5),
+            marginTop: rhythm(-3 / 5),
           }}
         >
           {post.frontmatter.date}
@@ -65,7 +65,7 @@ class BlogPostTemplate extends React.Component {
               }}
               to={'/'}
             >
-              Code as words
+              Hope you enjoyed the read! 📝
             </Link>
           </h3>
           <Bio marginBottom={0} />

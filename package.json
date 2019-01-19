@@ -1,11 +1,11 @@
 {
-  "name": "codeaswords",
+  "name": "jasonet.co",
   "private": true,
-  "description": "Code as words",
+  "description": "https://jasonet.co",
   "version": "1.0.0",
   "author": "Jason Etcovitch <jasonetco@gmail.com>",
   "bugs": {
-    "url": "https://github.com/JasonEtco/jasonetco.github.io/issues"
+    "url": "https://github.com/JasonEtco/jasonet.co/issues"
   },
   "dependencies": {
     "gatsby": "^2.0.76",
@@ -41,7 +41,7 @@
     "gh-pages": "^1.2.0",
     "prettier": "^1.14.2"
   },
-  "homepage": "https://jasonetco.github.io",
+  "homepage": "https://jasonet.co",
   "license": "MIT",
   "scripts": {
     "dev": "gatsby develop",

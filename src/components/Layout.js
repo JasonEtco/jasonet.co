@@ -13,7 +13,7 @@ class Layout extends React.Component {
           style={{
             marginLeft: 'auto',
             marginRight: 'auto',
-            maxWidth: rhythm(24),
+            maxWidth: rhythm(26),
             padding: `${rhythm(1.5)} 0`,
           }}
         >
@@ -32,7 +32,7 @@ class Layout extends React.Component {
               }}
               to={'/'}
             >
-              ← Code as words
+              ← Back
             </Link>
           </h3>
           {children}
