@@ -149,3 +149,8 @@ pre[data-line] {
   float: left;
   min-width: 100%;
 }
+
+.octicon {
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
