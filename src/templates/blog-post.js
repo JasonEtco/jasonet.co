@@ -68,7 +68,7 @@ class BlogPostTemplate extends React.Component {
               Hope you enjoyed the read! 📝
             </Link>
           </h3>
-          <Bio marginBottom={0} />
+          <Bio />
         </div>
         <ul
           style={{
@@ -77,6 +77,8 @@ class BlogPostTemplate extends React.Component {
             justifyContent: 'space-between',
             listStyle: 'none',
             padding: 0,
+            marginLeft: 0,
+            marginTop: rhythm(2)
           }}
         >
           <li>
