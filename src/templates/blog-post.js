@@ -26,7 +26,7 @@ class BlogPostTemplate extends React.Component {
           description={post.frontmatter.spoiler}
           slug={post.fields.slug}
         />
-        <h1 style={{ fontWeight: 900 }}>{post.frontmatter.title}</h1>
+        <h1 style={{ fontWeight: 900, ...scale(1.6) }}>{post.frontmatter.title}</h1>
         <p
           style={{
             ...scale(-1 / 5),

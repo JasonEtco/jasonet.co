@@ -6,7 +6,7 @@ import Bio from '../components/Bio'
 import SEO from '../components/SEO'
 import Repo from '../components/Repo'
 import { formatReadingTime } from '../utils/helpers'
-import { rhythm, scale } from '../utils/typography'
+import { rhythm, scale, colors } from '../utils/typography'
 
 class BlogIndex extends React.Component {
   constructor (props) {
