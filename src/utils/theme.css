@@ -1,55 +1,78 @@
-/**
- * Based on copypasta from Remy Bach and Sarah Drasner
- */
-code[class*="language-"],
-pre[class*="language-"] {
-  color: white;
-  background: none;
-  font-family: Consolas,Menlo,Monaco,source-code-pro,Courier New,monospace;
-  font-feature-settings: normal;
+code,
+code[class*='language-'],
+pre[class*='language-'] {
+  color: #333;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 1.5;
-  margin-bottom: 0;
-
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
   tab-size: 4;
-
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
   hyphens: none;
+  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  line-height: 1.4;
+  direction: ltr;
+  cursor: text;
 }
 
-/* Code blocks */
-pre[class*="language-"] {
+pre[class*='language-'] {
   overflow: auto;
-  padding: 1em;
+  margin: 1em 0;
+  padding: 1.2em;
+  border-radius: 3px;
+  font-size: 85%;
 }
 
-pre[class*="language-"]::-moz-selection {
-  /* Firefox */
-  background: hsl(207, 4%, 16%);
+p code,
+li code,
+table code {
+  margin: 0;
+  border-radius: 3px;
+  padding: 0.2em 0;
+  font-size: 85%;
+}
+p code:before, p code:after,
+li code:before,
+li code:after,
+table code:before,
+table code:after {
+  letter-spacing: -0.2em;
+  content: '\00a0';
 }
 
-pre[class*="language-"]::selection {
-  /* Safari */
-  background: hsl(207, 4%, 16%);
+code,
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: #f6f8fa;
 }
 
-/* Text Selection colour */
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection {
-  text-shadow: none;
-  background: hsla(0, 0%, 100%, 0.15);
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
 }
 
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection {
-  text-shadow: none;
-  background: hsla(0, 0%, 100%, 0.15);
+.token.comment, .token.prolog, .token.doctype, .token.cdata {
+  color: #969896;
+}
+.token.punctuation, .token.string, .token.atrule, .token.attr-value {
+  color: #183691;
+}
+.token.property, .token.tag {
+  color: #63a35c;
+}
+.token.boolean, .token.number {
+  color: #0086b3;
+}
+.token.selector, .token.attr-name, .token.attr-value .punctuation:first-child, .token.keyword, .token.regex, .token.important {
+  color: #795da3;
+}
+.token.operator, .token.entity, .token.url, .language-css .token.string {
+  color: #a71d5d;
+}
+.token.entity {
+  cursor: help;
+}
+
+.namespace {
+  opacity: 0.7;
 }
 
 /* Inline code */
@@ -61,86 +84,25 @@ pre[class*="language-"]::selection, pre[class*="language-"] ::selection {
   white-space: normal;
 }
 
-.token.attr-name {
-  color: rgb(173, 219, 103);
-  font-style: italic;
-}
-
-.token.comment {
-  color: rgb(99, 119, 119);
-}
-
-.token.string,
-.token.url {
-  color: rgb(173, 219, 103);
-}
-
-.token.variable {
-  color: rgb(214, 222, 235);
-}
-
-.token.number {
-  color: rgb(247, 140, 108);
-}
-
-.token.builtin,
-.token.char,
-.token.constant,
-.token.function {
-  color: rgb(130, 170, 255);
-}
-
-.token.punctuation {
-  color: rgb(199, 146, 234);
-}
-
-.token.selector,
-.token.doctype {
-  color: rgb(199, 146, 234);
-  font-style: 'italic';
-}
-
-.token.class-name {
-  color: rgb(255, 203, 139);
-}
-
-.token.tag,
-.token.operator,
-.token.keyword {
-  color: #ffa7c4;
-}
-
-.token.boolean {
-  color: rgb(255, 88, 116);
-}
-
-.token.property {
-  color: rgb(128, 203, 196);
-}
-
-.token.namespace {
-  color: rgb(178, 204, 214);
-}
-
 pre[data-line] {
   padding: 1em 0 1em 3em;
   position: relative;
 }
 
 .gatsby-highlight-code-line {
-  background-color: hsla(207, 95%, 15%, 1);
+  background-color: rgba(226, 229, 233, 0.3);
   display: block;
   margin-right: -1em;
   margin-left: -1em;
   padding-right: 1em;
   padding-left: 0.75em;
-  border-left: 0.25em solid #ffa7c4;
+  border-left: 0.15em solid #f87000;
 }
 
 .gatsby-highlight {
   margin-bottom: 1.75rem;
   border-radius: 6px;
-  background: #011627;
+  background: #f6f8fa;
   -webkit-overflow-scrolling: touch;
   overflow: auto;
 }
