@@ -57,7 +57,15 @@ console.log('Hi GitHub!')
 
 Now, when GitHub runs this Action, it will build the Docker container from the [`node:slim`](https://hub.docker.com/_/node/#nodeversion-slim) tag and run `node /index.js` - which will print `Hi GitHub!` to the Action logs:
 
-<img width="342" alt="image" src="https://user-images.githubusercontent.com/10660468/51445177-36392200-1cd0-11e9-8bc6-7741fd8d7976.png">
+```
+Step 11/11 : ENTRYPOINT ["node", "/index.js"]
+ ---> Using cache
+ ---> 539689e6c5b6
+Successfully built 539689e6c5b6
+Successfully tagged gcr.io/gct-12-...
+Already have image (with digest): gcr.io/github-actions-images/action-runner:latest
+Hi GitHub!
+```
 
 Honestly, now you can build whatever you want. You've "set up your environment," and all that's left is writing your code. There are some special things in Actions that I'd like to talk about though; hang tight, because we'll finish our Action before this post is over.
 
@@ -129,5 +137,8 @@ if (
   })
 }
 ```
+
+<img width="775" alt="image" src="https://user-images.githubusercontent.com/10660468/51445322-aeecae00-1cd1-11e9-865b-0ef53ae44a5a.png">
+
 
 And that's it! Hopefully this will give you an idea on how to build your own GitHub Actions in Node.js. [Tweet me](https://twitter.com/JasonEtco) with whatever you build ✨
