@@ -6,7 +6,7 @@ spoiler: Should your next automation tool be built in GitHub Actions, or as a se
 
 **Spoiler: it depends.**
 
-Since GitHub [launched GitHub Actions](https://github.com/features/actions) in October 2018, there's been a new excitement around building automation - and that's awesome! But I wanted to take a look at the various pros and cons of GitHub Actions and Probot, where each excels and where each might not be the best tool for the job.
+Since GitHub announced the beta release of [GitHub Actions](https://github.com/features/actions) in October 2018, there's been a new excitement around building automation - and that's awesome! But I wanted to take a look at the various pros and cons of GitHub Actions and Probot, where each excels and where each might not be the best tool for the job.
 
 ## GitHub Actions
 
@@ -74,6 +74,19 @@ Let's look at a GitHub Action I built that is just not suited for being a Probot
 [**JasonEtco/upload-to-release**](https://github.com/JasonEtco/upload-to-release) uploads a file to a release. It makes a large API request, and is best paired with tools that generate some kind of archive (like [`docker save`](https://docs.docker.com/engine/reference/commandline/save/)).
 
 To build this in a Probot App, you'd need to ensure that wherever you deploy the thing has enough resources and installed packages to build the file, then upload it. Actions let me decide whats installed by just defining dependencies in my `Dockerfile`, and it's got all the juice and time it needs.
+
+#### Secret keys
+
+This has been something the Probot Community (and I) have been thinking about for a while - how do users of an automation tool pass secret keys to the tool? With GitHub Actions, its as simple as adding your key through the GitHub UI, and passing it along to your action:
+
+```hcl
+action "Some action" {
+  uses = "actions/npm@master"
+  secrets = [ "NPM_TOKEN" ]
+}
+```
+
+This enables your automation tools to talk to third-party services without needing to store users' credentials. Pretty rad ⚡
 
 ### Run Probot Apps... in GitHub Actions
 
