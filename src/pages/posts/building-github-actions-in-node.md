@@ -140,5 +140,4 @@ if (
 
 <img width="775" alt="image" src="https://user-images.githubusercontent.com/10660468/51445322-aeecae00-1cd1-11e9-865b-0ef53ae44a5a.png">
 
-
 And that's it! Hopefully this will give you an idea on how to build your own GitHub Actions in Node.js. [Tweet me](https://twitter.com/JasonEtco) with whatever you build ✨
