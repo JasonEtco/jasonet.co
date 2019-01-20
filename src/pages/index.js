@@ -62,7 +62,7 @@ class BlogIndex extends React.Component {
             Jason<br />Etcovitch
           </h1>
 
-          <div style={{ alignSelf: 'end' }}>
+          <div style={{ alignSelf: 'flex-end' }}>
             <p style={{ marginBottom: 0, marginLeft: 16 }}>
               🐙 Engineer at <a href="https://github.com/JasonEtco">GitHub</a><br />
               🐦 Follow me on <a href="https://twitter.com/JasonEtco">Twitter</a>
