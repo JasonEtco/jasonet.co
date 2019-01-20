@@ -40,7 +40,7 @@ class BlogPostTemplate extends React.Component {
           {` • ${formatReadingTime(post.timeToRead)}`}
         </p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <p>
+        <p style={{ marginTop: rhythm(2) }}>
           <a href={discussUrl} target="_blank" rel="noopener noreferrer">
             Discuss on Twitter
           </a>
