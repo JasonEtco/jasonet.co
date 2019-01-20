@@ -63,9 +63,13 @@ curl -XPOST -sSL \
 
 In my testing, this Action took about **20 seconds** to complete. Keep in mind that this is from an `alpine` base image; a larger image would significantly impact the build time. Your mileage may vary, and that may not sound like a lot - but with a running Probot App, it'd be about **3 seconds**.
 
-It's not because Probot is better - in fact, it's way less useful. It's just faster.
+It's not because Probot is better - in fact, in a lot of ways it's less powerful. It's just faster.
 
 **Most workflow tools need to be fast.** But that's not what Actions are for; to me, they're for powerful, do-whatever-you-need-to-do automation tools, while Probot Apps are better suited for reacting to events and making quick, _small_ API requests.
+
+### Probot Apps are just Express servers
+
+GitHub Actions are ephemeral, so when their job is done they disappear. Probot on the other hand is, at its core, an [Express server](https://expressjs.com/) - so your app can built a UI for its users to interact with. [GitHub Learning Lab](https://lab.github.com) is a great example of a Probot App that does a lot more than just reacting to events on GitHub.
 
 ### When Probot is distinctly not right
 
@@ -122,3 +126,5 @@ Here's a table to give you a place to start, but **it aaaaaalways depends**:
 | You can deploy a Node.js app | GitHub take the wheel |
 | Needs to be fast | Time is but a construct of your imagination |
 | Acts entirely through the GitHub API | Needs your repo's codebase |
+| Needs a UI | Requires the user's credentials |
+| Needs persistence | - |
