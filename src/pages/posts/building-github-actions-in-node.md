@@ -22,7 +22,7 @@ As a thought experiment, let's build @jessfraz's [`branch-cleanup-action`](https
 
 We'll start by preparing our `Dockerfile`. **Every Action runs in a Docker container**, so we need to describe that container. The below code should suffice for most (but not all) Node.js GitHub Actions. Docker is an amazing technology, but if your goal is just to build your Action you shouldn't need to learn it all.
 
-```dockerfile
+```docker
 FROM node:slim
 
 # A bunch of `LABEL` fields for GitHub to index
@@ -38,11 +38,13 @@ LABEL "maintainer"="Jason Etcovitch <jasonetco@github.com>"
 COPY . .
 
 # Install dependencies
-RUN npm ci
+RUN npm install
 
 # This is what GitHub will run
 ENTRYPOINT ["node", "/index.js"]
 ```
+
+> We're using `node:slim` to have a small, but still functional Docker image. You can use whatever image you want, but **a smaller image will make for a faster Action**.
 
 Are there ways to make that `Dockerfile` better? [Sure](https://hub.docker.com/_/node/#nodeversion-alpine)! But we're going for clarity over performance for now.
 
