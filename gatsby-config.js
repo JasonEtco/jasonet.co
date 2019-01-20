@@ -37,6 +37,9 @@ module.exports = {
           {
             resolve: 'gatsby-remark-prismjs',
             options: {
+              aliases: {
+                dockerfile: 'docker'
+              },
               inlineCodeMarker: '÷',
             },
           },
