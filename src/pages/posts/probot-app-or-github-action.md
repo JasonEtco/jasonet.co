@@ -63,7 +63,7 @@ curl -XPOST -sSL \
 
 In my testing, this Action took about **20 seconds** to complete. Keep in mind that this is from an `alpine` base image; a larger image would significantly impact the build time. Your mileage may vary, and that may not sound like a lot - but with a running Probot App, it'd be about **3 seconds**.
 
-It's not because Probot is better - in fact, it's way less useful. it's just faster.
+It's not because Probot is better - in fact, it's way less useful. It's just faster.
 
 **Most workflow tools need to be fast.** But that's not what Actions are for; to me, they're for powerful, do-whatever-you-need-to-do automation tools, while Probot Apps are better suited for reacting to events and making quick, _small_ API requests.
 
@@ -77,7 +77,7 @@ To build this in a Probot App, you'd need to ensure that wherever you deploy the
 
 ### Run Probot Apps... in GitHub Actions
 
-Well, you _can_ use Probot Apps in GitHub Actions. It's just... weird. The best part of Probot, in my opinion, is it's `EventEmitter`-like API:
+Well, you _can_ use Probot Apps in GitHub Actions. It's just... weird. The best part of Probot, in my opinion, is its `EventEmitter`-like API:
 
 ```js
 app.on('event', handler)
