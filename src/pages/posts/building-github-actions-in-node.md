@@ -70,11 +70,11 @@ The container in which your `index.js` file is being run has a few things inject
 
 Cool, me too! I'll share some libraries that are particularly useful for GitHub Actions, as well as [**actions-toolkit**](https://github.com/JasonEtco/actions-toolkit), a library I'm working on designed specifically for Actions.
 
-#### [`@octokit/rest`](https://npmjs.org/package/@octokit/rest) & [`@octokit/graphql`](https://npmjs.org/package/@octokit/graphql)
+#### [@octokit/rest](https://npmjs.org/package/@octokit/rest) & [@octokit/graphql](https://npmjs.org/package/@octokit/graphql)
 
 These are part of the official family of GitHub API SDKs called **Octokit**. If you're making requests to the GitHub API (REST or GraphQL), these are great libraries to look at.
 
-#### [`minimist`](https://npmjs.org/package/minimist)
+#### [minimist](https://npmjs.org/package/minimist)
 
 A really interesting part of GitHub Actions is the ability to pass arguments by defining them in your workflow. `minimist` is a handy tool for parsing a string of arguments:
 
@@ -93,7 +93,7 @@ I'd be remisce if I didn't mention [Probot](https://probot.github.io), a framewo
 
 That said, if all you care about is the syntactic sugar that Probot provides, go right ahead!
 
-### [`actions-toolkit`](https://github.com/JasonEtco/actions-toolkit)
+### [actions-toolkit](https://github.com/JasonEtco/actions-toolkit)
 
 **actions-toolkit** is a wrapper around some fantastic open source libraries, and provides some helper methods for dealing with GitHub Actions. It some of the above libraries, and bases its paradigms on our experience building and using Probot. Check out the repo for [the full API documentation](https://github.com/JasonEtco/actions-toolkit#readme).
 
