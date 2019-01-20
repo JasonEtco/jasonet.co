@@ -19,6 +19,9 @@ Theme.overrideThemeStyles = () => ({
   },
   p: {
     marginBottom: '1.5rem'
+  },
+  h2: {
+    marginTop: '2.65rem'
   }
 })
 
