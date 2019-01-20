@@ -6,14 +6,14 @@ spoiler: Should your next automation tool be built in GitHub Actions, or as a se
 
 **Spoiler: it depends.**
 
-Since GitHub [launched GitHub Actions](https://github.com/features/actions) in October 2018, there's been a new excitement around building automation - and that's awesome! But I wanted to share my thoughts on what Actions are best suited for, and why your next project might be better off using [Probot](https://probot.github.io).
+Since GitHub [launched GitHub Actions](https://github.com/features/actions) in October 2018, there's been a new excitement around building automation - and that's awesome! But I wanted to take a look at the various pros and cons of GitHub Actions and Probot, where each excels and where each might not be the best tool for the job.
 
 ## GitHub Actions
 
 I won't go too deep into what Actions are - [@jessfraz](https://twitter.com/jessfraz) [has got you covered](https://blog.jessfraz.com/post/the-life-of-a-github-action/). The important notes for right now are:
 
 1. Run code to respond to an event on GitHub
-1. GitHub will run *anything* in a Docker container
+2. GitHub will run *anything* in a Docker container
 
 The key point is that GitHub runs your Actions run in an ephemeral container - there's no hosting, server costs or deployment to worry about. It's sort of like a scoped serverless function that's triggered by events in a GitHub repository.
 
