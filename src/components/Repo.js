@@ -6,7 +6,7 @@ function Repo (props) {
   if (!repo) return null
 
   return (
-    <li style={{
+    <div style={{
       height: '100%',
       padding: rhythm(0.8),
       border: '1px solid',
@@ -34,7 +34,7 @@ function Repo (props) {
             </a>
         </p>
       </div>
-    </li>
+    </div>
   )
 }
 
