@@ -101,10 +101,10 @@ class BlogIndex extends React.Component {
           <div style={{ marginTop: rhythm(3) }}>
             <h5>Recently worked on:</h5>
             <ul style={{ display: 'flex', listStyleType: 'none', padding: 0, margin: 0 }}>
-              <div style={{ marginRight: 6 }}>
+              <div style={{ marginRight: 6, width: '50%' }}>
                 <Repo repo={repos[0]} />
               </div>
-              <div style={{ marginLeft: 6 }}>
+              <div style={{ marginLeft: 6, width: '50%' }}>
                 <Repo repo={repos[1]} />
               </div>
             </ul>
