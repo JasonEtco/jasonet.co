@@ -2,7 +2,6 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
-import image from './meta-image.png'
 
 const query = graphql`
   query GetSiteMetadata {
@@ -27,7 +26,7 @@ function SEO({ meta, title, description, slug, lang = 'en' }) {
       render={data => {
         const { siteMetadata } = data.site
         const metaDescription = description || siteMetadata.description
-        const metaImage = `${siteMetadata.siteUrl}${image}`
+        const metaImage = `${siteMetadata.siteUrl}static/card.png`
         const url = `${siteMetadata.siteUrl}${slug}`
         return (
           <Helmet
