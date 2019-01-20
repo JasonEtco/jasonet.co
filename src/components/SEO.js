@@ -73,21 +73,15 @@ function SEO({ meta, title, description, slug, lang = 'en' }) {
                 name: 'twitter:description',
                 content: metaDescription,
               },
+              {
+                property: 'og:image',
+                content: metaImage,
+              },
+              {
+                name: 'twitter:image',
+                content: metaImage,
+              },
             ]
-              .concat(
-                metaImage
-                  ? [
-                      {
-                        property: 'og:image',
-                        content: metaImage,
-                      },
-                      {
-                        name: 'twitter:image',
-                        content: metaImage,
-                      },
-                    ]
-                  : []
-              )
               .concat(meta)}
           />
         )
