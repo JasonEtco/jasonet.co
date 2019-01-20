@@ -55,11 +55,7 @@ console.log('Hi GitHub!')
 
 Now, when GitHub runs this Action, it will build the Docker container from the [`node:slim`](https://hub.docker.com/_/node/#nodeversion-slim) tag and run `node /index.js` - which will print `Hi GitHub!` to the Action logs:
 
-############
-############
-<SCREENSHOT>
-############
-############
+<h1 style="color: red">SCREENSHOT</h1>
 
 Honestly, now you can build whatever you want. You've "set up your environment," and all that's left is writing your code. There are some special things in Actions that I'd like to talk about though; hang tight, because we'll finish our Action before this post is over.
 
