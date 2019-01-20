@@ -6,7 +6,7 @@ spoiler: GitHub Actions are an awesome automation tool - let's look at how to bu
 
 Hey! You there! Heard all about these new fandangled [GitHub Actions](https://github.com/features/actions), and want to go out and build one? Well then let's do it!
 
-This post will serve as a guide to building a run-of-the-mill GitHub Action in Node.js. Why Node? Because [JavaScript is the largest language on GitHub](https://octoverse.github.com/projects#languages), so I'm hoping that this will reach as many interested developers as possible. Also... Node.js is bae 😍
+This post will serve as a guide to building a run-of-the-mill GitHub Action in Node.js. You can build Actions in whatever language/runtime you want - I'm choosing Node.js because [JavaScript is the largest language on GitHub](https://octoverse.github.com/projects#languages) and because Node.js is bae 😍
 
 ### Before we dive in
 
