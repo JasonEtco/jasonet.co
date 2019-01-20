@@ -19,7 +19,7 @@ The key point is that GitHub runs your Actions run in an ephemeral container - t
 
 ## Probot
 
-[Probot](https://probot.github.io) is an [open-source](https://github.com/probot/probot) framework for building [GitHub Apps](https://developer.github.com/apps/) in [Node.js](https://nodejs.org). It handles boilerplate things like authentication, and provides a straightforward `EventEmitter`-like API.
+[Probot](https://probot.github.io) is an [open-source](https://github.com/probot/probot) framework for building [GitHub Apps](https://developer.github.com/apps/) in [Node.js](https://nodejs.org). It handles boilerplate things like authentication, and provides a straightforward [`EventEmitter`-like API](https://probot.github.io/docs/hello-world/).
 
 We were working on Probot for about 2 years before GitHub Actions - I like to think that it inspired parts of Actions, but I have no idea if that's true.
 
