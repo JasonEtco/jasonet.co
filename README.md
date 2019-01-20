@@ -1,5 +1,5 @@
-# jasonet.co
+# https://jasonet.co
 
-My personal website and blog. Forked from [Overreacted.io](https://github.com/gaearon/overreacted.io).
+My personal website and blog. "Forked" from [gaearon/overreacted.io](https://github.com/gaearon/overreacted.io). Built on [GatsbyJS](https://www.gatsbyjs.org/), deployed to GitHub Pages.
 
-To run locally, `yarn`, then `yarn dev`, then open https://localhost:8000.
+To run locally, `npm install`, then `npm start`, then open https://localhost:8000.
