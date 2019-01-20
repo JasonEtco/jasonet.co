@@ -1,0 +1,19 @@
+@media only screen and (max-width: 580px) {
+  .home__hero {
+    display: block !important;
+  }
+  .home__hero p {
+    margin-top: 1.5rem;
+    margin-left: 0 !important;
+  }
+  .repo-list {
+    display: block !important;
+  }
+  .repo-wrapper {
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  .bio {
+    display: block !important;
+  }
+}

@@ -40,7 +40,7 @@ class BlogIndex extends React.Component {
           marginLeft: 'auto',
           marginRight: 'auto',
           maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} 0`,
+          padding: `${rhythm(1.5)} ${rhythm(1)}`,
         }}
       >
         <SEO />
@@ -50,7 +50,7 @@ class BlogIndex extends React.Component {
           alignItems: 'center',
           borderBottom: '1px solid hsla(0,0%,0%,0.07)',
           paddingBottom: rhythm(0.5)
-        }}>
+        }} className="home__hero">
           <h1 style={{
             ...scale(1.8),
             fontWeight: 900,
@@ -100,11 +100,11 @@ class BlogIndex extends React.Component {
         {loading ? null : (
           <div style={{ marginTop: rhythm(3) }}>
             <h5>Recently worked on:</h5>
-            <ul style={{ display: 'flex', listStyleType: 'none', padding: 0, margin: 0 }}>
-              <div style={{ marginRight: 6, width: '50%' }}>
+            <ul className="repo-list" style={{ display: 'flex', listStyleType: 'none', padding: 0, margin: 0 }}>
+              <div className="repo-wrapper" style={{ marginRight: 6, width: '50%' }}>
                 <Repo repo={repos[0]} />
               </div>
-              <div style={{ marginLeft: 6, width: '50%' }}>
+              <div className="repo-wrapper" style={{ marginLeft: 6, width: '50%' }}>
                 <Repo repo={repos[1]} />
               </div>
             </ul>
