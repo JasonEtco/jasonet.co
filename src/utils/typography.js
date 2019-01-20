@@ -3,7 +3,7 @@ import Theme from 'typography-theme-github'
 
 Theme.overrideThemeStyles = () => ({
   a: {
-    color: '#f87000',
+    color: '#f26d21',
   },
   'a.gatsby-resp-image-link': {
     boxShadow: 'none',
