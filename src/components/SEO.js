@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
+import image from './meta-image.png'
 
 const query = graphql`
   query GetSiteMetadata {
@@ -19,14 +20,14 @@ const query = graphql`
   }
 `
 
-function SEO({ meta, image, title, description, slug, lang = 'en' }) {
+function SEO({ meta, title, description, slug, lang = 'en' }) {
   return (
     <StaticQuery
       query={query}
       render={data => {
         const { siteMetadata } = data.site
         const metaDescription = description || siteMetadata.description
-        const metaImage = image ? `${siteMetadata.siteUrl}/${image}` : null
+        const metaImage = `${siteMetadata.siteUrl}${image}`
         const url = `${siteMetadata.siteUrl}${slug}`
         return (
           <Helmet
@@ -103,7 +104,6 @@ SEO.defaultProps = {
 
 SEO.propTypes = {
   description: PropTypes.string,
-  image: PropTypes.string,
   meta: PropTypes.array,
   slug: PropTypes.string,
   title: PropTypes.string.isRequired,
