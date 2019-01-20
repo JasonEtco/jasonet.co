@@ -26,7 +26,7 @@ function SEO({ meta, title, description, slug, lang = 'en' }) {
       render={data => {
         const { siteMetadata } = data.site
         const metaDescription = description || siteMetadata.description
-        const metaImage = `${siteMetadata.siteUrl}static/card.png`
+        const metaImage = `${siteMetadata.siteUrl}/card.png`
         const url = `${siteMetadata.siteUrl}${slug}`
         return (
           <Helmet
@@ -73,13 +73,13 @@ function SEO({ meta, title, description, slug, lang = 'en' }) {
                 content: metaDescription,
               },
               {
-                property: 'og:image',
+                name: 'og:image',
                 content: metaImage,
               },
               {
                 name: 'twitter:image',
                 content: metaImage,
-              },
+              }
             ]
               .concat(meta)}
           />
