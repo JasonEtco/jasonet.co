@@ -1,78 +1,107 @@
-code,
-code[class*='language-'],
-pre[class*='language-'] {
-  color: #333;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  tab-size: 4;
-  hyphens: none;
-  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-  line-height: 1.4;
-  direction: ltr;
-  cursor: text;
+/**
+ * GHColors theme by Avi Aryan (http://aviaryan.in)
+ * Inspired by Github syntax coloring
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: #393A34;
+    font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    font-size: 0.95em;
+    line-height: 1.2em;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
 }
 
-pre[class*='language-'] {
-  overflow: auto;
-  margin: 1em 0;
-  padding: 1.2em;
-  border-radius: 3px;
-  font-size: 85%;
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    background: #b3d4fc;
 }
 
-p code,
-li code,
-table code {
-  margin: 0;
-  border-radius: 3px;
-  padding: 0.2em 0;
-  font-size: 85%;
-}
-p code:before, p code:after,
-li code:before,
-li code:after,
-table code:before,
-table code:after {
-  letter-spacing: -0.2em;
-  content: '\00a0';
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    background: #b3d4fc;
 }
 
-code,
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
-  background: #f6f8fa;
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
 }
 
-:not(pre) > code[class*='language-'] {
-  padding: 0.1em;
-  border-radius: 0.3em;
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #999988; font-style: italic;
 }
 
-.token.comment, .token.prolog, .token.doctype, .token.cdata {
-  color: #969896;
-}
-.token.punctuation, .token.string, .token.atrule, .token.attr-value {
-  color: #183691;
-}
-.token.property, .token.tag {
-  color: #63a35c;
-}
-.token.boolean, .token.number {
-  color: #0086b3;
-}
-.token.selector, .token.attr-name, .token.attr-value .punctuation:first-child, .token.keyword, .token.regex, .token.important {
-  color: #795da3;
-}
-.token.operator, .token.entity, .token.url, .language-css .token.string {
-  color: #a71d5d;
-}
-.token.entity {
-  cursor: help;
+.token.namespace {
+    opacity: .7;
 }
 
-.namespace {
-  opacity: 0.7;
+.token.string,
+.token.attr-value {
+    color: #e3116c;
+}
+.token.punctuation,
+.token.operator {
+    color: #393A34; /* no highlight */
+}
+
+.token.entity,
+.token.url,
+.token.symbol,
+.token.number,
+.token.boolean,
+.token.variable,
+.token.constant,
+.token.property,
+.token.regex,
+.token.inserted {
+    color: #36acaa;
+}
+
+.token.atrule,
+.token.keyword,
+.token.attr-name,
+.language-autohotkey .token.selector {
+    color: #00a4db;
+}
+
+.token.function,
+.token.deleted,
+.language-autohotkey .token.tag {
+    color: #9a050f;
+}
+
+.token.tag,
+.token.selector,
+.language-autohotkey .token.keyword {
+    color: #00009f;
+}
+
+.token.important,
+.token.function,
+.token.bold {
+    font-weight: bold;
+}
+
+.token.italic {
+    font-style: italic;
 }
 
 /* Inline code */
