@@ -57,7 +57,7 @@ console.log('Hi GitHub!')
 
 Now, when GitHub runs this Action, it will build the Docker container from the [`node:slim`](https://hub.docker.com/_/node/#nodeversion-slim) tag and run `node /index.js` - which will print `Hi GitHub!` to the Action logs:
 
-<h1 style="color: red">SCREENSHOT</h1>
+<img width="342" alt="image" src="https://user-images.githubusercontent.com/10660468/51445177-36392200-1cd0-11e9-8bc6-7741fd8d7976.png">
 
 Honestly, now you can build whatever you want. You've "set up your environment," and all that's left is writing your code. There are some special things in Actions that I'd like to talk about though; hang tight, because we'll finish our Action before this post is over.
 
@@ -105,7 +105,7 @@ I don't want this to be a "use this library, its the definitive way to build Act
 
 ## Back at it
 
-Ok, back to our Action. Using `actions-toolkit`, here's the whole `.js` file:
+Ok, back to our Action. Using `actions-toolkit` (you'll need to `npm install` it), here's the whole `.js` file:
 
 ```js
 // index.js
@@ -122,7 +122,7 @@ if (
   const octokit = tools.createOctokit()
 
   // Delete the branch
-  octokit.git.deleteRef(tools.context.repo({
+  octokit.gitdata.deleteRef(tools.context.repo({
     ref: `heads/${payload.pull_request.head.ref}`
   })).then(() => {
     console.log('Branch deleted!')
