@@ -1,6 +1,18 @@
 import React from 'react'
 import { rhythm, scale, colors } from '../utils/typography'
 
+function Block (props) {
+  return (
+    <div style={{
+      height: rhythm(0.5 || props.height),
+      width: props.width,
+      backgroundColor: colors.gray[2],
+      borderRadius: 3,
+      ...props.style
+    }} />
+  )
+}
+
 function Repo (props) {
   const { repo, loading } = props
   if (loading) return (
@@ -12,13 +24,13 @@ function Repo (props) {
       borderRadius: 3
     }}>
       <div className="pulse" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-        <div style={{ height: rhythm(0.7), width: '50%', backgroundColor: colors.gray[2], marginBottom: rhythm(0.2) }} />
-        <div style={{ height: rhythm(0.5), width: '100%', backgroundColor: colors.gray[2], marginBottom: rhythm(0.1) }} />
-        <div style={{ height: rhythm(0.5), width: '30%', backgroundColor: colors.gray[2] }} />
+        <Block height={0.7} width="50%" style={{ marginBottom: rhythm(0.2) }} />
+        <Block width="100%" style={{ marginBottom: rhythm(0.1) }} />
+        <Block width="30%" />
         <div style={{ display: 'flex', marginTop: 'auto' }}>
-          <div style={{ height: rhythm(0.5), width: '30%', backgroundColor: colors.gray[2] }} />
-          <div style={{ height: rhythm(0.5), width: '10%', backgroundColor: colors.gray[2], marginLeft: 16 }} />
-          <div style={{ height: rhythm(0.5), width: '10%', backgroundColor: colors.gray[2], marginLeft: 16 }} />
+          <Block width="30%" />
+          <Block width="10%" style={{ marginLeft: 16 }} />
+          <Block width="10%" style={{ marginLeft: 16 }} />
         </div>
       </div>
     </div>
