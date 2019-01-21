@@ -2,7 +2,28 @@ import React from 'react'
 import { rhythm, scale, colors } from '../utils/typography'
 
 function Repo (props) {
-  const { repo } = props
+  const { repo, loading } = props
+  if (loading) return (
+    <div style={{
+      height: rhythm(5.7),
+      padding: rhythm(0.8),
+      border: '1px solid',
+      borderColor: colors.gray[2],
+      borderRadius: 3
+    }}>
+      <div className="pulse" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ height: rhythm(0.7), width: '50%', backgroundColor: colors.gray[2], marginBottom: rhythm(0.2) }} />
+        <div style={{ height: rhythm(0.5), width: '100%', backgroundColor: colors.gray[2], marginBottom: rhythm(0.1) }} />
+        <div style={{ height: rhythm(0.5), width: '30%', backgroundColor: colors.gray[2] }} />
+        <div style={{ display: 'flex', marginTop: 'auto' }}>
+          <div style={{ height: rhythm(0.5), width: '30%', backgroundColor: colors.gray[2] }} />
+          <div style={{ height: rhythm(0.5), width: '10%', backgroundColor: colors.gray[2], marginLeft: 16 }} />
+          <div style={{ height: rhythm(0.5), width: '10%', backgroundColor: colors.gray[2], marginLeft: 16 }} />
+        </div>
+      </div>
+    </div>
+  )
+
   if (!repo) return null
 
   return (
@@ -13,7 +34,7 @@ function Repo (props) {
       borderColor: colors.gray[2],
       borderRadius: 3
     }}>
-      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }} className="repo--loaded">
         <a href={repo.html_url} style={{ color: colors.blue[5] }}>
           <h4 style={{ marginTop: 0, marginBottom: rhythm(0.2) }} title={repo.name}>{repo.name}</h4>
         </a>
