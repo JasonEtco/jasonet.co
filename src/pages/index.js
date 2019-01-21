@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import get from 'lodash/get'
 
 import Bio from '../components/Bio'
 import SEO from '../components/SEO'
@@ -10,7 +9,7 @@ import { rhythm, scale } from '../utils/typography'
 
 class BlogIndex extends React.Component {
   render() {
-    const posts = get(this, 'props.data.allMarkdownRemark.edges')
+    const posts = this.props.data.allMarkdownRemark.edges
 
     return (
       <main
@@ -49,7 +48,7 @@ class BlogIndex extends React.Component {
         <div style={{ paddingTop: rhythm(2), paddingBottom: rhythm(2), borderBottom: '1px solid hsla(0,0%,0%,0.07)' }}>
           <h5>Posts:</h5>
           {posts.map(({ node }) => {
-            const title = get(node, 'frontmatter.title') || node.fields.slug
+            const title = node.frontmatter.title || node.fields.slug
             return (
               <div key={node.fields.slug}>
                 <h3 style={{ marginBottom: rhythm(1 / 4) }}>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import get from 'lodash/get'
 
 import Bio from '../components/Bio'
 import Layout from '../components/Layout'
@@ -14,7 +13,8 @@ const GITHUB_REPO_NAME = 'jasonet.co'
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+    const { title: siteTitle } = this.props.data.site.siteMetadata.title
+
     const { previous, next, slug } = this.props.pageContext
     const urlSlug = slug.slice(1, -1)
     const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${urlSlug}.md`
