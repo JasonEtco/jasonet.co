@@ -76,6 +76,35 @@ The container in which your `index.js` file is being run has a few things inject
 - `GITHUB_TOKEN`: An authentication token used to make API requests to GitHub.
 - `GITHUB_EVENT_PAYLOAD`: A path to a `.json` file containing the event that triggered the action. This is where you'll find things like the resource that triggered it (like an opened PR, or a commit).
 
+## Back at it
+
+Ok, back to our Action. Using [**actions-toolkit**](https://github.com/JasonEtco/actions-toolkit) (you'll need to `npm install` it), here's the whole `.js` file:
+
+```js
+// index.js
+const { Toolkit } = require('actions-toolkit')
+const tools = new Toolkit()
+
+const { event, payload } = tools.context
+if (
+  event === 'pull_request' &&
+  payload.action === 'closed' &&
+  payload.pull_request.merged
+) {
+  // An authenticated instance of `@octokit/rest`, a GitHub API SDK
+  const octokit = tools.createOctokit()
+
+  // Delete the branch
+  octokit.gitdata.deleteRef(tools.context.repo({
+    ref: `heads/${payload.pull_request.head.ref}`
+  })).then(() => {
+    console.log(`Branch ${payload.pull_request.head.ref} deleted!`)
+  })
+}
+```
+
+<img width="775" alt="image" src="https://user-images.githubusercontent.com/10660468/51445322-aeecae00-1cd1-11e9-865b-0ef53ae44a5a.png">
+
 ## But I depend on dependencies!
 
 Cool, me too! I'll share some libraries that are particularly useful for GitHub Actions, as well as [**actions-toolkit**](https://github.com/JasonEtco/actions-toolkit), a library I'm working on designed specifically for Actions.
@@ -111,33 +140,6 @@ I'm looking for feedback on its use, as well as potential new features - [let me
 
 I don't want this to be a "use this library, its the definitive way to build Actions" kind of post - that's why I'm leaving it to the end. **You can absolutely build all this functionality yourself but... now you don't have to** 🙌
 
-## Back at it
-
-Ok, back to our Action. Using `actions-toolkit` (you'll need to `npm install` it), here's the whole `.js` file:
-
-```js
-// index.js
-const { Toolkit } = require('actions-toolkit')
-const tools = new Toolkit()
-
-const { event, payload } = tools.context
-if (
-  event === 'pull_request' &&
-  payload.action === 'closed' &&
-  payload.pull_request.merged
-) {
-  // An authenticated `@octokit/rest` instance
-  const octokit = tools.createOctokit()
-
-  // Delete the branch
-  octokit.gitdata.deleteRef(tools.context.repo({
-    ref: `heads/${payload.pull_request.head.ref}`
-  })).then(() => {
-    console.log('Branch deleted!')
-  })
-}
-```
-
-<img width="775" alt="image" src="https://user-images.githubusercontent.com/10660468/51445322-aeecae00-1cd1-11e9-865b-0ef53ae44a5a.png">
+---
 
 And that's it! Hopefully this will give you an idea on how to build your own GitHub Actions in Node.js. [Tweet me](https://twitter.com/JasonEtco) with whatever you build ✨
