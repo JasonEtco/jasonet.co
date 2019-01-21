@@ -7,8 +7,8 @@ const post = shape({
   frontmatter: shape({
     title: string.isRequired,
     date: string.isRequired,
-    spoiler: string.isRequired
-  })
+    spoiler: string.isRequired,
+  }),
 })
 
 const site = shape({
@@ -20,10 +20,10 @@ const site = shape({
     social: shape({
       twitter: string.isRequired,
     }).isRequired,
-  }).isRequired
+  }).isRequired,
 })
 
 export default {
   post,
-  site
+  site,
 }

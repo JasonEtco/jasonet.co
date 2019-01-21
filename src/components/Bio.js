@@ -26,8 +26,11 @@ class Bio extends React.Component {
           }}
         />
         <p style={{ marginBottom: 0 }}>
-          👋 Personal blog by <a href="https://twitter.com/JasonEtco">Jason Etcovitch</a><br />
-          🐙 Engineer at <a href="https://github.com/JasonEtco">GitHub</a><br />
+          👋 Personal blog by{' '}
+          <a href="https://twitter.com/JasonEtco">Jason Etcovitch</a>
+          <br />
+          🐙 Engineer at <a href="https://github.com/JasonEtco">GitHub</a>
+          <br />
           🐦 Follow me on <a href="https://twitter.com/JasonEtco">Twitter</a>
         </p>
       </div>

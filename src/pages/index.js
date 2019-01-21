@@ -24,30 +24,44 @@ export default class BlogIndex extends React.Component {
       >
         <SEO />
 
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          borderBottom: '1px solid hsla(0,0%,0%,0.07)',
-          paddingBottom: rhythm(0.5)
-        }} className="home__hero">
-          <h1 style={{
-            ...scale(1.8),
-            fontWeight: 900,
-            lineHeight: 0.9,
-            border: 'none',
-            margin: 0,
-            padding: 0
-          }}>
-            Jason<br />Etcovitch
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            borderBottom: '1px solid hsla(0,0%,0%,0.07)',
+            paddingBottom: rhythm(0.5),
+          }}
+          className="home__hero"
+        >
+          <h1
+            style={{
+              ...scale(1.8),
+              fontWeight: 900,
+              lineHeight: 0.9,
+              border: 'none',
+              margin: 0,
+              padding: 0,
+            }}
+          >
+            Jason
+            <br />
+            Etcovitch
           </h1>
 
           <p style={{ alignSelf: 'flex-end', marginBottom: 0, marginLeft: 16 }}>
-            🐙 Engineer at <a href="https://github.com/JasonEtco">GitHub</a><br />
+            🐙 Engineer at <a href="https://github.com/JasonEtco">GitHub</a>
+            <br />
             🐦 Follow me on <a href="https://twitter.com/JasonEtco">Twitter</a>
           </p>
         </div>
 
-        <div style={{ paddingTop: rhythm(2), paddingBottom: rhythm(2), borderBottom: '1px solid hsla(0,0%,0%,0.07)' }}>
+        <div
+          style={{
+            paddingTop: rhythm(2),
+            paddingBottom: rhythm(2),
+            borderBottom: '1px solid hsla(0,0%,0%,0.07)',
+          }}
+        >
           <h5>Posts:</h5>
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
@@ -62,7 +76,9 @@ export default class BlogIndex extends React.Component {
                   {node.frontmatter.date}
                   {` • ${formatReadingTime(node.timeToRead)}`}
                 </small>
-                <p dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }} />
+                <p
+                  dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }}
+                />
               </div>
             )
           })}
@@ -72,12 +88,14 @@ export default class BlogIndex extends React.Component {
           <ReposList />
         </div>
 
-        <div style={{
-          padding: rhythm(1),
-          marginTop: rhythm(2),
-          boxShadow: '0 2px 15px 0 rgba(210,214,220,.5)',
-          borderRadius: 5
-        }}>
+        <div
+          style={{
+            padding: rhythm(1),
+            marginTop: rhythm(2),
+            boxShadow: '0 2px 15px 0 rgba(210,214,220,.5)',
+            borderRadius: 5,
+          }}
+        >
           <Bio marginBottom={0} />
         </div>
       </main>
@@ -113,6 +131,6 @@ export const pageQuery = graphql`
 
 BlogIndex.propTypes = {
   data: shape({
-    allMarkdownRemark: arrayOf(p.post).isRequired
-  })
+    allMarkdownRemark: arrayOf(p.post).isRequired,
+  }),
 }

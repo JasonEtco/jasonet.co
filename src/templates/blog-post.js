@@ -20,7 +20,9 @@ export default class BlogPostTemplate extends React.Component {
 
     const urlSlug = slug.slice(1, -1)
     const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${urlSlug}.md`
-    const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(`https://jasonet.co${slug}`)}`
+    const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
+      `https://jasonet.co${slug}`
+    )}`
     return (
       <Layout title={siteTitle}>
         <SEO
@@ -28,7 +30,9 @@ export default class BlogPostTemplate extends React.Component {
           description={post.frontmatter.spoiler}
           slug={post.fields.slug}
         />
-        <h1 style={{ ...scale(1.6), fontWeight: 900, lineHeight: 1.1 }}>{post.frontmatter.title}</h1>
+        <h1 style={{ ...scale(1.6), fontWeight: 900, lineHeight: 1.1 }}>
+          {post.frontmatter.title}
+        </h1>
         <p
           style={{
             ...scale(-1 / 5),
@@ -52,12 +56,14 @@ export default class BlogPostTemplate extends React.Component {
           </a>
         </p>
 
-        <div style={{
-          padding: rhythm(1.2),
-          marginTop: rhythm(1),
-          boxShadow: '0 2px 15px 0 rgba(210,214,220,.5)',
-          borderRadius: 5
-        }}>
+        <div
+          style={{
+            padding: rhythm(1.2),
+            marginTop: rhythm(1),
+            boxShadow: '0 2px 15px 0 rgba(210,214,220,.5)',
+            borderRadius: 5,
+          }}
+        >
           <h3 style={{ marginTop: 0 }}>
             <Link
               style={{
@@ -80,7 +86,7 @@ export default class BlogPostTemplate extends React.Component {
             listStyle: 'none',
             padding: 0,
             marginLeft: 0,
-            marginTop: rhythm(2)
+            marginTop: rhythm(2),
           }}
         >
           <li>
@@ -131,10 +137,10 @@ BlogPostTemplate.propTypes = {
   pageContext: shape({
     previous: p.post,
     next: p.post,
-    slug: string.isRequired
+    slug: string.isRequired,
   }),
   data: shape({
     site: p.site,
-    markdownRemark: p.post
-  })
+    markdownRemark: p.post,
+  }),
 }

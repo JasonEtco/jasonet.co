@@ -21,7 +21,7 @@ export default class Layout extends React.Component {
             style={{
               ...scale(0.1),
               fontFamily: 'Inter UI, sans-serif',
-              margin: 0
+              margin: 0,
             }}
           >
             <Link
@@ -43,5 +43,5 @@ export default class Layout extends React.Component {
 }
 
 Layout.propTypes = {
-  children: any.isRequired
+  children: any.isRequired,
 }

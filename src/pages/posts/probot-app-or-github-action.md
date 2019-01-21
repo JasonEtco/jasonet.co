@@ -13,7 +13,7 @@ Since GitHub announced the beta release of [GitHub Actions](https://github.com/f
 I won't go too deep into what Actions are - [@jessfraz](https://twitter.com/jessfraz) [has got you covered](https://blog.jessfraz.com/post/the-life-of-a-github-action/). The important notes for right now are:
 
 1. Run code to respond to an event on GitHub
-2. GitHub will run *anything* in a Docker container
+2. GitHub will run _anything_ in a Docker container
 
 The key point is that GitHub runs your Actions run in an ephemeral container - there's no hosting, server costs or deployment to worry about. It's sort of like a scoped serverless function that's triggered by events in a GitHub repository.
 
@@ -119,12 +119,12 @@ You can [run Probot Apps in Actions](https://probot.github.io/docs/deployment#gi
 
 Here's a table to give you a place to start, but **it aaaaaalways depends**:
 
-| Probot | GitHub Actions |
-| --- | --- |
-| Making a few API calls | Running command line tools |
-| Love Node.js and JavaScript | Allergic to JavaScript |
-| You can deploy a Node.js app | GitHub take the wheel |
-| Needs to be fast | Time is but a construct of your imagination |
-| Acts entirely through the GitHub API | Needs your repo's codebase |
-| Needs a UI | Requires the user's credentials |
-| Needs persistence | - |
+| Probot                               | GitHub Actions                              |
+| ------------------------------------ | ------------------------------------------- |
+| Making a few API calls               | Running command line tools                  |
+| Love Node.js and JavaScript          | Allergic to JavaScript                      |
+| You can deploy a Node.js app         | GitHub take the wheel                       |
+| Needs to be fast                     | Time is but a construct of your imagination |
+| Acts entirely through the GitHub API | Needs your repo's codebase                  |
+| Needs a UI                           | Requires the user's credentials             |
+| Needs persistence                    | -                                           |
