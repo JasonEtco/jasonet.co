@@ -13,7 +13,7 @@
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "format": "prettier --write 'src/**/*.js' 'src/**/*.md'",
     "build": "rm -rf public && rm -rf .cache && gatsby build",
-    "dry": "yarn build && cp now.json public/ && cd public && now"
+    "dry": "npm run build && cp now.json public/ && cd public && now"
   },
   "dependencies": {
     "gatsby": "^2.0.76",
