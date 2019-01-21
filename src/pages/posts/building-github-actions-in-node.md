@@ -16,7 +16,7 @@ If you aren't at all familiar with Actions, check out @jessfraz's [excellent pos
 
 ## What we're building
 
-As a thought experiment, let's build @jessfraz's [`branch-cleanup-action`](https://github.com/jessfraz/branch-cleanup-action) Action. It deletes branches whose pull requests have been merged. If you just want to use the thing, you should use hers - we're just going to port it to Node for fun!
+As a thought experiment, let's build [@jessfraz](https://twitter.com/jessfraz)'s [**branch-cleanup-action**](https://github.com/jessfraz/branch-cleanup-action) Action. It deletes branches whose pull requests have been merged. If you just want to use the thing, you should use hers - we're porting it to Node for fun!
 
 ## Let's do it
 
