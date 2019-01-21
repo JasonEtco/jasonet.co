@@ -39,7 +39,7 @@ That brings me to Actions' major weakness: they can be slow. We've got super sma
 
 Here's an example: an Action that comments on any newly created issue. Here's the code we'll use:
 
-```dockerfile
+```docker
 # Every Action needs a Dockerfile
 FROM alpine
 RUN	apk add --no-cache bash curl jq

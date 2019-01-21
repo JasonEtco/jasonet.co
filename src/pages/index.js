@@ -32,7 +32,7 @@ class BlogIndex extends React.Component {
 
   render() {
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
-    const { loading, repos } = this.state
+    const { repos, loading } = this.state
 
     return (
       <main
@@ -62,7 +62,7 @@ class BlogIndex extends React.Component {
             Jason<br />Etcovitch
           </h1>
 
-          <div style={{ alignSelf: 'end' }}>
+          <div style={{ alignSelf: 'flex-end' }}>
             <p style={{ marginBottom: 0, marginLeft: 16 }}>
               🐙 Engineer at <a href="https://github.com/JasonEtco">GitHub</a><br />
               🐦 Follow me on <a href="https://twitter.com/JasonEtco">Twitter</a>
@@ -97,19 +97,17 @@ class BlogIndex extends React.Component {
           })}
         </div>
 
-        {loading ? null : (
-          <div style={{ marginTop: rhythm(3) }}>
-            <h5>Recently worked on:</h5>
-            <ul className="repo-list" style={{ display: 'flex', listStyleType: 'none', padding: 0, margin: 0 }}>
-              <div className="repo-wrapper" style={{ marginRight: 6, width: '50%' }}>
-                <Repo repo={repos[0]} />
-              </div>
-              <div className="repo-wrapper" style={{ marginLeft: 6, width: '50%' }}>
-                <Repo repo={repos[1]} />
-              </div>
-            </ul>
-          </div>
-        )}
+        <div style={{ marginTop: rhythm(3) }}>
+          <h5>Recently worked on:</h5>
+          <ul className="repo-list" style={{ display: 'flex', listStyleType: 'none', padding: 0, margin: 0 }}>
+            <li className="repo-wrapper" style={{ marginRight: 6, width: '50%' }}>
+              <Repo loading={loading} repo={repos[0]} />
+            </li>
+            <li className="repo-wrapper" style={{ marginLeft: 6, width: '50%' }}>
+              <Repo loading={loading} repo={repos[1]} />
+            </li>
+          </ul>
+        </div>
 
         <div style={{
           padding: rhythm(1),

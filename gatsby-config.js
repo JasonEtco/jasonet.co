@@ -37,9 +37,6 @@ module.exports = {
           {
             resolve: 'gatsby-remark-prismjs',
             options: {
-              aliases: {
-                dockerfile: 'docker'
-              },
               inlineCodeMarker: '÷',
             },
           },
@@ -63,11 +60,12 @@ module.exports = {
         short_name: `jasonet.co`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#f87000`,
+        theme_color: `#f26d21`,
         display: `minimal-ui`,
         icon: `src/assets/icon.png`,
       },
     },
+    'gatsby-plugin-offline',
     `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-plugin-typography',

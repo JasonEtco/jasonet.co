@@ -1,19 +1,52 @@
 import React from 'react'
 import { rhythm, scale, colors } from '../utils/typography'
 
+function Block (props) {
+  return (
+    <div style={{
+      height: rhythm(0.5 || props.height),
+      width: props.width,
+      backgroundColor: colors.gray[2],
+      borderRadius: 3,
+      ...props.style
+    }} />
+  )
+}
+
 function Repo (props) {
-  const { repo } = props
+  const { repo, loading } = props
+  if (loading) return (
+    <div style={{
+      height: rhythm(5.7),
+      padding: rhythm(0.8),
+      border: '1px solid',
+      borderColor: colors.gray[2],
+      borderRadius: 3
+    }}>
+      <div className="pulse" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <Block height={0.7} width="50%" style={{ marginBottom: rhythm(0.2) }} />
+        <Block width="100%" style={{ marginBottom: rhythm(0.1) }} />
+        <Block width="30%" />
+        <div style={{ display: 'flex', marginTop: 'auto' }}>
+          <Block width="30%" />
+          <Block width="10%" style={{ marginLeft: 16 }} />
+          <Block width="10%" style={{ marginLeft: 16 }} />
+        </div>
+      </div>
+    </div>
+  )
+
   if (!repo) return null
 
   return (
-    <li style={{
+    <div style={{
       height: '100%',
       padding: rhythm(0.8),
       border: '1px solid',
       borderColor: colors.gray[2],
       borderRadius: 3
     }}>
-      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }} className="repo--loaded">
         <a href={repo.html_url} style={{ color: colors.blue[5] }}>
           <h4 style={{ marginTop: 0, marginBottom: rhythm(0.2) }} title={repo.name}>{repo.name}</h4>
         </a>
@@ -34,7 +67,7 @@ function Repo (props) {
             </a>
         </p>
       </div>
-    </li>
+    </div>
   )
 }
 
