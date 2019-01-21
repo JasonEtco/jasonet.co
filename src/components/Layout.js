@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
-
+import { any } from 'prop-types'
 import { rhythm, scale } from '../utils/typography'
 
-class Layout extends React.Component {
+export default class Layout extends React.Component {
   render() {
     const { children } = this.props
 
@@ -42,4 +42,6 @@ class Layout extends React.Component {
   }
 }
 
-export default Layout
+Layout.propTypes = {
+  children: any.isRequired
+}

@@ -14,13 +14,13 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const { title: siteTitle } = this.props.data.site.siteMetadata.title
-
     const { previous, next, slug } = this.props.pageContext
+
     const urlSlug = slug.slice(1, -1)
     const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${urlSlug}.md`
     const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(`https://jasonet.co${slug}`)}`
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout title={siteTitle}>
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.spoiler}

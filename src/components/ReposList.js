@@ -18,7 +18,7 @@ export default class ReposList extends Component {
   }
 
   getRepos () {
-    return fetch('https://api.github.com/users/JasonEtco/repos?type=owner&sort=pushed')
+    return window.fetch('https://api.github.com/users/JasonEtco/repos?type=owner&sort=pushed')
       .then(res => res.json())
       .then(json => json.slice(0, 2))
   }
