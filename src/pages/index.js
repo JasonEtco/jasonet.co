@@ -4,35 +4,13 @@ import get from 'lodash/get'
 
 import Bio from '../components/Bio'
 import SEO from '../components/SEO'
-import Repo from '../components/Repo'
+import ReposList from '../components/ReposList'
 import { formatReadingTime } from '../utils/helpers'
-import { rhythm, scale, colors } from '../utils/typography'
+import { rhythm, scale } from '../utils/typography'
 
 class BlogIndex extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = { loading: true, repos: [] }
-    this.getRepos = this.getRepos.bind(this)
-  }
-
-  componentDidMount () {
-    this.getRepos().then(repos => {
-      this.setState({
-        loading: false,
-        repos
-      })
-    })
-  }
-
-  getRepos () {
-    return fetch('https://api.github.com/users/JasonEtco/repos?type=owner&sort=pushed')
-      .then(res => res.json())
-      .then(json => json.slice(0, 2))
-  }
-
   render() {
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
-    const { repos, loading } = this.state
 
     return (
       <main
@@ -62,12 +40,10 @@ class BlogIndex extends React.Component {
             Jason<br />Etcovitch
           </h1>
 
-          <div style={{ alignSelf: 'flex-end' }}>
-            <p style={{ marginBottom: 0, marginLeft: 16 }}>
-              🐙 Engineer at <a href="https://github.com/JasonEtco">GitHub</a><br />
-              🐦 Follow me on <a href="https://twitter.com/JasonEtco">Twitter</a>
-            </p>
-          </div>
+          <p style={{ alignSelf: 'flex-end', marginBottom: 0, marginLeft: 16 }}>
+            🐙 Engineer at <a href="https://github.com/JasonEtco">GitHub</a><br />
+            🐦 Follow me on <a href="https://twitter.com/JasonEtco">Twitter</a>
+          </p>
         </div>
 
         <div style={{ paddingTop: rhythm(2), paddingBottom: rhythm(2), borderBottom: '1px solid hsla(0,0%,0%,0.07)' }}>
@@ -76,11 +52,7 @@ class BlogIndex extends React.Component {
             const title = get(node, 'frontmatter.title') || node.fields.slug
             return (
               <div key={node.fields.slug}>
-                <h3
-                  style={{
-                    marginBottom: rhythm(1 / 4),
-                  }}
-                >
+                <h3 style={{ marginBottom: rhythm(1 / 4) }}>
                   <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
                     {title}
                   </Link>
@@ -89,24 +61,14 @@ class BlogIndex extends React.Component {
                   {node.frontmatter.date}
                   {` • ${formatReadingTime(node.timeToRead)}`}
                 </small>
-                <p
-                  dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }}
-                />
+                <p dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }} />
               </div>
             )
           })}
         </div>
 
         <div style={{ marginTop: rhythm(3) }}>
-          <h5>Recently worked on:</h5>
-          <ul className="repo-list" style={{ display: 'flex', listStyleType: 'none', padding: 0, margin: 0 }}>
-            <li className="repo-wrapper" style={{ marginRight: 6, width: '50%' }}>
-              <Repo loading={loading} repo={repos[0]} />
-            </li>
-            <li className="repo-wrapper" style={{ marginLeft: 6, width: '50%' }}>
-              <Repo loading={loading} repo={repos[1]} />
-            </li>
-          </ul>
+          <ReposList />
         </div>
 
         <div style={{
