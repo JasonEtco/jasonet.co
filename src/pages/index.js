@@ -6,8 +6,10 @@ import SEO from '../components/SEO'
 import ReposList from '../components/ReposList'
 import { formatReadingTime } from '../utils/helpers'
 import { rhythm, scale } from '../utils/typography'
+import { shape, arrayOf } from 'prop-types'
+import p from '../utils/shared-props'
 
-class BlogIndex extends React.Component {
+export default class BlogIndex extends React.Component {
   render() {
     const posts = this.props.data.allMarkdownRemark.edges
 
@@ -83,8 +85,6 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
-
 export const pageQuery = graphql`
   query {
     site {
@@ -110,3 +110,9 @@ export const pageQuery = graphql`
     }
   }
 `
+
+BlogIndex.propTypes = {
+  data: shape({
+    allMarkdownRemark: arrayOf(p.post).isRequired
+  })
+}

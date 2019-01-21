@@ -6,11 +6,13 @@ import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { formatReadingTime } from '../utils/helpers'
 import { rhythm, scale } from '../utils/typography'
+import { shape, string } from 'prop-types'
+import p from '../utils/shared-props'
 
 const GITHUB_USERNAME = 'JasonEtco'
 const GITHUB_REPO_NAME = 'jasonet.co'
 
-class BlogPostTemplate extends React.Component {
+export default class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const { title: siteTitle } = this.props.data.site.siteMetadata.title
@@ -101,8 +103,6 @@ class BlogPostTemplate extends React.Component {
   }
 }
 
-export default BlogPostTemplate
-
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
@@ -126,3 +126,15 @@ export const pageQuery = graphql`
     }
   }
 `
+
+BlogPostTemplate.propTypes = {
+  pageContext: shape({
+    previous: p.post,
+    next: p.post,
+    slug: string.isRequired
+  }),
+  data: shape({
+    site: p.site,
+    markdownRemark: p.post
+  })
+}
