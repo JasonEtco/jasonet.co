@@ -14,21 +14,21 @@ export default class Layout extends React.Component {
             marginLeft: 'auto',
             marginRight: 'auto',
             maxWidth: rhythm(28),
-            padding: `${rhythm(1.5)} ${rhythm(1)}`,
+            padding: `${rhythm(1.5)} ${rhythm(1)}`
           }}
         >
           <h3
             style={{
               ...scale(0.1),
               fontFamily: 'Inter UI, sans-serif',
-              margin: 0,
+              margin: 0
             }}
           >
             <Link
               style={{
                 boxShadow: 'none',
                 textDecoration: 'none',
-                color: '#f26d21',
+                color: '#f26d21'
               }}
               to={'/'}
             >
@@ -43,5 +43,5 @@ export default class Layout extends React.Component {
 }
 
 Layout.propTypes = {
-  children: any.isRequired,
+  children: any.isRequired
 }

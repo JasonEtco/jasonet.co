@@ -10,7 +10,7 @@ function Block(props) {
         width: props.width,
         backgroundColor: colors.gray[2],
         borderRadius: 3,
-        ...props.style,
+        ...props.style
       }}
     />
   )
@@ -19,7 +19,7 @@ function Block(props) {
 Block.propTypes = {
   width: number.isRequired,
   height: number,
-  style: any,
+  style: any
 }
 
 export default function Repo(props) {
@@ -32,7 +32,7 @@ export default function Repo(props) {
           padding: rhythm(0.8),
           border: '1px solid',
           borderColor: colors.gray[2],
-          borderRadius: 3,
+          borderRadius: 3
         }}
       >
         <div
@@ -64,7 +64,7 @@ export default function Repo(props) {
         padding: rhythm(0.8),
         border: '1px solid',
         borderColor: colors.gray[2],
-        borderRadius: 3,
+        borderRadius: 3
       }}
     >
       <div
@@ -85,7 +85,7 @@ export default function Repo(props) {
             ...scale(-0.2),
             lineHeight: rhythm(0.8),
             marginBottom: rhythm(0.5),
-            color: colors.gray[5],
+            color: colors.gray[5]
           }}
         >
           {repo.description}
@@ -96,7 +96,7 @@ export default function Repo(props) {
             ...scale(-0.4),
             color: colors.gray[5],
             margin: 0,
-            marginTop: 'auto',
+            marginTop: 'auto'
           }}
         >
           {repo.language}
@@ -155,6 +155,6 @@ Repo.propTypes = {
     name: string.isRequired,
     forks_count: number.isRequired,
     stargazers_count: number.isRequired,
-    description: string.isRequired,
-  }),
+    description: string.isRequired
+  })
 }

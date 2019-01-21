@@ -34,52 +34,52 @@ function SEO({ meta, title, description, slug }) {
             {...(title
               ? {
                   titleTemplate: `%s - ${siteMetadata.title}`,
-                  title,
+                  title
                 }
               : {
-                  title: siteMetadata.title,
+                  title: siteMetadata.title
                 })}
             meta={[
               {
                 name: 'description',
-                content: metaDescription,
+                content: metaDescription
               },
               {
                 property: 'og:url',
-                content: url,
+                content: url
               },
               {
                 property: 'og:title',
-                content: title || siteMetadata.title,
+                content: title || siteMetadata.title
               },
               {
                 name: 'og:description',
-                content: metaDescription,
+                content: metaDescription
               },
               {
                 name: 'twitter:card',
-                content: 'summary',
+                content: 'summary'
               },
               {
                 name: 'twitter:creator',
-                content: siteMetadata.social.twitter,
+                content: siteMetadata.social.twitter
               },
               {
                 name: 'twitter:title',
-                content: title || siteMetadata.title,
+                content: title || siteMetadata.title
               },
               {
                 name: 'twitter:description',
-                content: metaDescription,
+                content: metaDescription
               },
               {
                 name: 'og:image',
-                content: metaImage,
+                content: metaImage
               },
               {
                 name: 'twitter:image',
-                content: metaImage,
-              },
+                content: metaImage
+              }
             ].concat(meta)}
           />
         )
@@ -91,14 +91,14 @@ function SEO({ meta, title, description, slug }) {
 SEO.defaultProps = {
   meta: [],
   title: '',
-  slug: '',
+  slug: ''
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
   meta: PropTypes.array,
   slug: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 }
 
 export default SEO

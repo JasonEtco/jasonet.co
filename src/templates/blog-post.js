@@ -39,7 +39,7 @@ export default class BlogPostTemplate extends React.Component {
             fontFamily: 'Inter UI, sans-serif',
             display: 'block',
             marginBottom: rhythm(1),
-            marginTop: rhythm(-3 / 5),
+            marginTop: rhythm(-3 / 5)
           }}
         >
           {post.frontmatter.date}
@@ -61,7 +61,7 @@ export default class BlogPostTemplate extends React.Component {
             padding: rhythm(1.2),
             marginTop: rhythm(1),
             boxShadow: '0 2px 15px 0 rgba(210,214,220,.5)',
-            borderRadius: 5,
+            borderRadius: 5
           }}
         >
           <h3 style={{ marginTop: 0 }}>
@@ -69,7 +69,7 @@ export default class BlogPostTemplate extends React.Component {
               style={{
                 boxShadow: 'none',
                 textDecoration: 'none',
-                color: '#f26d21',
+                color: '#f26d21'
               }}
               to={'/'}
             >
@@ -86,7 +86,7 @@ export default class BlogPostTemplate extends React.Component {
             listStyle: 'none',
             padding: 0,
             marginLeft: 0,
-            marginTop: rhythm(2),
+            marginTop: rhythm(2)
           }}
         >
           <li>
@@ -137,10 +137,10 @@ BlogPostTemplate.propTypes = {
   pageContext: shape({
     previous: p.post,
     next: p.post,
-    slug: string.isRequired,
+    slug: string.isRequired
   }),
   data: shape({
     site: p.site,
-    markdownRemark: p.post,
-  }),
+    markdownRemark: p.post
+  })
 }

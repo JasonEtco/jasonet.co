@@ -12,7 +12,7 @@ class Bio extends React.Component {
       <div
         className="bio"
         style={{
-          display: 'flex',
+          display: 'flex'
         }}
       >
         <img
@@ -22,7 +22,7 @@ class Bio extends React.Component {
             marginRight: rhythm(1 / 2),
             marginBottom: 0,
             width: rhythm(2.8),
-            height: rhythm(2.8),
+            height: rhythm(2.8)
           }}
         />
         <p style={{ marginBottom: 0 }}>

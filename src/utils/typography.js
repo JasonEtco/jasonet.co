@@ -3,26 +3,26 @@ import Theme from 'typography-theme-github'
 
 Theme.overrideThemeStyles = () => ({
   a: {
-    color: '#f26d21',
+    color: '#f26d21'
   },
   'a.gatsby-resp-image-link': {
-    boxShadow: 'none',
+    boxShadow: 'none'
   },
   'a.anchor': {
-    boxShadow: 'none',
+    boxShadow: 'none'
   },
   'p code': {
-    fontSize: '1rem',
+    fontSize: '1rem'
   },
   'li code': {
-    fontSize: '1rem',
+    fontSize: '1rem'
   },
   p: {
-    marginBottom: '1.5rem',
+    marginBottom: '1.5rem'
   },
   h2: {
-    marginTop: '2.65rem',
-  },
+    marginTop: '2.65rem'
+  }
 })
 
 Theme.headerFontFamily.unshift('Inter UI')
@@ -47,7 +47,7 @@ export const colors = {
     '#586069',
     '#444d56',
     '#2f363d',
-    '#24292e',
+    '#24292e'
   ],
   blue: [
     '#f1f8ff',
@@ -59,6 +59,6 @@ export const colors = {
     '#005cc5',
     '#044289',
     '#032f62',
-    '#05264c',
-  ],
+    '#05264c'
+  ]
 }

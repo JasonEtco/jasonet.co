@@ -19,7 +19,7 @@ export default class BlogIndex extends React.Component {
           marginLeft: 'auto',
           marginRight: 'auto',
           maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(1)}`,
+          padding: `${rhythm(1.5)} ${rhythm(1)}`
         }}
       >
         <SEO />
@@ -29,7 +29,7 @@ export default class BlogIndex extends React.Component {
             display: 'flex',
             alignItems: 'center',
             borderBottom: '1px solid hsla(0,0%,0%,0.07)',
-            paddingBottom: rhythm(0.5),
+            paddingBottom: rhythm(0.5)
           }}
           className="home__hero"
         >
@@ -40,7 +40,7 @@ export default class BlogIndex extends React.Component {
               lineHeight: 0.9,
               border: 'none',
               margin: 0,
-              padding: 0,
+              padding: 0
             }}
           >
             Jason
@@ -59,7 +59,7 @@ export default class BlogIndex extends React.Component {
           style={{
             paddingTop: rhythm(2),
             paddingBottom: rhythm(2),
-            borderBottom: '1px solid hsla(0,0%,0%,0.07)',
+            borderBottom: '1px solid hsla(0,0%,0%,0.07)'
           }}
         >
           <h5>Posts:</h5>
@@ -93,7 +93,7 @@ export default class BlogIndex extends React.Component {
             padding: rhythm(1),
             marginTop: rhythm(2),
             boxShadow: '0 2px 15px 0 rgba(210,214,220,.5)',
-            borderRadius: 5,
+            borderRadius: 5
           }}
         >
           <Bio marginBottom={0} />
@@ -131,6 +131,6 @@ export const pageQuery = graphql`
 
 BlogIndex.propTypes = {
   data: shape({
-    allMarkdownRemark: arrayOf(p.post).isRequired,
-  }),
+    allMarkdownRemark: arrayOf(p.post).isRequired
+  })
 }

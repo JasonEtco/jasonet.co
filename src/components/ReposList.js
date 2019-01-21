@@ -12,7 +12,7 @@ export default class ReposList extends Component {
     this.getRepos().then(repos => {
       this.setState({
         loading: false,
-        repos,
+        repos
       })
     })
   }
@@ -38,7 +38,7 @@ export default class ReposList extends Component {
             display: 'flex',
             listStyleType: 'none',
             padding: 0,
-            margin: 0,
+            margin: 0
           }}
         >
           <li className="repo-wrapper" style={{ marginRight: 6, width: '50%' }}>
