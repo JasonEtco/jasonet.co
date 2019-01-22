@@ -11,7 +11,7 @@
   "scripts": {
     "start": "gatsby develop",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
-    "format": "prettier --write 'src/**/*.js' 'src/**/*.md'",
+    "format": "prettier --write 'src/**/*.js'",
     "build": "rm -rf public && rm -rf .cache && gatsby build",
     "dry": "npm run build && cp now.json public/ && cd public && now"
   },
