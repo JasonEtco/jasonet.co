@@ -1,3 +1,9 @@
+.blog-post hr {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  background-color: #e1e4e8;
+}
+
 @media only screen and (max-width: 580px) {
   .home__hero {
     display: block !important;
@@ -19,8 +25,12 @@
 }
 
 @keyframes pulse {
-  0% { opacity: 1 }
-  100% { opacity: 0.5 }
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
 
 .pulse {
@@ -31,8 +41,12 @@
 }
 
 @keyframes fade-in {
-  0% { opacity: 0.5 }
-  100% { opacity: 1 }
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .repo--loaded {
