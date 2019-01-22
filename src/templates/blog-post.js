@@ -8,6 +8,7 @@ import { formatReadingTime } from '../utils/helpers'
 import { rhythm, scale } from '../utils/typography'
 import { shape, string } from 'prop-types'
 import p from '../utils/shared-props'
+import highlightClassName from '../utils/highlight-class-name'
 
 const GITHUB_USERNAME = 'JasonEtco'
 const GITHUB_REPO_NAME = 'jasonet.co'
@@ -44,10 +45,12 @@ export default function BlogPostTemplate(props) {
         {post.frontmatter.date}
         {` • ${formatReadingTime(post.timeToRead)}`}
       </p>
+
       <div
         className="blog-post"
-        dangerouslySetInnerHTML={{ __html: post.html }}
+        dangerouslySetInnerHTML={{ __html: highlightClassName(post.html) }}
       />
+
       <p style={{ marginTop: rhythm(2) }}>
         <a href={discussUrl} target="_blank" rel="noopener noreferrer">
           Discuss on Twitter
