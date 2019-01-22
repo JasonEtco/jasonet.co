@@ -95,11 +95,15 @@ if (
   const octokit = tools.createOctokit()
 
   // Delete the branch
-  octokit.gitdata.deleteRef(tools.context.repo({
-    ref: `heads/${payload.pull_request.head.ref}`
-  })).then(() => {
-    console.log(`Branch ${payload.pull_request.head.ref} deleted!`)
-  })
+  octokit.gitdata
+    .deleteRef(
+      tools.context.repo({
+        ref: `heads/${payload.pull_request.head.ref}`
+      })
+    )
+    .then(() => {
+      console.log(`Branch ${payload.pull_request.head.ref} deleted!`)
+    })
 }
 ```
 
@@ -118,7 +122,7 @@ These are part of the official family of GitHub API SDKs called **Octokit**. If 
 A really interesting part of GitHub Actions is the ability to pass arguments by defining them in your workflow. `minimist` is a handy tool for parsing a string of arguments:
 
 ```hcl
-args = "some-arg --flag true
+args = "some-arg --flag true"
 ```
 
 ```js
