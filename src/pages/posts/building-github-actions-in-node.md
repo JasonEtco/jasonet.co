@@ -74,7 +74,7 @@ Honestly, now you can build whatever you want. You've "set up your environment,"
 The container in which your `index.js` file is being run has a few things injected as environment variables - I'll cover the main ones below, but you can [see the full list](https://developer.github.com/actions/creating-github-actions/accessing-the-runtime-environment/#environment-variables) in the GitHub Action documentation.
 
 - `GITHUB_TOKEN`: An authentication token used to make API requests to GitHub.
-- `GITHUB_EVENT_PAYLOAD`: A path to a `.json` file containing the event that triggered the action. This is where you'll find things like the resource that triggered it (like an opened PR, or a commit).
+- `GITHUB_EVENT_PATH`: A path to a `.json` file containing the event that triggered the action. This is where you'll find things like the resource that triggered it (like an opened PR, or a commit).
 
 ## Back at it
 
