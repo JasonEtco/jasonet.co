@@ -138,7 +138,7 @@ That said, if all you care about is the syntactic sugar that Probot provides, go
 
 ### [actions-toolkit](https://github.com/JasonEtco/actions-toolkit)
 
-**actions-toolkit** is a wrapper around some fantastic open source libraries, and provides some helper methods for dealing with GitHub Actions. It some of the above libraries, and bases its paradigms on our experience building and using Probot. Check out the repo for [the full API documentation](https://github.com/JasonEtco/actions-toolkit#readme).
+**actions-toolkit** is a wrapper around some fantastic open source libraries, and provides some helper methods for dealing with GitHub Actions. It uses some of the above libraries, and bases its paradigms on our experience building and using Probot. Check out the repo for [the full API documentation](https://github.com/JasonEtco/actions-toolkit#readme).
 
 I'm looking for feedback on its use, as well as potential new features - [let me know if you have any thoughts](https://github.com/JasonEtco/actions-toolkit/issues/new)!
 
