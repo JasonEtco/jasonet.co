@@ -132,7 +132,7 @@ minimist(process.argsv)
 
 #### [Probot](https://probot.github.io)
 
-I'd be remiss if I didn't mention [Probot](https://probot.github.io), a framework for building GitHub Apps. We've taken a lot of care into building testing patterns and helpful extensions. You can [deploy your Probot Apps to GitHub Actions](https://probot.github.io/docs/deployment#github-actions), but it [comes with some tradeoffs](/posts/probot-apps-or-github-actions#run-probot-apps-in-github-actions).
+I'd be remiss if I didn't mention [Probot](https://probot.github.io), a framework for building GitHub Apps. We've taken a lot of care into building testing patterns and helpful extensions. You can [deploy your Probot Apps to GitHub Actions](https://probot.github.io/docs/deployment#github-actions), but it [comes with some tradeoffs](/posts/probot-app-or-github-action#run-probot-apps-in-github-actions).
 
 That said, if all you care about is the syntactic sugar that Probot provides, go right ahead!
 
