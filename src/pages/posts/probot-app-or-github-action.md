@@ -49,14 +49,12 @@ ENTRYPOINT ["comment"]
 
 ```bash
 # comment - a Bash script to make a single API call
-API_HEADER="Accept: application/vnd.github.v3+json"
-AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
 number=$(jq --raw-output .issue.number "$GITHUB_EVENT_PATH")
 owner=$(jq --raw-output .repository.owner.login "$GITHUB_EVENT_PATH")
 repo=$(jq --raw-output .repository.name "$GITHUB_EVENT_PATH")
 curl -XPOST -sSL \
-  -H "${AUTH_HEADER}" \
-  -H "${API_HEADER}" \
+  -H "Accept: application/vnd.github.v3+json" \
+  -H "Authorization: token ${GITHUB_TOKEN}" \
   -d "{ body: 'Hello!' }"
   "https://api.github.com/repos/${owner}/${repo}/issues/${number}/comments"
 ```
