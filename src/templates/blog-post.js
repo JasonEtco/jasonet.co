@@ -8,7 +8,6 @@ import { formatReadingTime } from '../utils/helpers'
 import { rhythm, scale } from '../utils/typography'
 import { shape, string } from 'prop-types'
 import p from '../utils/shared-props'
-import highlightClassName from '../utils/highlight-class-name'
 
 const GITHUB_USERNAME = 'JasonEtco'
 const GITHUB_REPO_NAME = 'jasonet.co'
@@ -48,7 +47,7 @@ export default function BlogPostTemplate(props) {
 
       <div
         className="blog-post"
-        dangerouslySetInnerHTML={{ __html: highlightClassName(post.html) }}
+        dangerouslySetInnerHTML={{ __html: post.html }}
       />
 
       <p style={{ marginTop: rhythm(2) }}>
