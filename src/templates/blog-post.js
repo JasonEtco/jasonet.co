@@ -44,7 +44,12 @@ export default function BlogPostTemplate(props) {
         {post.frontmatter.date}
         {` • ${formatReadingTime(post.timeToRead)}`}
       </p>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+
+      <div
+        className="blog-post"
+        dangerouslySetInnerHTML={{ __html: post.html }}
+      />
+
       <p style={{ marginTop: rhythm(2) }}>
         <a href={discussUrl} target="_blank" rel="noopener noreferrer">
           Discuss on Twitter
