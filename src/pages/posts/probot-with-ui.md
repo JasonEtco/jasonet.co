@@ -42,7 +42,7 @@ This important because wherever we are in our Probot app, **we can access and us
 
 ## app.route()
 
-This method is a great way to grab the Express server and start doing stuff with it. You can add middleware, routes - it really is a regular Express server! The one "gotcha" is that Probot's internal routes are registered _before_ your Probot App's code is run, so middleware won't apply retroactively.
+This method is a great way to grab the Express server and start doing stuff with it. You can add middleware, routes - it really is a regular Express server! The one "gotcha" is that Probot's internal routes are registered _before_ your app's code is run, so middleware won't apply retroactively.
 
 ```js{2,3}
 module.exports = app => {
@@ -65,3 +65,61 @@ module.exports = app => {
 ```
 
 Pretty rad - we've accessed data in our Probot App that is in no way tied to a webhook payload. This is a key part of building apps that don't just respond to events, but truly integrate with GitHub.
+
+## Identifying users
+
+A little known part of GitHub Apps (and by extension, Probot) is [that users can "log in"](https://developer.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site) using the regular [OAuth flow](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). Your GitHub App has some credentials that can be used to ask GitHub who the user is:
+
+First, we expose a `/login` route where we redirect the user to GitHub with some special query params:
+
+```js
+server.get('/login', async (req, res) => {
+  const protocol = req.headers['x-forwarded-proto'] || req.protocol
+  const host = req.headers['x-forwarded-host'] || req.get('host')
+
+  const params = querystring.stringify({
+    client_id: process.env.CLIENT_ID,
+    redirect_uri: `${protocol}://${host}${opts.callbackURL}`
+  })
+
+  const url = `https://github.com/login/oauth/authorize?${params}`
+  res.redirect(url)
+})
+```
+
+After the user goes to GitHub, they'll be presented with an **Authorize** screen. They'll decide to authorize, which will send them back to your app's **Callback URL**. We'll define this as `/login/cb`, but you'll also need to [set it in your GitHub App](https://developer.github.com/apps/building-github-apps/creating-a-github-app/):
+
+```js
+server.get('/login/cb', async (req, res) => {
+  // Exchange our "code" and credentials for a real token
+  const tokenRes = await request.post({
+    url: 'https://github.com/login/oauth/access_token',
+    json: true,
+    form: {
+      client_id: process.env.CLIENT_ID,
+      client_secret: process.env.CLIENT_SECRET,
+      code: req.query.code
+    },
+  })
+
+  // Authenticate our Octokit client with the new token
+  const octokit = new GitHubAPI()
+  octokit.authenticate({
+    type: 'token',
+    token: tokenRes.body.access_token
+  })
+
+  // Get the currently authenticated user
+  const user = await octokit.users.getAuthenticated()
+  console.log(user.data.login) // <-- This is what we want!
+
+  // Redirect after login
+  res.redirect('/')
+})
+```
+
+Nothing above looks like your average Probot code, but it can be paired with a regular old Probot App. By allowing users to log in to the browser, there's a whole world of possibilities.
+
+A great example is [**probot-invite**](https://github.com/probot/invite). Once the app is installed in an organization, admins of that org can visit the app in the browser and generate a link to invite other users to that organization:
+
+![Probot Invite](https://user-images.githubusercontent.com/173/44678009-54427500-aa05-11e8-82d8-eb024b9970dc.png)
