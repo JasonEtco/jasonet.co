@@ -20,7 +20,7 @@ const query = `{
   }
 }`
 
-export async function handler() {
+exports.handler = async function handler() {
   const res = await gql(query, {
     headers: {
       Authorization: `token ${process.env.GITHUB_TOKEN}`
