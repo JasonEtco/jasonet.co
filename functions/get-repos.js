@@ -1,4 +1,4 @@
-const gql = require('@octokit/graphql')
+const https = require('https')
 
 const query = `{ 
   viewer {
@@ -20,12 +20,42 @@ const query = `{
   }
 }`
 
-exports.handler = async function handler() {
-  const res = await gql(query, {
-    headers: {
-      Authorization: `token ${process.env.GITHUB_TOKEN}`
-    }
+const data = JSON.stringify({ query })
+
+const options = {
+  hostname: 'api.github.com',
+  port: 443,
+  path: '/graphql',
+  method: 'POST',
+  headers: {
+    Authorization: `token ${process.env.GITHUB_TOKEN}`,
+    'Content-Type': 'application/json',
+    'Content-Length': data.length
+  }
+}
+
+async function request() {
+  return new Promise((resolve, reject) => {
+    const req = https.request(options, res => {
+      console.log(`statusCode: ${res.statusCode}`)
+
+      res.on('data', d => {
+        console.log(d)
+        resolve(d)
+      })
+    })
+
+    req.on('error', error => {
+      reject(error)
+    })
+
+    req.write(data)
+    req.end()
   })
+}
+
+exports.handler = async function handler() {
+  const res = await request()
 
   return {
     statusCode: 200,

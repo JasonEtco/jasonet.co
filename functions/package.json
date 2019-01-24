@@ -1,9 +1,0 @@
-{
-  "private": true,
-  "main": "index.js",
-  "license": "ISC",
-  "dependencies": {
-    "@octokit/graphql": "^2.0.1",
-    "request": "^2.88.0"
-  }
-}
