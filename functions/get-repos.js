@@ -4,6 +4,7 @@ const query = `{
   viewer {
     repositories (affiliations: OWNER, first: 2, orderBy: { field: PUSHED_AT, direction: DESC }, isFork: false) {
       nodes {
+        url
         name
         description
         stargazers {
