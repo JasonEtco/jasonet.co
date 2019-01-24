@@ -108,7 +108,7 @@ export default function Repo(props) {
               borderRadius: '50%',
               display: 'inline-block'
             }}
-          />
+          />{' '}
           {repo.primaryLanguage.name}
           <a
             href={`${repo.url}/stargazers`}
