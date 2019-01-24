@@ -44,13 +44,8 @@ async function request() {
       })
     })
 
-    req.on('error', error => {
-      return reject(error)
-    })
-
-    req.on('close', () => {
-      return resolve(JSON.parse(ret))
-    })
+    req.on('error', error => reject(error))
+    req.on('close', () => resolve(JSON.parse(ret)))
 
     req.write(data)
     req.end()
