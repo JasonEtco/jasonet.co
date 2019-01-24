@@ -99,6 +99,16 @@ export default function Repo(props) {
             marginTop: 'auto'
           }}
         >
+          <span
+            style={{
+              width: 12,
+              height: 12,
+              position: 'relative',
+              backgroundColor: repo.primaryLanguage.color,
+              borderRadius: '50%',
+              display: 'inline-block'
+            }}
+          />
           {repo.primaryLanguage.name}
           <a
             href={`${repo.url}/stargazers`}
@@ -153,8 +163,14 @@ Repo.propTypes = {
   repo: shape({
     url: string.isRequired,
     name: string.isRequired,
-    forks_count: number.isRequired,
-    stargazers_count: number.isRequired,
-    description: string.isRequired
+    forksCount: number.isRequired,
+    stargazers: shape({
+      totalCount: number.isRequired
+    }),
+    description: string.isRequired,
+    primaryLanguage: shape({
+      name: string.isRequired,
+      color: string.isRequired
+    }).isRequired
   })
 }
