@@ -28,7 +28,8 @@ const options = {
   path: '/graphql',
   method: 'POST',
   headers: {
-    Authorization: `token ${process.env.GITHUB_TOKEN}`,
+    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    'User-Agent': 'jasonetco',
     'Content-Type': 'application/json',
     'Content-Length': data.length
   }
@@ -36,17 +37,19 @@ const options = {
 
 async function request() {
   return new Promise((resolve, reject) => {
+    let ret = ''
     const req = https.request(options, res => {
-      console.log(`statusCode: ${res.statusCode}`)
-
       res.on('data', d => {
-        console.log(d)
-        resolve(d)
+        ret += d.toString('utf8')
       })
     })
 
     req.on('error', error => {
-      reject(error)
+      return reject(error)
+    })
+
+    req.on('close', () => {
+      return resolve(JSON.parse(ret))
     })
 
     req.write(data)
@@ -55,7 +58,7 @@ async function request() {
 }
 
 exports.handler = async function handler() {
-  const res = await request()
+  const { data: res } = await request()
 
   return {
     statusCode: 200,
