@@ -71,7 +71,7 @@ export default function Repo(props) {
         style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
         className="repo--loaded"
       >
-        <a href={repo.html_url} style={{ color: colors.blue[5] }}>
+        <a href={repo.url} style={{ color: colors.blue[5] }}>
           <h4
             style={{ marginTop: 0, marginBottom: rhythm(0.2) }}
             title={repo.name}
@@ -99,9 +99,9 @@ export default function Repo(props) {
             marginTop: 'auto'
           }}
         >
-          {repo.language}
+          {repo.primaryLanguage.name}
           <a
-            href={`${repo.html_url}/stargazers`}
+            href={`${repo.url}/stargazers`}
             style={{ color: 'inherit', marginLeft: 16 }}
           >
             <svg
@@ -119,10 +119,10 @@ export default function Repo(props) {
                 d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"
               />
             </svg>
-            {repo.stargazers_count}
+            {repo.stargazers.totalCount}
           </a>
           <a
-            href={`${repo.html_url}/network`}
+            href={`${repo.url}/network`}
             style={{ color: 'inherit', marginLeft: 16 }}
           >
             <svg
@@ -140,7 +140,7 @@ export default function Repo(props) {
                 d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"
               />
             </svg>
-            {repo.forks_count}
+            {repo.forksCount}
           </a>
         </p>
       </div>
@@ -151,7 +151,7 @@ export default function Repo(props) {
 Repo.propTypes = {
   loading: bool.isRequired,
   repo: shape({
-    html_url: string.isRequired,
+    url: string.isRequired,
     name: string.isRequired,
     forks_count: number.isRequired,
     stargazers_count: number.isRequired,
