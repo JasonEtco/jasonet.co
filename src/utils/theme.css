@@ -129,14 +129,17 @@ pre[data-line] {
   position: relative;
 }
 
+.gatsby-highlight.has-highlighted-lines > pre > code,
+.gatsby-highlight.has-highlighted-lines
+  > pre
+  > code
+  > *:not(.gatsby-highlight-code-line) {
+  color: #959da5 !important;
+}
+
 .gatsby-highlight-code-line {
-  background-color: rgba(226, 229, 233, 0.3);
+  color: #393a34;
   display: block;
-  margin-right: -1em;
-  margin-left: -1em;
-  padding-right: 1em;
-  padding-left: 0.75em;
-  border-left: 0.15em solid #f26d21;
 }
 
 .gatsby-highlight {
