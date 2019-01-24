@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -e
+
+if [[ -z "$1" ]]; then
+  echo "Usage: bin/post <file-name>"
+  exit 1
+fi
+
+DATE=`date +%Y-%m-%d`
+CONTENT=$'---\ntitle: \ndate: $DATE\nspoiler: \n---'
+
+FILE="./src/pages/posts/${1}.md"
+
+touch $FILE
+
+echo "---" >> $FILE
+echo "title: ${1}" >> $FILE
+echo "date: '${DATE}'" >> $FILE
+echo "spoiler: " >> $FILE
+echo "---" >> $FILE
