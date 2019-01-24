@@ -67,7 +67,7 @@ It's not because Probot is better - in fact, in a lot of ways it's less powerful
 
 ### Probot Apps are just Express servers
 
-GitHub Actions are ephemeral, so when their job is done they disappear. Probot on the other hand is, at its core, an [Express server](https://expressjs.com/) - so your app can built a UI for its users to interact with. [GitHub Learning Lab](https://lab.github.com) is a great example of a Probot App that does a lot more than just reacting to events on GitHub.
+GitHub Actions are ephemeral, so when their job is done they disappear. Probot on the other hand is, at its core, an [Express server](https://expressjs.com/) - so your app can build a UI for its users to interact with. [GitHub Learning Lab](https://lab.github.com) is a great example of a Probot App that does a lot more than just reacting to events on GitHub.
 
 ### When Probot is distinctly not right
 

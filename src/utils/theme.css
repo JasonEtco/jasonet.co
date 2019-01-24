@@ -119,22 +119,24 @@ pre[class*='language-'] {
   white-space: normal;
 }
 
+blockquote :not(pre) > code[class*='language-'] {
+  color: inherit;
+  background: rgba(100, 217, 255, 0.1);
+}
+
 pre[data-line] {
   padding: 1em 0 1em 3em;
   position: relative;
 }
 
-.gatsby-highlight.gatsby-highlight--has-highlighted-lines > pre > code,
-.gatsby-highlight.gatsby-highlight--has-highlighted-lines
-  > pre
-  > code
-  > *:not(.gatsby-highlight-code-line) {
-  color: #959da5 !important;
-}
-
 .gatsby-highlight-code-line {
-  color: #393a34;
+  background-color: rgba(226, 229, 233, 0.3);
   display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.15em solid #f26d21;
 }
 
 .gatsby-highlight {

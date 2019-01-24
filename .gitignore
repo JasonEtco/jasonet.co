@@ -71,3 +71,6 @@ yarn-error.log
 
 # Webstorm
 .idea
+
+# netlify-function
+lambda
