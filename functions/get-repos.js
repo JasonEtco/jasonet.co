@@ -2,7 +2,7 @@ const https = require('https')
 
 const query = `{ 
   viewer {
-    repositories (affiliations: OWNER, first: 2, orderBy: { field: PUSHED_AT, direction: DESC }, isFork: false) {
+    repositories (ownerAffiliations: OWNER, first: 2, orderBy: { field: PUSHED_AT, direction: DESC }, isFork: false, privacy: PUBLIC) {
       nodes {
         url
         name
