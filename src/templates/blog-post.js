@@ -5,7 +5,7 @@ import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { formatReadingTime } from '../utils/helpers'
-import { rhythm, scale } from '../utils/typography'
+import { rhythm, scale, colors } from '../utils/typography'
 import { shape, string } from 'prop-types'
 import p from '../utils/shared-props'
 
@@ -15,7 +15,7 @@ const GITHUB_REPO_NAME = 'jasonet.co'
 export default function BlogPostTemplate(props) {
   const post = props.data.markdownRemark
   const { title: siteTitle } = props.data.site.siteMetadata.title
-  const { previous, next, slug } = props.pageContext
+  const { previous, next, slug, related } = props.pageContext
 
   const urlSlug = slug.slice(1, -1)
   const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${urlSlug}.md`
@@ -60,6 +60,40 @@ export default function BlogPostTemplate(props) {
         </a>
       </p>
 
+      {related.length === 0 ? null : (
+        <div style={{ marginTop: rhythm(2) }}>
+          <h4>Related posts</h4>
+          <ul
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              listStyle: 'none',
+              padding: 0,
+              marginLeft: 0
+            }}
+          >
+            {related.map(({ node }) => (
+              <li style={{ width: '49%' }} key={node.fields.slug}>
+                <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+                <p
+                  style={{
+                    ...scale(-0.3),
+                    lineHeight: rhythm(0.8),
+                    marginTop: rhythm(0.3)
+                  }}
+                >
+                  {node.frontmatter.spoiler}
+                </p>
+                <p style={{ ...scale(-0.3), color: colors.gray[4] }}>
+                  {node.frontmatter.date}
+                  {` • ${formatReadingTime(node.timeToRead)}`}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div
         style={{
           padding: rhythm(1.2),
@@ -82,6 +116,7 @@ export default function BlogPostTemplate(props) {
         </h3>
         <Bio />
       </div>
+
       <ul
         style={{
           display: 'flex',
