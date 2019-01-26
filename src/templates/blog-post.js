@@ -61,19 +61,32 @@ export default function BlogPostTemplate(props) {
       </p>
 
       {related.length === 0 ? null : (
-        <div style={{ marginTop: rhythm(2) }}>
-          <h4>Related posts</h4>
+        <div
+          style={{
+            marginTop: rhythm(1.2)
+          }}
+        >
+          <h4 style={{ marginTop: 0 }}>Related posts</h4>
           <ul
             style={{
               display: 'flex',
               justifyContent: 'space-between',
               listStyle: 'none',
-              padding: 0,
-              marginLeft: 0
+              margin: 0,
+              padding: 0
             }}
           >
             {related.map(({ node }) => (
-              <li style={{ width: '49%' }} key={node.fields.slug}>
+              <li
+                style={{
+                  width: '49%',
+                  padding: rhythm(1),
+                  border: '1px solid',
+                  borderColor: colors.gray[2],
+                  borderRadius: 5
+                }}
+                key={node.fields.slug}
+              >
                 <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
                 <p
                   style={{
@@ -84,7 +97,13 @@ export default function BlogPostTemplate(props) {
                 >
                   {node.frontmatter.spoiler}
                 </p>
-                <p style={{ ...scale(-0.3), color: colors.gray[4] }}>
+                <p
+                  style={{
+                    ...scale(-0.3),
+                    color: colors.gray[4],
+                    marginBottom: 0
+                  }}
+                >
                   {node.frontmatter.date}
                   {` • ${formatReadingTime(node.timeToRead)}`}
                 </p>
