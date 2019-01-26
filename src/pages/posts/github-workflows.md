@@ -130,3 +130,7 @@ action "Create issue" {
 Doing this makes the action way more extensible - you can have multiple workflows that use this functionality to open vastly different issues.
 
 Another thing I want to call out is that the `args` field is, by design, very barebones. In [a Node.js action](/posts/building-github-actions-in-node) for example, the arguments are passed as an array through `process.argsv`. That's totally standard, but it'd be amazing to give users an even more targeted way of configuring your action. You can use tools like [**actions-toolkit**](https://github.com/JasonEtco/actions-toolkit#toolsarguments) (which uses [**minimist**](https://github.com/substack/minimist) under the hood) to parse arguments into something more specific, by using `--flag`s.
+
+### secrets
+
+Need to interact with a third party API? Want to make requests directly back to GitHub's API? Well, those things often require secret credentials to be passed. Fortunately, GitHub has a method for passing secrets to actions via the `secrets` field. These can be set in the GitHub UI, and are stored per-repo - which means that no other repository will be able to read those secrets.
