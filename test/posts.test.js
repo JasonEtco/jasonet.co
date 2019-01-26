@@ -13,7 +13,9 @@ const schema = Joi.object({
       .regex(/^\d{4}-\d{2}-\d{2}$/)
       .required(),
     spoiler: Joi.string().required(),
-    related: Joi.array().items(Joi.string())
+    related: Joi.array()
+      .items(Joi.string())
+      .max(3)
   }),
   body: Joi.string().required(),
   frontmatter: Joi.string().required()
