@@ -6,8 +6,8 @@ const post = shape({
   }).isRequired,
   frontmatter: shape({
     title: string.isRequired,
-    date: string.isRequired,
-    spoiler: string.isRequired
+    date: string,
+    spoiler: string
   })
 })
 
@@ -15,11 +15,10 @@ const site = shape({
   siteMetadata: shape({
     title: string.isRequired,
     author: string.isRequired,
-    description: string.isRequired,
-    siteUrl: string.isRequired,
+    siteUrl: string,
     social: shape({
       twitter: string.isRequired
-    }).isRequired
+    })
   }).isRequired
 })
 
