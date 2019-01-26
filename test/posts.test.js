@@ -32,5 +32,17 @@ describe('posts', () => {
       const validated = await schema.validate(value)
       expect(validated).toEqual(value)
     })
+
+    it('lists related posts that actually exist', () => {
+      const { related } = value.attributes
+      if (!related) return
+      expect(related.every(post => dir.includes(`${post}.md`))).toBe(true)
+    })
+
+    it('does not list a related post that is itself', () => {
+      const { related } = value.attributes
+      if (!related) return
+      expect(related.some(post => `${post}.md` === key)).toBe(false)
+    })
   })
 })
