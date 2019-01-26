@@ -4,7 +4,7 @@ date: '2019-01-24'
 spoiler: Let's look at Workflows, a vital part of using GitHub Actions.
 ---
 
-I've written about GitHub Actions [a couple](./posts/probot-app-or-github-action) of [times](./posts/building-github-actions-in-node) (because they're rad), but I haven't talked much about **workflows**. They're a vital part of actually using Actions, so let's take a look at what they are, how to write them, and some 🔥 tips I've picked up from lurking in the Actions team's Slack channel.
+I've written about GitHub Actions [a couple](/posts/probot-app-or-github-action) of [times](/posts/building-github-actions-in-node) (because they're rad), but I haven't talked much about **workflows**. They're a vital part of actually using Actions, so let's take a look at what they are, how to write them, and some 🔥 tips I've picked up from lurking in the Actions team's Slack channel.
 
 ## The heck is a workflow?
 
@@ -58,7 +58,7 @@ Each `action` object defines what action is run, what arguments you can pass, ev
 
 The individual fields here are a lot more complicated, because there are different ways to use each one. Let's dig in!
 
-### `uses`
+### uses
 
 Arguably the most important field, `uses` defines what action you want to run. This can be any of the following:
 
@@ -66,9 +66,9 @@ Arguably the most important field, `uses` defines what action you want to run. T
 - `./<filepath>`
 - `docker://image`
 
-The first option is pretty straightforward - it points to a repository on GitHub at the given ref. This can be a SHA, a tag or a branch - a common one might be `JasonEtco/lights-camera-action@v1.0.0`. A handy trick to know with this method is that \*\*it's actually `owner/repo[/path]@ref` - so you can point to a subdirectory of your repository.
+The first option is pretty straightforward - it points to a repository on GitHub at the given ref. This can be a SHA, a tag or a branch - a common one might be `JasonEtco/lights-camera-action@v1.0.0`. A handy trick to know with this method is that **it's actually `owner/repo[/path]@ref`** - so you can point to a subdirectory of your repository.
 
-This can be handy if you have one repo with a bunch of actions in it - however, **I wouldn't recommend doing that**. It's sort of like the whole "Are mono-repos good" debate, but GitHub has all kinds of discoverability hints for actions that are their own repos.
+This can be handy if you have one repo with a bunch of actions in it - however, **I wouldn't recommend doing that**. It's sort of like the whole "are mono-repos good" debate, but GitHub has all kinds of discoverability hints for actions that are their own repos.
 
 One important note - **any path must have a valid `Dockerfile`**; otherwise, the action will fail.
 
@@ -101,3 +101,32 @@ action "My action" {
 ```
 
 Like with most things I talk about, you should [check out the GitHub Action docs](https://developer.github.com/actions/creating-workflows/workflow-configuration-options/#using-a-dockerfile-image-in-an-action) for more details!
+
+### args
+
+This property allows you to pass information to your workflow via command line arguments. So, given a workflow like this:
+
+```hcl{3}
+action "npm install" {
+  uses = "actions/npm@master"
+  args = "install"
+}
+```
+
+This will use the [`actions/npm`](https://github.com/actions/npm) action, whose entrypoint command runs `npm $*`. We're passing the argument `install` - so at the end of the day, it'll be `npm install`.
+
+It's a fairly straightforward field, but let's take a look at some practical examples and how you might design an action that depends on user-set `args`.
+
+My action [`JasonEtco/create-an-issue`](https://github.com/JasonEtco/create-an-issue) creates a new issue from a given template. By default, it will read from the `.github/ISSUE_TEMPLATE.md` file - but you can pass an argument to specify a different file:
+
+```hcl{3}
+action "Create issue" {
+  uses = "JasonEtco/create-an-issue@master"
+  secrets = ["GITHUB_TOKEN"]
+  args = ".github/some-other-template.md"
+}
+```
+
+Doing this makes the action way more extensible - you can have multiple workflows that use this functionality to open vastly different issues.
+
+Another thing I want to call out is that the `args` field is, by design, very barebones. In [a Node.js action](/posts/building-github-actions-in-node) for example, the arguments are passed as an array through `process.argsv`. That's totally standard, but it'd be amazing to give users an even more targeted way of configuring your action. You can use tools like [**actions-toolkit**](https://github.com/JasonEtco/actions-toolkit#toolsarguments) (which uses [**minimist**](https://github.com/substack/minimist) under the hood) to parse arguments into something more specific, by using `--flag`s.
