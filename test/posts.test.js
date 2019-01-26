@@ -12,7 +12,8 @@ const schema = Joi.object({
     date: Joi.string()
       .regex(/^\d{4}-\d{2}-\d{2}$/)
       .required(),
-    spoiler: Joi.string().required()
+    spoiler: Joi.string().required(),
+    related: Joi.array().items(Joi.string())
   }),
   body: Joi.string().required(),
   frontmatter: Joi.string().required()
