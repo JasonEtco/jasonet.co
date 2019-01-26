@@ -9,15 +9,18 @@ async function getRelatedPosts(graphql, posts) {
         allMarkdownRemark(
           filter: { fields: { slug: { in: $slugs } } }
           sort: { fields: [frontmatter___date], order: DESC }
-          limit: 3
+          limit: 2
         ) {
           edges {
             node {
+              timeToRead
               fields {
                 slug
               }
               frontmatter {
                 title
+                spoiler
+                date(formatString: "MMMM DD, YYYY")
               }
             }
           }
