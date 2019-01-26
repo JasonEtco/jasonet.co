@@ -19,7 +19,18 @@ const schema = Joi.object({
 })
 
 describe('posts', () => {
-  const dir = fs.readdirSync(pathToPosts).filter(file => file.endsWith('.md'))
+  const dir = fs
+    .readdirSync(pathToPosts)
+    .filter(
+      file =>
+        file.endsWith('.md') ||
+        fs.statSync(path.join(pathToPosts, file)).isDirectory()
+    )
+    .map(file =>
+      fs.statSync(path.join(pathToPosts, file)).isDirectory()
+        ? path.join(file, 'index.md')
+        : file
+    )
 
   const posts = dir.map(file => {
     const contents = fs.readFileSync(path.join(pathToPosts, file), 'utf8')
