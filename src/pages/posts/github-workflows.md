@@ -1,7 +1,7 @@
 ---
 title: GitHub Workflows
 date: '2019-01-24'
-spoiler: Let's look at Workflows, a vital part of GitHub Actions.
+spoiler: Let's look at Workflows, a vital part of using GitHub Actions.
 ---
 
 I've written about GitHub Actions [a couple](./posts/probot-app-or-github-action) of [times](./posts/building-github-actions-in-node) (because they're rad), but I haven't talked much about **workflows**. They're a vital part of actually using Actions, so let's take a look at what they are, how to write them, and some 🔥 tips I've picked up from lurking in the Actions team's Slack channel.
