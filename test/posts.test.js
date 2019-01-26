@@ -10,7 +10,7 @@ const schema = Joi.object({
   attributes: Joi.object({
     title: Joi.string().required(),
     date: Joi.string()
-      .regex(/^\d{4}-\d{2}\d-{2}$/)
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
       .required(),
     spoiler: Joi.string().required()
   }),
