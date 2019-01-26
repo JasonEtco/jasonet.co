@@ -15,7 +15,7 @@ const schema = Joi.object({
     spoiler: Joi.string().required(),
     related: Joi.array()
       .items(Joi.string())
-      .max(3)
+      .max(2)
   }),
   body: Joi.string().required(),
   frontmatter: Joi.string().required()
