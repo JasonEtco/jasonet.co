@@ -2,6 +2,8 @@
 title: Probot App or GitHub Action?
 date: '2019-01-20'
 spoiler: Should your next automation tool be built in GitHub Actions, or as a separate service with Probot?
+related:
+  - building-github-actions-in-node
 ---
 
 **Spoiler: it depends.**
