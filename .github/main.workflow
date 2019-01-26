@@ -3,7 +3,13 @@ workflow "Test my code" {
   resolves = ["npm test"]
 }
 
-action "npm test" {
+action "npm ci" {
   uses = "docker://node"
-  args = "npm ci && npm test"
+  args = "npm ci"
+}
+
+action "npm test" {
+  uses = "actions/npm@master"
+  args = "test"
+  needs = ["npm ci"]
 }
