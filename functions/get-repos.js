@@ -38,15 +38,19 @@ const options = {
 async function request() {
   return new Promise((resolve, reject) => {
     let ret = ''
+
     const req = https.request(options, res => {
-      res.on('data', d => {
-        ret += d.toString('utf8')
+      res.on('data', chunk => {
+        ret += chunk
+      })
+
+      res.on('end', () => {
+        const json = JSON.parse(ret)
+        return resolve(json)
       })
     })
 
     req.on('error', error => reject(error))
-    req.on('close', () => resolve(JSON.parse(ret)))
-
     req.write(data)
     req.end()
   })
