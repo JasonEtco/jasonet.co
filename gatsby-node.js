@@ -1,6 +1,34 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
+async function getRelatedPosts(graphql, posts) {
+  if (!posts) return []
+  const result = await graphql(
+    `
+      query RelatedPostsBySlug($slugs: [String]!) {
+        allMarkdownRemark(
+          filter: { fields: { slug: { in: $slugs } } }
+          sort: { fields: [frontmatter___date], order: DESC }
+          limit: 3
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+              }
+            }
+          }
+        }
+      }
+    `,
+    { slugs: posts.map(p => `/posts/${p}/`) }
+  )
+  return result.data.allMarkdownRemark.edges
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const blogPost = path.resolve('./src/templates/blog-post.js')
@@ -17,6 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             frontmatter {
               title
+              related
             }
           }
         }
@@ -31,9 +60,16 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create blog posts pages.
   const posts = result.data.allMarkdownRemark.edges
-  posts.forEach((post, index) => {
+  for (const i in posts) {
+    const index = parseInt(i, 10)
+    const post = posts[index]
+
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
+    const related = await getRelatedPosts(
+      graphql,
+      post.node.frontmatter.related
+    )
 
     createPage({
       path: post.node.fields.slug,
@@ -41,10 +77,11 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         slug: post.node.fields.slug,
         previous,
-        next
+        next,
+        related
       }
     })
-  })
+  }
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
