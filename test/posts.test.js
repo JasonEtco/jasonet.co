@@ -24,7 +24,8 @@ describe('posts', () => {
     .filter(
       file =>
         file.endsWith('.md') ||
-        fs.statSync(path.join(pathToPosts, file)).isDirectory()
+        (fs.statSync(path.join(pathToPosts, file)).isDirectory() &&
+          fs.existsSync(path.join(pathToPosts, file, 'index.md')))
     )
     .map(file =>
       fs.statSync(path.join(pathToPosts, file)).isDirectory()
