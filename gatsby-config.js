@@ -73,6 +73,7 @@ module.exports = {
         pathToConfigModule: 'src/utils/typography'
       }
     },
+    `gatsby-plugin-catch-links`,
     `gatsby-plugin-netlify`
   ]
 }
