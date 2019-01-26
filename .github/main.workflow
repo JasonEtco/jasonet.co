@@ -4,6 +4,6 @@ workflow "Test my code" {
 }
 
 action "npm test" {
-  uses = "actions/npm@master"
-  args = "ci && npm test"
+  uses = "docker://node"
+  args = "npm ci && npm test"
 }
