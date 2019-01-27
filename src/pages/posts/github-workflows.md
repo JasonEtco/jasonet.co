@@ -162,4 +162,6 @@ action "npm publish" {
 }
 ```
 
-You'll see that we're passing an `NPM_TOKEN` to authenticate our publishing step.
+You'll see that we're passing an `NPM_TOKEN` to authenticate our publishing step. Without it, we wouldn't have permission to publish our library.
+
+One handy thing to note is that the `GITHUB_TOKEN` is special - its always set in your repository. You still have to decide if you want to pass it to `secrets`, but it'll let you make API requests and authenticate with GitHub.
