@@ -19,12 +19,12 @@ workflow "Test my code" {
 }
 
 action "npm install" {
-  uses = "actions/npm"
+  uses = "actions/npm@master"
   args = ["install"]
 }
 
 action "npm test" {
-  uses = "actions/npm"
+  uses = "actions/npm@master"
   args = ["test"]
   needs = ["npm install"]
 }
@@ -134,3 +134,32 @@ Another thing I want to call out is that the `args` field is, by design, very ba
 ### secrets
 
 Need to interact with a third party API? Want to make requests directly back to GitHub's API? Well, those things often require secret credentials to be passed. Fortunately, GitHub has a method for passing secrets to actions via the `secrets` field. These can be set in the GitHub UI, and are stored per-repo - which means that no other repository will be able to read those secrets.
+
+Let's take a look at a practical example. Here's a workflow that compiles a TypeScript project, then publishes the compiled version to NPM:
+
+```hcl{17-22}
+workflow "Publish" {
+  on = "release"
+  resolves = ["npm publish"]
+}
+
+action "npm ci" {
+  uses = "actions/npm@master"
+  args = "ci"
+}
+
+action "npm run build" {
+  needs = ["npm ci"]
+  uses = "actions/npm@master"
+  args = "run build"
+}
+
+action "npm publish" {
+  needs = ["npm run build"]
+  uses = "actions/npm@master"
+  args = "publish"
+  secrets = ["NPM_TOKEN"]
+}
+```
+
+You'll see that we're passing an `NPM_TOKEN` to authenticate our publishing step.
