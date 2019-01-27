@@ -8,7 +8,7 @@ I've written about GitHub Actions [a couple](/posts/probot-app-or-github-action)
 
 ## The heck is a workflow?
 
-Hopefully you're familiar with GitHub Actions - if not, [check out this great article](https://css-tricks.com/introducing-github-actions/) by [@sarah_edo](https://twitter.com/sarah_edo). Workflows are what define when and how an Action should be run. You can think of it as the **plan of Actions** (pun 1000% intended).
+Hopefully you're familiar with GitHub Actions - if not, [check out this great article](https://css-tricks.com/introducing-github-actions/) by [@sarah_edo](https://twitter.com/sarah_edo). Workflows are what define when and how a series of Actions should be run. You can think of it as the **plan of Actions** (pun 1000% intended).
 
 GitHub will look for files with the `.workflow` extension in your repository's `.github` folder. Let's take a look at an example `.github/main.workflow` file:
 
