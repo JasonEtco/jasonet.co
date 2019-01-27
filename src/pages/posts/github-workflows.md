@@ -8,7 +8,7 @@ I've written about GitHub Actions [a couple](/posts/probot-app-or-github-action)
 
 ## The heck is a workflow?
 
-Hopefully you're familiar with Actions - if not, [check out this article](). Workflows are what define when and how an Action should be run. You can think of it as the **plan of Actions** (pun 1000% intended).
+Hopefully you're familiar with GitHub Actions - if not, [check out this great article](https://css-tricks.com/introducing-github-actions/) by [@sarah_edo](https://twitter.com/sarah_edo). Workflows are what define when and how an Action should be run. You can think of it as the **plan of Actions** (pun 1000% intended).
 
 GitHub will look for files with the `.workflow` extension in your repository's `.github` folder. Let's take a look at an example `.github/main.workflow` file:
 
@@ -113,7 +113,7 @@ action "npm install" {
 }
 ```
 
-This will use the [`actions/npm`](https://github.com/actions/npm) action, whose entrypoint command runs `npm $*`. We're passing the argument `install` - so at the end of the day, it'll be `npm install`.
+This will use the [`actions/npm`](https://github.com/actions/npm) action, whose [entrypoint command](https://github.com/actions/npm/blob/master/entrypoint.sh#L15) runs `npm $*`. We're passing the argument `install` - so at the end of the day, it'll be `npm install`.
 
 It's a fairly straightforward field, but let's take a look at some practical examples and how you might design an action that depends on user-set `args`.
 
@@ -127,13 +127,13 @@ action "Create issue" {
 }
 ```
 
-Doing this makes the action way more extensible - you can have multiple workflows that use this functionality to open vastly different issues.
+Doing this makes the action way more extensible - you can have multiple workflows that use this functionality to open different issues.
 
-Another thing I want to call out is that the `args` field is, by design, very barebones. In [a Node.js action](/posts/building-github-actions-in-node) for example, the arguments are passed as an array through `process.argsv`. That's totally standard, but it'd be amazing to give users an even more targeted way of configuring your action. You can use tools like [**actions-toolkit**](https://github.com/JasonEtco/actions-toolkit#toolsarguments) (which uses [**minimist**](https://github.com/substack/minimist) under the hood) to parse arguments into something more specific, by using `--flag`s.
+Another thing I want to call out is that the `args` field is, by design, very barebones. In [a Node.js action](/posts/building-github-actions-in-node) for example, the arguments are passed as an array through `process.argsv`. That's totally standard, but it'd be amazing to give users an even more targeted way of configuring your action. You can use tools like [**actions-toolkit**](https://github.com/JasonEtco/actions-toolkit#toolsarguments) (which uses [**minimist**](https://github.com/substack/minimist) under the hood) to parse arguments into something more declarative, by using `--flag`s.
 
 ### secrets
 
-Need to interact with a third party API? Want to make requests directly back to GitHub's API? Well, those things often require secret credentials to be passed. Fortunately, GitHub has a method for passing secrets to actions via the `secrets` field. These can be set in the GitHub UI, and are stored per-repo - which means that no other repository will be able to read those secrets.
+Need to interact with a third party API? Want to make requests directly back to GitHub's API? Well, those things often require secret credentials to be passed. Fortunately, GitHub has a method for passing secrets to actions via the `secrets` field. These can be set in the GitHub UI, and are stored per-repo - which means that **no other repository will be able to read those secrets**.
 
 Let's take a look at a practical example. Here's a workflow that compiles a TypeScript project, then publishes the compiled version to NPM:
 
@@ -165,3 +165,7 @@ action "npm publish" {
 You'll see that we're passing an `NPM_TOKEN` to authenticate our publishing step. Without it, we wouldn't have permission to publish our library.
 
 One handy thing to note is that the `GITHUB_TOKEN` is special - its always set in your repository. You still have to decide if you want to pass it to `secrets`, but it'll let you make API requests and authenticate with GitHub.
+
+---
+
+There are [some more fields you can pass](https://developer.github.com/actions/creating-workflows/workflow-configuration-options/#actions-attributes), but these should be all you need for most workflows. [Let me know](https://twitter.com/JasonEtco) what nifty workflows you build :sparkles:
