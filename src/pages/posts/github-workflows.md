@@ -56,7 +56,7 @@ Each `action` object defines what action is run, what arguments you can pass, ev
 - You can have up to 100 `action` objects in a workflow
 - The `needs` property will define a dependency tree. Actions will be run according to whatever actions it needs
 
-The individual fields here are a lot more complicated, because there are different ways to use each one. Let's dig in!
+The individual fields here are a lot more complicated because there are different ways to use each one. Let's dig in!
 
 ### uses
 
