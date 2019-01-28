@@ -90,7 +90,7 @@ action "My action" {
 }
 ```
 
-Lastly, and this is a really awesome feature, you can just use an abritrary Docker image. This is _amazing_, because if all you want to do is run a command you don't even need a whole action:
+Lastly, and this is a really awesome feature, you can just use an arbitrary Docker image. This is _amazing_, because if all you want to do is run a command you don't even need a whole action:
 
 ```hcl{2}
 action "My action" {
