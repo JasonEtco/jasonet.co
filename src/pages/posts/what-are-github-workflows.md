@@ -47,11 +47,11 @@ workflow "Test my code" {
 
 Here's where we define the workflow's metadata. This [only takes two fields](https://developer.github.com/actions/creating-workflows/workflow-configuration-options/#workflow-attributes); `on` and `resolves`.
 
-`on` is the [webhook event name](https://developer.github.com/actions/creating-workflows/workflow-configuration-options/#events-supported-in-workflow-files) that will trigger your workflow. Note that not all webhook events you might be used to using are available to GitHub Actions; you'll want to double check [in the docs](https://developer.github.com/actions/creating-workflows/workflow-configuration-options/#events-supported-in-workflow-files).
+The `on` field is the [webhook event name](https://developer.github.com/actions/creating-workflows/workflow-configuration-options/#events-supported-in-workflow-files) that will trigger your workflow. Note that not all webhook events you might be used to using are available to GitHub Actions; you'll want to double check [in the docs](https://developer.github.com/actions/creating-workflows/workflow-configuration-options/#events-supported-in-workflow-files).
 
-`resolves` is the name of the action that should be run first. An important note is that **actions can have "dependencies" by defining a `needs` property**. GitHub will consider those `needs` properties before going to run your actions.
+The `resolves` field is the name of the action that should be run first. An important note is that **actions can have "dependencies" by defining a `needs` property**. GitHub will consider those `needs` properties before going to run your actions.
 
-## `action` objects
+## The `action` objects
 
 Each `action` object defines what action is run, what arguments you can pass, even what command is run inside of the action. Some key notes:
 
