@@ -72,8 +72,6 @@ The first option is pretty straightforward. It points to a repository on GitHub 
 
 This can be handy if you have one repo with a bunch of actions in it. However, **I wouldn't recommend doing that**. It's sort of like the whole "are monorepos good" debate, but GitHub has all kinds of discoverability hints for actions that are their own repos.
 
-One important note: **any path must have a valid `Dockerfile`**; otherwise, the action will fail.
-
 Now, you can also point your workflow to a folder in the same repository; so given a file tree like this:
 
 ```
@@ -91,6 +89,8 @@ action "My action" {
   uses = "./my-action"
 }
 ```
+
+One important note: **any path must have a valid `Dockerfile`**; otherwise, the action will fail.
 
 Lastly, and this is a really awesome feature, you can just use an arbitrary Docker image. This is _amazing_, because if all you want to do is run a command you don't even need a whole action:
 
