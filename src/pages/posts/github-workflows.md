@@ -129,7 +129,7 @@ action "Create issue" {
 
 Doing this makes the action way more extensible; you can have multiple workflows that use this functionality to open different issues.
 
-Another thing I want to call out is that the `args` field is, by design, very barebones. In [a Node.js action](/posts/building-github-actions-in-node) for example, the arguments are passed as an array through `process.argsv`. That's totally standard, but it'd be amazing to give users an even more targeted way of configuring your action. You can use tools like [**actions-toolkit**](https://github.com/JasonEtco/actions-toolkit#toolsarguments) (which uses [**minimist**](https://github.com/substack/minimist) under the hood) to parse arguments into something more declarative, by using `--flag`s.
+Another thing I want to call out is that the `args` field is, by design, very barebones. In [a Node.js action](/posts/building-github-actions-in-node), for example, the arguments are passed as an array through `process.argsv`. That's totally standard, but it'd be amazing to give users an even more targeted way of configuring your action. You can use tools like [**actions-toolkit**](https://github.com/JasonEtco/actions-toolkit#toolsarguments) (which uses [**minimist**](https://github.com/substack/minimist) under the hood) to parse arguments into something more declarative, by using `--flag`s.
 
 ### secrets
 
