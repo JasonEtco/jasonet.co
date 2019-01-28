@@ -34,7 +34,7 @@ In non-code, this workflow says:
 
 > When someone pushes, it will trigger the `npm test` action&mdash;which "_needs_" the `npm install` action.
 
-GitHub doesn't just enact workflows in the repo's default branch&mdash;if you're working on a `.workflow` file in a branch, be aware that GitHub will run the workflow.
+GitHub doesn't just enact workflows in the repo's default branch&mdash;if you're working on a `.workflow` file on a branch, be aware that GitHub will run the workflow.
 
 ## The `workflow` object
 
