@@ -18,12 +18,7 @@ export default class ReposList extends Component {
   }
 
   getRepos() {
-    return window
-      .fetch(
-        'https://api.github.com/users/JasonEtco/repos?type=owner&sort=pushed'
-      )
-      .then(res => res.json())
-      .then(json => json.slice(0, 2))
+    return window.fetch('/.netlify/functions/get-repos').then(res => res.json())
   }
 
   render() {
