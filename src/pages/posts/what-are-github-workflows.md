@@ -1,5 +1,5 @@
 ---
-title: GitHub Workflows
+title: What are GitHub Workflows?
 date: '2019-01-28'
 spoiler: Let's look at Workflows, a vital part of using GitHub Actions.
 ---
