@@ -68,7 +68,7 @@ Arguably the most important field, `uses` defines what action you want to run. T
 
 The first option is pretty straightforward. It points to a repository on GitHub at the given ref. This can be a SHA, a tag or a branch; a common one might be `JasonEtco/lights-camera-action@v1.0.0`. A handy trick to know with this method is that **it's actually `owner/repo[/path]@ref`**; so you can point to a subdirectory of your repository.
 
-This can be handy if you have one repo with a bunch of actions in it. However, **I wouldn't recommend doing that**. It's sort of like the whole "are mono-repos good" debate, but GitHub has all kinds of discoverability hints for actions that are their own repos.
+This can be handy if you have one repo with a bunch of actions in it. However, **I wouldn't recommend doing that**. It's sort of like the whole "are monorepos good" debate, but GitHub has all kinds of discoverability hints for actions that are their own repos.
 
 One important note: **any path must have a valid `Dockerfile`**; otherwise, the action will fail.
 
