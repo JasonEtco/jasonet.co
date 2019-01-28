@@ -95,7 +95,7 @@ if (
   const octokit = tools.createOctokit()
 
   // Delete the branch
-  octokit.gitdata
+  octokit.git
     .deleteRef(
       tools.context.repo({
         ref: `heads/${payload.pull_request.head.ref}`
