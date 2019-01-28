@@ -57,6 +57,7 @@ Each `action` object defines what action is run, what arguments you can pass, ev
 
 - You can have up to 100 `action` objects in a workflow
 - The `needs` property will define a dependency tree. Actions will be run according to whatever actions it needs
+- Actions can write to directories that are shared with every subsequent action. Things like `npm install`, which adds a whole `node_modules` directory, will persist across the actions in your workflow.
 
 The individual fields here are a lot more complicated because there are different ways to use each one. Let's dig in!
 
