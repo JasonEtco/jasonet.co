@@ -99,7 +99,7 @@ server.get('/login/cb', async (req, res) => {
       client_id: process.env.CLIENT_ID,
       client_secret: process.env.CLIENT_SECRET,
       code: req.query.code
-    },
+    }
   })
 
   // Authenticate our Octokit client with the new token
@@ -123,3 +123,61 @@ Nothing above looks like your average Probot code, but it can be paired with a r
 A great example is [**probot-invite**](https://github.com/probot/invite). Once the app is installed in an organization, admins of that org can visit the app in the browser and generate a link to invite other users to that organization:
 
 ![Probot Invite](https://user-images.githubusercontent.com/173/44678009-54427500-aa05-11e8-82d8-eb024b9970dc.png)
+
+When used with a library like [`cookie-session`](https://github.com/expressjs/cookie-session), your app can persist user sessions - so users visiting your site will stay logged in. 
+
+```js{3}
+// Get the currently authenticated user
+const { data } = await octokit.users.getAuthenticated()
+req.session.user = data
+```
+
+Now you should have the information you need to build a Probot app that both listens to webhooks and exposes a UI for users to interact with. You can still take it further, by using the `access_token` to make [**user-to-server**](https://developer.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#user-to-server-requests) requests on behalf of the user, opening up new possibilities for fetching data that is scoped to the user.
+
+### A concrete example
+
+Here's a realistic example of where we'd want to use this functionality. Let's imagine a data-tracking integration, where we want to store metrics of activity in our GitHub repository. This is just a thought experiment - we won't go too deep into building this, though you certainly could!
+
+We want to store more detailed information than what the GitHub API provides, like the size of each commit or how many times a certain file was changed - so we listen for the `push` event and store that data in our database.
+
+```js
+app.on('push', async context => {
+  // A function to get more details about the payload by asking GitHub
+  const details = await getDetailsFromPayload(context, context.payload)
+  return db.Record.create(context.repo({ payload_id: context.payload.id, details }))
+})
+```
+
+But now that we have this information, we need to show it somewhere! GitHub doesn't currently have really extensible ways to share things into the UI, so we'll build our own 🎨
+
+First, we'll need to create some routes:
+
+```js
+const server = app.route()
+// A little middleware that will redirect the user
+// to the `/login` if they are not already logged in
+server.use(forceLogin)
+server.get('/:owner/:repo', async (req, res) => {
+  const { owner, repo } = req.params
+  // Check that the user has access to this repo
+  if (await userHasAccess(req.session.user, owner, repo))
+  // Get some data from the database
+  const data = await db.Record.findAll({ where: { owner, repo } })
+  // Respond with some JSON data
+  return res.json(data)
+})
+```
+
+You can accomplish the `userHasAccess` check in a couple of different ways - one method is to use a little GraphQL query and, after authenticating using the `access_token`, seeing the "viewer's" permission:
+
+```graphql{2-4}
+query (owner: String!, name: String!) {
+  repository (owner: $owner, name: $name) {
+    viewerPermission
+  }
+}
+```
+
+I don't want this post to become too long, but it can go on for a long time - ultimately, once you get the hang of extracting Probot's Express server, you're building a web app. The possibilities are endless 
+
+If you're interested in learning more on this topic, [let me know](https://twitter.com/JasonEtco)!
