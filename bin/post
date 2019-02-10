@@ -8,8 +8,6 @@ if [[ -z "$1" ]]; then
 fi
 
 DATE=`date +%Y-%m-%d`
-CONTENT=$'---\ntitle: \ndate: $DATE\nspoiler: \n---'
-
 FILE="./src/pages/posts/${1}.md"
 
 touch $FILE
