@@ -1,6 +1,6 @@
 ---
 title: Probot Apps with a UI
-date: '2019-01-26'
+date: '2019-02-11'
 spoiler: Probot Apps are best known for their webhook response functionality, but you can pair them with a UI as well!
 ---
 
