@@ -214,4 +214,4 @@ async function userHasAccess (token, owner, repo) {
 
 Last but not least, we need to create a page that will actually display this information. Just like with any web app, there are a million ways you could do this - I'm a fan of a templating language called [Nunjucks](https://github.com/mozilla/nunjucks) for server-renderable things like this, but there really aren't any restrictions.
 
-Ultimately, once you get the hang of extracting Probot's Express server, you're building a web app. The possibilities are endless!
+Ultimately, once you get the hang of extracting Probot's Express server, you're building a web app. The possibilities are endless! I can write about practical applications for this concept for a long time - if you're interested in hearing more, [let me know](https://twitter.com/JasonEtco)!
