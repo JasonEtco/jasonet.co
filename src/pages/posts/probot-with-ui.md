@@ -13,7 +13,7 @@ Let's take a look at some features of Probot by digging into the codebase, and e
 Something that is often overlooked is that Probot, at its core, is **an Express server with a fancy `POST` endpoint** for handling webhook payloads:
 
 ```typescript
-// https://github.com/probot/probot/blob/beta/src/server.ts
+// https://github.com/probot/probot/blob/master/src/server.ts
 export const createServer = (args: ServerArgs) => {
   const app: express.Application = express()
 
