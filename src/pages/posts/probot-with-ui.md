@@ -38,7 +38,7 @@ app.set('view engine', 'hbs')
 
 Here we're effectively registering the webhook router as a regular old middleware (an instance of [`@octokit/webhooks`](https://github.com/octokit/webhooks)).
 
-This important because wherever we are in our Probot app, **we can access and use the internal Express server**.
+This is important because wherever we are in our Probot app, **we can access and use the internal Express server**.
 
 ## app.route()
 
@@ -68,7 +68,7 @@ Pretty rad - we've accessed data in our Probot App that is in no way tied to a w
 
 ## Identifying users
 
-A little known part of GitHub Apps (and by extension, Probot) is [that users can "log in"](https://developer.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site) using the regular [OAuth flow](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). Your GitHub App has some credentials that can be used to ask GitHub who the user is:
+A little known part of GitHub Apps (and by extension, Probot) is [that users can "log in"](https://developer.github.com/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/#identifying-users-on-your-site) using the regular [OAuth flow](https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow). Your GitHub App has some credentials (a client ID and secret) that can be used to ask GitHub who the user is:
 
 First, we expose a `/login` route where we redirect the user to GitHub with some special query params:
 
