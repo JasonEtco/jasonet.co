@@ -83,26 +83,18 @@ Ok, back to our Action. Using [**actions-toolkit**](https://github.com/JasonEtco
 ```js
 // index.js
 const { Toolkit } = require('actions-toolkit')
-const tools = new Toolkit()
+const tools = new Toolkit({ event: 'pull_request.closed' })
 
-const { event, payload } = tools.context
-if (
-  event === 'pull_request' &&
-  payload.action === 'closed' &&
-  payload.pull_request.merged
-) {
+if (tools.context.payload.pull_request.merged) {
   // An authenticated instance of `@octokit/rest`, a GitHub API SDK
-  const octokit = tools.createOctokit()
-
-  // Delete the branch
-  octokit.git
+  tools.github.git
     .deleteRef(
       tools.context.repo({
         ref: `heads/${payload.pull_request.head.ref}`
       })
     )
     .then(() => {
-      console.log(`Branch ${payload.pull_request.head.ref} deleted!`)
+      tools.log.success(`Branch ${payload.pull_request.head.ref} deleted!`)
     })
 }
 ```
