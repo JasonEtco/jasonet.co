@@ -94,7 +94,7 @@ if (tools.context.payload.pull_request.merged) {
       })
     )
     .then(() => {
-      console.log(`Branch ${payload.pull_request.head.ref} deleted!`)
+      tools.log.success(`Branch ${payload.pull_request.head.ref} deleted!`)
     })
 }
 ```
