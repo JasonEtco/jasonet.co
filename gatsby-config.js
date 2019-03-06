@@ -75,6 +75,7 @@ module.exports = {
       }
     },
     `gatsby-plugin-catch-links`,
+    `gatsby-plugin-feed`,
     `gatsby-plugin-netlify`
   ]
 }
