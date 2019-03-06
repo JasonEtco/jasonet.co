@@ -5,7 +5,7 @@ import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 import { formatReadingTime } from '../utils/helpers'
-import { rhythm, scale } from '../utils/typography'
+import { rhythm, scale, colors } from '../utils/typography'
 import { shape, string } from 'prop-types'
 import p from '../utils/shared-props'
 
@@ -50,7 +50,7 @@ export default function BlogPostTemplate(props) {
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
 
-      <p style={{ marginTop: rhythm(2) }}>
+      <p style={{ marginTop: rhythm(2), color: colors.gray[6] }}>
         <a href={discussUrl} target="_blank" rel="noopener noreferrer">
           Discuss on Twitter
         </a>
@@ -58,6 +58,8 @@ export default function BlogPostTemplate(props) {
         <a href={editUrl} target="_blank" rel="noopener noreferrer">
           Edit on GitHub
         </a>
+        {` • `}
+        <a href="/rss.xml">RSS Feed</a>
       </p>
 
       <div
