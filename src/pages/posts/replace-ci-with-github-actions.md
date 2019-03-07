@@ -14,6 +14,10 @@ I'll be delving into the nitty gritty of writing a workflow file, including some
 
 You may also want to familiarize yourself with the [actions/bin repo](https://github.com/actions/bin), a collection of actions that are highly scoped and useful for composing a workflow without writing any custom code (especially [actions/bin/filter](https://github.com/actions/bin/blob/master/filter)).
 
+## Why
+
+Why is this a conversation? Are GitHub Actions the _best_ platform on which to run your tests? I'd say it really depends on your needs. If all you need to is to run your tests, I think it's a great tool to do so. It's simple to setup, is just another file in your repo, and doesn't rely on an additional service. 
+
 ## A typical Node.js workflow
 
 This is a `main.workflow` file that I've been using for a couple of projects and it's been a great experience. With most CI providers, I need to follow these steps:
