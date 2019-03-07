@@ -121,7 +121,7 @@ action "npm ci (10)" {
 }
 
 action "npm test (10)" {
-  needs = ["npm ci (10)]
+  needs = ["npm ci (10)"]
   uses = "docker://node:10-alpine"
   runs = "npm"
   args = "test"
@@ -135,7 +135,7 @@ action "npm ci (latest)" {
 }
 
 action "npm test (latest)" {
-  needs = ["npm ci (latest)]
+  needs = ["npm ci (latest)"]
   uses = "docker://node:alpine"
   runs = "npm"
   args = "test"
