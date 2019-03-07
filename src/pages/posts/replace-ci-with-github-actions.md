@@ -106,7 +106,7 @@ First, let's prepare our `resolves` property to wait for two distinct actions be
  workflow "Test my code" {
    on = "push"
 -  resolves = ["npm test"]
-+  resolves = ["npm test (10)", "npm test (latest)]
++  resolves = ["npm test (10)", "npm test (latest)"]
  }
 ```
 
