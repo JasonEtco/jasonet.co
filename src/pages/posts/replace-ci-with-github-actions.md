@@ -112,7 +112,7 @@ First, let's prepare our `resolves` property to wait for two distinct actions be
 
 Next, we'll duplicate our actions but specify a version in our `uses`:
 
-```hcl{2}
+```hcl
 # node@10
 action "npm ci (10)" {
   uses = "docker://node:10-alpine"
