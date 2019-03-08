@@ -150,7 +150,7 @@ That's pretty much all there is to it. We've got two trees of actions (based on 
 
 ## Converting a CI provider's config file to a workflow
 
-We're going to convert the `.travis.yml` file in the [facebook/jest]() repository (one of my favorite libraries) over to a `main.workflow` file. At the time of writing, here's what it looks like:
+We're going to convert the `.travis.yml` file in the [facebook/jest]([https://github.com/facebook/jest/blob/master/.travis.yml](https://github.com/facebook/jest/blob/130547baaca44171464c9e1b5bc8dec6b26565ff/.travis.yml)) repository (one of my favorite libraries) over to a `main.workflow` file. At the time of writing, here's what it looks like:
 
 ```yaml
 # https://github.com/facebook/jest/blob/master/.travis.yml
