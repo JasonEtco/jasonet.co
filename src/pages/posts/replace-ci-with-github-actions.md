@@ -147,3 +147,49 @@ action "npm test (latest)" {
 ```
 
 That's pretty much all there is to it. We've got two trees of actions (based on their `needs` properties) that will run in separate containers on separate versions of Node.js.
+
+## Converting a CI provider's config file to a workflow
+
+We're going to convert the `.travis.yml` file in the [facebook/jest]() repository (one of my favorite libraries) over to a `main.workflow` file. At the time of writing, here's what it looks like:
+
+```yaml
+# https://github.com/facebook/jest/blob/master/.travis.yml
+language: node_js
+node_js:
+  - '10'
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$PATH"
+install: yarn --frozen-lockfile
+cache:
+  yarn: true
+  directories:
+    - '.eslintcache'
+    - 'node_modules'
+script:
+- yarn run test-ci-partial
+```
+
+Some parts of this don't map pefectly to actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make action runs fast, so let's skip it for now. 
+
+That leaves us with some information: we're using `node@10`, `yarn`, and running the `test-ci-partial` script. For these actions, we'll use [nuxt/yarn-action](https://github.com/nuxt/actions-yarn) which handily supports different versions of Node.js. Here's what that might look like:
+
+```hcl
+workflow "Test my code" {
+  on = "push"
+  resolves = ["test-ci-partial"]
+}
+
+action "Install dependencies" {
+  uses = "nuxt/yarn-action@node-10"
+  args = "--frozen-lockfile"
+}
+
+action "test-ci-partial" {
+  needs = "Install dependencies"
+  uses = "nuxt/yarn-action@node-10"
+  args = "run test-ci-partial"
+}
+```
+
+That should do it! By using an external action, we can keep our workflow nice and clean. One thing to note is that `nuxt/yarn-action` uses the full `FROM node` image - for optimization purposes, you might consider forking the action and using a smaller base image.
