@@ -196,10 +196,10 @@ That should do it! By using an external action, we can keep our workflow nice an
 
 Here's a similar exercise in [JasonEtco/create-an-issue](https://github.com/JasonEtco/create-an-issue) of [replacing a basic `.travis.yml` file with a workflow](https://github.com/JasonEtco/create-an-issue/compare/d10d7bc2a567fa4288ead6b91f307aa4b44fb9f7...3b32e1e16d13ce431cc2ad4031eda7ba1396096a). Performance is important for CI, we want our tests to run quickly - so let's look at the difference in execution time:
 
-| Provider | Execution time |
-| --- | --- |
-| Travis CI | 36 seconds |
-| GitHub Actions | 34 seconds |
+| Provider       | Execution time |
+|----------------|----------------|
+| Travis CI      | 36 seconds     |
+| GitHub Actions | 34 seconds     |
 
 Note that we haven't taken into account any of the speed improvements available to us in TravisCI, this is just the default behavior. I think that execution speed will only improve with GitHub Actions, and I'm really curious to see what kind of improvementts users will get without any additional effort.
 
