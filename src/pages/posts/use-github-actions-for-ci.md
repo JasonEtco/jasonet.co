@@ -151,7 +151,9 @@ action "npm test (latest)" {
 }
 ```
 
-That's pretty much all there is to it. We've got two trees of actions (based on their `needs` properties) that will run in separate containers on separate versions of Node.js.
+That's pretty much all there is to it. We've got two trees of actions (based on their `needs` properties) that will run in separate containers on separate versions of Node.js. Here's how GitHub renders the workflow in the visual editor:
+
+<img width="509" alt="Rendering of the dual-version workflow" style="display: block; margin-right: auto; margin-left: auto" src="https://user-images.githubusercontent.com/10660468/54003860-97527300-4121-11e9-8b6d-f13065aeed0e.png">
 
 ## Converting a CI provider's config file to a workflow
 
