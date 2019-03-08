@@ -14,9 +14,9 @@ I'll be delving into the nitty gritty of writing a workflow file, including some
 
 You may also want to familiarize yourself with the [actions/bin repo](https://github.com/actions/bin), a collection of actions that are highly scoped and useful for composing a workflow without writing any custom code (especially [actions/bin/filter](https://github.com/actions/bin/blob/master/filter)).
 
-## But I love {{ ci_provider }} - why should I care?
+## But I love `{{ ci_provider }}` - why should I care?
 
-You'll see the benefits soon, but I'm not saying that existing projects migrate their CI to actions; rather, new projects benefit from the minimal setup of a CI workflow if you know what you're doing. Are GitHub Actions the _best_ CI platform? I'd say it really depends on your needs; if you're just running test, you can get a lot of functionality with very little effort (the dream).
+You'll see the benefits soon, but I'm not saying that existing projects migrate their CI to actions; rather, new projects benefit from the minimal setup of a CI workflow if you know what you're doing. Are GitHub Actions the _best_ CI platform? I'd say it really depends on your needs; if you're just running test, you can get a lot of functionality with very little effort (I know, the dream :heart_eyes:).
 
 
 ## A typical Node.js workflow
@@ -68,7 +68,11 @@ action "npm ci" {
 
 Instead of pointing to an action the has a Dockerfile, you can tell it to use a particular Docker image. It's like declaring `FROM node:alpine`, but without needing a Dockerfile :tada:
 
-Another question you may be asking: "Jason, why didn't you use the `actions/npm` action, isn't this what it's for?" Great question! Let's step back for a second and remind ourselves that actions works by building and running Docker images. The smaller the image, the faster your action will run - less download time, less build time, means less overall running time.
+Another question you may be asking:
+
+> Jason, why didn't you use the [`actions/npm` action](https://github.com/actions/npm), isn't this what it's for? 
+
+Great question! Let's step back for a second and remind ourselves that actions works by building and running Docker images. The smaller the image, the faster your action will run - less download time, less build time, means less overall running time.
 
 [actions/npm uses the `node` Docker base image](https://github.com/actions/npm/blob/59b64a598378f31e49cb76f27d6f3312b582f680/Dockerfile#L1), which isn't quite as small as `node:alpine`. You can [read up on the differences](https://derickbailey.com/2017/03/09/selecting-a-node-js-image-for-docker/) to see what's right for your project. So far, the biggest practical difference that I've found is that `node:alpine` doesn't ship with Git, so if your project uses dependencies [installed from a Git repository](https://docs.npmjs.com/cli/install#description) you'll need to use `node`.
 
