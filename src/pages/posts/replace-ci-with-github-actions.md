@@ -4,7 +4,7 @@ date: '2019-03-07'
 spoiler: GitHub Actions can do a lot, including CI. Let's look at how to do it right!
 ---
 
-GitHub Actions can do a whole of things - [delete branches](https://github.com/jessfraz/branch-cleanup-action), [compose tweets via pull requests](https://github.com/gr2m/twitter-together); it's kind of a general "thing do-er." However, when people hear about Actions, they often ask "is GitHub Actions a replacement for CI providers?" It's a great platform to have CI built into your workflow with minimal setup but a lot of control, so its a totally reasonable question.
+GitHub Actions can do a whole lot of things - [delete branches](https://github.com/jessfraz/branch-cleanup-action), [compose tweets via pull requests](https://github.com/gr2m/twitter-together); it's kind of a general "thing do-er." However, when people hear about Actions, they often ask "is GitHub Actions a replacement for CI providers?" It's a great platform to have CI built into your workflow with minimal setup but a lot of control, so its a totally reasonable question.
 
 I'm here to tell you: **sometimes**! In this post, I'll share a workflow that I've been using for my Node.js projects, as well as some extensions to it for additional functionality. We'll also take a look at features of popular CI tools and see how they map to GitHub Actions.
 
