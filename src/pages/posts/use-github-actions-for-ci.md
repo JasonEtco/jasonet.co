@@ -18,7 +18,6 @@ You may also want to familiarize yourself with the [actions/bin repo](https://gi
 
 You'll see the benefits soon, but I'm not saying that existing projects migrate their CI to Actions; rather, new projects benefit from the minimal setup of a CI workflow if you know what you're doing. Are GitHub Actions the _best_ CI platform? I'd say it really depends on your needs; if you're just running test, you can get a lot of functionality with very little effort (I know, the dream :heart_eyes:).
 
-
 ## A typical Node.js workflow
 
 This is a `main.workflow` file that I've been using for a couple of projects and it's been a great experience. With most CI providers, I need to follow these steps:
@@ -70,7 +69,7 @@ Instead of pointing to an action that has a Dockerfile, you can tell it to use a
 
 Another question you may be asking:
 
-> Jason, why didn't you use the [`actions/npm` action](https://github.com/actions/npm), isn't this what it's for? 
+> Jason, why didn't you use the [`actions/npm` action](https://github.com/actions/npm), isn't this what it's for?
 
 Great question! Let's step back for a second and remember that GitHub Actions builds and runs Docker images. The smaller the image, the faster your action will run - less download time, less build time, means less overall running time.
 
@@ -166,11 +165,11 @@ workflow "Test my code in node@latest" {
   on = "push"
   resolves = ["npm test (latest)"]
 }
- ```
+```
 
 ## Converting a CI provider's config file to a workflow
 
-We're going to convert the `.travis.yml` file in the [facebook/jest]([https://github.com/facebook/jest/blob/master/.travis.yml](https://github.com/facebook/jest/blob/130547baaca44171464c9e1b5bc8dec6b26565ff/.travis.yml)) repository (one of my favorite libraries) over to a `main.workflow` file. At the time of writing, here's what it looks like:
+We're going to convert the `.travis.yml` file in the [facebook/jest](https://github.com/facebook/jest/blob/130547baaca44171464c9e1b5bc8dec6b26565ff/.travis.yml) repository (one of my favorite libraries) over to a `main.workflow` file. At the time of writing, here's what it looks like:
 
 ```yaml
 # https://github.com/facebook/jest/blob/master/.travis.yml
@@ -187,10 +186,10 @@ cache:
     - '.eslintcache'
     - 'node_modules'
 script:
-- yarn run test-ci-partial
+  - yarn run test-ci-partial
 ```
 
-Some parts of this don't map perfectly to Actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make action runs fast, so let's skip it for now. 
+Some parts of this don't map perfectly to Actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make action runs fast, so let's skip it for now.
 
 That leaves us with the following information: we're using `node@10`, `yarn`, and running the `test-ci-partial` script after installing our dependencies. For these actions, we'll use [nuxt/actions-yarn](https://github.com/nuxt/actions-yarn) which handily supports [different versions of Node.js](https://github.com/nuxt/actions-yarn#node-versions). Here's what that might look like:
 
@@ -217,7 +216,7 @@ That should do it! By using an external action, we can keep our workflow nice an
 Here's a similar exercise with proven results in [JasonEtco/create-an-issue](https://github.com/JasonEtco/create-an-issue) of [replacing a basic `.travis.yml` file with a workflow](https://github.com/JasonEtco/create-an-issue/compare/d10d7bc2a567fa4288ead6b91f307aa4b44fb9f7...3b32e1e16d13ce431cc2ad4031eda7ba1396096a). Performance is important for CI, we want our tests to run quickly - so let's look at the difference in execution time:
 
 | Provider       | Execution time |
-|----------------|----------------|
+| -------------- | -------------- |
 | Travis CI      | 36 seconds     |
 | GitHub Actions | 34 seconds     |
 
