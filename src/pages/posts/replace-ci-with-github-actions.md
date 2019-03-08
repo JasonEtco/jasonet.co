@@ -172,7 +172,7 @@ script:
 
 Some parts of this don't map pefectly to actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make action runs fast, so let's skip it for now. 
 
-That leaves us with the following information: we're using `node@10`, `yarn`, and running the `test-ci-partial` script after installing our dependencies. For these actions, we'll use [nuxt/yarn-action](https://github.com/nuxt/actions-yarn) which handily supports [different versions of Node.js](https://github.com/nuxt/actions-yarn#node-versions). Here's what that might look like:
+That leaves us with the following information: we're using `node@10`, `yarn`, and running the `test-ci-partial` script after installing our dependencies. For these actions, we'll use [nuxt/actions-yarn](https://github.com/nuxt/actions-yarn) which handily supports [different versions of Node.js](https://github.com/nuxt/actions-yarn#node-versions). Here's what that might look like:
 
 ```hcl
 workflow "Test my code" {
@@ -181,18 +181,18 @@ workflow "Test my code" {
 }
 
 action "Install dependencies" {
-  uses = "nuxt/yarn-action@node-10"
+  uses = "nuxt/actions-yarn@node-10"
   args = "--frozen-lockfile"
 }
 
 action "test-ci-partial" {
   needs = "Install dependencies"
-  uses = "nuxt/yarn-action@node-10"
+  uses = "nuxt/actions-yarn@node-10"
   args = "run test-ci-partial"
 }
 ```
 
-That should do it! By using an external action, we can keep our workflow nice and clean. One thing to note is that `nuxt/yarn-action` uses the full `FROM node` image - for optimization purposes, you might consider forking the action and using a smaller base image.
+That should do it! By using an external action, we can keep our workflow nice and clean. One thing to note is that `nuxt/actions-yarn` uses the full `FROM node` image - for optimization purposes, you might consider forking the action and using a smaller base image.
 
 Here's a similar exercise in [JasonEtco/create-an-issue](https://github.com/JasonEtco/create-an-issue) of [replacing a basic `.travis.yml` file with a workflow](https://github.com/JasonEtco/create-an-issue/compare/d10d7bc2a567fa4288ead6b91f307aa4b44fb9f7...3b32e1e16d13ce431cc2ad4031eda7ba1396096a). Performance is important for CI, we want our tests to run quickly - so let's look at the difference in execution time:
 
