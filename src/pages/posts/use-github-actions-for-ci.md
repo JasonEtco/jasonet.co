@@ -6,11 +6,11 @@ spoiler: GitHub Actions can do a lot, including CI. Let's look at how to do it r
 
 GitHub Actions can do a whole lot of things - [delete branches](https://github.com/jessfraz/branch-cleanup-action), [compose tweets via pull requests](https://github.com/gr2m/twitter-together); it's kind of a general "thing do-er." However, when people hear about Actions, they often ask "is GitHub Actions a replacement for CI providers?" It's a great platform to have CI built into your workflow with minimal setup but a lot of control, so its a totally reasonable question.
 
-I get to use everyones' favorite answer: **it depends**! In this post, I'll share a workflow that I've been using for my Node.js projects, as well as some extensions to it for additional functionality. We'll also take a look at features of popular CI tools and see how they map to GitHub Actions.
+I get to use everyone's favorite answer: **it depends**! In this post, I'll share a workflow that I've been using for my Node.js projects, as well as some extensions to it for additional functionality. We'll also take a look at features of popular CI tools and see how they map to GitHub Actions.
 
 ## Some pre-reading
 
-I'll be delving into the nitty gritty of writing a workflow file, including some lesser-known functionality. I'd encourage you to read [my previous blog post on GitHub Actions workflows](./what-are-github-workflows), where I talk a bit about workflows as a whole.
+I'll be delving into the nitty-gritty of writing a workflow file, including some lesser-known functionality. I'd encourage you to read [my previous blog post on GitHub Actions workflows](./what-are-github-workflows), where I talk a bit about workflows as a whole.
 
 You may also want to familiarize yourself with the [actions/bin repo](https://github.com/actions/bin), a collection of actions that are highly scoped and useful for composing a workflow without writing any custom code (especially [actions/bin/filter](https://github.com/actions/bin/blob/master/filter)).
 
@@ -32,7 +32,7 @@ Nowadays, I create my `.github/main.workflow` file and this is my whole process:
 
 1. Push a configuration file to my repo
 
-75% efficiency improvement! Because most of my projects follow the exact same CI patterns and have the exact same requirements, it really is repetitive. So, here's the `main.workflow` file in it's entirety:
+75% efficiency improvement! Because most of my projects follow the exact same CI patterns and have the exact same requirements, it really is repetitive. So, here's the `main.workflow` file in its entirety:
 
 ```hcl
 workflow "Test my code" {
@@ -177,7 +177,7 @@ script:
 - yarn run test-ci-partial
 ```
 
-Some parts of this don't map pefectly to actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make action runs fast, so let's skip it for now. 
+Some parts of this don't map perfectly to actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make action runs fast, so let's skip it for now. 
 
 That leaves us with the following information: we're using `node@10`, `yarn`, and running the `test-ci-partial` script after installing our dependencies. For these actions, we'll use [nuxt/actions-yarn](https://github.com/nuxt/actions-yarn) which handily supports [different versions of Node.js](https://github.com/nuxt/actions-yarn#node-versions). Here's what that might look like:
 
@@ -199,7 +199,7 @@ action "test-ci-partial" {
 }
 ```
 
-That should do it! By using an external action, we can keep our workflow nice and clean :nail_care: One thing to note is that `nuxt/actions-yarn` uses the full `FROM node` image - for the sake of optimization, you might consider forking the action and using a smaller base image.
+That should do it! By using an external action, we can keep our workflow nice and clean :nail_care:. One thing to note is that `nuxt/actions-yarn` uses the full `FROM node` image - for the sake of optimization, you might consider forking the action and using a smaller base image.
 
 Here's a similar exercise with proven results in [JasonEtco/create-an-issue](https://github.com/JasonEtco/create-an-issue) of [replacing a basic `.travis.yml` file with a workflow](https://github.com/JasonEtco/create-an-issue/compare/d10d7bc2a567fa4288ead6b91f307aa4b44fb9f7...3b32e1e16d13ce431cc2ad4031eda7ba1396096a). Performance is important for CI, we want our tests to run quickly - so let's look at the difference in execution time:
 
@@ -220,8 +220,8 @@ A beloved feature of most CI providers is their ability to show a badge on a rep
 
 ## Where actions isn't perfect
 
-This post isn't intended to somehow prove that independant CI tools are made redundant by actions - just that for _some_ use-cases, you can choose between the two.
+This post isn't intended to somehow prove that independent CI tools are made redundant by actions - just that for _some_ use-cases, you can choose between the two.
 
 For example, a project I use and love, [matchai/spacefish](https://github.com/matchai/spacefish), can't use actions for CI because Docker doesn't support macOS images. Some projects need to be tested in environments that Docker just doesn't support. And that workflow with multiple versions of Node.js? With more versions/variations it'd become even more verbose.
 
-And that's ok - GitHub Actions is awesome, but its not a silver bullet. It can do a lot, but in the case of actions, like most things, GitHub promotes a platform approach. It's a tool for integrating with GitHub and doing some things, but leaving room for more powerful robust integrations can't be built by one company trying to do it all.
+And that's ok - GitHub Actions is awesome, but it's not a silver bullet. It can do a lot, but in the case of actions, like most things, GitHub promotes a platform approach. It's a tool for integrating with GitHub and doing some things, but leaving room for more powerful robust integrations can't be built by one company trying to do it all.
