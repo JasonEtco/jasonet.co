@@ -155,6 +155,19 @@ That's pretty much all there is to it. We've got two trees of actions (based on 
 
 <img width="509" alt="Rendering of the dual-version workflow" style="display: block; margin-right: auto; margin-left: auto" src="https://user-images.githubusercontent.com/10660468/54003860-97527300-4121-11e9-8b6d-f13065aeed0e.png">
 
+You could also choose to do two separate `workflow`s, to have two distinct statuses:
+
+```hcl
+workflow "Test my code in node@10" {
+  on = "push"
+  resolves = ["npm test (10)"]
+}
+workflow "Test my code in node@latest" {
+  on = "push"
+  resolves = ["npm test (latest)"]
+}
+ ```
+
 ## Converting a CI provider's config file to a workflow
 
 We're going to convert the `.travis.yml` file in the [facebook/jest]([https://github.com/facebook/jest/blob/master/.travis.yml](https://github.com/facebook/jest/blob/130547baaca44171464c9e1b5bc8dec6b26565ff/.travis.yml)) repository (one of my favorite libraries) over to a `main.workflow` file. At the time of writing, here's what it looks like:
