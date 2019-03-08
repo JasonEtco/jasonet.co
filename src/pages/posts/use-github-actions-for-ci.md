@@ -16,7 +16,7 @@ You may also want to familiarize yourself with the [actions/bin repo](https://gi
 
 ## But I love `{{ ci_provider }}` - why should I care?
 
-You'll see the benefits soon, but I'm not saying that existing projects migrate their CI to actions; rather, new projects benefit from the minimal setup of a CI workflow if you know what you're doing. Are GitHub Actions the _best_ CI platform? I'd say it really depends on your needs; if you're just running test, you can get a lot of functionality with very little effort (I know, the dream :heart_eyes:).
+You'll see the benefits soon, but I'm not saying that existing projects migrate their CI to Actions; rather, new projects benefit from the minimal setup of a CI workflow if you know what you're doing. Are GitHub Actions the _best_ CI platform? I'd say it really depends on your needs; if you're just running test, you can get a lot of functionality with very little effort (I know, the dream :heart_eyes:).
 
 
 ## A typical Node.js workflow
@@ -177,7 +177,7 @@ script:
 - yarn run test-ci-partial
 ```
 
-Some parts of this don't map perfectly to actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make action runs fast, so let's skip it for now. 
+Some parts of this don't map perfectly to Actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make action runs fast, so let's skip it for now. 
 
 That leaves us with the following information: we're using `node@10`, `yarn`, and running the `test-ci-partial` script after installing our dependencies. For these actions, we'll use [nuxt/actions-yarn](https://github.com/nuxt/actions-yarn) which handily supports [different versions of Node.js](https://github.com/nuxt/actions-yarn#node-versions). Here's what that might look like:
 
@@ -212,16 +212,16 @@ They're basically the same! We haven't taken into account any of the speed impro
 
 ## README Badges
 
-A beloved feature of most CI providers is their ability to show a badge on a repository's README, depicting the status of the build (whether its passing, failing, etc). I'm so used to the badges that if they aren't present my eyes get confused. Unfortunately, there's no first-class badge support with actions. I built [JasonEtco/action-badges](https://github.com/JasonEtco/action-badges) for this purpose; it works by [querying for the repository's Check Suites](https://developer.github.com/v3/checks/suites/#list-check-suites-for-a-specific-ref) and deriving a status by looking for the GitHub Action app's activity.
+A beloved feature of most CI providers is their ability to show a badge on a repository's README, depicting the status of the build (whether its passing, failing, etc). I'm so used to the badges that if they aren't present my eyes get confused. Unfortunately, there's no first-class badge support with Actions. I built [JasonEtco/action-badges](https://github.com/JasonEtco/action-badges) for this purpose; it works by [querying for the repository's Check Suites](https://developer.github.com/v3/checks/suites/#list-check-suites-for-a-specific-ref) and deriving a status by looking for the GitHub Action app's activity.
 
 ```markdown
 ![Build Status](https://action-badges.now.sh/JasonEtco/example)
 ```
 
-## Where actions isn't perfect
+## Where Actions isn't perfect
 
-This post isn't intended to somehow prove that independent CI tools are made redundant by actions - just that for _some_ use-cases, you can choose between the two.
+This post isn't intended to somehow prove that independent CI tools are made redundant by Actions - just that for _some_ use-cases, you can choose between the two.
 
-For example, a project I use and love, [matchai/spacefish](https://github.com/matchai/spacefish), can't use actions for CI because Docker doesn't support macOS images. Some projects need to be tested in environments that Docker just doesn't support. And that workflow with multiple versions of Node.js? With more versions/variations it'd become even more verbose.
+For example, a project I use and love, [matchai/spacefish](https://github.com/matchai/spacefish), can't use Actions for CI because Docker doesn't support macOS images. Some projects need to be tested in environments that Docker just doesn't support. And that workflow with multiple versions of Node.js? With more versions/variations it'd become even more verbose.
 
-And that's ok - GitHub Actions is awesome, but it's not a silver bullet. It can do a lot, but in the case of actions, like most things, GitHub promotes a platform approach. It's a tool for integrating with GitHub and doing some things, but leaving room for more powerful robust integrations can't be built by one company trying to do it all.
+And that's ok - GitHub Actions is awesome, but it's not a silver bullet. It can do a lot, but in the case of Actions, like most things, GitHub promotes a platform approach. It's a tool for integrating with GitHub and doing some things, but leaving room for more powerful robust integrations can't be built by one company trying to do it all.
