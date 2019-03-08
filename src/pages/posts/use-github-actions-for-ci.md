@@ -222,6 +222,6 @@ A beloved feature of most CI providers is their ability to show a badge on a rep
 
 This post isn't intended to somehow prove that independant CI tools are made redundant by actions - just that for _some_ use-cases, you can choose between the two.
 
-For example, a project I use and love, [matchai/spacefish](https://github.com/matchai/spacefish), can't use actions for CI because Docker doesn't support macOS images, which is important for that project to test. Looking back at the workflow that tests multiple versions of Node.js - with even more versions/variations it'd become even more verbose.
+For example, a project I use and love, [matchai/spacefish](https://github.com/matchai/spacefish), can't use actions for CI because Docker doesn't support macOS images. Some projects need to be tested in environments that Docker just doesn't support. And that workflow with multiple versions of Node.js? With more versions/variations it'd become even more verbose.
 
 And that's ok - GitHub Actions is awesome, but its not a silver bullet. It can do a lot, but in the case of actions, like most things, GitHub promotes a platform approach. It's a tool for integrating with GitHub and doing some things, but leaving room for more powerful robust integrations can't be built by one company trying to do it all.
