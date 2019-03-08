@@ -4,7 +4,7 @@ date: '2019-03-07'
 spoiler: GitHub Actions can do a lot, including CI. Let's look at how to do it right!
 ---
 
-GitHub Actions can do a whole of things - [delete branches], [compose tweets via pull requests]; it's kind of a general "thing do-er." However, when people hear about Actions, they often ask "is GitHub Actions a replacement for CI providers?" It's a great platform to have CI built into your workflow with minimal setup but a lot of control, so its a totally reasonable question.
+GitHub Actions can do a whole of things - [delete branches](https://github.com/jessfraz/branch-cleanup-action), [compose tweets via pull requests](https://github.com/gr2m/twitter-together); it's kind of a general "thing do-er." However, when people hear about Actions, they often ask "is GitHub Actions a replacement for CI providers?" It's a great platform to have CI built into your workflow with minimal setup but a lot of control, so its a totally reasonable question.
 
 I'm here to tell you: **sometimes**! In this post, I'll share a workflow that I've been using for my Node.js projects, as well as some extensions to it for additional functionality. We'll also take a look at features of popular CI tools and see how they map to GitHub Actions.
 
@@ -172,7 +172,7 @@ script:
 
 Some parts of this don't map pefectly to actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make action runs fast, so let's skip it for now. 
 
-That leaves us with some information: we're using `node@10`, `yarn`, and running the `test-ci-partial` script. For these actions, we'll use [nuxt/yarn-action](https://github.com/nuxt/actions-yarn) which handily supports different versions of Node.js. Here's what that might look like:
+That leaves us with the following information: we're using `node@10`, `yarn`, and running the `test-ci-partial` script after installing our dependencies. For these actions, we'll use [nuxt/yarn-action](https://github.com/nuxt/actions-yarn) which handily supports [different versions of Node.js](https://github.com/nuxt/actions-yarn#node-versions). Here's what that might look like:
 
 ```hcl
 workflow "Test my code" {
@@ -193,3 +193,28 @@ action "test-ci-partial" {
 ```
 
 That should do it! By using an external action, we can keep our workflow nice and clean. One thing to note is that `nuxt/yarn-action` uses the full `FROM node` image - for optimization purposes, you might consider forking the action and using a smaller base image.
+
+Here's a similar exercise in [JasonEtco/create-an-issue](https://github.com/JasonEtco/create-an-issue) of [replacing a basic `.travis.yml` file with a workflow](https://github.com/JasonEtco/create-an-issue/compare/d10d7bc2a567fa4288ead6b91f307aa4b44fb9f7...3b32e1e16d13ce431cc2ad4031eda7ba1396096a). Performance is important for CI, we want our tests to run quickly - so let's look at the difference in execution time:
+
+| Provider | Execution time |
+| --- | --- |
+| Travis CI | 36 seconds |
+| GitHub Actions | 34 seconds |
+
+Note that we haven't taken into account any of the speed improvements available to us in TravisCI, this is just the default behavior. I think that execution speed will only improve with GitHub Actions, and I'm really curious to see what kind of improvementts users will get without any additional effort.
+
+## README Badges
+
+A beloved feature of most CI providers is their ability to show a badge on a repository's README, depicting the status of the build (whether its passing, failing, etc). I'm so used to the badges that if they aren't present my eyes get confused. Unfortunately, there's no first-class badge support with actions. I built [JasonEtco/action-badges](https://github.com/JasonEtco/action-badges) for this purpose; it works by [querying for the repository's Check Suites](https://developer.github.com/v3/checks/suites/#list-check-suites-for-a-specific-ref) and deriving a status by looking for the GitHub Action app's activity.
+
+```markdown
+![Build Status](https://action-badges.now.sh/JasonEtco/example)
+```
+
+## Where actions isn't perfect
+
+This post isn't intended to somehow prove that independant CI tools are made redundant by actions - just that for _some_ use-cases, you can choose between the two.
+
+For example, a project I use and love, [matchai/spacefish](https://github.com/matchai/spacefish), can't use actions for CI because Docker doesn't support macOS images, which is important for that project to test. Looking back at the workflow that tests multiple versions of Node.js - with only two versions (10/latest) it's getting pretty verbose.
+
+And that's ok - GitHub Actions is awesome, but its not a silver bullet. It can do a lot, but in the case of actions, like most things, GitHub promotes a platform approach. It's a tool for integrating with GitHub and doing some things, but leaving room for more powerful robust integrations can't be built by one company trying to do it all.
