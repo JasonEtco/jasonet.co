@@ -192,16 +192,16 @@ action "test-ci-partial" {
 }
 ```
 
-That should do it! By using an external action, we can keep our workflow nice and clean. One thing to note is that `nuxt/actions-yarn` uses the full `FROM node` image - for optimization purposes, you might consider forking the action and using a smaller base image.
+That should do it! By using an external action, we can keep our workflow nice and clean :nail_care: One thing to note is that `nuxt/actions-yarn` uses the full `FROM node` image - for the sake of optimization, you might consider forking the action and using a smaller base image.
 
-Here's a similar exercise in [JasonEtco/create-an-issue](https://github.com/JasonEtco/create-an-issue) of [replacing a basic `.travis.yml` file with a workflow](https://github.com/JasonEtco/create-an-issue/compare/d10d7bc2a567fa4288ead6b91f307aa4b44fb9f7...3b32e1e16d13ce431cc2ad4031eda7ba1396096a). Performance is important for CI, we want our tests to run quickly - so let's look at the difference in execution time:
+Here's a similar exercise with proven results in [JasonEtco/create-an-issue](https://github.com/JasonEtco/create-an-issue) of [replacing a basic `.travis.yml` file with a workflow](https://github.com/JasonEtco/create-an-issue/compare/d10d7bc2a567fa4288ead6b91f307aa4b44fb9f7...3b32e1e16d13ce431cc2ad4031eda7ba1396096a). Performance is important for CI, we want our tests to run quickly - so let's look at the difference in execution time:
 
 | Provider       | Execution time |
 |----------------|----------------|
 | Travis CI      | 36 seconds     |
 | GitHub Actions | 34 seconds     |
 
-Note that we haven't taken into account any of the speed improvements available to us in TravisCI, this is just the default behavior. I think that execution speed will only improve with GitHub Actions, and I'm really curious to see what kind of improvementts users will get without any additional effort.
+They're basically the same! We haven't taken into account any of the speed improvements available to us in TravisCI, this is just the default behavior. Comparatively, I think that execution speed will only improve with GitHub Actions, and I'm really curious to see what kind of improvements users will get without any additional effort.
 
 ## README Badges
 
@@ -215,6 +215,6 @@ A beloved feature of most CI providers is their ability to show a badge on a rep
 
 This post isn't intended to somehow prove that independant CI tools are made redundant by actions - just that for _some_ use-cases, you can choose between the two.
 
-For example, a project I use and love, [matchai/spacefish](https://github.com/matchai/spacefish), can't use actions for CI because Docker doesn't support macOS images, which is important for that project to test. Looking back at the workflow that tests multiple versions of Node.js - with only two versions (10/latest) it's getting pretty verbose.
+For example, a project I use and love, [matchai/spacefish](https://github.com/matchai/spacefish), can't use actions for CI because Docker doesn't support macOS images, which is important for that project to test. Looking back at the workflow that tests multiple versions of Node.js - with even more versions/variations it'd become even more verbose.
 
 And that's ok - GitHub Actions is awesome, but its not a silver bullet. It can do a lot, but in the case of actions, like most things, GitHub promotes a platform approach. It's a tool for integrating with GitHub and doing some things, but leaving room for more powerful robust integrations can't be built by one company trying to do it all.
