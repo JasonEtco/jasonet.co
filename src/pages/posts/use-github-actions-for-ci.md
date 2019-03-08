@@ -231,6 +231,14 @@ A beloved feature of most CI providers is their ability to show a badge on a rep
 ![Build Status](https://action-badges.now.sh/JasonEtco/example)
 ```
 
+## Running CI on pull requests from forks
+
+GitHub Actions and forked repositories are currently in a weird state. I expect this to improve quickly, but right now when a pull request is opened from a fork to the upstream, there are a few oddities. The first is that it will only trigger the `pull_request` event - that makes sense because the associated `push` isn't happening on the upstream repo. However, this leads to the actual issues: the tests are run against the master branch, and the status isn't reflected back to the pull request.
+
+[@gr2m](https://twitter.com/gr2m) created [git-checkout-pull-request-action](https://github.com/gr2m/git-checkout-pull-request-action) to checkout the fork's branch before running tests - it'll intercept the workflow and, if necessary, make sure the tests are running against the appropriate code. This solves the first of those two problems, but not the second - the PR isn't updated with the status of the checks :disappointed:. The only way to check that status is to open the `Actions` tab and find try to find the correct run.
+
+I fully expect that behavior to change for the better before GitHub Actions leaves beta status (the Actions team is full of real smart people), so I hope to update this post when it does!
+
 ## Where Actions isn't perfect
 
 This post isn't intended to somehow prove that independent CI tools are made redundant by Actions - just that for _some_ use-cases, you can choose between the two.
