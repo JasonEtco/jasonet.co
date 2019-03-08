@@ -69,9 +69,9 @@ Instead of pointing to an action the has a Dockerfile, you can tell it to use a 
 
 Another question you may be asking: "Jason, why didn't you use the `actions/npm` action, isn't this what it's for?" Great question! Let's step back for a second and remind ourselves that actions works by building and running Docker images. The smaller the image, the faster your action will run - less download time, less build time, means less overall running time.
 
-[actions/npm uses the `node:slim` Docker base image](), which isn't quite as small as `node:alpine`. You can [read up on the differences](https://derickbailey.com/2017/03/09/selecting-a-node-js-image-for-docker/) to see what's right for your project. So far, the biggest difference that I've found is that `node:alpine` doesn't ship with Git, so if your project uses dependencies [installed from a Git repository]() you'll need to use `node`.
+[actions/npm uses the `node` Docker base image](https://github.com/actions/npm/blob/59b64a598378f31e49cb76f27d6f3312b582f680/Dockerfile#L1), which isn't quite as small as `node:alpine`. You can [read up on the differences](https://derickbailey.com/2017/03/09/selecting-a-node-js-image-for-docker/) to see what's right for your project. So far, the biggest practical difference that I've found is that `node:alpine` doesn't ship with Git, so if your project uses dependencies [installed from a Git repository](https://docs.npmjs.com/cli/install#description) you'll need to use `node`.
 
-We then define a `runs` property to use the `npm` CLI that ships with Node.js. This one file gets us two individual Docker images that run `npm ci` to install our app's dependencies and `npm test` to run our automated tests.
+We then define a `runs` property to use the `npm` CLI that ships with Node.js. This one file gets us two individual Docker containers that run `npm ci` to install our app's dependencies and `npm test` to run our automated tests. Actions in the same workflow can access a shared filesystem, despite each action running in a separate container.
 
 ### Code coverage
 
