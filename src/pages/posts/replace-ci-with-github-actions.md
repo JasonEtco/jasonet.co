@@ -1,5 +1,5 @@
 ---
-title: Replace your CI provider with GitHub Actions
+title: Start using GitHub Actions for CI
 date: '2019-03-07'
 spoiler: GitHub Actions can do a lot, including CI. Let's look at how to do it right!
 ---
@@ -14,9 +14,10 @@ I'll be delving into the nitty gritty of writing a workflow file, including some
 
 You may also want to familiarize yourself with the [actions/bin repo](https://github.com/actions/bin), a collection of actions that are highly scoped and useful for composing a workflow without writing any custom code (especially [actions/bin/filter](https://github.com/actions/bin/blob/master/filter)).
 
-## Why
+## But I love {{ ci_provider }} - why should I care?
 
-Why is this a conversation? Are GitHub Actions the _best_ platform on which to run your tests? I'd say it really depends on your needs. If all you need to is to run your tests, I think it's a great tool to do so. It's simple to setup, is just another file in your repo, and doesn't rely on an additional service. 
+You'll see the benefits soon, but I'm not saying that existing projects migrate their CI to actions; rather, new projects benefit from the minimal setup of a CI workflow if you know what you're doing. Are GitHub Actions the _best_ CI platform? I'd say it really depends on your needs; if you're just running test, you can get a lot of functionality with very little effort (the dream).
+
 
 ## A typical Node.js workflow
 
