@@ -191,7 +191,7 @@ script:
 
 Some parts of this don't map perfectly to Actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make action runs fast, so let's skip it for now.
 
-That leaves us with the following information: we're using `node@10`, `yarn`, and running the `test-ci-partial` script after installing our dependencies. For these actions, we'll use [nuxt/actions-yarn](https://github.com/nuxt/actions-yarn) which handily supports [different versions of Node.js](https://github.com/nuxt/actions-yarn#node-versions). Here's what that might look like:
+That leaves us with the following information: we're using `node@10`, `yarn`, and running the `test-ci-partial` script after installing our dependencies. Here's what that might look like:
 
 ```hcl
 workflow "Test my code" {
