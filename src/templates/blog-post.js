@@ -54,45 +54,46 @@ export default function BlogPostTemplate(props) {
 
         <div
           className="blog-post"
-          itemProp="articleBody"
+          itemProp="articleBody text"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
+
+        <p style={{ marginTop: rhythm(2), color: colors.gray[6] }}>
+          <a href={discussUrl} target="_blank" rel="noopener noreferrer">
+            Discuss on Twitter
+          </a>
+          {` • `}
+          <a href={editUrl} target="_blank" rel="noopener noreferrer">
+            Edit on GitHub
+          </a>
+          {` • `}
+          <a href="/rss.xml">RSS Feed</a>
+        </p>
+
+        <div
+          style={{
+            padding: rhythm(1.2),
+            marginTop: rhythm(1),
+            boxShadow: '0 2px 15px 0 rgba(210,214,220,.5)',
+            borderRadius: 5
+          }}
+        >
+          <h3 style={{ marginTop: 0 }}>
+            <Link
+              style={{
+                boxShadow: 'none',
+                textDecoration: 'none',
+                color: '#f26d21'
+              }}
+              to={'/'}
+            >
+              Hope you enjoyed the read! 📝
+            </Link>
+          </h3>
+          <Bio />
+        </div>
       </div>
 
-      <p style={{ marginTop: rhythm(2), color: colors.gray[6] }}>
-        <a href={discussUrl} target="_blank" rel="noopener noreferrer">
-          Discuss on Twitter
-        </a>
-        {` • `}
-        <a href={editUrl} target="_blank" rel="noopener noreferrer">
-          Edit on GitHub
-        </a>
-        {` • `}
-        <a href="/rss.xml">RSS Feed</a>
-      </p>
-
-      <div
-        style={{
-          padding: rhythm(1.2),
-          marginTop: rhythm(1),
-          boxShadow: '0 2px 15px 0 rgba(210,214,220,.5)',
-          borderRadius: 5
-        }}
-      >
-        <h3 style={{ marginTop: 0 }}>
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: '#f26d21'
-            }}
-            to={'/'}
-          >
-            Hope you enjoyed the read! 📝
-          </Link>
-        </h3>
-        <Bio />
-      </div>
       <ul
         style={{
           display: 'flex',
@@ -106,15 +107,25 @@ export default function BlogPostTemplate(props) {
       >
         <li>
           {previous && (
-            <Link to={previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
+            <Link
+              to={previous.fields.slug}
+              rel="prev"
+              itemScope
+              itemType="https://schema.org/BlogPosting"
+            >
+              ← <span itemProp="name">{previous.frontmatter.title}</span>
             </Link>
           )}
         </li>
         <li>
           {next && (
-            <Link to={next.fields.slug} rel="next">
-              {next.frontmatter.title} →
+            <Link
+              to={next.fields.slug}
+              rel="next"
+              itemScope
+              itemType="https://schema.org/BlogPosting"
+            >
+              <span itemProp="name">{next.frontmatter.title}</span> →
             </Link>
           )}
         </li>
