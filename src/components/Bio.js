@@ -27,8 +27,8 @@ export default function Bio() {
       />
       <p style={{ marginBottom: 0 }}>
         👋 Personal blog by{' '}
-        <a href="https://twitter.com/JasonEtco">
-          <span itemProp="name">Jason Etcovitch</span>
+        <a href="https://twitter.com/JasonEtco" itemProp="name">
+          Jason Etcovitch
         </a>
         <br />
         🐙 <span itemProp="jobTitle">Engineer</span> at{' '}
