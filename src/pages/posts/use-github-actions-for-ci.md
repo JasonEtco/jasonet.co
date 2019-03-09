@@ -1,5 +1,5 @@
 ---
-title: Start using GitHub Actions for CI
+title: How to start using GitHub Actions for CI
 date: '2019-03-07'
 spoiler: GitHub Actions can do a lot, including CI. Let's look at how to do it right!
 ---
