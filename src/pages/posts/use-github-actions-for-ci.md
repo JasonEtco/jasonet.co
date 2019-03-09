@@ -226,11 +226,13 @@ They're basically the same! The functionality stays exactly the same; not additi
 
 ## README Badges
 
-A beloved feature of most CI providers is their ability to show a badge on a repository's README, depicting the status of the build (whether its passing, failing, etc). I'm so used to the badges that if they aren't present my eyes get confused. Unfortunately, there's no first-class badge support with Actions. I built [JasonEtco/action-badges](https://github.com/JasonEtco/action-badges) for this purpose; it works by [querying for the repository's Check Suites](https://developer.github.com/v3/checks/suites/#list-check-suites-for-a-specific-ref) and deriving a status by looking for the GitHub Action app's activity. Still, I'd love to see first-class support in the future :fingers_crossed:
+A beloved feature of most CI providers is their ability to show a badge on a repository's README, depicting the status of the build (whether its passing, failing, etc). I'm so used to the badges that if they aren't present my eyes get confused. Unfortunately, there's no first-class badge support with Actions. I built [JasonEtco/action-badges](https://github.com/JasonEtco/action-badges) for this purpose; it works by [querying for the repository's Check Suites](https://developer.github.com/v3/checks/suites/#list-check-suites-for-a-specific-ref) and deriving a status by looking for the GitHub Action app's activity.
 
 ```markdown
 ![Build Status](https://action-badges.now.sh/JasonEtco/example)
 ```
+
+Still, I'd love to see first-class support in the future :fingers_crossed:
 
 ## Running CI on pull requests from forks
 
@@ -246,4 +248,4 @@ This post isn't intended to somehow prove that independent CI tools are made red
 
 For example, a project I use and love, [matchai/spacefish](https://github.com/matchai/spacefish), can't use Actions for CI because **Docker doesn't support macOS images**. Some projects need to be tested in environments that Docker just doesn't support. And that workflow with multiple versions of Node.js? With more versions/variations it'd become even more verbose.
 
-And that's ok - GitHub Actions is awesome, but it's not a silver bullet. It can do a lot, but in the case of Actions, like most things, GitHub promotes a platform approach. It's a tool for integrating with GitHub and doing some things, but leaving room for more powerful robust integrations can't be built by one company trying to do it all.
+And that's ok - GitHub Actions is awesome, but it's not a silver bullet. **It doesn't need to do everything, perfectly**. Dedicated products for CI (or really anything) will always have a leg-up over individual products trying to do it all; that's the platform approach. So go forth and use Actions for CI, or whatever tool you like to use best :sparkles:
