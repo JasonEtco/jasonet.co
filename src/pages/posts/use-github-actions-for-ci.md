@@ -244,7 +244,7 @@ I fully expect that behavior to change for the better before GitHub Actions leav
 
 ## Where Actions isn't perfect
 
-This post isn't intended to somehow prove that independent CI tools are made redundant by Actions - just that for _some_ use-cases, you can choose between the two.
+This post isn't intended to somehow prove that independent CI tools are made redundant by Actions - just that for _some_ use-cases, you now have one more option.
 
 For example, a project I use and love, [matchai/spacefish](https://github.com/matchai/spacefish), can't use Actions for CI because **Docker doesn't support macOS images**. Some projects need to be tested in environments that Docker just doesn't support. And that workflow with multiple versions of Node.js? With more versions/variations it'd become even more verbose.
 
