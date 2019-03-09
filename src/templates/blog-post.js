@@ -14,7 +14,7 @@ const GITHUB_REPO_NAME = 'jasonet.co'
 
 export default function BlogPostTemplate(props) {
   const post = props.data.markdownRemark
-  const { title: siteTitle } = props.data.site.siteMetadata.title
+  const { title: siteTitle, siteUrl } = props.data.site.siteMetadata
   const { previous, next, slug } = props.pageContext
 
   const urlSlug = slug.slice(1, -1)
@@ -30,27 +30,30 @@ export default function BlogPostTemplate(props) {
         slug={post.fields.slug}
       />
       <div itemScope itemType="http://schema.org/BlogPosting">
-        <h1
-          itemProp="name"
-          style={{ ...scale(1.6), fontWeight: 900, lineHeight: 1.1 }}
-        >
-          {post.frontmatter.title}
-        </h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            fontFamily: 'Inter UI, sans-serif',
-            display: 'block',
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-3 / 5)
-          }}
-        >
-          <time itemProp="datePublished">{post.frontmatter.date}</time>
-          {` • `}
-          <time itemProp="timeRequired">
-            {formatReadingTime(post.timeToRead)}
-          </time>
-        </p>
+        <header>
+          <h1
+            itemProp="name"
+            style={{ ...scale(1.6), fontWeight: 900, lineHeight: 1.1 }}
+          >
+            {post.frontmatter.title}
+          </h1>
+          <p
+            style={{
+              ...scale(-1 / 5),
+              fontFamily: 'Inter UI, sans-serif',
+              display: 'block',
+              marginBottom: rhythm(1),
+              marginTop: rhythm(-3 / 5)
+            }}
+          >
+            <time itemProp="datePublished">{post.frontmatter.date}</time>
+            {` • `}
+            <time itemProp="timeRequired">
+              {formatReadingTime(post.timeToRead)}
+            </time>
+          </p>
+          <meta itemProp="url" content={`${siteUrl}${slug}`} />
+        </header>
 
         <div
           className="blog-post"
@@ -140,6 +143,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        siteUrl
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

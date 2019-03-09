@@ -10,6 +10,7 @@ export default function Bio() {
   return (
     <div
       itemScope
+      itemProp="author"
       itemType="http://schema.org/Person"
       className="bio"
       style={{ display: 'flex' }}
