@@ -200,18 +200,20 @@ workflow "Test my code" {
 }
 
 action "Install dependencies" {
-  uses = "nuxt/actions-yarn@node-10"
+  uses = "docker://node:10"
+  runs = "yarn"
   args = "--frozen-lockfile"
 }
 
 action "test-ci-partial" {
   needs = "Install dependencies"
-  uses = "nuxt/actions-yarn@node-10"
+  uses = "docker://node:10"
+  runs = "yarn"
   args = "run test-ci-partial"
 }
 ```
 
-That should do it! By using an external action, we can keep our workflow nice and clean :nail_care:. One thing to note is that `nuxt/actions-yarn` uses the full `FROM node` image - for the sake of optimization, you might consider forking the action and using a smaller base image.
+That should do it! By using the `docker://` protocol on the `uses` property, we can keep our workflow nice and clean :nail_care:. One thing to note is that I've used the full `FROM node` image - for this repository, it's needed to support some dependencies. You might want to put some effort into a speedier run by using a smaller base image.
 
 ### A non-hypothetical example
 
