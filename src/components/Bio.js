@@ -9,10 +9,10 @@ import { rhythm } from '../utils/typography'
 export default function Bio() {
   return (
     <div
+      itemScope
+      itemType="http://schema.org/Person"
       className="bio"
-      style={{
-        display: 'flex'
-      }}
+      style={{ display: 'flex' }}
     >
       <img
         src={profilePic}
@@ -26,11 +26,17 @@ export default function Bio() {
       />
       <p style={{ marginBottom: 0 }}>
         👋 Personal blog by{' '}
-        <a href="https://twitter.com/JasonEtco">Jason Etcovitch</a>
+        <a href="https://twitter.com/JasonEtco">
+          <span itemProp="name">Jason Etcovitch</span>
+        </a>
         <br />
-        🐙 Engineer at <a href="https://github.com/JasonEtco">GitHub</a>
+        🐙 <span itemProp="jobTitle">Engineer</span> at{' '}
+        <a href="https://github.com/JasonEtco">GitHub</a>
         <br />
-        🐦 Follow me on <a href="https://twitter.com/JasonEtco">Twitter</a>
+        🐦 Follow me on{' '}
+        <a href="https://twitter.com/JasonEtco" itemProp="url">
+          Twitter
+        </a>
       </p>
     </div>
   )

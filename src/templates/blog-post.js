@@ -29,26 +29,35 @@ export default function BlogPostTemplate(props) {
         description={post.frontmatter.spoiler}
         slug={post.fields.slug}
       />
-      <h1 style={{ ...scale(1.6), fontWeight: 900, lineHeight: 1.1 }}>
-        {post.frontmatter.title}
-      </h1>
-      <p
-        style={{
-          ...scale(-1 / 5),
-          fontFamily: 'Inter UI, sans-serif',
-          display: 'block',
-          marginBottom: rhythm(1),
-          marginTop: rhythm(-3 / 5)
-        }}
-      >
-        {post.frontmatter.date}
-        {` • ${formatReadingTime(post.timeToRead)}`}
-      </p>
+      <div itemScope itemType="http://schema.org/BlogPosting">
+        <h1
+          itemProp="name"
+          style={{ ...scale(1.6), fontWeight: 900, lineHeight: 1.1 }}
+        >
+          {post.frontmatter.title}
+        </h1>
+        <p
+          style={{
+            ...scale(-1 / 5),
+            fontFamily: 'Inter UI, sans-serif',
+            display: 'block',
+            marginBottom: rhythm(1),
+            marginTop: rhythm(-3 / 5)
+          }}
+        >
+          <time itemProp="datePublished">{post.frontmatter.date}</time>
+          {` • `}
+          <time itemProp="timeRequired">
+            {formatReadingTime(post.timeToRead)}
+          </time>
+        </p>
 
-      <div
-        className="blog-post"
-        dangerouslySetInnerHTML={{ __html: post.html }}
-      />
+        <div
+          className="blog-post"
+          itemProp="articleBody"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
+      </div>
 
       <p style={{ marginTop: rhythm(2), color: colors.gray[6] }}>
         <a href={discussUrl} target="_blank" rel="noopener noreferrer">
