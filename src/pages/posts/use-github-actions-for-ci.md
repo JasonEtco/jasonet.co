@@ -69,7 +69,7 @@ Instead of pointing to an action that has a Dockerfile, you can tell it to use a
 
 Another question you may be asking:
 
-> Jason, why didn't you use the [`actions/npm` action](https://github.com/actions/npm), isn't this what it's for?
+**📣 Jason, why didn't you just use the [`actions/npm` action](https://github.com/actions/npm)?**
 
 Great question! Let's step back for a second and remember that **GitHub Actions builds and runs Docker images**. The smaller the image, the faster your action will run - less download time, less build time, means less overall running time.
 
