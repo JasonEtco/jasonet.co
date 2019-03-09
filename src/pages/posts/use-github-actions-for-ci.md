@@ -4,9 +4,9 @@ date: '2019-03-07'
 spoiler: GitHub Actions can do a lot, including CI. Let's look at how to do it right!
 ---
 
-GitHub Actions can do a whole lot of things - [delete branches](https://github.com/jessfraz/branch-cleanup-action), [compose tweets via pull requests](https://github.com/gr2m/twitter-together); it's kind of a general "thing do-er." However, when people hear about Actions, they often ask "is GitHub Actions a replacement for CI providers?" It's a great platform to have CI built into your workflow with minimal setup but a lot of control, so its a totally reasonable question.
+GitHub Actions can do a whole lot of things - [delete branches](https://github.com/jessfraz/branch-cleanup-action), [compose tweets via pull requests](https://github.com/gr2m/twitter-together); it's kind of a general "thing do-er." Still, the first reaction people have is that it replaces CI. Actions are a great platform to have CI built into your workflow with minimal setup but a lot of control, so its a totally reasonable idea, but I get to use everyone's favorite answer: **it depends**!
 
-I get to use everyone's favorite answer: **it depends**! In this post, I'll share a workflow that I've been using for my Node.js projects, as well as some extensions to it for additional functionality. We'll also take a look at features of popular CI tools and see how they map to GitHub Actions.
+In this post, I'll share a workflow that I've been using for my Node.js projects, as well as some extensions to it for additional functionality. We'll also take a look at features of popular CI tools and see how they map to GitHub Actions.
 
 ## Some pre-reading
 
@@ -16,7 +16,7 @@ You may also want to familiarize yourself with the [actions/bin repo](https://gi
 
 ## But I love `{{ ci_provider }}` - why should I care?
 
-You'll see the benefits soon, but I'm not saying that existing projects migrate their CI to Actions; rather, new projects benefit from the minimal setup of a CI workflow if you know what you're doing. Are GitHub Actions the _best_ CI platform? I'd say it really depends on your needs; if you're just running test, you can get a lot of functionality with very little effort (I know, the dream :heart_eyes:).
+I'm not saying that existing projects should migrate their CI to Actions. Rather, new projects benefit from the minimal setup of a CI workflow if you know what you're doing. Are GitHub Actions the _best_ CI platform? I'd say it really depends on your needs; if you're just running test and viewing the logs/status, you can get a lot of functionality with very little effort (I know, the dream :heart_eyes:).
 
 ## A typical Node.js workflow
 
@@ -65,21 +65,21 @@ action "npm ci" {
 }
 ```
 
-Instead of pointing to an action that has a Dockerfile, you can tell it to use a particular Docker image. It's like declaring `FROM node:alpine`, but without needing a Dockerfile :tada:
+Instead of pointing to an action that has a Dockerfile, you can tell it to use a particular Docker image. It's like declaring `FROM node:alpine`, but **without needing a Dockerfile** :tada:. Because most test frameworks (like [Jest](https://github.com/facebook/jest), which I typically use) exit with a status code of `>1` if the tests fail, Actions will consider it a failure and report back to your commit or pull request accordingly.
 
 Another question you may be asking:
 
 > Jason, why didn't you use the [`actions/npm` action](https://github.com/actions/npm), isn't this what it's for?
 
-Great question! Let's step back for a second and remember that GitHub Actions builds and runs Docker images. The smaller the image, the faster your action will run - less download time, less build time, means less overall running time.
+Great question! Let's step back for a second and remember that **GitHub Actions builds and runs Docker images**. The smaller the image, the faster your action will run - less download time, less build time, means less overall running time.
 
-[actions/npm uses the `node` Docker base image](https://github.com/actions/npm/blob/59b64a598378f31e49cb76f27d6f3312b582f680/Dockerfile#L1), which isn't quite as small as `node:alpine`. You can [read up on the differences](https://derickbailey.com/2017/03/09/selecting-a-node-js-image-for-docker/) to see what's right for your project. So far, the biggest practical difference that I've found is that `node:alpine` doesn't ship with Git, so if your project uses dependencies [installed from a Git repository](https://docs.npmjs.com/cli/install#description) you'll need to use `node`.
+[actions/npm uses the `node` Docker base image](https://github.com/actions/npm/blob/59b64a598378f31e49cb76f27d6f3312b582f680/Dockerfile#L1), which isn't quite as small as `node:alpine`. You can [read up on the differences](https://derickbailey.com/2017/03/09/selecting-a-node-js-image-for-docker/) to see what's right for your project. So far, the biggest practical difference that I've found is that **`node:alpine` doesn't ship with Git**, so if your project uses dependencies [installed from a Git repository](https://docs.npmjs.com/cli/install#description) you'll need to use `node`.
 
 We then define a `runs` property to use the `npm` CLI that ships with Node.js. This one file gets us two individual Docker containers that run `npm ci` to install our app's dependencies and `npm test` to run our automated tests. Actions in the same workflow can access a shared filesystem, despite each action running in a separate container.
 
 ### Code coverage
 
-In a subset of my projects, I use [Codecov](https://codecov.io) to track how much of my code is covered by my tests. It's a great tool and has a CLI - if it has a CLI, we can use it in Actions :sunglasses:. So here's an addition we can make:
+In a subset of my projects, I use [Codecov](https://codecov.io) to track how much of my code is covered by my tests. It's a great tool and has a CLI - **if it has a CLI, we can use it in Actions** :sunglasses:. So here's an addition we can make:
 
 ```hcl
 # An action that uses `npx` and the `codecov` CLI
@@ -102,7 +102,7 @@ We also need to update the `resolves` property of our workflow to ensure that ou
  }
 ```
 
-And after adding the `CODECOV_TOKEN` secret in the GitHub UI, we're done! Using `npx` we download and run the `codecov` package, and the CLI does the rest :sparkles:
+And after adding the `CODECOV_TOKEN` secret in the GitHub UI, we're done! Using `npx` we download and run the `codecov` library, and so long as our test script is setup to output coverage data (like with `jest --coverage`) the CLI does the rest :sparkles:
 
 ### Testing multiple version of Node.js
 
@@ -154,7 +154,7 @@ That's pretty much all there is to it. We've got two trees of actions (based on 
 
 <img width="509" alt="Rendering of the dual-version workflow" style="display: block; margin-right: auto; margin-left: auto" src="https://user-images.githubusercontent.com/10660468/54003860-97527300-4121-11e9-8b6d-f13065aeed0e.png">
 
-You could also choose to do two separate `workflow`s, to have two distinct statuses:
+You could also choose to do two separate `workflow`s, to have **two distinct statuses**:
 
 ```hcl
 workflow "Test my code in node@10" {
@@ -213,6 +213,8 @@ action "test-ci-partial" {
 
 That should do it! By using an external action, we can keep our workflow nice and clean :nail_care:. One thing to note is that `nuxt/actions-yarn` uses the full `FROM node` image - for the sake of optimization, you might consider forking the action and using a smaller base image.
 
+### A non-hypothetical example
+
 Here's a similar exercise with proven results in [JasonEtco/create-an-issue](https://github.com/JasonEtco/create-an-issue) of [replacing a basic `.travis.yml` file with a workflow](https://github.com/JasonEtco/create-an-issue/compare/d10d7bc2a567fa4288ead6b91f307aa4b44fb9f7...3b32e1e16d13ce431cc2ad4031eda7ba1396096a). Performance is important for CI, we want our tests to run quickly - so let's look at the difference in execution time:
 
 | Provider       | Execution time |
@@ -224,7 +226,7 @@ They're basically the same! The functionality stays exactly the same; not additi
 
 ## README Badges
 
-A beloved feature of most CI providers is their ability to show a badge on a repository's README, depicting the status of the build (whether its passing, failing, etc). I'm so used to the badges that if they aren't present my eyes get confused. Unfortunately, there's no first-class badge support with Actions. I built [JasonEtco/action-badges](https://github.com/JasonEtco/action-badges) for this purpose; it works by [querying for the repository's Check Suites](https://developer.github.com/v3/checks/suites/#list-check-suites-for-a-specific-ref) and deriving a status by looking for the GitHub Action app's activity.
+A beloved feature of most CI providers is their ability to show a badge on a repository's README, depicting the status of the build (whether its passing, failing, etc). I'm so used to the badges that if they aren't present my eyes get confused. Unfortunately, there's no first-class badge support with Actions. I built [JasonEtco/action-badges](https://github.com/JasonEtco/action-badges) for this purpose; it works by [querying for the repository's Check Suites](https://developer.github.com/v3/checks/suites/#list-check-suites-for-a-specific-ref) and deriving a status by looking for the GitHub Action app's activity. Still, I'd love to see first-class support in the future :fingers_crossed:
 
 ```markdown
 ![Build Status](https://action-badges.now.sh/JasonEtco/example)
@@ -242,6 +244,6 @@ I fully expect that behavior to change for the better before GitHub Actions leav
 
 This post isn't intended to somehow prove that independent CI tools are made redundant by Actions - just that for _some_ use-cases, you can choose between the two.
 
-For example, a project I use and love, [matchai/spacefish](https://github.com/matchai/spacefish), can't use Actions for CI because Docker doesn't support macOS images. Some projects need to be tested in environments that Docker just doesn't support. And that workflow with multiple versions of Node.js? With more versions/variations it'd become even more verbose.
+For example, a project I use and love, [matchai/spacefish](https://github.com/matchai/spacefish), can't use Actions for CI because **Docker doesn't support macOS images**. Some projects need to be tested in environments that Docker just doesn't support. And that workflow with multiple versions of Node.js? With more versions/variations it'd become even more verbose.
 
 And that's ok - GitHub Actions is awesome, but it's not a silver bullet. It can do a lot, but in the case of Actions, like most things, GitHub promotes a platform approach. It's a tool for integrating with GitHub and doing some things, but leaving room for more powerful robust integrations can't be built by one company trying to do it all.
