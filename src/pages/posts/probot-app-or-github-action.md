@@ -15,7 +15,7 @@ I won't go too deep into what Actions are - [@jessfraz](https://twitter.com/jess
 1. Run code to respond to an event on GitHub
 2. GitHub will run _anything_ in a Docker container
 
-The key point is that GitHub runs your Actions run in an ephemeral container - there's no hosting, server costs or deployment to worry about. It's sort of like a scoped serverless function that's triggered by events in a GitHub repository.
+The key point is that GitHub runs your Actions in an ephemeral container - there's no hosting, server costs or deployment to worry about. It's sort of like a scoped serverless function that's triggered by events in a GitHub repository.
 
 ## Probot
 

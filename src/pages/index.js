@@ -65,17 +65,25 @@ export default function BlogIndex(props) {
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
-            <div key={node.fields.slug}>
-              <h3 style={{ marginBottom: rhythm(1 / 4) }}>
+            <div
+              key={node.fields.slug}
+              itemScope
+              itemType="https://schema.org/BlogPosting"
+            >
+              <h3 itemProp="name" style={{ marginBottom: rhythm(1 / 4) }}>
                 <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
                   {title}
                 </Link>
               </h3>
               <small>
-                {node.frontmatter.date}
-                {` • ${formatReadingTime(node.timeToRead)}`}
+                <time itemProp="datePublished">{node.frontmatter.date}</time>
+                {` • `}
+                <time itemProp="timeRequired">
+                  {formatReadingTime(node.timeToRead)}
+                </time>
               </small>
               <p
+                itemProp="about headline comment"
                 dangerouslySetInnerHTML={{ __html: node.frontmatter.spoiler }}
               />
             </div>
