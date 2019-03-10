@@ -54,7 +54,7 @@ export default function BlogPostTemplate(props) {
           </p>
           <div
             itemScope
-            itemType="https://schema.org/Person"
+            itemType="http://schema.org/Person"
             itemProp="publisher"
           >
             <meta itemProp="name" content="Jason Etcovitch" />
