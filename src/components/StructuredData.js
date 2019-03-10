@@ -6,7 +6,7 @@ function StructuredData({ data }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={JSON.stringify(data)}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
   )
 }
