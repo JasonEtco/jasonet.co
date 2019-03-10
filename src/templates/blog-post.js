@@ -52,7 +52,11 @@ export default function BlogPostTemplate(props) {
               {formatReadingTime(post.timeToRead)}
             </time>
           </p>
+          <meta itemProp="publisher" content="Jason Etcovitch" />
+          <meta itemProp="headline" content={post.frontmatter.spoiler} />
           <meta itemProp="url" content={`${siteUrl}${slug}`} />
+          <meta itemProp="dateModified" content={post.frontmatter.date} />
+          <meta itemProp="image" content={`${siteUrl}/card.png`} />
         </header>
 
         <div
@@ -117,6 +121,11 @@ export default function BlogPostTemplate(props) {
               itemType="https://schema.org/BlogPosting"
             >
               ← <span itemProp="name">{previous.frontmatter.title}</span>
+              <meta itemProp="author" content="Jason Etcovitch" />
+              <meta
+                itemProp="headline"
+                content={previous.frontmatter.spoiler}
+              />
             </Link>
           )}
         </li>
@@ -129,6 +138,8 @@ export default function BlogPostTemplate(props) {
               itemType="https://schema.org/BlogPosting"
             >
               <span itemProp="name">{next.frontmatter.title}</span> →
+              <meta itemProp="author" content="Jason Etcovitch" />
+              <meta itemProp="headline" content={next.frontmatter.spoiler} />
             </Link>
           )}
         </li>
