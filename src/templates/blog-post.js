@@ -136,6 +136,8 @@ export default function BlogPostTemplate(props) {
                   name: prev.frontmatter.title,
                   headline: prev.frontmatter.spoiler,
                   dateCreated: prev.frontmatter.date,
+                  datePublished: prev.frontmatter.date,
+                  image: `${siteUrl}/card.png`,
                   author: {
                     '@type': 'Person',
                     name: 'Jason Etcovitch'
@@ -160,6 +162,8 @@ export default function BlogPostTemplate(props) {
                   name: next.frontmatter.title,
                   headline: next.frontmatter.spoiler,
                   dateCreated: next.frontmatter.date,
+                  datePublished: next.frontmatter.date,
+                  image: `${siteUrl}/card.png`,
                   author: {
                     '@type': 'Person',
                     name: 'Jason Etcovitch'
