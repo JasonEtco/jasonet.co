@@ -101,8 +101,8 @@ export default function BlogPostTemplate(props) {
             datePublished: post.frontmatter.date,
             dateModified: post.frontmatter.date,
             headline: post.frontmatter.spoiler,
-            articleBody: post.html,
-            text: post.html,
+            articleBody: post.rawMarkdownBody,
+            text: post.rawMarkdownBody,
             timeRequired: post.timeToRead,
             url: `${siteUrl}${slug}`,
             image: `${siteUrl}/card.png`,
@@ -186,6 +186,7 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
+      rawMarkdownBody
       timeToRead
       frontmatter {
         title
