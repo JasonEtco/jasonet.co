@@ -10,13 +10,13 @@ In this post, I'll share a workflow that I've been using for my Node.js projects
 
 ## Some pre-reading
 
-I'll be delving into the nitty-gritty of writing a workflow file, including some lesser-known functionality. I'd encourage you to read [my previous blog post on GitHub Actions workflows](./what-are-github-workflows), where I talk a bit about workflows as a whole.
+I'll be delving into the nitty-gritty of writing a workflow file, including some lesser-known functionality. I'd encourage you to read [my previous blog post on GitHub Actions workflows](../what-are-github-workflows), where I talk a bit about workflows as a whole.
 
 You may also want to familiarize yourself with the [actions/bin repo](https://github.com/actions/bin), a collection of actions that are highly scoped and useful for composing a workflow without writing any custom code (especially [actions/bin/filter](https://github.com/actions/bin/blob/master/filter)).
 
 ## But I love `{{ ci_provider }}` - why should I care?
 
-I'm not saying that existing projects should migrate their CI to Actions. Rather, new projects benefit from the minimal setup of a CI workflow if you know what you're doing. Are GitHub Actions the _best_ CI platform? I'd say it really depends on your needs; if you're just running test and viewing the logs/status, you can get a lot of functionality with very little effort (I know, the dream :heart_eyes:).
+I'm not saying that existing projects should migrate their CI to Actions. Rather, new projects benefit from the minimal setup of a CI workflow if you know what you're doing. Are GitHub Actions the _best_ CI platform? I'd say it really depends on your needs; if you're just running tests and viewing the logs/status, you can get a lot of functionality with very little effort (I know, the dream :heart_eyes:).
 
 ## A typical Node.js workflow
 
@@ -71,7 +71,7 @@ Another question you may be asking:
 
 **📣 Jason, why didn't you just use the [`actions/npm` action](https://github.com/actions/npm)?**
 
-Great question! Let's step back for a second and remember that **GitHub Actions builds and runs Docker images**. The smaller the image, the faster your action will run - less download time, less build time, means less overall running time.
+Great question! Let's step back for a second and remember that **GitHub Actions build and run Docker images**. The smaller the image, the faster your action will run - less download time, less build time, means less overall running time.
 
 [actions/npm uses the `node` Docker base image](https://github.com/actions/npm/blob/59b64a598378f31e49cb76f27d6f3312b582f680/Dockerfile#L1), which isn't quite as small as `node:alpine`. You can [read up on the differences](https://derickbailey.com/2017/03/09/selecting-a-node-js-image-for-docker/) to see what's right for your project. So far, the biggest practical difference that I've found is that **`node:alpine` doesn't ship with Git**, so if your project uses dependencies [installed from a Git repository](https://docs.npmjs.com/cli/install#description) you'll need to use `node`.
 
@@ -189,7 +189,7 @@ script:
   - yarn run test-ci-partial
 ```
 
-Some parts of this don't map perfectly to Actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make action runs fast, so let's skip it for now.
+Some parts of this don't map perfectly to Actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make Actions run faster, so let's skip it for now.
 
 That leaves us with the following information: we're using `node@10`, `yarn`, and running the `test-ci-partial` script after installing our dependencies. Here's what that might look like:
 
@@ -240,9 +240,9 @@ Still, I'd love to see first-class support in the future :fingers_crossed:
 
 GitHub Actions and forked repositories are currently in a weird state. I expect this to improve quickly, but right now when a pull request is opened from a fork to the upstream, there are a few oddities. The first is that it will only trigger the `pull_request` event - that makes sense because the associated `push` isn't happening on the upstream repo. However, this leads to the actual issues: the tests are run against the master branch, and the status isn't reflected back to the pull request.
 
-[@gr2m](https://twitter.com/gr2m) created [git-checkout-pull-request-action](https://github.com/gr2m/git-checkout-pull-request-action) to checkout the fork's branch before running tests - it'll intercept the workflow and, if necessary, make sure the tests are running against the appropriate code. This solves the first of those two problems, but not the second - the PR isn't updated with the status of the checks :disappointed:. The only way to check that status is to open the `Actions` tab and find try to find the correct run.
+[@gr2m](https://twitter.com/gr2m) created [git-checkout-pull-request-action](https://github.com/gr2m/git-checkout-pull-request-action) to checkout the fork's branch before running tests - it'll intercept the workflow and, if necessary, make sure the tests are running against the appropriate code. This solves the first of those two problems, but not the second - the PR isn't updated with the status of the checks :disappointed:. The only way to check that status is to open the `Actions` tab and try to find the correct run.
 
-I fully expect that behavior to change for the better before GitHub Actions leaves beta status (the Actions team is full of real smart people), so I hope to update this post when it does!
+I fully expect that behavior to change for the better before GitHub Actions leaves beta status (the Actions team is full of really smart people), so I hope to update this post when it does!
 
 ## Where Actions isn't perfect
 
