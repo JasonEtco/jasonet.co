@@ -52,12 +52,13 @@ export default function BlogPostTemplate(props) {
               {formatReadingTime(post.timeToRead)}
             </time>
           </p>
-          <meta
+          <div
             itemScope
             itemType="https://schema.org/Person"
             itemProp="publisher"
-            content="Jason Etcovitch"
-          />
+          >
+            <meta itemProp="name" content="Jason Etcovitch" />
+          </div>
           <meta itemProp="headline" content={post.frontmatter.spoiler} />
           <meta itemProp="url" content={`${siteUrl}${slug}`} />
           <meta itemProp="dateModified" content={post.frontmatter.date} />
