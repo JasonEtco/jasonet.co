@@ -31,7 +31,7 @@ Nowadays, I create my `.github/main.workflow` file and this is my whole process:
 
 1. Push a configuration file to my repo
 
-75% efficiency improvement! Because most of my projects follow the exact same CI patterns and have the exact same requirements, it is really repetitive. So, here's the `main.workflow` file in its entirety:
+75% efficiency improvement! Because most of my projects follow the exact same CI patterns and have the exact same requirements, it really is repetitive. So, here's the `main.workflow` file in its entirety:
 
 ```hcl
 workflow "Test my code" {
@@ -189,7 +189,7 @@ script:
   - yarn run test-ci-partial
 ```
 
-Some parts of this don't map perfectly to Actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make actions run faster, so let's skip it for now.
+Some parts of this don't map perfectly to Actions. The `cache` property doesn't have an equivalent - instead, GitHub caches Docker images. There's lots still to do in this space to make Actions run faster, so let's skip it for now.
 
 That leaves us with the following information: we're using `node@10`, `yarn`, and running the `test-ci-partial` script after installing our dependencies. Here's what that might look like:
 
@@ -217,7 +217,7 @@ That should do it! By using the `docker://` protocol on the `uses` property, we 
 
 ### A non-hypothetical example
 
-Here's a similar exercise with proven results in [JasonEtco/create-an-issue](https://github.com/JasonEtco/create-an-issue) of [replacing a basic `.travis.yml` file with a workflow](https://github.com/JasonEtco/create-an-issue/compare/d10d7bc2a567fa4288ead6b91f307aa4b44fb9f7...3b32e1e16d13ce431cc2ad4031eda7ba1396096a). Performance is most important for a CI, so we want our tests to run quickly - let's look at the difference in execution time:
+Here's a similar exercise with proven results in [JasonEtco/create-an-issue](https://github.com/JasonEtco/create-an-issue) of [replacing a basic `.travis.yml` file with a workflow](https://github.com/JasonEtco/create-an-issue/compare/d10d7bc2a567fa4288ead6b91f307aa4b44fb9f7...3b32e1e16d13ce431cc2ad4031eda7ba1396096a). Performance is important for CI, we want our tests to run quickly - so let's look at the difference in execution time:
 
 | Provider       | Execution time |
 | -------------- | -------------- |
@@ -228,7 +228,7 @@ They're basically the same! The functionality stays exactly the same; not additi
 
 ## README Badges
 
-A beloved feature of most CI providers is their ability to show a badge on a repository's README, depicting the status of the build (whether its passing, failing, etc). I'm so used to the badges that if they aren't present my eyes get confused. Unfortunately, there's no first-class badge support with Actions. I built [JasonEtco/action-badges](https://github.com/JasonEtco/action-badges) for this purpose; it works by [querying for the repository's Check Suites](https://developer.github.com/v3/checks/suites/#list-check-suites-for-a-specific-ref) and derives a status by looking for the GitHub Action app's activity.
+A beloved feature of most CI providers is their ability to show a badge on a repository's README, depicting the status of the build (whether its passing, failing, etc). I'm so used to the badges that if they aren't present my eyes get confused. Unfortunately, there's no first-class badge support with Actions. I built [JasonEtco/action-badges](https://github.com/JasonEtco/action-badges) for this purpose; it works by [querying for the repository's Check Suites](https://developer.github.com/v3/checks/suites/#list-check-suites-for-a-specific-ref) and deriving a status by looking for the GitHub Action app's activity.
 
 ```markdown
 ![Build Status](https://action-badges.now.sh/JasonEtco/example)
