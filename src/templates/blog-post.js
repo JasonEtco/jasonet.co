@@ -15,7 +15,7 @@ const GITHUB_REPO_NAME = 'jasonet.co'
 export default function BlogPostTemplate(props) {
   const post = props.data.markdownRemark
   const { title: siteTitle, siteUrl } = props.data.site.siteMetadata
-  const { previous, next, slug } = props.pageContext
+  const { previous: prev, next, slug } = props.pageContext
 
   const urlSlug = slug.slice(1, -1)
   const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${urlSlug}.md`
@@ -113,19 +113,17 @@ export default function BlogPostTemplate(props) {
         }}
       >
         <li>
-          {previous && (
+          {prev && (
             <Link
-              to={previous.fields.slug}
+              to={prev.fields.slug}
               rel="prev"
               itemScope
               itemType="https://schema.org/BlogPosting"
             >
-              ← <span itemProp="name">{previous.frontmatter.title}</span>
+              ← <span itemProp="name">{prev.frontmatter.title}</span>
               <meta itemProp="author" content="Jason Etcovitch" />
-              <meta
-                itemProp="headline"
-                content={previous.frontmatter.spoiler}
-              />
+              <meta itemProp="headline" content={prev.frontmatter.spoiler} />
+              <meta itemProp="dateCreated" content={prev.frontmatter.date} />
             </Link>
           )}
         </li>
@@ -140,6 +138,7 @@ export default function BlogPostTemplate(props) {
               <span itemProp="name">{next.frontmatter.title}</span> →
               <meta itemProp="author" content="Jason Etcovitch" />
               <meta itemProp="headline" content={next.frontmatter.spoiler} />
+              <meta itemProp="dateCreated" content={next.frontmatter.date} />
             </Link>
           )}
         </li>
