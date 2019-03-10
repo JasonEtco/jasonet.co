@@ -8,6 +8,7 @@ import { formatReadingTime } from '../utils/helpers'
 import { rhythm, scale, colors } from '../utils/typography'
 import { shape, string } from 'prop-types'
 import p from '../utils/shared-props'
+import StructuredData from '../components/StructuredData'
 
 const GITHUB_USERNAME = 'JasonEtco'
 const GITHUB_REPO_NAME = 'jasonet.co'
@@ -29,7 +30,7 @@ export default function BlogPostTemplate(props) {
         description={post.frontmatter.spoiler}
         slug={post.fields.slug}
       />
-      <div itemScope itemType="http://schema.org/BlogPosting">
+      <div>
         <header>
           <h1
             itemProp="name"
@@ -46,28 +47,14 @@ export default function BlogPostTemplate(props) {
               marginTop: rhythm(-3 / 5)
             }}
           >
-            <time itemProp="datePublished">{post.frontmatter.date}</time>
+            <time>{post.frontmatter.date}</time>
             {` • `}
-            <time itemProp="timeRequired">
-              {formatReadingTime(post.timeToRead)}
-            </time>
+            <time>{formatReadingTime(post.timeToRead)}</time>
           </p>
-          <div
-            itemScope
-            itemType="http://schema.org/Person"
-            itemProp="publisher"
-          >
-            <meta itemProp="name" content="Jason Etcovitch" />
-          </div>
-          <meta itemProp="headline" content={post.frontmatter.spoiler} />
-          <meta itemProp="url" content={`${siteUrl}${slug}`} />
-          <meta itemProp="dateModified" content={post.frontmatter.date} />
-          <meta itemProp="image" content={`${siteUrl}/card.png`} />
         </header>
 
         <div
           className="blog-post"
-          itemProp="articleBody text"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
 
@@ -105,6 +92,27 @@ export default function BlogPostTemplate(props) {
           </h3>
           <Bio />
         </div>
+
+        <StructuredData
+          data={{
+            '@type': 'BlogPosting',
+            name: post.frontmatter.title,
+            dateCreated: post.frontmatter.date,
+            datePublished: post.frontmatter.date,
+            dateModified: post.frontmatter.date,
+            headline: post.frontmatter.spoiler,
+            articleBody: post.html,
+            text: post.html,
+            timeRequired: post.timeToRead,
+            url: `${siteUrl}${slug}`,
+            image: `${siteUrl}/card.png`,
+            author: {
+              '@type': 'Person',
+              name: 'Jason Etcovitch',
+              url: siteUrl
+            }
+          }}
+        />
       </div>
 
       <ul
@@ -120,16 +128,20 @@ export default function BlogPostTemplate(props) {
       >
         <li>
           {prev && (
-            <Link
-              to={prev.fields.slug}
-              rel="prev"
-              itemScope
-              itemType="https://schema.org/BlogPosting"
-            >
-              ← <span itemProp="name">{prev.frontmatter.title}</span>
-              <meta itemProp="author" content="Jason Etcovitch" />
-              <meta itemProp="headline" content={prev.frontmatter.spoiler} />
-              <meta itemProp="dateCreated" content={prev.frontmatter.date} />
+            <Link to={prev.fields.slug} rel="prev">
+              ← {prev.frontmatter.title}
+              <StructuredData
+                data={{
+                  '@type': 'BlogPosting',
+                  name: prev.frontmatter.title,
+                  headline: prev.frontmatter.spoiler,
+                  dateCreated: prev.frontmatter.date,
+                  author: {
+                    '@type': 'Person',
+                    name: 'Jason Etcovitch'
+                  }
+                }}
+              />
             </Link>
           )}
         </li>
@@ -141,10 +153,19 @@ export default function BlogPostTemplate(props) {
               itemScope
               itemType="https://schema.org/BlogPosting"
             >
-              <span itemProp="name">{next.frontmatter.title}</span> →
-              <meta itemProp="author" content="Jason Etcovitch" />
-              <meta itemProp="headline" content={next.frontmatter.spoiler} />
-              <meta itemProp="dateCreated" content={next.frontmatter.date} />
+              {next.frontmatter.title} →
+              <StructuredData
+                data={{
+                  '@type': 'BlogPosting',
+                  name: next.frontmatter.title,
+                  headline: next.frontmatter.spoiler,
+                  dateCreated: next.frontmatter.date,
+                  author: {
+                    '@type': 'Person',
+                    name: 'Jason Etcovitch'
+                  }
+                }}
+              />
             </Link>
           )}
         </li>
