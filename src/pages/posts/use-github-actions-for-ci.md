@@ -67,7 +67,7 @@ action "npm ci" {
 
 Instead of pointing to an action that has a Dockerfile, you can tell it to use a particular Docker image. It's like declaring `FROM node:alpine`, but **without needing a Dockerfile** :tada:. Because most test frameworks (like [Jest](https://github.com/facebook/jest), which I typically use) exit with a status code of `1` or greater if at least one test fails, Actions will consider it a failure and report back to your commit or pull request accordingly.
 
-For even more performance magic, you could use one action with [`npm install-ci-test` (alias `npm cit`)](https://docs.npmjs.com/cli/install-ci-test.html) to do what we're doing in two actions! Shoutout [@chadfawcett_10](https://twitter.com/chadfawcett_10) for [the tip](https://twitter.com/chadfawcett_10/status/1105236824719425536)!
+For even more performance magic, you could use one action with [`npm install-ci-test`](https://docs.npmjs.com/cli/install-ci-test.html) to do what we're doing in two actions! Shoutout [@chadfawcett_10](https://twitter.com/chadfawcett_10) for [the tip](https://twitter.com/chadfawcett_10/status/1105236824719425536)!
 
 Another question you may be asking:
 
