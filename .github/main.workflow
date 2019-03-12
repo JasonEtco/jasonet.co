@@ -4,7 +4,7 @@ workflow "Test my code" {
 }
 
 action "npm ci" {
-  uses = "docker://node"
+  uses = "docker://timbru31/node-alpine-git"
   args = "npm ci"
 }
 
