@@ -1,15 +1,9 @@
 workflow "Test my code" {
   on = "push"
-  resolves = ["npm test"]
+  resolves = ["npm cit"]
 }
 
-action "npm ci" {
+action "npm cit" {
   uses = "docker://node"
-  args = "npm ci"
-}
-
-action "npm test" {
-  uses = "actions/npm@master"
-  args = "test"
-  needs = ["npm ci"]
+  args = "npm cit"
 }
