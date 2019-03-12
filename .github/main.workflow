@@ -9,7 +9,7 @@ action "npm ci" {
 }
 
 action "npm test" {
-  uses = "actions/npm@master"
+  uses = "docker://node:10-alpine"
   args = "test"
   needs = ["npm ci"]
 }
