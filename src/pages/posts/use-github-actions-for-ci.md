@@ -224,7 +224,7 @@ Here's a similar exercise with proven results in [JasonEtco/create-an-issue](htt
 | Travis CI      | 36 seconds     |
 | GitHub Actions | 34 seconds     |
 
-They're basically the same! The functionality stays exactly the same; not additional features of either platform are in use, it just runs our tests. We haven't taken into account any of the speed improvements available to us in TravisCI, this is just the default behavior. Comparatively, I think that execution speed will only improve with GitHub Actions, and I'm really curious to see what kind of improvements users will get without any additional effort.
+They're basically the same! The functionality stays exactly the same; no additional features of either platform are in use, it just runs our tests. We haven't taken into account any of the speed improvements available to us in TravisCI, this is just the default behavior. Comparatively, I think that execution speed will only improve with GitHub Actions, and I'm really curious to see what kind of improvements users will get without any additional effort.
 
 ## README Badges
 
