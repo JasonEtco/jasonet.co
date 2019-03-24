@@ -1,5 +1,5 @@
 ---
-title: Just enough Docker to get by
+title: Docker, for those that don't want to learn Docker
 date: '2019-03-25'
 spoiler: You don't need to be a Docker expert to build things with it.
 ---
