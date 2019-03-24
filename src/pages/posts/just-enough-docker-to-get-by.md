@@ -4,15 +4,15 @@ date: '2019-03-25'
 spoiler: You don't need to be a Docker expert to build things with it.
 ---
 
-I've written a [couple] of [times] about GitHub Actions, and a key component of that ecosystem is [Docker](). It's kind of a big topic, as its a powerful tool that can do a lot, or be as complicated as you need it to be - but ultimately, not everyone needs to learn Docker's ins-and-outs.
+I've written a [couple](../building-github-actions-in-node) of [times](../use-github-actions-for-ci) about GitHub Actions, and a key component of that ecosystem is [Docker](https://docker.com). It's kind of a big topic, as its a powerful tool that can do a lot, or be as complicated as you need it to be - but ultimately, not everyone needs to learn Docker's ins-and-outs.
 
-This post will focus on the basics of Docker, with a focus on configuring Docker containers for [GitHub Actions]() - but the fundamentals can be used for any project.
+This post will focus on the basics of Docker, with a focus on configuring Docker containers for [GitHub Actions](https://github.com/features/actions) - but the fundamentals can be used for any project.
 
 One note: I'm intentionally simplifying certain things here. I firmly believe in avoiding information overload, and bombarding people with more knowledge than is necessary is harmful to their learning experience. If you're a Docker expert thinking "well yeah _but_" - I encourage you to write your own, more advanced post!
 
 ## What is Docker?
 
-That's an important question, isn't it? Docker is a tool for **running applications in isolated containers**. You declare, by writing a `Dockerfile`, what your container needs to run and what code its running. Docker [has great documentation](), and I highly suggest you poke around there; my goal here is to give you some practical advice, but the docs are way better at filling in areas that I intentionally skim over.
+That's an important question, isn't it? Docker is a tool for **running applications in isolated containers**. You declare, by writing a `Dockerfile`, what your container needs to run and what code its running. Docker [has great documentation](https://docs.docker.com), and I highly suggest you poke around there; my goal here is to give you some practical advice, but the docs are way better at filling in areas that I intentionally skim over.
 
 Here's an example: I'm building my Node.js application, and I want it to run on a Ubuntu machine (because I know that's where I'm deploying it). I have two options: install Ubuntu on my Macbook (no thanks) or use Docker to run the application inside of a Ubuntu **container**. By using Docker, I get a local development environment that is 100% the same as where I'm deploying my application, despite being on a Macbook (or Windows for that matter).
 
@@ -36,7 +36,7 @@ Images are **built** - so you'll instruct Docker to build your image by followin
 
 ## Dockerfiles
 
-Docker operates by reading the instructions you give it from a special `Dockerfile`. The [reference docs]() do a great job of explaining each keyword in depth, but I'll share the more common ones. Let's break down this `Dockerfile`:
+Docker operates by reading the instructions you give it from a special `Dockerfile`. The [reference docs](https://docs.docker.com/engine/reference/builder/) do a great job of explaining each keyword in depth, but I'll share the more common ones. Let's break down this `Dockerfile`:
 
 ```docker
 FROM node:slim
@@ -113,4 +113,4 @@ Here, we're copying over the `package.json` file and installing dependencies _be
 
 Remember when I said that I'd be simplifying certain areas? Well, here are some additional resources that don't fit into this post, but would be a good next stop on your Docker journey.
 
-* [docker-compose](), a tool for building and running **multiple containers** at once.
+* [docker-compose](https://docs.docker.com/compose/), a tool for building and running **multiple containers** at once.
