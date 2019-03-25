@@ -4,13 +4,13 @@ workflow "Test my code" {
 }
 
 action "npm ci" {
-  uses = "docker://timbru31/node-alpine-git"
+  uses = "docker://node:lts-alpine"
   runs = "npm"
   args = "ci"
 }
 
 action "npm test" {
-  uses = "docker://node:10-alpine"
+  uses = "docker://node:lts-alpine"
   runs = "npm"
   args = "test"
   needs = ["npm ci"]
