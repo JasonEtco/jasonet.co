@@ -1,7 +1,7 @@
 ---
 title: Just enough Docker
 date: '2019-04-06'
-spoiler: You don't need to be a Docker expert to build things with it.
+spoiler: You don't need to be a Docker expert to build things with it. Here is some info to get you started!
 ---
 
 I've written a [couple](../building-github-actions-in-node) of [times](../use-github-actions-for-ci) about GitHub Actions, and a key component of that ecosystem is [Docker](https://docker.com). It's kind of a big topic, as its a powerful tool that can do a lot, or be as complicated as you need it to be—but ultimately, not everyone needs to learn Docker's ins-and-outs.
