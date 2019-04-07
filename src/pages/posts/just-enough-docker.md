@@ -59,11 +59,11 @@ This tells Docker where the _base_ image is. Docker works in layers, so we're st
 
 We've specified the `node:slim` image - this is actually `node`, with the `slim` tag. Tags are like specific versions - you might say you want `node:10.15.0`, or even `node:latest`.
 
-`slim` is a special one - its a Docker image that is **smaller and has less functionality out of the box**. This means that the image it builds will have a smaller file size, and be faster to download. There are lots of other options for smaller images - `alpine` is about the smallest Linux distribution you can get, but the more stripped-down your base image, the more work you'll have to do to ensure that your application has everything it needs to run. [Here's a great article outlining the differences](https://derickbailey.com/2017/03/09/selecting-a-node-js-image-for-docker/).
+`slim` is a special one - its a Docker image that is **smaller and has less functionality out of the box**. This means that the image it builds will have a smaller file size, and be faster to download. There are lots of other options for smaller images - `alpine` is a popular Linux distribution. The more stripped-down your base image, the more work you'll have to do to ensure that your application has everything it needs to run. [Here's a great article outlining the differences](https://derickbailey.com/2017/03/09/selecting-a-node-js-image-for-docker/) for Node.js images, but the concepts are good to learn for general Docker-ing.
 
 ### `RUN`
 
-The `RUN` keyword tells Docker to **run a command while building the image**. This isn't done while your app is running, but rather **at build time**. A common use-case for this is installing dependencies, or building a production bundle:
+The `RUN` keyword tells Docker to **run a command while building the image**. This isn't done while your app is running, but rather at build time, so its done once while creating the "snapshot." A common use-case for this is installing dependencies, or building a production bundle:
 
 ```docker
 RUN npm install
@@ -72,7 +72,14 @@ RUN npm run build
 
 ### `COPY`
 
-If we think of a Docker container as some ephemeral, invisible box, its important to remember that unless we tell it to, it won't have access to any of our applications files. `COPY` tells Docker, **at build time**, to copy certain files into the image.
+If we think of a Docker container as some ephemeral, invisible box, its important to remember that unless we tell it to, it won't have access to any of our applications files. `COPY` tells Docker, while building the image, to copy certain files into the image.
+
+Here we're saying "copy everything from the current directory of the host to the current directory of the image:
+
+```docker
+# COPY <host> <image>
+COPY . .
+```
 
 ### `ENTRYPOINT`
 
