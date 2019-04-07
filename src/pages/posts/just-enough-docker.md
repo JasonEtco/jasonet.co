@@ -1,6 +1,6 @@
 ---
 title: Just enough Docker
-date: '2019-03-25'
+date: '2019-04-06'
 spoiler: You don't need to be a Docker expert to build things with it.
 ---
 
