@@ -71,7 +71,7 @@ action "Stale" {
 
 ### electron/unreleased
 
-Every Monday, [this brand new Action](https://github.com/electron/unreleased) pings a team in the Electron Slack workspace with information about the commits that have been merged to master but are not in a release yet.
+Every Monday, [this brand new Action](https://github.com/electron/unreleased) pings a team in the Electron Slack workspace with information about the commits that have been merged to a release branch but are not in a published release yet.
 
 This will help them keep track of new features & bug fixes that folks are waiting for, but have yet to be released in a new version of Electron. I do this all the time with projects way, way smaller - this kind of automation is super exciting :sparkles:
 
