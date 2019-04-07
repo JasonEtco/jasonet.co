@@ -12,9 +12,9 @@ One note: I'm intentionally simplifying certain things here. I firmly believe in
 
 ## What is Docker?
 
-That's an important question, isn't it? Docker is a tool for **running applications in isolated containers**. You declare, by writing a `Dockerfile`, what your container needs to run and what code its running. Docker [has great documentation](https://docs.docker.com), and I highly suggest you poke around there; my goal here is to give you some practical advice, but the docs are way better at filling in areas that I intentionally skim over.
+That's an important question, isn't it? Docker is a tool for **running applications in isolated containers**. You declare, by writing a `Dockerfile`, what your container needs to run and what code it's running. Docker [has great documentation](https://docs.docker.com), and I highly suggest you poke around there; my goal here is to give you some practical advice, but the docs are way better at filling in areas that I intentionally skim over.
 
-Here's an example: I'm building my Node.js application, and I want it to run on a Ubuntu machine (because I know that's where I'm deploying it). I have two options: install Ubuntu on my Macbook (no thanks) or use Docker to run the application inside of a Ubuntu **container**. By using Docker, I get a local development environment that is 100% the same as where I'm deploying my application, despite being on a Macbook (or Windows for that matter).
+Here's an example: I'm building my Node.js application, and I want it to run on a Ubuntu machine (because I know that's where I'm deploying it). I have two options: install Ubuntu on my Macbook (no thanks) or use Docker to run the application inside of a Ubuntu **container**. By using Docker, I get a local development environment that is 100% the same as where I'm deploying my application, despite being on a MacBook (or Windows for that matter).
 
 ### Containers
 
@@ -28,11 +28,11 @@ Containers can be run on your computer, or on some cloud service (more about thi
 
 ### Host
 
-This one's fairly straightforward. Docker is some software you can install on your machine—if I'm running Docker from my Macbook and I spin up some containers, my Macbook is the **host**. Communication between a container and its host is a common topic of conversation, so we'll get into that later on.
+This one's fairly straightforward. Docker is some software you can install on your machine—if I'm running Docker from my Macbook and I spin up some containers, my MacBook is the **host**. Communication between a container and its host is a common topic of conversation, so we'll get into that later on.
 
 ### Image
 
-An image is sort of like a snapshot of a system. Remember, even operating systems are just stacks of code—you start with a blank slate, and install software, libraries and tools. Docker operates in the same way, just automated. So when I say "I want a Ubuntu container," what I really mean is that I want a container that uses a Ubuntu **image**.
+An image is a sort of snapshot of a system. Remember, even operating systems are just stacks of code—you start with a blank slate and install software, libraries, and tools. Docker operates in the same way, just automated. So when I say "I want a Ubuntu container," what I really mean is that I want a container that uses a Ubuntu **image**.
 
 Images are **built**—so you'll instruct Docker to build your image by following a set of instructions, and then you'll tell Docker "Hey I want a new container, using that image!"
 
@@ -59,7 +59,7 @@ This tells Docker where the _base_ image is. Docker works in layers, so we're st
 
 We've specified the `node:slim` image—this is actually `node`, with the `slim` tag. Tags are like specific versions—you might say you want `node:10.15.0`, or even `node:latest`.
 
-`slim` is a special one—its a Docker image that is **smaller and has less functionality out of the box**. This means that the image it builds will have a smaller file size, and be faster to download. There are lots of other options for smaller images—`alpine` is a popular Linux distribution.
+`slim` is a special one—it's a Docker image that is **smaller and has less functionality out of the box**. This means that the image it builds will have a smaller file size, and be faster to download. There are lots of other options for smaller images—`alpine` is a popular Linux distribution.
 
 The more stripped-down your base image, the more work you'll have to do to ensure that your application has everything it needs to run. [Here's a great article outlining the differences](https://derickbailey.com/2017/03/09/selecting-a-node-js-image-for-docker/) for Node.js images, but the concepts are good to learn for general Docker-ing.
 
@@ -74,7 +74,7 @@ RUN npm run build
 
 ### `COPY`
 
-If we think of a Docker container as some ephemeral, invisible box, its important to remember that unless we tell it to, it won't have access to any of our applications files. `COPY` tells Docker, while building the image, to copy certain files into the image.
+If we think of a Docker container as some ephemeral, invisible box, it's important to remember that unless we tell it to, it won't have access to any of our application's files. `COPY` tells Docker, while building the image, to copy certain files into the image.
 
 Here we're saying "copy everything from the current directory of the host to the current directory of the image:
 
@@ -112,7 +112,7 @@ To invalidate the cache and force it to re-build a layer, you need to change the
 ```docker
 # Copy just this file
 COPY package.json .
-# Install depedencies
+# Install dependencies
 RUN npm install
 # Copy the rest of our files
 COPY . .
@@ -122,7 +122,7 @@ Here, we're copying over the `package.json` file and installing dependencies _be
 
 ## Building and running your containers
 
-You can of course build and run containers locally, using the [Docker desktop apps](https://docs.docker.com/install/). I won't cover all of the [available CLI commands](https://docs.docker.com/engine/reference/run/), but you can get by pretty well with the following two commands:
+You can, of course, build and run containers locally, using the [Docker desktop apps](https://docs.docker.com/install/). I won't cover all of the [available CLI commands](https://docs.docker.com/engine/reference/run/), but you can get by pretty well with the following two commands:
 
 ```shell
 # Build my image, `.` is the current directory that includes a Dockerfile
