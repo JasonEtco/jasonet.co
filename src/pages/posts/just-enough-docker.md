@@ -8,7 +8,7 @@ I've written a [couple](../building-github-actions-in-node) of [times](../use-gi
 
 This post will focus on the basics of Docker, with a focus on configuring Docker containers for [GitHub Actions](https://github.com/features/actions) - but the fundamentals can be used for any project.
 
-One note: I'm intentionally simplifying certain things here. I firmly believe in avoiding information overload, and bombarding people with more knowledge than is necessary is harmful to their learning experience. If you're a Docker expert thinking "well yeah _but_" - I encourage you to write your own, more advanced post!
+One note: I'm intentionally simplifying certain things here. I firmly believe in avoiding information overload, and bombarding people with more knowledge than is necessary is harmful to their learning experience. If you're a Docker expert thinking "well yeah _but_" - remember that building amazing things using a technology does not require one to be a master of it!
 
 ## What is Docker?
 
@@ -22,7 +22,9 @@ For the sake of clarity, I want to call out this word. It's used often in the Do
 
 > A **container** is an isolated environment in which your code can be run.
 
-You can have thousands of containers, and unless instructed otherwise they will not be able to interact with each other. They're "run" from an "image" (see below). They can be started, stopped or restarted.
+You can have thousands of containers, and unless instructed otherwise they will not be able to interact with each other. They're "run" from an "image" (see below). They can be started, stopped or restarted. They're (often) ephemeral, so if a container dies you can start up a new one and pick up where the last one left off.
+
+Containers can be run on your computer, or on some cloud service (more about this later).
 
 ### Host
 
@@ -109,8 +111,25 @@ COPY . .
 
 Here, we're copying over the `package.json` file and installing dependencies _before_ copying the rest of our files. This tells Docker to only run `npm install` when `package.json` changes! It's smart enough to not copy the file twice for each `COPY` declaration.
 
+### Building and running your containers locally
+
+You can of course build and run containers locally, using the [Docker desktop apps](https://docs.docker.com/install/). I won't cover all of the [available CLI commands](https://docs.docker.com/engine/reference/run/), but you can get by pretty well with the following two commands:
+
+```shell
+# Build my image, `.` is the current directory that includes a Dockerfile
+docker build . --tag my-image
+# Run, or create a container, from the image
+docker run my-image
+```
+
+### Where to deploy your containers
+
+Just like there are hundreds of options for deploying a web server, many cloud deployment tools have support for running Docker containers. You may already know that [GitHub Actions run in Docker containers](https://developer.github.com/actions/creating-github-actions/creating-a-docker-container/) that GitHub deploys for you. [Azure Container Instances](https://azure.microsoft.com/en-ca/services/container-instances/), [Heroku](https://devcenter.heroku.com/categories/deploying-with-docker), [Amazon ECS](https://aws.amazon.com/getting-started/tutorials/deploy-docker-containers/) are all options for other projects.
+
 ## More things
 
 Remember when I said that I'd be simplifying certain areas? Well, here are some additional resources that don't fit into this post, but would be a good next stop on your Docker journey.
 
 * [docker-compose](https://docs.docker.com/compose/), a tool for building and running **multiple containers** at once.
+* [Multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/), a strategy for minimizing image size by creating temporary sub-images.
+* [Volumes](https://docs.docker.com/storage/volumes/), a way to persist data to the host, but still read and write to it from within your containers.
