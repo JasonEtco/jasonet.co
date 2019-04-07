@@ -36,14 +36,14 @@ An asterisk (`*`) means that the field is considered "any time" - so `* * * * *`
 
 ### Some helpful patterns
 
-```shell
-# Every Monday at 9AM EST
+```js
+// Every Monday at 9AM EST
 * 13 * * 1
 
-# At the end of every day
+// At the end of every day
 * 23 * * *
 
-# Every 10 minutes
+// Every 10 minutes
 */10 * * * *
 ```
 
@@ -79,7 +79,7 @@ This will help them keep track of new features & bug fixes that folks are waitin
 
 An Action made by one brilliant blog author, [`create-an-issue`](https://github.com/JasonEtco/create-an-issue) does what it says on the box. When I first made it many moons ago, I had a feeling that scheduled Actions would be a thing one day, so I built in support for dates. This lets us create an issue on a schedule, with helpful date stamps. Here's a workflow that I made for my team's weekly meeting notes:
 
-```workflow
+```hcl
 workflow "Weekly Meeting notes" {
   on = "schedule(* 13 * * 1)"
   resolves = ["Create an issue"]
@@ -115,18 +115,18 @@ This is a small but helpful piece of automation that takes one task off of my to
 
 So the `schedule` trigger is awesome, but it doesn't need to stop here. GitHub has [a list of webhook event types](), and `schedule` isn't on that list - that means that GitHub Actions has the ability to register and act upon **custom events**. Going even further, the event isn't static - it's parsed:
 
-```shell
+```js
 schedule(* * * * *)
 function(arguments)
 ```
 
 This opens up a whole new world of possibilities for more granular events:
 
-```shell
-# Matches @-mentions in an issue comment
+```js
+// Matches @-mentions in an issue comment
 mention('JasonEtco')
 
-# Matches slash commands, like `/deploy` in an issue comment
+// Matches slash commands, like `/deploy` in an issue comment
 command('deploy')
 ```
 
