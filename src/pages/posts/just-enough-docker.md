@@ -4,11 +4,11 @@ date: '2019-03-25'
 spoiler: You don't need to be a Docker expert to build things with it.
 ---
 
-I've written a [couple](../building-github-actions-in-node) of [times](../use-github-actions-for-ci) about GitHub Actions, and a key component of that ecosystem is [Docker](https://docker.com). It's kind of a big topic, as its a powerful tool that can do a lot, or be as complicated as you need it to be - but ultimately, not everyone needs to learn Docker's ins-and-outs.
+I've written a [couple](../building-github-actions-in-node) of [times](../use-github-actions-for-ci) about GitHub Actions, and a key component of that ecosystem is [Docker](https://docker.com). It's kind of a big topic, as its a powerful tool that can do a lot, or be as complicated as you need it to be—but ultimately, not everyone needs to learn Docker's ins-and-outs.
 
-This post will focus on the basics of Docker, with a focus on configuring Docker containers for [GitHub Actions](https://github.com/features/actions) - but the fundamentals can be used for any project.
+This post will talk about the basics of Docker, with a focus on configuring Docker containers for [GitHub Actions](https://github.com/features/actions)—but the fundamentals can be used for any project.
 
-One note: I'm intentionally simplifying certain things here. I firmly believe in avoiding information overload, and bombarding people with more knowledge than is necessary is harmful to their learning experience. If you're a Docker expert thinking "well yeah _but_" - remember that building amazing things using a technology does not require one to be a master of it!
+One note: I'm intentionally simplifying certain things here. I firmly believe in avoiding information overload, and bombarding people with more knowledge than is necessary is harmful to their learning experience. If you're a Docker expert thinking "well yeah _but_"—remember that building amazing things using a technology does not require one to be a master of it!
 
 ## What is Docker?
 
@@ -28,13 +28,13 @@ Containers can be run on your computer, or on some cloud service (more about thi
 
 ### Host
 
-This one's fairly straightforward. Docker is some software you can install on your machine - if I'm running Docker from my Macbook and I spin up some containers, my Macbook is the **host**. Communication between a container and its host is a common topic of conversation, so we'll get into that later on.
+This one's fairly straightforward. Docker is some software you can install on your machine—if I'm running Docker from my Macbook and I spin up some containers, my Macbook is the **host**. Communication between a container and its host is a common topic of conversation, so we'll get into that later on.
 
 ### Image
 
-An image is sort of like a snapshot of a system. Remember, even operating systems are just stacks of code - you start with a blank slate, and install software, libraries and tools. Docker operates in the same way, just automated. So when I say "I want a Ubuntu container," what I really mean is that I want a container that uses a Ubuntu **image**.
+An image is sort of like a snapshot of a system. Remember, even operating systems are just stacks of code—you start with a blank slate, and install software, libraries and tools. Docker operates in the same way, just automated. So when I say "I want a Ubuntu container," what I really mean is that I want a container that uses a Ubuntu **image**.
 
-Images are **built** - so you'll instruct Docker to build your image by following a set of instructions, and then you'll tell Docker "Hey I want a new container, using that image!"
+Images are **built**—so you'll instruct Docker to build your image by following a set of instructions, and then you'll tell Docker "Hey I want a new container, using that image!"
 
 ## Dockerfiles
 
@@ -57,13 +57,15 @@ ENTRYPOINT ["node", "/index.js"]
 
 This tells Docker where the _base_ image is. Docker works in layers, so we're starting off with an existing image and building a new image on top of it. When you build your image, Docker will download the `node:slim` image and use it to build yours.
 
-We've specified the `node:slim` image - this is actually `node`, with the `slim` tag. Tags are like specific versions - you might say you want `node:10.15.0`, or even `node:latest`.
+We've specified the `node:slim` image—this is actually `node`, with the `slim` tag. Tags are like specific versions—you might say you want `node:10.15.0`, or even `node:latest`.
 
-`slim` is a special one - its a Docker image that is **smaller and has less functionality out of the box**. This means that the image it builds will have a smaller file size, and be faster to download. There are lots of other options for smaller images - `alpine` is a popular Linux distribution. The more stripped-down your base image, the more work you'll have to do to ensure that your application has everything it needs to run. [Here's a great article outlining the differences](https://derickbailey.com/2017/03/09/selecting-a-node-js-image-for-docker/) for Node.js images, but the concepts are good to learn for general Docker-ing.
+`slim` is a special one—its a Docker image that is **smaller and has less functionality out of the box**. This means that the image it builds will have a smaller file size, and be faster to download. There are lots of other options for smaller images—`alpine` is a popular Linux distribution.
+
+The more stripped-down your base image, the more work you'll have to do to ensure that your application has everything it needs to run. [Here's a great article outlining the differences](https://derickbailey.com/2017/03/09/selecting-a-node-js-image-for-docker/) for Node.js images, but the concepts are good to learn for general Docker-ing.
 
 ### `RUN`
 
-The `RUN` keyword tells Docker to **run a command while building the image**. This isn't done while your app is running, but rather at build time, so its done once while creating the "snapshot." A common use-case for this is installing dependencies, or building a production bundle:
+The `RUN` keyword tells Docker to **run a command while building the image**. This isn't done while your app is running, but rather at build time—just once while creating the "snapshot." A common use-case for this is installing dependencies, or building a production bundle:
 
 ```docker
 RUN npm install
@@ -83,7 +85,7 @@ COPY . .
 
 ### `ENTRYPOINT`
 
-After building an image from this Dockerfile, we need to tell Docker what to run when we create and run a container. `ENTRYPOINT` does just that - it tells Docker:
+After building an image from this Dockerfile, we need to tell Docker what to run when we create and run a container. `ENTRYPOINT` does just that—it tells Docker:
 
 > Hey, when you run a container with this image, run `node /index.js`!
 
@@ -93,7 +95,7 @@ Building Docker images can be quite slow, but there are ways to make it a lot fa
 
 ### Layers
 
-Docker operates on layers - each line in a Dockerfile is its own "layer." Docker will cache those individual layers:
+Docker operates on layers—each line in a Dockerfile is its own "layer." Docker will cache those individual layers:
 
 ```docker
 # Cache this:
@@ -118,7 +120,7 @@ COPY . .
 
 Here, we're copying over the `package.json` file and installing dependencies _before_ copying the rest of our files. This tells Docker to only run `npm install` when `package.json` changes! It's smart enough to not copy the file twice for each `COPY` declaration.
 
-### Building and running your containers locally
+## Building and running your containers
 
 You can of course build and run containers locally, using the [Docker desktop apps](https://docs.docker.com/install/). I won't cover all of the [available CLI commands](https://docs.docker.com/engine/reference/run/), but you can get by pretty well with the following two commands:
 
@@ -129,9 +131,11 @@ docker build . --tag my-image
 docker run my-image
 ```
 
-### Where to deploy your containers
+## Where to deploy your containers
 
 Just like there are hundreds of options for deploying a web server, many cloud deployment tools have support for running Docker containers. You may already know that [GitHub Actions run in Docker containers](https://developer.github.com/actions/creating-github-actions/creating-a-docker-container/) that GitHub deploys for you. [Azure Container Instances](https://azure.microsoft.com/en-ca/services/container-instances/), [Heroku](https://devcenter.heroku.com/categories/deploying-with-docker), [Amazon ECS](https://aws.amazon.com/getting-started/tutorials/deploy-docker-containers/) are all options for other projects.
+
+---
 
 ## More things
 
