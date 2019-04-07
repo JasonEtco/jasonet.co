@@ -4,9 +4,9 @@ date: '2019-04-07'
 spoiler: With a recent addition to the Actions trigger lineup, we can now tell GitHub to run our workflow on a schedule. Let's see how!
 ---
 
-When I first heard about Actions in its current form, I was excited about the possibilities. Coming the world of Probot and integrations, I knew that so many problems would be solved. Well, [now there's a whole new feature of Actions](https://developer.github.com/actions/changes/2019-04-05-scheduling-workflows/) and I am _pumped_.
+When I first heard about Actions in its current form, I was excited about the possibilities - well, [now there's a whole new feature of Actions](https://developer.github.com/actions/changes/2019-04-05-scheduling-workflows/) and I am _pumped_.
 
-The `schedule` event lets you define a schedule for your workflow to run on. Using the [cron](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07) syntax, you basically tell GitHub "run this workflow, independant of any activity on the repo - just run it on my schedule."
+The `schedule` event lets you **define a schedule for your workflow to run on**. Using the [cron](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07) syntax, you basically tell GitHub "run this workflow, independant of any activity on the repo - just run it on my schedule."
 
 ## The cron syntax
 
@@ -32,7 +32,7 @@ This says to run the workflow every five minutes. Cron syntax is separated into 
 * * * * *
 ```
 
-An asterisk (`*`) means that the field is considered "any time" - so `* * * * *` means every minute of every day. Note that, at least on GitHub, times are based in UTC so you may have to do some timezone conversion!
+An asterisk (`*`) means that the field is considered "any time" - so `* * * * *` means every minute of every day. Note that, at least on GitHub, times are based in UTC so **you may have to do some timezone conversion**!
 
 ### Some helpful patterns
 
@@ -47,11 +47,11 @@ An asterisk (`*`) means that the field is considered "any time" - so `* * * * *`
 */10 * * * *
 ```
 
-You can [read up on the cron syntax](https://www.netiq.com/documentation/cloud-manager-2-5/ncm-reference/data/bexyssf.html) for all the ins-and-outs (goodness knows I'm no expert). I've found [crontab.guru](https://crontab.guru) to be a really helpful resource for visualizing an expression as I write it!
+You can [read up on the cron syntax](https://www.netiq.com/documentation/cloud-manager-2-5/ncm-reference/data/bexyssf.html) for all the ins-and-outs (goodness knows I'm no expert). I've found [crontab.guru](https://crontab.guru) to be a really helpful resource for visualizing an expression as I write it! ⏰
 
 ## What you can use it for
 
-Who cares about how it works, what can we do with it? It's still brand new, but there are already a few really cool Actions designed to work on a schedule.
+Who cares about how it works, **what can we do with it**? It's still brand new, but there are already a few really cool Actions designed to work on a schedule:
 
 ### probot/stale-action
 
@@ -113,7 +113,7 @@ This is a small but helpful piece of automation that takes one task off of my to
 
 ## Thinking ahead
 
-So the `schedule` trigger is awesome, but it doesn't need to stop here. GitHub has [a list of webhook event types](), and `schedule` isn't on that list - that means that GitHub Actions has the ability to register and act upon **custom events**. Going even further, the event isn't static - it's parsed:
+So the `schedule` trigger is awesome, but **it doesn't need to stop here**. GitHub has [a list of webhook event types](https://developer.github.com/v3/activity/events/types/), and `schedule` isn't on that list - that means that GitHub Actions has the ability to register and act upon **custom events**. Going even further, the event isn't static - it's parsed:
 
 ```js
 schedule(* * * * *)
@@ -131,3 +131,7 @@ command('deploy')
 ```
 
 Who knows if any of those will be implemented, or if they're even a good idea! The point here is that `schedule` proves that Actions has an opportunity to do even more than the already huge list of webhook events allows for!
+
+---
+
+So go forth and make `schedule`d workflows :v: Let me know how it goes!
