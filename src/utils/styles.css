@@ -15,6 +15,10 @@
   color: #6a737d;
 }
 
+.blog-post h3 {
+  margin-top: 2.5rem !important;
+}
+
 @media only screen and (max-width: 580px) {
   .home__hero {
     display: block !important;
