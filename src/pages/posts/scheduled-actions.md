@@ -71,11 +71,13 @@ action "Stale" {
 
 ### electron/unreleased
 
-Every Monday, this brand new Action pings a team in the Electron Slack workspace with information about the commits that have been merged to master but are not in a release yet. This will help them keep track of new features & bug fixes that folks are waiting for, but have yet to be released in a new version of Electron. I do this all the time with projects way, way smaller - this kind of automation is super exciting :sparkles:
+Every Monday, [this brand new Action](https://github.com/electron/unreleased) pings a team in the Electron Slack workspace with information about the commits that have been merged to master but are not in a release yet.
+
+This will help them keep track of new features & bug fixes that folks are waiting for, but have yet to be released in a new version of Electron. I do this all the time with projects way, way smaller - this kind of automation is super exciting :sparkles:
 
 ### JasonEtco/create-an-issue
 
-An Action made by one brilliant blog author, `create-an-issue` does what it says on the box. When I first made it many moons ago, I had a feeling that scheduled Actions would be a thing one day, so I built in support for dates. This lets us create an issue on a schedule, with helpful date stamps. Here's a workflow that I made for my team's weekly meeting notes:
+An Action made by one brilliant blog author, [`create-an-issue`](https://github.com/JasonEtco/create-an-issue) does what it says on the box. When I first made it many moons ago, I had a feeling that scheduled Actions would be a thing one day, so I built in support for dates. This lets us create an issue on a schedule, with helpful date stamps. Here's a workflow that I made for my team's weekly meeting notes:
 
 ```workflow
 workflow "Weekly Meeting notes" {
