@@ -120,7 +120,7 @@ schedule(* * * * *)
 function(arguments)
 ```
 
-This opens up a whole new world of possibilities for more granular events:
+This opens up a whole new world of possibilities for more granular events (these are imaginary):
 
 ```js
 // Matches @-mentions in an issue comment
