@@ -116,7 +116,7 @@ This is a small but helpful piece of automation that takes one task off of my to
 
 ## Thinking ahead
 
-So the `schedule` trigger is awesome, but **it doesn't need to stop here**. Actions is already taking advantage of [a list of webhook event types](https://developer.github.com/v3/activity/events/types/), and `schedule` isn't on that list - that means that GitHub Actions has the ability to register and act upon **custom events**. Going even further, the event isn't static - it's parsed:
+So the `schedule` trigger is awesome, but **it doesn't need to stop here**. Actions already works with [a list of webhook event types](https://developer.github.com/v3/activity/events/types/), and `schedule` isn't on that list - that means that GitHub Actions has the ability to register and act upon **custom events**. Going even further, the event isn't static - it's parsed with granular information about the event:
 
 ```js
 schedule(* * * * *)
