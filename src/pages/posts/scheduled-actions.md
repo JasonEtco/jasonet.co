@@ -40,7 +40,7 @@ An asterisk (`*`) means that the field is considered "any time" - so `* * * * *`
 ### Some helpful patterns
 
 ```js
-// Every Monday at 9AM EST
+// Every Monday at 1PM UTC (9AM EST)
 * 13 * * 1
 
 // At the end of every day
