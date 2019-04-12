@@ -6,14 +6,14 @@ spoiler: With a recent addition to the Actions trigger lineup, we can now tell G
 
 When I first heard about Actions in its current form, I was excited about the possibilities - well, [now there's a whole new feature of Actions](https://developer.github.com/actions/changes/2019-04-05-scheduling-workflows/) and I am _pumped_.
 
-The `schedule` event lets you **define a schedule for your workflow to run on**. Using the [cron](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07) syntax, you basically tell GitHub "run this workflow, independant of any activity on the repo - just run it on my schedule."
+The `schedule` event lets you **define a schedule for your workflow to run on**. Using the [cron syntax](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07), you basically tell GitHub "run this workflow, independent of any activity on the repo - just run it on my schedule."
 
 <img alt="Screenshot of the GitHub Actions UI while adding a scheduled workflow" src="https://user-images.githubusercontent.com/9831992/55425271-ade4c200-5547-11e9-8245-d37e3305e6ec.png" />
 <small>From <a href="https://developer.github.com/actions/changes/2019-04-05-scheduling-workflows/">the GitHub Actions changelog<a>.</small>
 
 ## The cron syntax
 
-It's spooky, if you've never used it before (I haven't) it looks different from other things. Let's dive in!
+It's spooky. If you've never used it before (I haven't) it looks different from other things. Let's dive in!
 
 ```hcl{2}
 workflow "Do things every 5 minutes" {
@@ -58,7 +58,7 @@ Who cares about how it works, **what can we do with it**? It's still brand new, 
 
 ### probot/stale-action
 
-You may already know about [probot/stale](https://github.com/probot/stale), a popular Probot App that comments on and closes issues that have become inactive. Well, we designed [a hack](https://github.com/probot/scheduler) for it to run on some sort of schedule. [@tcbyrd](https://github.com/tcbyrd) has been working on [rewriting Stale as a GitHub Action](https://github.com/probot/stale-action). Now, we can leverage the `schedule` event to properly run it every so often:
+You may already know about [probot/stale](https://github.com/probot/stale), a popular Probot App that comments on and closes issues that have become inactive. Well, we designed [a hack](https://github.com/probot/scheduler) for it to run on a timer. [@tcbyrd](https://github.com/tcbyrd) has been working on [rewriting Stale as a GitHub Action](https://github.com/probot/stale-action). Now, we can leverage the `schedule` event to properly run it every so often:
 
 ```hcl
 workflow "Mark issues/PRs as stale" {
@@ -80,7 +80,7 @@ This will help them keep track of new features & bug fixes that folks are waitin
 
 ### JasonEtco/create-an-issue
 
-An Action made by one brilliant blog author, [`create-an-issue`](https://github.com/JasonEtco/create-an-issue) does what it says on the box. When I first made it many moons ago, I had a feeling that scheduled Actions would be a thing one day, so I built in support for dates. This lets us create an issue on a schedule, with helpful date stamps. Here's a workflow that I made for my team's weekly meeting notes:
+An Action made by one brilliant blog author, [`create-an-issue`](https://github.com/JasonEtco/create-an-issue), does what it says on the box. When I first made it many moons ago, I had a feeling that scheduled Actions would be a thing one day, so I built in support for dates. This lets us create an issue on a schedule, with helpful date stamps. Here's a workflow that I made for my team's weekly meeting notes:
 
 ```hcl
 workflow "Weekly Meeting notes" {
@@ -116,7 +116,7 @@ This is a small but helpful piece of automation that takes one task off of my to
 
 ## Thinking ahead
 
-So the `schedule` trigger is awesome, but **it doesn't need to stop here**. GitHub has [a list of webhook event types](https://developer.github.com/v3/activity/events/types/), and `schedule` isn't on that list - that means that GitHub Actions has the ability to register and act upon **custom events**. Going even further, the event isn't static - it's parsed:
+So the `schedule` trigger is awesome, but **it doesn't need to stop here**. Actions already works with [a list of webhook event types](https://developer.github.com/v3/activity/events/types/), and `schedule` isn't on that list - that means that GitHub Actions has the ability to register and act upon **custom events**. Going even further, the event isn't static - it's parsed with granular information about the event:
 
 ```js
 schedule(* * * * *)
