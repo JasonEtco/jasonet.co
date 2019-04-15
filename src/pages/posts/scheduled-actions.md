@@ -1,6 +1,6 @@
 ---
 title: Run your GitHub Actions workflow on a schedule
-date: '2019-04-07'
+date: '2019-04-15'
 spoiler: With a recent addition to the Actions trigger lineup, we can now tell GitHub to run our workflow on a schedule. Let's see how!
 ---
 
