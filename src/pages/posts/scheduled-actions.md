@@ -58,7 +58,7 @@ Who cares about how it works, **what can we do with it**? It's still brand new, 
 
 ### probot/stale-action
 
-You may already know about [probot/stale](https://github.com/probot/stale), a popular Probot App that comments on and closes issues that have become inactive. Well, we designed [a hack](https://github.com/probot/scheduler) for it to run on a timer. [@tcbyrd](https://github.com/tcbyrd) has been working on [rewriting Stale as a GitHub Action](https://github.com/probot/stale-action). Now, we can leverage the `schedule` event to properly run it every so often:
+You may already know about [probot/stale](https://github.com/probot/stale), a popular Probot App that comments on and closes issues that have become inactive. Well, we designed [a hack](https://github.com/probot/scheduler) for it to run on a timer, because we didn't have anything better. [@tcbyrd](https://github.com/tcbyrd) has been working on [rewriting Stale as a GitHub Action](https://github.com/probot/stale-action). Now, we can leverage the `schedule` event to properly run it whenever we want:
 
 ```hcl
 workflow "Mark issues/PRs as stale" {
@@ -76,7 +76,7 @@ action "Stale" {
 
 Every Monday, [this brand new Action](https://github.com/electron/unreleased) pings a team in the Electron Slack workspace with information about the commits that have been merged to a release branch but are not in a published release yet.
 
-This will help them keep track of new features & bug fixes that folks are waiting for, but have yet to be released in a new version of Electron. I do this all the time with projects way, way smaller - this kind of automation is super exciting :sparkles:
+This will help them keep track of new features & bug fixes that folks are waiting for, but have yet to be released in a new version of Electron. I forget about merged work all the time with projects way, way smaller - this kind of automation is super exciting :sparkles:
 
 ### JasonEtco/create-an-issue
 
