@@ -4,6 +4,21 @@
   background-color: #e1e4e8;
 }
 
+/* Image caption */
+.blog-post img + small {
+  position: relative;
+  bottom: 1em;
+  color: #959da5;
+}
+
+.blog-post img + small a {
+  color: #6a737d;
+}
+
+.blog-post h3 {
+  margin-top: 2.5rem !important;
+}
+
 @media only screen and (max-width: 580px) {
   .home__hero {
     display: block !important;
