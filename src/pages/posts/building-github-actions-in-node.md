@@ -30,8 +30,8 @@ LABEL "com.github.actions.name"="Delete merged branches"
 LABEL "com.github.actions.description"="Cleans up merged branches."
 LABEL "com.github.actions.icon"="gear"
 LABEL "com.github.actions.color"="red"
-LABEL "repository"="http://github.com/JasonEtco/node-branch-cleanup-action"
-LABEL "homepage"="http://github.com/JasonEtco/node-branch-cleanup-action"
+LABEL "repository"="https://github.com/JasonEtco/node-branch-cleanup-action"
+LABEL "homepage"="https://github.com/JasonEtco/node-branch-cleanup-action"
 LABEL "maintainer"="Jason Etcovitch <jasonetco@github.com>"
 
 # Copy over project files
