@@ -17,7 +17,7 @@ export default function Bio() {
     >
       <img
         src={profilePic}
-        alt={`Jason Etcovitch`}
+        alt="Jason Etcovitch"
         style={{
           marginRight: rhythm(1 / 2),
           marginBottom: 0,
