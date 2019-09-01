@@ -2,6 +2,8 @@
 
 <p align="center">My personal website and blog. Feel free to open an issue if there's something you'd like me to write about!</p>
 
+<p align="center"><a href="https://github.com/JasonEtco/jasonet.co"><img alt="GitHub Actions status" src="https://github.com/JasonEtco/jasonet.co/workflows/CI/badge.svg"></a></p>
+
 ## Posts
 
 <!--START_POSTS-->
