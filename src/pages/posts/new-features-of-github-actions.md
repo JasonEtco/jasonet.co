@@ -190,7 +190,7 @@ jobs:
 
 This example lets us run separate CI jobs for our `client` and `server` tests - effectively parallelizing test suites!
 
-<small>Yes I know that Jest already does parralelization, 🤫</small>
+<small>Yes I know that Jest already does parallelization, 🤫</small>
 
 ### Notable mention lightning round ⚡️
 
