@@ -11,7 +11,7 @@ In August, a ton of new functionality and changes were introduced to the platfor
 
 You should definitely check out [the new documentation](https://help.github.com/en/categories/automating-your-workflow-with-github-actions) to get a full look at using Actions, but I'll note some key differences with Actions v1.
 
-* Workflows were written in HCL; now they're written in YAML. [Syntax documentation](https://help.github.com/en/articles/workflow-syntax-for-github-actions) is available!
+* Workflows were written in HCL; now they're written in YAML. [Syntax documentation](https://help.github.com/en/articles/workflow-syntax-for-github-actions) is available! Also check out [these starter workflows](https://github.com/actions/starter-workflows).
 * Instead of multiple actions in a workflow, we now have a more granular breakdown of `workflow > jobs > steps`.
 * Jobs are run in VMs instead of containers - including MacOS, Windows and Linux 😍🥰
 * There's now an [official actions/toolkit](https://github.com/actions/toolkit), that includes some special interactions with the runtime.
