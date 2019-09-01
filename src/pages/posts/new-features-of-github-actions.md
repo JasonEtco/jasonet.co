@@ -150,9 +150,15 @@ inputs:
     default: world
 ```
 
+You can also mark an input as required via [actions/toolkit's `core.getInput`](https://github.com/actions/toolkit/tree/master/packages/core#inputsoutputs):
+
+```js
+core.getInput('name', { required: true })
+```
+
 You can read more about [the metadata syntax for `action.yml`](https://help.github.com/en/articles/metadata-syntax-for-github-actions). `inputs` is a particularly interesting addition to me, because it adds a way to signal requirements for an Action. This can be expanded to a rich UI for implementing Actions, and a ton of context/information when using them! I'm excited for the future here.
 
-> A note on the `using` property and JavaScript actions: y'all _know_ I'm excited about the potential there, but I think it's too early to write about it. The development and publishing experience has a lot of pain points, so I don't want to delve in until it's a little more resolved (which it will be)! That shouldn't prevent you from trying it out anyway.
+> A note on the `using` property and JavaScript actions: y'all _know_ I'm excited about the potential there, but I think it's too early to write about it. The development and publishing experience has a lot of pain points (like having to check in `node_modules`), so I don't want to delve in until it's a little more resolved (which it will be)! That shouldn't prevent you from trying it out anyway.
 
 ### Matrix builds
 
