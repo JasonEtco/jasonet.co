@@ -72,7 +72,7 @@ Now, if you're like me, you're thinking "Can this be done without the toolkit or
 
 > **Heads up**! This feature is not documented and is subject to change! For a more reliable method, use the toolkit methods if you can.
 
-`core.setOutput` actually prints a special string to `stdout`, and we can do it too!
+`core.exportVariable` actually prints a special string to `stdout`, and we can do it too!
 
 ```yaml
 - name: Let's set an output!
@@ -81,6 +81,8 @@ Now, if you're like me, you're thinking "Can this be done without the toolkit or
     echo '##[set-env name=FOO;]$FOO'
 - run: echo $FOO
 ```
+
+Similarly, `core.setOutput` prints `##[set-output name=key]value`. And to reiterate: this isn't documented yet, and the syntax will likely change, so beware! BUT IT'S SO COOL I HAD TO SHARE IT.
 
 ### Streaming logs
 
