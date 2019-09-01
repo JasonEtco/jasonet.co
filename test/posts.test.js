@@ -3,7 +3,7 @@
 const fs = require('fs')
 const fm = require('front-matter')
 const path = require('path')
-const Joi = require('joi')
+const Joi = require('@hapi/joi')
 const pathToPosts = path.join(__dirname, '..', 'src', 'pages', 'posts')
 const pathToReadme = path.join(__dirname, '..', 'README.md')
 

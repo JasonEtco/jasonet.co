@@ -4,10 +4,9 @@
 
 <p align="center"><a href="https://github.com/JasonEtco/jasonet.co"><img alt="GitHub Actions status" src="https://github.com/JasonEtco/jasonet.co/workflows/CI/badge.svg"></a></p>
 
-### Posts
+## Posts
 
 <!--START_POSTS-->
-
 - [New features of GitHub Actions v2](https://jasonet.co/posts/new-features-of-github-actions)
 - [Run your GitHub Actions workflow on a schedule](https://jasonet.co/posts/scheduled-actions)
 - [Just enough Docker](https://jasonet.co/posts/just-enough-docker)
@@ -16,12 +15,10 @@
 - [What are GitHub Workflows?](https://jasonet.co/posts/what-are-github-workflows)
 - [Building GitHub Actions in Node.js](https://jasonet.co/posts/building-github-actions-in-node)
 - [Probot App or GitHub Action?](https://jasonet.co/posts/probot-app-or-github-action)
-  <!--END_POSTS-->
+<!--END_POSTS-->
 
 ### Run locally
 
 To run locally, `npm install`, then `npm start`, then open https://localhost:8000.
-
----
 
 > "Forked" from [gaearon/overreacted.io](https://github.com/gaearon/overreacted.io). Built on [GatsbyJS](https://www.gatsbyjs.org/)

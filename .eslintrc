@@ -1,7 +1,8 @@
 {
   "parser": "babel-eslint",
   "rules": {
-    "strict": 0
+    "strict": 0,
+    "react/jsx-fragments": 0
   },
   "plugins": [
     "jest",

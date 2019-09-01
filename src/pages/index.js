@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 
 import Bio from '../components/Bio'
-import SEO from '../components/SEO'
+import Seo from '../components/SEO'
 import ReposList from '../components/ReposList'
 import { formatReadingTime } from '../utils/helpers'
 import { rhythm, scale } from '../utils/typography'
@@ -21,7 +21,7 @@ export default function BlogIndex(props) {
         padding: `${rhythm(1.5)} ${rhythm(1)}`
       }}
     >
-      <SEO />
+      <Seo />
 
       <div
         style={{
