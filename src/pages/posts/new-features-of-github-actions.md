@@ -23,7 +23,7 @@ In the rest of this post I'm going to focus on a few features that I think are a
 
 In v1, you could _kind of_ run arbitrary shell scripts without having to create an actual file:
 
-```hcl{2}
+```hcl
 action "My action" {
   uses = "docker://alpine"
   run = "echo"
