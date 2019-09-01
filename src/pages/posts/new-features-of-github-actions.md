@@ -15,11 +15,11 @@ You should definitely check out [the new documentation](https://help.github.com/
 * Instead of multiple actions in a workflow, we now have a more granular breakdown of `workflow > jobs > steps`.
 * Jobs are run in VMs instead of containers - including MacOS, Windows and Linux 😍🥰
 
-## Feature focus
+---
 
 In the rest of this post I'm going to focus on a few features that I think are an amazing addition to the Actions platform. Some are pure additions (didn't exist in v1), others are adaptations/improvements on features that did exist.
 
-### Multi-line scripts
+## Multi-line scripts
 
 In v1, you could _kind of_ run arbitrary shell scripts without having to create an actual file:
 
@@ -44,7 +44,7 @@ steps:
 
 This gets run in the already-running VM; so there's no additional setup time, it just runs as part of the workflow!
 
-### Passing data to future steps
+## Passing data to future steps
 
 While writing a workflow, it's common to want to say "this Action does this, and this next Action does this, using the result of the previous Action". Unfortunately, that was challenging to accomplish in Actions v1 because while actions in a workflow shared a file-system, that was the only form of persistence. With v2, there are two options using the [official actions/toolkit](https://github.com/actions/toolkit):
 
@@ -133,11 +133,11 @@ The key here is printing `##[set-env name=KEY;]value` to `stdout`. Similarly, `c
 
 And to reiterate: this isn't documented yet, and the syntax will likely change, so beware! BUT IT'S SO COOL I HAD TO SHARE IT.
 
-### Streaming logs
+## Streaming logs
 
 This was high on my list of missing features in [**Use GitHub Actions for CI**](/posts/use-github-actions-for-ci). Now, when an Actions workflow is running, you can see the output without having to wait until its done. This isn't just a quality of life improvement - when building a workflow or action, the development experience is significantly faster.
 
-### Declarative requirements for Actions
+## Declarative requirements for Actions
 
 This is one of my favorite additions, not because of what it does today, but because of its potential. Actions can now define a map of `inputs` - configuration for the action itself. Previously, you'd have to set environment variables or use `args`, and that totally worked, but there was no way for an Action to say "hey I need this setting".
 
@@ -160,7 +160,7 @@ You can read more about [the metadata syntax for `action.yml`](https://help.gith
 
 > A note on the `using` property and JavaScript actions: y'all _know_ I'm excited about the potential there, but I think it's too early to write about it. The development and publishing experience has a lot of pain points (like having to check in `node_modules`), so I don't want to delve in until it's a little more resolved (which it will be)! I'll have a separate post on it soon!
 
-### Matrix builds
+## Matrix builds
 
 This is an especally useful one. You can run multiple jobs by defining one job with a `matrix` strategy:
 
@@ -200,7 +200,7 @@ This example lets us run separate CI jobs for our `client` and `server` tests - 
 
 <small>Yes I know that Jest already does parallelization, 🤫</small>
 
-### Notable mention lightning round ⚡️
+## Notable mention lightning round ⚡️
 
 * YAML is going to be more familiar to a lot of people; while I was really starting to like HCL, I think its a good decision for the users of Actions.
 * [The `if` property](https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsif), conditionally running a job. It's not super powerful, and many workflows will still need some kind of filter script, but for simple checks it's a really great addition.
