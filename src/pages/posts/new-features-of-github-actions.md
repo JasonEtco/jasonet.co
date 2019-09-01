@@ -105,8 +105,49 @@ You can read more about [the metadata syntax for `action.yml`](https://help.gith
 
 > A note on the `using` property and JavaScript actions: y'all _know_ I'm excited about the potential there, but I think it's too early to write about it. The development and publishing experience has a lot of pain points, so I don't want to delve in until it's a little more resolved (which it will be)! That shouldn't prevent you from trying it out anyway.
 
+### Matrix builds
+
+This is an especally useful one. You can run multiple jobs by defining one job with a `matrix` strategy:
+
+```yaml
+jobs:
+  build:
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
+      run: npm ci && npm run build && npm test
+      env:
+        CI: true
+```
+
+This effectively creates two jobs, one for `node-version: 10.x`, one for `node-version: 12.x`. This makes testing across versions really easy, but what else can we use it for? Let me spark your imagination with [Jest's `--testPathPattern`]()!
+
+```yaml
+jobs:
+  test:
+    strategy:
+      matrix:
+        testPath: ['./tests/client', './tests/server']
+    steps:
+      - uses: actions/checkout@v1
+      - run: npm ci
+      - run: jest --testPathPattern ${{ matrix.testPath }}
+```
+
+This example lets us run separate CI jobs for our `client` and `server` tests - effectively parallelizing test suites!
+
+<small>Yes I know that Jest already does parralelization, 🤫</small>
+
 ### Notable mention lightning round ⚡️
 
 * [The `if` property](https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsif), conditionally running a job. It's not super powerful, and many workflows will still need some kind of filter script, but for simple checks it's a really great addition.
 * [`branch` filters](https://help.github.com/en/articles/configuring-a-workflow#filtering-for-specific-branches), similar to the previous point but at the workflow level!
-* * [Matrix builds](https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix) - this is _immensely_ powerful. I didn't include it above because its more of a CI thing, but it is awesome.
+* Cloning the repository in an action was separated to [its own action](https://github.com/actions/checkout) - this is an important feature, but it isn't needed for every action, so I'm glad they made it optional!
+* Colored log output, it's a quality of life improvement that improves the quality of my life ❤️💚💙
