@@ -120,11 +120,13 @@ Now, if you're like me, you're thinking "Can this be done without the toolkit or
 `core.exportVariable` actually prints a special string to `stdout`, and we can do it too!
 
 ```yaml
-- name: Let's set an output!
+- name: Let's set an environment variable!
   run: |
     FOO=bar
     echo '##[set-env name=FOO;]$FOO'
-- run: echo $FOO
+- run: |
+    echo $FOO
+    # outputs "bar"
 ```
 
 The key here is printing `##[set-env name=KEY;]value` to `stdout`. Similarly, `core.setOutput` prints `##[set-output name=key;]value`.
