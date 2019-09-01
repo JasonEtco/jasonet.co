@@ -49,7 +49,7 @@ This gets run in the already-running VM; so there's no additional setup time, it
 While writing a workflow, it's common to want to say "this Action does this, and this next Action does this, using the result of the previous Action". Unfortunately, that was challenging to accomplish in Actions v1 because while actions in a workflow shared a file-system, that was the only form of persistence. With v2, there are two options:
 
 * `core.setOutput()`, which sets `steps.<step_id>.outputs.<key>`
-* `core.setEnv()`, which sets a variable `$KEY`
+* `core.exportVariable()`, which sets a variable `$KEY`
 
 Here's how you would use each one:
 
@@ -61,7 +61,7 @@ steps:
   - name: Let's use it
     run: echo "Foo? ${{ steps.my_step.outputs.foo }}!"
 
-  - name: An action that runs `core.setEnv('FOO', 'baz')`
+  - name: An action that runs `core.exportVariable('FOO', 'baz')`
   - name: Let's use it
     run: echo "Foo? $FOO!"
 ```
@@ -85,3 +85,20 @@ Now, if you're like me, you're thinking "Can this be done without the toolkit or
 ### Streaming logs
 
 This was high on my list of missing features in [**Use GitHub Actions for CI**](/posts/use-github-actions-for-ci); now, when an Actions workflow is running, you can see the output without having to wait until its done. This isn't just a quality of life improvement - now, when building a workflow or action, the development experience is significantly faster.
+
+### Declarative requirements for Actions
+
+This is one of my favorite additions, not because of what it does today, but because of its potential. Actions can now define a map of `inputs` - configuration for the action itself. Previously, you'd have to set environment variables or use `args`, and that totally worked, but there was no way for an Action to say "hey I need this setting".
+
+```yaml
+# action.yml
+name: My Action
+inputs: 
+  name:
+    description: The name of the person to say hello to
+    default: world
+```
+
+You can read more about [the metadata syntax for `action.yml`](https://help.github.com/en/articles/metadata-syntax-for-github-actions). `inputs` is a particularly interesting addition to me, because it adds a way to signal requirements for an Action. This can be expanded to a rich UI for implementing Actions, and a ton of context/information when using them! I'm excited for the future here.
+
+> A note on the `using` property and JavaScript actions: y'all _know_ I'm excited about the potential there, but I think it's too early to write about it. The development and publishing experience has a lot of pain points, so I don't want to delve in until it's a little more resolved (which it will be)! That shouldn't prevent you from trying it out anyway.
