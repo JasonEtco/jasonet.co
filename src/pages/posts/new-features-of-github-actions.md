@@ -68,7 +68,7 @@ steps:
 
 I built a proof-of-concept for this functionality in [JasonEtco/actions-toolkit](https://github.com/jasonetco/actions-toolkit#toolsstore), but it relied on too many factors (both the output and recipient actions needed to use the same code).
 
-It only supports passing a string, but you could certainly do:
+Note that these methods only support passing a string, but you could certainly do:
 
 ```js
 core.exportVariable('SOMEJSON', JSON.stringify({ foo: true }))
