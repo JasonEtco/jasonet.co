@@ -53,17 +53,43 @@ While writing a workflow, it's common to want to say "this Action does this, and
 
 Here's how you would use each one:
 
+```js
+// get-metadata.js
+const core = require('@actions/core')
+const { version, name } = require(process.env.GITHUB_WORKSPACE + 'package.json')
+core.exportVariable('VERSION', version)
+core.exportVariable('NAME', name)
+```
+
 ```yaml
 steps:
-  - name: An action that runs `core.setOutput('foo', 'bar')`
-    # Set an ID for this step to reference it later
-    id: my_step
-  - name: Let's use it
-    run: echo "Foo? ${{ steps.my_step.outputs.foo }}!"
+  - name: Get metadata
+    run: node ./get-metadata.js
+  - name: Tweet
+    run: |
+      curl -X POST \
+        -d '{ ": "Version ${VERSION} of ${NAME} was just published!" }'\
+        "https://twitter-example.com/tweet"
+```
 
-  - name: An action that runs `core.exportVariable('FOO', 'baz')`
-  - name: Let's use it
-    run: echo "Foo? $FOO!"
+`core.setOutput` works in a similar way:
+
+```js
+// Same code as the above get-metadata.js, except:
+core.setOutput('version', version)
+core.setOutput('name', name)
+```
+
+```yaml
+steps:
+  - name: Get metadata
+    run: node ./get-metadata.js
+    id: get_metadata
+  - name: Tweet
+    run: |
+      curl -X POST \
+        -d '{ ": "Version ${{ steps.get_metadata.outputs.version }} of ${{ steps.get_metadata.outputs.name }} was just published!" }'\
+        "https://twitter-example.com/tweet"
 ```
 
 I built a proof-of-concept for this functionality in [JasonEtco/actions-toolkit](https://github.com/jasonetco/actions-toolkit#toolsstore), but it relied on too many factors (both the output and recipient actions needed to use the same code).
@@ -71,11 +97,21 @@ I built a proof-of-concept for this functionality in [JasonEtco/actions-toolkit]
 Note that these methods only support passing a string, but you could certainly do:
 
 ```js
-core.exportVariable('SOMEJSON', JSON.stringify({ foo: true }))
-// In a later step...
-const someJson = JSON.parse(process.env.SOMEJSON)
-console.log(someJson) // -> { foo: true }
+const core = require('@actions/core')
+const { GitHub, context } = require('@actions/github')
+// Let's get a list of issues that have a particular label
+const github = new GitHub(process.env.GITHUB_TOKEN)
+const issues = await github.search.issuesAndPullRequests({
+  q: `in:${context.repo.owner}/${context.repo.repo} label:bug`
+})
+// Expose it to future actions
+core.setOutput('bugs', JSON.stringify(issues))
+
+// Later, in a future action, you can use:
+const issues = JSON.parse(core.getInput('bugs'))
 ```
+
+This can allow for much more composable actions than ever before, letting them do one thing and then passing that information around in your workflow.
 
 Now, if you're like me, you're thinking "Can this be done without the toolkit or JavaScript?" Turns out, yes!
 
@@ -91,7 +127,7 @@ Now, if you're like me, you're thinking "Can this be done without the toolkit or
 - run: echo $FOO
 ```
 
-Similarly, `core.setOutput` prints `##[set-output name=key]value`.
+The key here is printing `##[set-env name=KEY;]value` to `stdout`. Similarly, `core.setOutput` prints `##[set-output name=key;]value`.
 
 And to reiterate: this isn't documented yet, and the syntax will likely change, so beware! BUT IT'S SO COOL I HAD TO SHARE IT.
 
