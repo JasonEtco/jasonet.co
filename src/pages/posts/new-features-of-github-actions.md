@@ -135,7 +135,7 @@ And to reiterate: this isn't documented yet, and the syntax will likely change, 
 
 ### Streaming logs
 
-This was high on my list of missing features in [**Use GitHub Actions for CI**](/posts/use-github-actions-for-ci); now, when an Actions workflow is running, you can see the output without having to wait until its done. This isn't just a quality of life improvement - now, when building a workflow or action, the development experience is significantly faster.
+This was high on my list of missing features in [**Use GitHub Actions for CI**](/posts/use-github-actions-for-ci). Now, when an Actions workflow is running, you can see the output without having to wait until its done. This isn't just a quality of life improvement - when building a workflow or action, the development experience is significantly faster.
 
 ### Declarative requirements for Actions
 
