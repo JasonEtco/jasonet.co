@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby'
 
 import Bio from '../components/Bio'
 import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import Seo from '../components/SEO'
 import { formatReadingTime } from '../utils/helpers'
 import { rhythm, scale, colors } from '../utils/typography'
 import { shape, string } from 'prop-types'
@@ -24,7 +24,7 @@ export default function BlogPostTemplate(props) {
   )}`
   return (
     <Layout title={siteTitle}>
-      <SEO
+      <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.spoiler}
         slug={post.fields.slug}
@@ -88,7 +88,7 @@ export default function BlogPostTemplate(props) {
                 textDecoration: 'none',
                 color: '#f26d21'
               }}
-              to={'/'}
+              to="/"
             >
               Hope you enjoyed the read! 📝
             </Link>

@@ -29,7 +29,7 @@ export default function Layout(props) {
               textDecoration: 'none',
               color: '#f26d21'
             }}
-            to={'/'}
+            to="/"
           >
             ← Back
           </Link>
