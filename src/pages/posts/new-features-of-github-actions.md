@@ -115,7 +115,7 @@ This can allow for much more composable actions than ever before, letting them d
 
 Now, if you're like me, you're thinking "Can this be done without the toolkit or JavaScript?" Turns out, yes!
 
-> **Heads up**! This feature is not documented and is subject to change! For a more reliable method, use the toolkit methods if you can.
+**Heads up**! This feature is not yet documented and is subject to change! For a more reliable method, use the toolkit methods if you can.
 
 `core.exportVariable` actually prints a special string to `stdout`, and we can do it too!
 
