@@ -14,7 +14,8 @@
     "format": "prettier --write 'src/**/*.js'",
     "build": "rm -rf public && rm -rf .cache && gatsby build",
     "dry": "npm run build && cp now.json public/ && cd public && now",
-    "test": "jest && npm run lint"
+    "test": "jest && npm run lint",
+    "compile-readme": "node bin/compile-readme.js"
   },
   "dependencies": {
     "gatsby": "^2.2.10",
