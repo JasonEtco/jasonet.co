@@ -4,7 +4,7 @@
 
 <p align="center"><a href="https://github.com/JasonEtco/jasonet.co"><img alt="GitHub Actions status" src="https://github.com/JasonEtco/jasonet.co/workflows/CI/badge.svg"></a></p>
 
-## Posts
+### Posts
 
 <!--START_POSTS-->
 
@@ -18,6 +18,10 @@
 - [Probot App or GitHub Action?](https://jasonet.co/posts/probot-app-or-github-action)
   <!--END_POSTS-->
 
+### Run locally
+
 To run locally, `npm install`, then `npm start`, then open https://localhost:8000.
+
+---
 
 > "Forked" from [gaearon/overreacted.io](https://github.com/gaearon/overreacted.io). Built on [GatsbyJS](https://www.gatsbyjs.org/)
