@@ -31,7 +31,7 @@ action "My action" {
 }
 ```
 
-This would spin up a Docker container from the `alpine` image, and run `echo "Hello world"`. This came in handy in a lot of situations, but had a few limitations; for simple scripts, it meant creating a whole Docker image, and running multiple commands could feel really verbose. In Actions v2, you can just define a `run` property, _and give it a multiline string_ 🤯
+This would spin up a Docker container from the `alpine` image, and run `echo "Hello world"`. This came in handy in a lot of situations, but had a few limitations; for simple scripts, it meant creating a whole Docker image, and running multiple commands could feel really verbose. In Actions v2, you can just define a `run` property, _and give it a multiline string_, with multiple commands in one step 🤯
 
 ```yaml
 steps:
@@ -102,3 +102,9 @@ inputs:
 You can read more about [the metadata syntax for `action.yml`](https://help.github.com/en/articles/metadata-syntax-for-github-actions). `inputs` is a particularly interesting addition to me, because it adds a way to signal requirements for an Action. This can be expanded to a rich UI for implementing Actions, and a ton of context/information when using them! I'm excited for the future here.
 
 > A note on the `using` property and JavaScript actions: y'all _know_ I'm excited about the potential there, but I think it's too early to write about it. The development and publishing experience has a lot of pain points, so I don't want to delve in until it's a little more resolved (which it will be)! That shouldn't prevent you from trying it out anyway.
+
+### Notable mention lightning round ⚡️
+
+* [The `if` property](https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsif), conditionally running a job. It's not super powerful, and many workflows will still need some kind of filter script, but for simple checks it's a really great addition.
+* [`branch` filters](https://help.github.com/en/articles/configuring-a-workflow#filtering-for-specific-branches), similar to the previous point but at the workflow level!
+* * [Matrix builds](https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix) - this is _immensely_ powerful. I didn't include it above because its more of a CI thing, but it is awesome.
