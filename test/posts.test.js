@@ -5,6 +5,7 @@ const fm = require('front-matter')
 const path = require('path')
 const Joi = require('joi')
 const pathToPosts = path.join(__dirname, '..', 'src', 'pages', 'posts')
+const pathToReadme = path.join(__dirname, '..', 'README.md')
 
 const schema = Joi.object({
   attributes: Joi.object({
@@ -42,6 +43,12 @@ describe('posts', () => {
     it('has valid front matter', async () => {
       const validated = await schema.validate(value)
       expect(validated).toEqual(value)
+    })
+
+    it("is included in the repo's README", () => {
+      const readmeContents = fs.readFileSync(pathToReadme)
+      const { title } = value.attributes
+      expect(readmeContents.includes(title)).toBe(true)
     })
   })
 })
