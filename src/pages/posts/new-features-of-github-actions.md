@@ -14,6 +14,7 @@ You should definitely check out [the new documentation](https://help.github.com/
 * Workflows were written in HCL; now they're written in YAML. [Syntax documentation](https://help.github.com/en/articles/workflow-syntax-for-github-actions) is available!
 * Instead of multiple actions in a workflow, we now have a more granular breakdown of `workflow > jobs > steps`.
 * Jobs are run in VMs instead of containers - including MacOS, Windows and Linux 😍🥰
+* There's now an [official actions/toolkit](https://github.com/actions/toolkit), that includes some special interactions with the runtime.
 
 ---
 
