@@ -1,7 +1,7 @@
 ---
 title: New features of GitHub Actions v2
 date: '2019-09-01'
-spoiler: 
+spoiler: GitHub Actions got a massive update, with a ton of new features to talk about!
 ---
 You might have read about [a big update to GitHub Actions](https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/) - <abbr title="Too long, didn't read">TLDR</abbr>, a lot is different but the overall concept is the same. It's a thing-doer; it lets you run arbitrary "jobs" in GitHub-orchestrated VMs.
 
