@@ -162,3 +162,4 @@ This example lets us run separate CI jobs for our `client` and `server` tests - 
 * [`branch` filters](https://help.github.com/en/articles/configuring-a-workflow#filtering-for-specific-branches), similar to the previous point but at the workflow level!
 * Cloning the repository in an action was separated to [its own action](https://github.com/actions/checkout) - this is an important feature, but it isn't needed for every action, so I'm glad they made it optional!
 * Colored log output, it's a quality of life improvement that improves the quality of my life ❤️💚💙
+* First-class README badges! Still undocumented, but: `![Status](https://github.com/<owner>/<repo>/workflows/<workflow_name>/badge.svg)`. A really great addition to any CI tool 🛡
