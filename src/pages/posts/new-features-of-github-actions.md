@@ -163,7 +163,7 @@ You can read more about [the metadata syntax for `action.yml`](https://help.gith
 
 ## Matrix builds
 
-This is an especally useful one. You can run multiple jobs by defining one job with a `matrix` strategy:
+This is an especially useful one. You can run multiple jobs by defining one job with a `matrix` strategy:
 
 ```yaml
 jobs:
