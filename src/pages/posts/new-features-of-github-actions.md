@@ -68,6 +68,15 @@ steps:
 
 I built a proof-of-concept for this functionality in [JasonEtco/actions-toolkit](https://github.com/jasonetco/actions-toolkit#toolsstore), but it relied on too many factors (both the output and recipient actions needed to use the same code).
 
+It only supports passing a string, but you could certainly do:
+
+```js
+core.exportVariable('SOMEJSON', JSON.stringify({ foo: true }))
+// In a later step...
+const someJson = JSON.parse(process.env.SOMEJSON)
+console.log(someJson) // -> { foo: true }
+```
+
 Now, if you're like me, you're thinking "Can this be done without the toolkit or JavaScript?" Turns out, yes!
 
 > **Heads up**! This feature is not documented and is subject to change! For a more reliable method, use the toolkit methods if you can.
@@ -82,7 +91,9 @@ Now, if you're like me, you're thinking "Can this be done without the toolkit or
 - run: echo $FOO
 ```
 
-Similarly, `core.setOutput` prints `##[set-output name=key]value`. And to reiterate: this isn't documented yet, and the syntax will likely change, so beware! BUT IT'S SO COOL I HAD TO SHARE IT.
+Similarly, `core.setOutput` prints `##[set-output name=key]value`.
+
+And to reiterate: this isn't documented yet, and the syntax will likely change, so beware! BUT IT'S SO COOL I HAD TO SHARE IT.
 
 ### Streaming logs
 
@@ -127,7 +138,7 @@ jobs:
         CI: true
 ```
 
-This effectively creates two jobs, one for `node-version: 10.x`, one for `node-version: 12.x`. This makes testing across versions really easy, but what else can we use it for? Let me spark your imagination with [Jest's `--testPathPattern`]()!
+This effectively creates two jobs, one for `node-version: 10.x`, one for `node-version: 12.x`. This makes testing across versions really easy, but what else can we use it for? Let me spark your imagination with [Jest's `--testPathPattern`](https://jestjs.io/docs/en/cli#testpathpattern-regex)!
 
 ```yaml
 jobs:
