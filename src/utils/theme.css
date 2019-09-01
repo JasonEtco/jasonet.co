@@ -148,9 +148,75 @@ pre[data-line] {
   background: #f6f8fa;
   -webkit-overflow-scrolling: touch;
   overflow: auto;
+  position: relative;
 }
 
 .gatsby-highlight pre[class*='language-'] {
   float: left;
   min-width: 100%;
+}
+
+.gatsby-highlight pre[class*='language-']::before {
+  content: 'code';
+  background: #ddd;
+  border-radius: 0 0 0 4px;
+  color: #000000;
+  font-size: 0.7rem;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
+    Courier New, monospace;
+  letter-spacing: 0.075em;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  text-transform: uppercase;
+  top: 0;
+}
+
+.gatsby-highlight pre[class*='language-js']::before,
+.gatsby-highlight pre[class*='language-javascript']::before {
+  content: 'js';
+  background: #f7df1e;
+}
+
+.gatsby-highlight pre[class*='language-ts']::before,
+.gatsby-highlight pre[class*='language-typescript']::before {
+  content: 'ts';
+  background: #0076c6;
+  color: white;
+}
+
+.gatsby-highlight pre[class*='language-yml']::before,
+.gatsby-highlight pre[class*='language-yaml']::before {
+  content: 'yaml';
+  background: #f71e6a;
+  color: white;
+}
+
+.gatsby-highlight pre[class*='language-hcl']::before {
+  content: 'hcl';
+  background: #6cdcfe;
+  color: white;
+}
+
+.gatsby-highlight pre[class*='language-docker']::before {
+  content: 'docker';
+  background: #3597d4;
+  color: white;
+}
+
+.gatsby-highlight pre[class*='language-shell']::before {
+  content: 'shell';
+  background: #c5d0da;
+}
+
+.gatsby-highlight pre[class*='language-diff']::before,
+.gatsby-highlight pre[class*='language-text']::before {
+  display: none;
+}
+
+.gatsby-highlight pre[class*='language-markdown']::before {
+  content: 'markdown';
+  background: #c5d0da;
 }
