@@ -46,7 +46,7 @@ This gets run in the already-running VM; so there's no additional setup time, it
 
 ### Passing data to future steps
 
-While writing a workflow, it's common to want to say "this Action does this, and this next Action does this, using the result of the previous Action". Unfortunately, that was challenging to accomplish in Actions v1 because while actions in a workflow shared a file-system, that was the only form of persistence. With v2, there are two options:
+While writing a workflow, it's common to want to say "this Action does this, and this next Action does this, using the result of the previous Action". Unfortunately, that was challenging to accomplish in Actions v1 because while actions in a workflow shared a file-system, that was the only form of persistence. With v2, there are two options using the [official actions/toolkit](https://github.com/actions/toolkit):
 
 * `core.setOutput()`, which sets `steps.<step_id>.outputs.<key>`
 * `core.exportVariable()`, which sets a variable `$KEY`
