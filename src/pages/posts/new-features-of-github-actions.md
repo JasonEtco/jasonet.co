@@ -93,7 +93,7 @@ steps:
         "https://twitter-example.com/tweet"
 ```
 
-Note that these methods only support passing a string, but you could certainly do:
+Note that these methods only support passing a string, but you could certainly do `JSON.stringify/parse` dance. Here we can create a standalone action that fetches all issues with the **bug** label, and expose it to future actions:
 
 ```js
 const core = require('@actions/core')
@@ -103,10 +103,10 @@ const github = new GitHub(process.env.GITHUB_TOKEN)
 const issues = await github.search.issuesAndPullRequests({
   q: `in:${context.repo.owner}/${context.repo.repo} label:bug`
 })
-// Expose it to future actions
+// Expose it to future actions, using JSON.stringify() to pass it
 core.setOutput('bugs', JSON.stringify(issues))
 
-// Later, in a future action, you can use:
+// Later, in a future action, you can parse the input:
 const issues = JSON.parse(core.getInput('bugs'))
 ```
 
