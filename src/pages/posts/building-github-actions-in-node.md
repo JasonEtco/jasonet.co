@@ -2,6 +2,10 @@
 title: Building GitHub Actions in Node.js
 date: '2019-01-23'
 spoiler: GitHub Actions are an awesome automation tool - let's look at how to build one in everyone's favorite interpreted language.
+people:
+  - handle: '@matchai'
+    url: https://twitter.com/matchai
+    avatar: https://github.com/matchai.png
 ---
 
 Hey! You there! Heard all about these new fan-dangled [GitHub Actions](https://github.com/features/actions), and want to go out and build one? Well then let's do it!
