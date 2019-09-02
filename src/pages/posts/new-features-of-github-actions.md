@@ -202,7 +202,7 @@ This example lets us run separate CI jobs for our `client` and `server` tests - 
 ## Notable mention lightning round ⚡️
 
 * YAML is going to be more familiar to a lot of people; while I was really starting to like HCL, I think its a good decision for the users of Actions.
-* [The `if` property](https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsif), conditionally running a job. It's not super powerful, and many workflows will still need some kind of filter script, but for simple checks it's a really great addition.
+* [The `if` property](https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstepsif), conditionally running a job. It's not super powerful, and many workflows will still need some kind of filter script, but for simple checks it's a really great addition. I'll have a separate post on this soon!
 * [`branch` filters](https://help.github.com/en/articles/configuring-a-workflow#filtering-for-specific-branches), similar to the previous point but at the workflow level!
 * Cloning the repository in an action was separated to [its own action](https://github.com/actions/checkout) - this is an important feature, but it isn't needed for every action, so I'm glad they made it optional!
 * Colored log output, it's a quality of life improvement that improves the quality of my life ❤️💚💙
