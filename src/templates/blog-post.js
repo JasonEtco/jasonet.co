@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby'
 import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import Seo from '../components/SEO'
+import Thanks from '../components/Thanks'
 import { formatReadingTime } from '../utils/helpers'
 import { rhythm, scale, colors } from '../utils/typography'
 import { shape, string } from 'prop-types'
@@ -72,6 +73,8 @@ export default function BlogPostTemplate(props) {
           {` • `}
           <a href="/rss.xml">RSS Feed</a>
         </p>
+
+        <Thanks people={post.frontmatter.people} />
 
         <div
           style={{
@@ -154,6 +157,11 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         spoiler
+        people {
+          handle
+          avatar
+          url
+        }
       }
       fields {
         slug
