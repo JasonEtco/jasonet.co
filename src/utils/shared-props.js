@@ -1,4 +1,10 @@
-import { shape, string } from 'prop-types'
+import { shape, string, arrayOf } from 'prop-types'
+
+const person = shape({
+  handle: string.isRequired,
+  avatar: string.isRequired,
+  url: string.isRequired
+})
 
 const post = shape({
   fields: shape({
@@ -7,7 +13,8 @@ const post = shape({
   frontmatter: shape({
     title: string.isRequired,
     date: string,
-    spoiler: string
+    spoiler: string,
+    people: arrayOf(person)
   })
 })
 
@@ -25,5 +32,6 @@ const site = shape({
 
 export default {
   post,
-  site
+  site,
+  person
 }

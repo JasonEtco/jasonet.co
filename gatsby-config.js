@@ -103,6 +103,11 @@ module.exports = {
                         title
                         date
                         spoiler
+                        people {
+                          handle
+                          avatar
+                          url
+                        }
                       }
                     }
                   }
