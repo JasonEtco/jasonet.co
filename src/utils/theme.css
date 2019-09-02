@@ -214,6 +214,6 @@ pre[data-line] {
 }
 
 .gatsby-highlight pre[class*='language-markdown']::before {
-  content: 'markdown';
+  content: 'md';
   background: #c5d0da;
 }
