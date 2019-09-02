@@ -207,3 +207,5 @@ This example lets us run separate CI jobs for our `client` and `server` tests - 
 * Cloning the repository in an action was separated to [its own action](https://github.com/actions/checkout) - this is an important feature, but it isn't needed for every action, so I'm glad they made it optional!
 * Colored log output, it's a quality of life improvement that improves the quality of my life ❤️💚💙
 * First-class README badges! Still undocumented, but: `![Status](https://github.com/<owner>/<repo>/workflows/<workflow_name>/badge.svg)`. A really great addition to any CI tool 🛡
+
+This isn't an extensive list, so [check out the docs](https://help.github.com/en/categories/automating-your-workflow-with-github-actions) for all of the available features! If I missed any that you feel are particularly interesting, [let me know](https://twitter.com/jasonetco) or [open a PR adding it](https://github.com/jasonetco/jasonet.co)!
