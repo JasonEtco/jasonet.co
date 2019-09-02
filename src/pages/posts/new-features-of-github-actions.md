@@ -93,8 +93,6 @@ steps:
         "https://twitter-example.com/tweet"
 ```
 
-I built a proof-of-concept for this functionality in [JasonEtco/actions-toolkit](https://github.com/jasonetco/actions-toolkit#toolsstore), but it relied on too many factors (both the output and recipient actions needed to use the same code).
-
 Note that these methods only support passing a string, but you could certainly do:
 
 ```js
@@ -114,7 +112,7 @@ const issues = JSON.parse(core.getInput('bugs'))
 
 This can allow for much more composable actions than ever before, letting them do one thing and then passing that information around in your workflow.
 
-Now, if you're like me, you're thinking "Can this be done without the toolkit or JavaScript?" Turns out, yes!
+These methods use functionality of the runtime that isn't documented (I had to [read through some code](https://github.com/actions/toolkit/blob/99d3ad0a6473e7e7906681627a450150a772ee1d/packages/core/src/command.ts) to figure out how it was working), so it may feel a little magical. Now, if you're like me, you're thinking "Can this be done without the toolkit or JavaScript?" Turns out, yes!
 
 **Heads up**! This feature is not yet documented and is subject to change! For a more reliable method, use the toolkit methods if you can.
 
@@ -136,7 +134,7 @@ And to reiterate: this isn't documented yet, and the syntax will likely change, 
 
 ## Streaming logs
 
-This was high on my list of missing features in [**Use GitHub Actions for CI**](/posts/use-github-actions-for-ci). Now, when an Actions workflow is running, you can see the output without having to wait until its done. This isn't just a quality of life improvement. The overall development experience when building an action is significantly faster.
+This was high on my list of missing features in [**Use GitHub Actions for CI**](/posts/use-github-actions-for-ci). Now, when an Actions workflow is running, you can see the output without having to wait until its done. This isn't just a quality of life improvement; the overall development experience when building an action is significantly faster.
 
 ## Declarative requirements for Actions
 
