@@ -122,13 +122,13 @@ These methods use functionality of the runtime that isn't documented (I had to [
 - name: Let's set an environment variable!
   run: |
     FOO=bar
-    echo '##[set-env name=FOO;]$FOO'
+    echo '::set-env name=FOO::$FOO'
 - run: |
     echo $FOO
     # outputs "bar"
 ```
 
-The key here is printing `##[set-env name=KEY;]value` to `stdout`. Similarly, `core.setOutput` prints `##[set-output name=key;]value`.
+The key here is printing `::set-env name=KEY::value` to `stdout`. Similarly, `core.setOutput` prints `::set-output name=key::value`.
 
 And to reiterate: this isn't documented yet, and the syntax will likely change, so beware! BUT IT'S SO COOL I HAD TO SHARE IT.
 
