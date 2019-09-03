@@ -28,6 +28,7 @@ export default function BlogPostTemplate(props) {
         title={post.frontmatter.title}
         description={post.frontmatter.spoiler}
         slug={post.fields.slug}
+        image={`/static/${post.fields.slug.slice(0, -1)}.png`}
       />
       <div itemScope itemType="http://schema.org/BlogPosting">
         <header>

@@ -19,14 +19,14 @@ const query = graphql`
   }
 `
 
-function SEO({ meta, title, description, slug }) {
+function SEO({ meta, title, description, slug, image }) {
   return (
     <StaticQuery
       query={query}
       render={data => {
         const { siteMetadata } = data.site
         const metaDescription = description || siteMetadata.description
-        const metaImage = `${siteMetadata.siteUrl}/card.png`
+        const metaImage = image || `${siteMetadata.siteUrl}/card.png`
         const url = `${siteMetadata.siteUrl}${slug}`
         return (
           <Helmet
@@ -98,7 +98,8 @@ SEO.propTypes = {
   description: PropTypes.string,
   meta: PropTypes.array,
   slug: PropTypes.string,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string
 }
 
 export default SEO
