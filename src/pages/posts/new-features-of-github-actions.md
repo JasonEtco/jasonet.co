@@ -89,7 +89,7 @@ steps:
   - name: Tweet
     run: |
       curl -X POST \
-        -d '{ ": "Version ${{ steps.get_metadata.outputs.version }} of ${{ steps.get_metadata.outputs.name }} was just published!" }'\
+        -d '{ "message": "Version ${{ steps.get_metadata.outputs.version }} of ${{ steps.get_metadata.outputs.name }} was just published!" }'\
         "https://twitter-example.com/tweet"
 ```
 
