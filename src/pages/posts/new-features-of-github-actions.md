@@ -98,11 +98,13 @@ Note that these methods only support passing a string, but you could certainly d
 ```js
 const core = require('@actions/core')
 const { GitHub, context } = require('@actions/github')
+
 // Let's get a list of issues that have a particular label
 const github = new GitHub(process.env.GITHUB_TOKEN)
 const issues = await github.search.issuesAndPullRequests({
   q: `in:${context.repo.owner}/${context.repo.repo} label:bug`
 })
+
 // Expose it to future actions, using JSON.stringify() to pass it
 core.setOutput('bugs', JSON.stringify(issues))
 
@@ -122,13 +124,13 @@ These methods use functionality of the runtime that isn't documented (I had to [
 - name: Let's set an environment variable!
   run: |
     FOO=bar
-    echo '##[set-env name=FOO;]$FOO'
+    echo '::set-env name=FOO::$FOO'
 - run: |
     echo $FOO
     # outputs "bar"
 ```
 
-The key here is printing `##[set-env name=KEY;]value` to `stdout`. Similarly, `core.setOutput` prints `##[set-output name=key;]value`.
+The key here is printing `::set-env name=KEY::value` to `stdout`. Similarly, `core.setOutput` prints `::set-output name=key::value`.
 
 And to reiterate: this isn't documented yet, and the syntax will likely change, so beware! BUT IT'S SO COOL I HAD TO SHARE IT.
 
