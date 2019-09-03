@@ -98,11 +98,13 @@ Note that these methods only support passing a string, but you could certainly d
 ```js
 const core = require('@actions/core')
 const { GitHub, context } = require('@actions/github')
+
 // Let's get a list of issues that have a particular label
 const github = new GitHub(process.env.GITHUB_TOKEN)
 const issues = await github.search.issuesAndPullRequests({
   q: `in:${context.repo.owner}/${context.repo.repo} label:bug`
 })
+
 // Expose it to future actions, using JSON.stringify() to pass it
 core.setOutput('bugs', JSON.stringify(issues))
 
