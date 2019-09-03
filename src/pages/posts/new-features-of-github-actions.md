@@ -69,7 +69,7 @@ steps:
   - name: Tweet
     run: |
       curl -X POST \
-        -d '{ ": "Version ${VERSION} of ${NAME} was just published!" }'\
+        -d '{ "message": "Version ${VERSION} of ${NAME} was just published!" }'\
         "https://twitter-example.com/tweet"
 ```
 
