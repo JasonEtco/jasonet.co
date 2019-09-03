@@ -1,5 +1,6 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
+const createSocialCard = require('./src/utils/create-social-card')
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -17,7 +18,10 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             frontmatter {
               title
+              date(formatString: "MMMM DD, YYYY")
+              spoiler
             }
+            timeToRead
           }
         }
       }
@@ -31,7 +35,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create blog posts pages.
   const posts = result.data.allMarkdownRemark.edges
-  posts.forEach((post, index) => {
+
+  for (let index = 0; index < posts.length; index++) {
+    const post = posts[index]
+
+    await createSocialCard(post.node)
+
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
 
@@ -44,7 +53,7 @@ exports.createPages = async ({ graphql, actions }) => {
         next
       }
     })
-  })
+  }
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
