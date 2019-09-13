@@ -104,12 +104,14 @@ export default function Repo(props) {
               width: 12,
               height: 12,
               position: 'relative',
-              backgroundColor: repo.primaryLanguage.color,
+              backgroundColor: repo.primaryLanguage
+                ? repo.primaryLanguage.color
+                : 'gray',
               borderRadius: '50%',
               display: 'inline-block'
             }}
           />{' '}
-          {repo.primaryLanguage.name}
+          {repo.primaryLanguage ? repo.primaryLanguage.name : 'Code'}
           <a
             href={`${repo.url}/stargazers`}
             style={{ color: 'inherit', marginLeft: 16 }}
