@@ -15,6 +15,7 @@ You should definitely check out [the new documentation](https://help.github.com/
 * Instead of multiple actions in a workflow, we now have a more granular breakdown of `workflow > jobs > steps`.
 * Jobs are run in VMs instead of containers - including MacOS, Windows and Linux 😍🥰
 * There's now an [official actions/toolkit](https://github.com/actions/toolkit), that includes some special interactions with the runtime.
+* The visual workflow editor is no longer available; I don't know if there are plans to bring it back for the new YAML workflows or not.
 
 ---
 
