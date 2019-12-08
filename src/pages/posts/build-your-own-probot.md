@@ -14,6 +14,7 @@ A couple of important notes:
 
 * Unless specifically stated, all code is pseudo-code, not copied directly from Probot. I'll be oversimplifying some code so that we don't have to think about edge-cases and complications.
 * Many parts of Probot have been extracted into smaller modules (shoutout [@gr2m](https://twitter.com/gr2m)). We'll talk about how they work, but you'll probably just want to use them directly.
+* There's a lot of code here - if you're looking at something and wanting for some more explanation, please [tell me](https://twitter.com/JasonEtco)!
 
 ## Probot is an opinionated Express server
 
@@ -30,11 +31,13 @@ app.post('/', (req, res) => {
 
 When a Probot server receives a Webhook, it does a few things before actually running your code:
 
+![Probot webhook handling flow](/images/probot-flow.png)
+
 First, it verifies the webhook signature; along with the JSON payload, GitHub sends an `X-GitHub-Secret` header. The value of the header is a combination of a secret key and the contents of the payload itself. GitHub and your Probot app both have the secret key (Probot uses the `WEBHOOK_SECRET` environment variable), so when the two services generate the header they should match exactly. If they don't, Probot ignores the request.
 
 This is a security measure to ensure that random POST requests aren't acted upon - only GitHub can trigger your app. This logic is now abstracted in a separate module that Probot uses, [`@octokit/webhooks`](https://github.com/octokit/webhooks.js), for convenience and reusability.
 
-Once the webhook verification is complete, Probot emits an event through its internal [`EventEmitter`]():
+Once the webhook verification is complete, Probot emits an event through its internal [`EventEmitter`](https://nodejs.org/api/events.html):
 
 ```js
 const express = require('express')
