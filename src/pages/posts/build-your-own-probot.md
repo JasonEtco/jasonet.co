@@ -12,7 +12,7 @@ I'm going to leave the [**Why we built Probot**](#why-we-built-probot) until the
 
 A couple of important notes:
 
-* Unless specifically stated, all code is pseudo-code
+* Unless specifically stated, all code is pseudo-code, not copied directly from Probot. I'll be oversimplifying some code so that we don't have to think about edge-cases and complications.
 * Many parts of Probot have been extracted into smaller modules (shoutout [@gr2m](https://twitter.com/gr2m)). We'll talk about how they work, but you'll probably just want to use them directly.
 
 ## Probot is an opinionated Express server
