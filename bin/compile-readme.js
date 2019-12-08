@@ -29,7 +29,7 @@ function generateList(posts) {
 
       return 0
     })
-    .map(({ fm, slug }) => `* [${fm.title}](${siteUrl}/posts/${slug})`)
+    .map(({ fm, slug }) => `- [${fm.title}](${siteUrl}/posts/${slug})`)
     .join('\n')
 }
 
