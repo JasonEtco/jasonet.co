@@ -74,11 +74,11 @@ module.exports = app => {
 }
 ```
 
-Where `app` is (sort of) an extension of our `EventEmitter`! There are still a things that Probot does before running your code, but first...
+Where `app` is an instance of the `Application` class, which is (sort of) an extension of `EventEmitter! We'll look at that shortly - there are still a things that Probot does before running your code, but first...
 
 ### Why an EventEmitter API?
 
-To me, it's the inherent simplicity of "something happened, so now run this code." When an issue is opened on GitHub, run this code.
+To me, it's the inherent simplicity of "something happened, so now run this code." When an issue is opened on GitHub, run this code. This let's you focus on your app code, and not care what Probot is doing under the hood. Similar to something like Express's `app.get()`, but this let's you register multiple event handlers for the same event, and have an infinite list of events (since they're just strings).
 
 ## Authentication
 
@@ -207,9 +207,11 @@ events.on('github-event', ({ event, payload }) => {
 app.post('/', ...)
 ```
 
+A common question I hear is "how do I access `context` outside of an event handler?" - hopefully, this has helped explain how `context` is created, and is dependant on the `installation.id` value of the payload. If you have another way to get an installation ID (possibly through [API endpoints for finding an ID](https://developer.github.com/v3/apps/#get-a-repository-installation)), then you can totally do that!
+
 ## Loading your App's code
 
-This is a fun part of Probot - you write code that exports a function, but then Probot magically runs that function. Most Probot apps use a CLI the Probot provides, called `probot run`. For example, [`JasonEtco/todo`'s] `npm start` command is this:
+This is a fun part of Probot - you write code that exports a function, but then Probot magically runs that function. Most Probot apps use a CLI the Probot provides, called `probot run`. For example, [`JasonEtco/todo`'s](https://github.com/JasonEtco/todo) `npm start` command is this:
 
 ```json
 "scripts": {
@@ -333,18 +335,18 @@ TODO:
 
 ## Outline
 
-- Probot is an opinionated Express server
-- How GitHub Apps authenticate
-  - Authenticating as the App
-  - Authenticating as the Installation
-- Probot's EventEmitter-like API
-  - What happens when it "gets a Webhook"
-    - Elaborate that GitHub POSTs to your app
-    - Probot checks `WEBHOOK_SECRET`
-    - For local dev we built Smee - separate post if you're interested Tweet me
-  - `payload.installation.id` -> `app.auth()`
-  - Exchange installation ID and App credentials for installation token
+- [x] Probot is an opinionated Express server
+- [x] Probot's EventEmitter-like API
+  - [x] What happens when it "gets a Webhook"
+    - [x] Elaborate that GitHub POSTs to your app
+    - [x] Probot checks `WEBHOOK_SECRET`
+    - [ ] For local dev we built Smee - separate post if you're interested Tweet me
+- [x] `probot run` and programmatic starts
+- [x] How GitHub Apps authenticate
+  - [x] Authenticating as the App
+  - [x] Authenticating as the Installation
+  - [x] `payload.installation.id` -> `app.auth()`
+  - [x] Exchange installation ID and App credentials for installation token
 - Helpers (`context.config()`, `context.repo()`)
   - Note that `{ ...rest }` wasn't a thing back then - so the method was helpful
-  - `probot run` and programmatic starts
 - Why we built Probot
