@@ -42,7 +42,7 @@ describe('posts', () => {
   describe.each(posts)('%s', (key, value) => {
     it('has valid front matter', async () => {
       const validated = await schema.validate(value)
-      expect(validated).toEqual(value)
+      expect(validated.value).toMatchObject(value)
     })
 
     it("is included in the repo's README", () => {

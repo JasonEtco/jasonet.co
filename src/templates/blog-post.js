@@ -47,7 +47,7 @@ export default function BlogPostTemplate(props) {
             }}
           >
             <time itemProp="datePublished">{post.frontmatter.date}</time>
-            {` • `}
+            <span> • </span>
             <time itemProp="timeRequired">
               {formatReadingTime(post.timeToRead)}
             </time>
@@ -65,11 +65,11 @@ export default function BlogPostTemplate(props) {
           <a href={discussUrl} target="_blank" rel="noopener noreferrer">
             Discuss on Twitter
           </a>
-          {` • `}
+          <span> • </span>
           <a href={editUrl} target="_blank" rel="noopener noreferrer">
             Edit on GitHub
           </a>
-          {` • `}
+          <span> • </span>
           <a href="/rss.xml">RSS Feed</a>
         </p>
 

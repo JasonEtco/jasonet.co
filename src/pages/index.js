@@ -77,7 +77,7 @@ export default function BlogIndex(props) {
               </h3>
               <small>
                 <time itemProp="datePublished">{node.frontmatter.date}</time>
-                {` • `}
+                <span> • </span>
                 <time itemProp="timeRequired">
                   {formatReadingTime(node.timeToRead)}
                 </time>
