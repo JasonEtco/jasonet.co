@@ -6,7 +6,7 @@ spoiler: Let's see what makes Probot tick; the API design, the authentication me
 
 A lot of people look at Probot and wonder how they can extend it - add custom routes, integrate it with other platforms, control it's startup. I firmly believe that too many features and options can make a framework unweildy, so rather than show where all of those things can fit in Probot itself, we're going to take a look at building our own Probot.
 
-Interestingly, the API design (started by @bkeepers) looks and feels a lot like a chatbot. I'm hoping that from this post, you (yes you!) will get an understanding of how Probot integrates with GitHub and _why_ it feels easy to use, and then you'll be able to bring those patterns to your own projects.
+Interestingly, the API design (started by [@bkeepers](https://github.com/bkeepers)) looks and feels a lot like a chatbot. I'm hoping that from this post, you (yes you!) will get an understanding of how Probot integrates with GitHub and _why_ it feels easy to use, and then you'll be able to bring those patterns to your own projects.
 
 I'm going to leave the [**Why we built Probot**](#why-we-built-probot) until the end, because while it is interesting and enlightening, we want to build stuff!
 
