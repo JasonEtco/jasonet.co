@@ -4,7 +4,7 @@ date: '2019-12-08'
 spoiler: Let's see what makes Probot tick; the API design, the authentication mechanisms, and the little helpers that make it easy to use.
 ---
 
-A lot of people look at Probot and wonder how they can extend it - add custom routes, integrate it with other platforms, control it's startup. I firmly believe that too many features and options can make a framework unweildy, so rather than show where all of those things can fit in Probot itself, we're going to take a look at building our own Probot.
+A lot of people look at Probot and wonder how they can extend it - add custom routes, integrate it with other platforms, control its startup. I firmly believe that too many features and options can make a framework unwieldy, so rather than show where all of those things can fit in Probot itself, we're going to take a look at building our own Probot.
 
 Interestingly, the API design (started by [@bkeepers](https://github.com/bkeepers)) looks and feels a lot like a chatbot. I'm hoping that from this post, you (yes you!) will get an understanding of how Probot integrates with GitHub and _why_ it feels easy to use, and then you'll be able to bring those patterns to your own projects.
 
@@ -80,7 +80,7 @@ Where `app` is an instance of the `Application` class, which is (sort of) an ext
 
 ### Why an EventEmitter API?
 
-To me, it's the inherent simplicity of "something happened, so now run this code." When an issue is opened on GitHub, run this code. This let's you focus on your app code, and not care what Probot is doing under the hood. Similar to something like Express's `app.get()`, but this let's you register multiple event handlers for the same event, and have an infinite list of events (since they're just strings).
+To me, it's the inherent simplicity of "something happened, so now run this code." When an issue is opened on GitHub, run this code. This lets you focus on your app code, and not care what Probot is doing under the hood. Similar to something like Express's `app.get()`, but this lets you register multiple event handlers for the same event, and have an infinite list of events (since they're just strings).
 
 ## Authentication
 
@@ -209,7 +209,7 @@ events.on('github-event', ({ event, payload }) => {
 app.post('/', ...)
 ```
 
-A common question I hear is "how do I access `context` outside of an event handler?" - hopefully, this has helped explain how `context` is created, and is dependant on the `installation.id` value of the payload. If you have another way to get an installation ID (possibly through [API endpoints for finding an ID](https://developer.github.com/v3/apps/#get-a-repository-installation)), then you can totally do that!
+A common question I hear is "how do I access `context` outside of an event handler?" - hopefully, this has helped explain how `context` is created, and is dependent on the `installation.id` value of the payload. If you have another way to get an installation ID (possibly through [API endpoints for finding an ID](https://developer.github.com/v3/apps/#get-a-repository-installation)), then you can totally do that!
 
 ## Loading your App's code
 
@@ -249,7 +249,7 @@ While this obviously isn't all of Probot, it really is the core of it. We get an
 
 ## A very simple Probot framework
 
-Using all of the above information, I wanted to take a crack at a simplified version of Probot that, asidie from the GitHub authentication mechanisms, has nothing to do with GitHub. You can take this framework and apply it to any other service that sends webhooks.
+Using all of the above information, I wanted to take a crack at a simplified version of Probot that, aside from the GitHub authentication mechanisms, has nothing to do with GitHub. You can take this framework and apply it to any other service that sends webhooks.
 
 ```js
 const express = require('express')
