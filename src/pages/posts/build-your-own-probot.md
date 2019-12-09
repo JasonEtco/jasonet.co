@@ -320,12 +320,76 @@ With that, I want to talk a bit about why I think Probot is, overall, a well-bui
 
 ## What makes Probot "good"
 
-TODO:
+By now, you've seen what makes Probot work - but it's ease-of-use is explained better by some features we haven't talked about yet:
 
-* Documentation
-* `create-probot-app`
-* `probot run`
-* Helper methods for common patterns
+### Documentation
+
+This should be obvious, but good documentation means people will be able to use the thing. If its really good, users of your library/framework/application will be able to hit the ground running with very little explanation, and if they want to they can learn about more advanced usage.
+
+Probot's docs are solid - not perfect, but good. If you're looking to build something for other developers, don't ignore the docs.
+
+### `create-probot-app`
+
+This is a big one - Probot requires a few specific things to be setup correctly, including things like the `npm start/probot run` script and the environment variables. Without the [`create-probot-app`](https://github.com/probot/create-probot-app) scaffolding CLI, it'd be a lot more challenging for users with no context to set it up correctly. [GitHub's Template Repositories]() are a new, lightweight solution that may work for you!
+
+### `probot run`
+
+We talked about how `probot run` works earlier, but an important thing to note is that without it, you'd be asking your users to write "boilerplate code." That's code that every single Probot app needs; if you can avoid it, maybe by shoving the logic into a CLI like `probot run`, it can simplify the end-users' experience.
+
+One important note though: build your library in a way that doesn't _require_ that CLI. For the longest time, starting Probot programmatically required reaching into its internals and calling undocumented APIs. Ideally, the CLI would simply wrap some functionality that's already exported, that users can choose over a CLI if they need more control.
+
+### `Context` helper methods
+
+We didn't talk much about the `Context` class, aside from creating `context.github`, but many Probot apps end up calling methods like `context.repo()`. This returns some data from the webhook payload, and takes an optional argument with additional data. You would use it like this:
+
+```js{2,3}
+app.on('example', async context => {
+  const params = context.repo({ title: 'New issue!' })
+  // -> { owner: 'JasonEtco', name: 'my-repo', title: 'New issue! }
+  return context.github.issues.create(params)
+})
+```
+
+In the above code, we're putting together an object to pass to an Octokit method. This is something you'll want to do often in a Probot app, so it was a case for a little abstraction helper. The code for it is really simple:
+
+```ts
+// https://github.com/probot/probot/blob/61c05ea76e9ea31fbdea15c99f7c1cc613321db5/src/context.ts#L106-L117
+class Context {
+  public repo<T> (object?: T) {
+    const repo = this.payload.repository
+
+    if (!repo) {
+      throw new Error('context.repo() is not supported for this webhook event.')
+    }
+
+    return Object.assign({
+      owner: repo.owner.login || repo.owner.name!,
+      repo: repo.name
+    }, object)
+  }
+}
+```
+
+This was designed before [the object spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) was widely available, but you could choose to design this a little differently and use a custom getter (I took this approach with [`JasonEtco/actions-toolkit`](https://github.com/JasonEtco/actions-toolkit/pull/61)):
+
+```ts
+class Context {
+  public get repo {
+    const repo = this.payload.repository
+
+    if (!repo) {
+      throw new Error('context.repo is not supported for this webhook event.')
+    }
+
+    return {
+      owner: repo.owner.login || repo.owner.name!,
+      repo: repo.name
+    }
+  }
+}
+```
+
+This is a really small getter, that just grabs some info from the payload. But you'll notice that we're returning an object with a much simpler shape (`{ owner, repo }`), and it maps perfectly to most Octokit methods' parameters. It's these small additions that make writing code with Probot just a little more smooth.
 
 ## Why we built Probot
 
@@ -347,6 +411,6 @@ TODO:
   - [x] Authenticating as the Installation
   - [x] `payload.installation.id` -> `app.auth()`
   - [x] Exchange installation ID and App credentials for installation token
-- Helpers (`context.config()`, `context.repo()`)
-  - Note that `{ ...rest }` wasn't a thing back then - so the method was helpful
+- [x] Helpers (`context.config()`, `context.repo()`)
+  - [x] Note that `{ ...rest }` wasn't a thing back then - so the method was helpful
 - Why we built Probot
