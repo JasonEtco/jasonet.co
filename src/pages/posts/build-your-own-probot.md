@@ -395,4 +395,14 @@ This is a really small getter, that just grabs some info from the payload. But y
 
 ## Why we built Probot
 
-...
+I can't speak to the original motivation; Probot started before I came on board. But, here's my take on what it brought to the ecosystem, and how it helped push the topic of workflow automation forward.
+
+Authentication is hard. GitHub Apps have a lot of authentication. If you want people to use your platform, it needs to be easy to use - and that's an immensely difficult balance to strike. GitHub Apps are an awesome platform, but there's a lot going on. This is where frameworks and tooling can come in to help us out.
+
+JavaScript is an approachable language. You may not love it, it has its faults, but ultimately people use JavaScript. While GitHub is a Ruby shop, and a lot of examples and documentation for building GitHub Apps are in Ruby, the choice to use JS for Probot simply meant that more developers could use it without having to learn a new language.
+
+It makes the hard stuff easy, and the advanced stuff is still hard. By that, I mean that you can write a fully-functional Probot app without having to poke at its internals or understand how it works under the hood. But, with a complex app (like [GitHub Learning Lab](https://lab.github.com), or the [GitHub/Slack integration](https://slack.github.com)), you'll inevitably hit the limits of what Probot can do. That's fine - there are thousands of apps that are, for all intents and purposes, _simple_, but bring serious value (like [Stale](https://github.com/probot/stale)). That's because all the hard stuff is still there, just hidden away.
+
+---
+
+So I hope you learned something, or that this was interesting to you. I know I've been learning a lot working on Probot. If you have any questions, [ask away](https://twitter.com/JasonEtco)!
