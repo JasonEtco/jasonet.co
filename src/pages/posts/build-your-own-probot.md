@@ -66,6 +66,8 @@ app.post('/', (req, res) => {
 })
 ```
 
+If your app is deployed to a public URL, GitHub can make an HTTP request; but if you're just working locally, you'll have to use something like `localtunnel` or `ngrok` to expose your local machine to the internet. We build [Smee.io](https://smee.io) specifically for Probot, to receive webhook events locally - it's its own topic, so if you're interested in a post on Smee [let me know](https://twitter.com/JasonEtco)!
+
 Somewhere behind the scenes, Probot has registered the event handlers of your Probot app. A standard app looks like this:
 
 ```js
@@ -404,7 +406,7 @@ This is a really small getter, that just grabs some info from the payload. But y
   - [x] What happens when it "gets a Webhook"
     - [x] Elaborate that GitHub POSTs to your app
     - [x] Probot checks `WEBHOOK_SECRET`
-    - [ ] For local dev we built Smee - separate post if you're interested Tweet me
+    - [x] For local dev we built Smee - separate post if you're interested Tweet me
 - [x] `probot run` and programmatic starts
 - [x] How GitHub Apps authenticate
   - [x] Authenticating as the App
