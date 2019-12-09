@@ -66,7 +66,7 @@ app.post('/', (req, res) => {
 })
 ```
 
-If your app is deployed to a public URL, GitHub can make an HTTP request; but if you're just working locally, you'll have to use something like `localtunnel` or `ngrok` to expose your local machine to the internet. We build [Smee.io](https://smee.io) specifically for Probot, to receive webhook events locally - it's its own topic, so if you're interested in a post on Smee [let me know](https://twitter.com/JasonEtco)!
+If your app is deployed to a public URL, GitHub can make an HTTP request; but if you're just working locally, you'll have to use something like `localtunnel` or `ngrok` to expose your local machine to the internet. We built [Smee.io](https://smee.io) specifically for Probot, to receive webhook events locally - it's its own topic, so if you're interested in a post on Smee [let me know](https://twitter.com/JasonEtco)!
 
 Somewhere behind the scenes, Probot has registered the event handlers of your Probot app. A standard app looks like this:
 
