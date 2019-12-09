@@ -396,23 +396,3 @@ This is a really small getter, that just grabs some info from the payload. But y
 ## Why we built Probot
 
 ...
-
----
-
-## Outline
-
-- [x] Probot is an opinionated Express server
-- [x] Probot's EventEmitter-like API
-  - [x] What happens when it "gets a Webhook"
-    - [x] Elaborate that GitHub POSTs to your app
-    - [x] Probot checks `WEBHOOK_SECRET`
-    - [x] For local dev we built Smee - separate post if you're interested Tweet me
-- [x] `probot run` and programmatic starts
-- [x] How GitHub Apps authenticate
-  - [x] Authenticating as the App
-  - [x] Authenticating as the Installation
-  - [x] `payload.installation.id` -> `app.auth()`
-  - [x] Exchange installation ID and App credentials for installation token
-- [x] Helpers (`context.config()`, `context.repo()`)
-  - [x] Note that `{ ...rest }` wasn't a thing back then - so the method was helpful
-- Why we built Probot
