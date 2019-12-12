@@ -348,7 +348,7 @@ Probot's docs are solid - not perfect, but good. If you're looking to build some
 
 ### `create-probot-app`
 
-This is a big one - Probot requires a few specific things to be setup correctly, including things like the `npm start/probot run` script and the environment variables. Without the [`create-probot-app`](https://github.com/probot/create-probot-app) scaffolding CLI, it'd be a lot more challenging for users with no context to set it up correctly. [GitHub's Template Repositories]() are a new, lightweight solution that may work for you!
+This is a big one - Probot requires a few specific things to be setup correctly, including things like the `npm start/probot run` script and the environment variables. Without the [`create-probot-app`](https://github.com/probot/create-probot-app) scaffolding CLI, it'd be a lot more challenging for users with no context to set it up correctly. [GitHub's Template Repositories](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-template-repository) are a new, lightweight solution that may work for you!
 
 ### `probot run`
 
