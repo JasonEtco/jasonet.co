@@ -35,20 +35,32 @@ When a Probot server receives a Webhook, it does a few things before actually ru
 
 First, it verifies the webhook signature; along with the JSON payload, GitHub sends an `X-GitHub-Secret` header. The value of the header is a combination of a secret key and the contents of the payload itself. GitHub and your Probot app both have the secret key (Probot uses the `WEBHOOK_SECRET` environment variable), so when the two services generate the header they should match exactly. If they don't, Probot ignores the request.
 
-This is a security measure to ensure that random POST requests aren't acted upon - only GitHub can trigger your app. This logic is now abstracted in a separate module that Probot uses, [`@octokit/webhooks`](https://github.com/octokit/webhooks.js), for convenience and reusability.
+This is a security measure to ensure that random POST requests aren't acted upon - only GitHub can trigger your app. This logic is now abstracted in a separate module that Probot uses, [`@octokit/webhooks`](https://github.com/octokit/webhooks.js), for convenience and reusability. Here's a contrived example of what Probot does internally:
+
+```js
+app.post('/', (req, res) => {
+  // Grab the header that we should be able to create ourselves
+  const signatureHeader = req.get('X-Hub-Signature')
+  // Verify the webhook payload
+  const isValidWebhook = webhooks.verify(req.body, secretHeader)
+  // -> true/false
+})
+```
 
 Once the webhook verification is complete, Probot emits an event through its internal [`EventEmitter`](https://nodejs.org/api/events.html):
 
 ```js
 const express = require('express')
 const EventEmitter = require('events')
+const Webhooks = require('@octokit/webhooks')
 const app = express()
 
 const events = new EventEmitter()
+const webhooks = new Webhooks({ secret: process.env.WEBHOOK_SECRET })
 
 app.post('/', (req, res) => {
   // Verify the webhook payload
-  const isValidWebhook = verifyWebhookPayload(req)
+  const isValidWebhook = webhooks.verify(req.body, req.get('X-Hub-Signature'))
   // The name of the GitHub event is sent in a header
   const eventName = req.get('X-GitHub-Event')
   // It's valid, we emit an event
@@ -65,6 +77,8 @@ app.post('/', (req, res) => {
   }
 })
 ```
+
+If you're paying attention, you'll recognize that `@octokit/webhooks` does a lot of potential event handling, very similar to `EventEmitter` (and Probot). This isn't a coincidence, `@octokit/webooks` was born from Probot's intentions - but I'm showing a little bit of what drives that logic instead of using it outright/
 
 If your app is deployed to a public URL, GitHub can make an HTTP request; but if you're just working locally, you'll have to use something like `localtunnel` or `ngrok` to expose your local machine to the internet. We built [Smee.io](https://smee.io) specifically for Probot, to receive webhook events locally - it's its own topic, so if you're interested in a post on Smee [let me know](https://twitter.com/JasonEtco)!
 
@@ -95,7 +109,7 @@ If you're here, I'll guess that you're familiar with what GitHub Apps are. They'
 * As itself, as an app
 * As an installation. When you install an app on an account (a user or an organization), that creates an installation. Each installation has a unique `id` (the aforementioned payload value), and we can use that to create an API access token.
 
-Usually, when your Probot app calls `context.github...`, `github` is an authenticated `Octokit` client that uses an **installation token**. We can get one of those by creating an access token as the app and then using that to create an access token for an installation, given its ID.
+Usually, when your Probot app calls `context.github...`, `github` is an authenticated `Octokit` client that uses an **installation token**. We can get one of these _installation tokens_ from GitHub, using a JSON Web Token (JWT) that securely proves our app’s identity to GitHub.
 
 Authenticating as the app is done by combining the `APP_ID` and `PRIVATE_KEY`, using JWTs:
 
