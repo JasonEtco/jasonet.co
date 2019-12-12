@@ -8,7 +8,7 @@ A lot of people look at Probot and wonder how they can extend it - add custom ro
 
 Interestingly, the API design (started by [@bkeepers](https://github.com/bkeepers)) looks and feels a lot like a chatbot. I'm hoping that from this post, you (yes you!) will get an understanding of how Probot integrates with GitHub and _why_ it feels easy to use, and then you'll be able to bring those patterns to your own projects.
 
-I'm going to leave the [**Why we built Probot**](#why-we-built-probot) until the end, because while it is interesting and enlightening, we want to build stuff!
+I'm going to leave the [**Why we built Probot**](#why-we-built-probot) until the end because while it is interesting and enlightening, we want to build stuff!
 
 A couple of important notes:
 
@@ -90,7 +90,7 @@ module.exports = app => {
 }
 ```
 
-Where `app` is an instance of the `Application` class, which is (sort of) an extension of `EventEmitter! We'll look at that shortly - there are still a things that Probot does before running your code, but first...
+Where `app` is an instance of the `Application` class, which is (sort of) an extension of `EventEmitter! We'll look at that shortly - there are still few a things that Probot does before running your code, but first...
 
 ### Why an EventEmitter API?
 
@@ -223,7 +223,7 @@ events.on('github-event', ({ event, payload }) => {
 app.post('/', ...)
 ```
 
-A common question I hear is "how do I access `context` outside of an event handler?" - hopefully, this has helped explain how `context` is created, and is dependent on the `installation.id` value of the payload. If you have another way to get an installation ID (possibly through [API endpoints for finding an ID](https://developer.github.com/v3/apps/#get-a-repository-installation)), then you can totally do that!
+A common question I hear is "how do I access `context` outside of an event handler?" - hopefully, this has helped explain how `context` is created and is dependent on the `installation.id` value of the payload. If you have another way to get an installation ID (possibly through [API endpoints for finding an ID](https://developer.github.com/v3/apps/#get-a-repository-installation)), then you can totally do that!
 
 ## Loading your App's code
 
@@ -259,7 +259,7 @@ yourApp(application)
 
 Calling the function then calls `application.on()`, which registers the event handlers!
 
-While this obviously isn't all of Probot, it really is the core of it. We get an event through the `POST` endpoint, use information from it to create an authenticated GitHub client, and run your app's code.
+While this isn't all of Probot, it really is the core of it. We get an event through the `POST` endpoint, use information from it to create an authenticated GitHub client, and run your app's code.
 
 ## A very simple Probot framework
 
@@ -328,7 +328,7 @@ app.listen(3000)
 This is a mostly functional Probot framework, but some immediate ways that Probot improves upon the above code:
 
 * Probot loads multiple `Application` instances, with some "internal" apps. For example, there's [a special Sentry integration](https://github.com/probot/probot/tree/master/src/apps/sentry.ts) that Probot loads as a Probot app itself!
-* Installation tokens are cached, to avoid make a ton of requests for the same thing.
+* Installation tokens are cached, to avoid making a ton of requests for the same thing.
 * `Context` is a real class with helper methods.
 * Probot uses [`promise-events`](https://npmjs.com/package/promise-events) for clearer, Promise-based event handling.
 * Grabbing the `PRIVATE_KEY` is a little more robust - Probot will look for a `/*.pem` file, use the `PRIVATE_KEY_PATH` variable, and the `PRIVATE_KEY` environment variable.
@@ -338,7 +338,7 @@ With that, I want to talk a bit about why I think Probot is, overall, a well-bui
 
 ## What makes Probot "good"
 
-By now, you've seen what makes Probot work - but it's ease-of-use is explained better by some features we haven't talked about yet:
+By now, you've seen what makes Probot work - but its ease-of-use is explained better by some features we haven't talked about yet:
 
 ### Documentation
 
