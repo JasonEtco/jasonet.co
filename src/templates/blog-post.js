@@ -16,6 +16,7 @@ export default function BlogPostTemplate(props) {
   const post = props.data.markdownRemark
   const { title: siteTitle, siteUrl } = props.data.site.siteMetadata
   const { previous, next, slug } = props.pageContext
+  console.log(post.tableOfContents)
 
   const urlSlug = slug.slice(1, -1)
   const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${urlSlug}.md`
@@ -54,6 +55,10 @@ export default function BlogPostTemplate(props) {
           </p>
           <meta itemProp="url" content={`${siteUrl}${slug}`} />
         </header>
+
+        {post.frontmatter.toc && (
+          <aside dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
+        )}
 
         <div
           className="blog-post"
@@ -150,10 +155,12 @@ export const pageQuery = graphql`
       id
       html
       timeToRead
+      tableOfContents(maxDepth: 2)
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
         spoiler
+        toc
       }
       fields {
         slug

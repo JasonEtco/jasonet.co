@@ -2,6 +2,7 @@
 title: Build your own Probot
 date: '2019-12-08'
 spoiler: Let's see what makes Probot tick; the API design, the authentication mechanisms, and the little helpers that make it easy to use.
+toc: true
 ---
 
 A lot of people look at Probot and wonder how they can extend it - add custom routes, integrate it with other platforms, control its startup. I firmly believe that too many features and options can make a framework unwieldy, so rather than show where all of those things can fit in Probot itself, we're going to take a look at building our own Probot.
