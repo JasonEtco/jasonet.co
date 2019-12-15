@@ -24,6 +24,7 @@
     "gatsby-plugin-google-analytics": "^2.1.29",
     "gatsby-plugin-manifest": "^2.2.31",
     "gatsby-plugin-netlify": "^2.1.27",
+    "gatsby-plugin-postcss": "^2.1.18",
     "gatsby-plugin-react-helmet": "^3.1.16",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-sharp": "^2.3.5",
@@ -46,6 +47,7 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
+    "tailwindcss": "^1.1.4",
     "typography": "^0.16.19",
     "typography-theme-github": "^0.16.19"
   },
