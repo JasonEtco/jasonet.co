@@ -55,6 +55,32 @@ export default function BlogPostTemplate(props) {
           <meta itemProp="url" content={`${siteUrl}${slug}`} />
         </header>
 
+        {post.frontmatter.toc && (
+          <aside
+            style={{
+              paddingLeft: rhythm(0.6),
+              paddingRight: rhythm(0.6),
+              paddingTop: rhythm(0.6),
+              paddingBottom: rhythm(0.4),
+              marginBottom: rhythm(1),
+              marginTop: rhythm(1),
+              border: `1px solid ${colors.gray[3]}`,
+              borderRadius: 4
+            }}
+          >
+            <p
+              style={{
+                ...scale(0.05),
+                color: colors.gray[7],
+                marginBottom: rhythm(0.5)
+              }}
+            >
+              Table of Contents
+            </p>
+            <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
+          </aside>
+        )}
+
         <div
           className="blog-post"
           itemProp="articleBody text"
@@ -150,10 +176,12 @@ export const pageQuery = graphql`
       id
       html
       timeToRead
+      tableOfContents(maxDepth: 2)
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
         spoiler
+        toc
       }
       fields {
         slug
