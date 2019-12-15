@@ -18,6 +18,7 @@
     "compile-readme": "node bin/compile-readme.js"
   },
   "dependencies": {
+    "@githubprimer/octicons-react": "^8.5.0",
     "gatsby": "^2.18.7",
     "gatsby-plugin-catch-links": "^2.1.19",
     "gatsby-plugin-feed": "^2.3.23",
