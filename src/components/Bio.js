@@ -1,8 +1,4 @@
 import React from 'react'
-
-// Import typefaces
-import 'inter-ui'
-
 import profilePic from './profile-pic.png'
 
 export default function Bio() {

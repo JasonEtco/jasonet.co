@@ -1,6 +1,9 @@
 import Typography from 'typography'
 import Theme from 'typography-theme-github'
 
+// Import typefaces
+import 'inter-ui'
+
 Theme.overrideThemeStyles = () => ({
   a: {
     color: '#f26d21'
