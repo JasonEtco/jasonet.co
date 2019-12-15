@@ -68,8 +68,8 @@ Repo.propTypes = {
     }),
     description: string.isRequired,
     primaryLanguage: shape({
-      name: string.isRequired,
-      color: string.isRequired
-    }).isRequired
+      name: string,
+      color: string
+    })
   })
 }

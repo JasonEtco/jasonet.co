@@ -118,6 +118,12 @@ export const pageQuery = graphql`
 
 BlogIndex.propTypes = {
   data: shape({
-    allMarkdownRemark: arrayOf(p.post).isRequired
+    allMarkdownRemark: shape({
+      edges: arrayOf(
+        shape({
+          node: p.post.isRequired
+        })
+      )
+    }).isRequired
   })
 }
