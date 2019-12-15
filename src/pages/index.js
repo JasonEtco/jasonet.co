@@ -15,9 +15,9 @@ export default function BlogIndex(props) {
     <main className="mx-auto max-w-xl py-8 px-3">
       <Seo />
 
-      <header className="md:flex items-end border-b border-gray-200 pb-3 mb-10">
+      <header className="md:flex items-end border-solid border-0 border-b border-gray-200 pb-3 mb-10">
         <h1
-          className="border-0 mb-0 pb-0"
+          className="border-0 my-0 pb-0"
           style={{
             fontSize: '3.5rem',
             fontWeight: 900,
@@ -39,7 +39,7 @@ export default function BlogIndex(props) {
               GitHub
             </a>
           </p>
-          <p>
+          <p className="mb-0">
             🐦 Follow me on{' '}
             <a
               className="text-orange hover:underline"
