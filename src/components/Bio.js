@@ -4,7 +4,6 @@ import React from 'react'
 import 'inter-ui'
 
 import profilePic from './profile-pic.png'
-import { rhythm } from '../utils/typography'
 
 export default function Bio() {
   return (
@@ -12,20 +11,10 @@ export default function Bio() {
       itemScope
       itemProp="author"
       itemType="http://schema.org/Person"
-      className="bio"
-      style={{ display: 'flex' }}
+      className="block md:flex"
     >
-      <img
-        src={profilePic}
-        alt="Jason Etcovitch"
-        style={{
-          marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          width: rhythm(2.8),
-          height: rhythm(2.8)
-        }}
-      />
-      <p style={{ marginBottom: 0 }}>
+      <img src={profilePic} alt="Jason Etcovitch" className="mr-6 w-16 h-16" />
+      <p className="m-0">
         👋 Personal blog by{' '}
         <a href="https://twitter.com/JasonEtco" itemProp="name">
           Jason Etcovitch
