@@ -18,11 +18,7 @@ export default function BlogIndex(props) {
       <header className="md:flex items-end border-solid border-0 border-b border-gray-200 pb-3 mb-10">
         <h1
           className="border-0 my-0 pb-0"
-          style={{
-            fontSize: '3.5rem',
-            fontWeight: 900,
-            lineHeight: 0.9
-          }}
+          style={{ fontSize: '3.5rem', fontWeight: 900, lineHeight: 0.9 }}
         >
           Jason
           <br />
