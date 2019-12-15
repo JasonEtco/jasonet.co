@@ -34,19 +34,11 @@ export default function ReposList() {
   return (
     <Fragment>
       <h5>Recently worked on:</h5>
-      <ul
-        className="repo-list"
-        style={{
-          display: 'flex',
-          listStyleType: 'none',
-          padding: 0,
-          margin: 0
-        }}
-      >
-        <li className="repo-wrapper" style={{ marginRight: 6, width: '50%' }}>
+      <ul className="block md:flex -mx-1 p-0 my-0 list-none">
+        <li className="md:w-1/2 p-1">
           <Repo loading={loading} repo={repos[0]} />
         </li>
-        <li className="repo-wrapper" style={{ marginLeft: 6, width: '50%' }}>
+        <li className="md:w-1/2 p-1">
           <Repo loading={loading} repo={repos[1]} />
         </li>
       </ul>
