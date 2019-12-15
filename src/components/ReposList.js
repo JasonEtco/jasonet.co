@@ -1,49 +1,47 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Repo from './Repo'
 
-export default class ReposList extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { loading: true, repos: [] }
-    this.getRepos = this.getRepos.bind(this)
+export default function ReposList() {
+  const [didError, setDidError] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [repos, setRepos] = useState([])
+
+  async function fetchRepos() {
+    try {
+      const res = await window.fetch('/.netlify/functions/get-repos')
+
+      if (!res.ok) {
+        console.error(await res.text())
+        setDidError(true)
+        return
+      }
+
+      const json = await res.json()
+      setRepos(json)
+      setLoading(false)
+    } catch (err) {
+      console.error(err)
+      setDidError(true)
+    }
   }
 
-  componentDidMount() {
-    this.getRepos().then(repos => {
-      this.setState({
-        loading: false,
-        repos
-      })
-    })
-  }
+  useEffect(() => {
+    fetchRepos()
+  }, [])
 
-  getRepos() {
-    return window.fetch('/.netlify/functions/get-repos').then(res => res.json())
-  }
+  if (didError) return null
 
-  render() {
-    const { repos, loading } = this.state
-
-    return (
-      <Fragment>
-        <h5>Recently worked on:</h5>
-        <ul
-          className="repo-list"
-          style={{
-            display: 'flex',
-            listStyleType: 'none',
-            padding: 0,
-            margin: 0
-          }}
-        >
-          <li className="repo-wrapper" style={{ marginRight: 6, width: '50%' }}>
-            <Repo loading={loading} repo={repos[0]} />
-          </li>
-          <li className="repo-wrapper" style={{ marginLeft: 6, width: '50%' }}>
-            <Repo loading={loading} repo={repos[1]} />
-          </li>
-        </ul>
-      </Fragment>
-    )
-  }
+  return (
+    <Fragment>
+      <h5>Recently worked on:</h5>
+      <ul className="block md:flex -mx-1 p-0 my-0 list-none">
+        <li className="md:w-1/2 p-1">
+          <Repo loading={loading} repo={repos[0]} />
+        </li>
+        <li className="md:w-1/2 p-1">
+          <Repo loading={loading} repo={repos[1]} />
+        </li>
+      </ul>
+    </Fragment>
+  )
 }

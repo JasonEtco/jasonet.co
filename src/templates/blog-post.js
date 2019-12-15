@@ -5,7 +5,6 @@ import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import Seo from '../components/SEO'
 import { formatReadingTime } from '../utils/helpers'
-import { rhythm, scale, colors } from '../utils/typography'
 import { shape, string } from 'prop-types'
 import p from '../utils/shared-props'
 
@@ -33,19 +32,12 @@ export default function BlogPostTemplate(props) {
         <header>
           <h1
             itemProp="name"
-            style={{ ...scale(1.6), fontWeight: 900, lineHeight: 1.1 }}
+            style={{ fontSize: '3rem', fontWeight: 900, lineHeight: 1.1 }}
+            className="mb-0 pb-3"
           >
             {post.frontmatter.title}
           </h1>
-          <p
-            style={{
-              ...scale(-1 / 5),
-              fontFamily: 'Inter UI, sans-serif',
-              display: 'block',
-              marginBottom: rhythm(1),
-              marginTop: rhythm(-3 / 5)
-            }}
-          >
+          <p className="text-sm mt-3 mb-6">
             <time itemProp="datePublished">{post.frontmatter.date}</time>
             <span> • </span>
             <time itemProp="timeRequired">
@@ -56,27 +48,8 @@ export default function BlogPostTemplate(props) {
         </header>
 
         {post.frontmatter.toc && (
-          <aside
-            style={{
-              paddingLeft: rhythm(0.6),
-              paddingRight: rhythm(0.6),
-              paddingTop: rhythm(0.6),
-              paddingBottom: rhythm(0.4),
-              marginBottom: rhythm(1),
-              marginTop: rhythm(1),
-              border: `1px solid ${colors.gray[3]}`,
-              borderRadius: 4
-            }}
-          >
-            <p
-              style={{
-                ...scale(0.05),
-                color: colors.gray[7],
-                marginBottom: rhythm(0.5)
-              }}
-            >
-              Table of Contents
-            </p>
+          <aside className="p-6 my-6 border-solid border border-gray-300 rounded-lg">
+            <p className="text-sm text-gray-700 mb-3">Table of Contents</p>
             <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
           </aside>
         )}
@@ -87,35 +60,33 @@ export default function BlogPostTemplate(props) {
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
 
-        <p style={{ marginTop: rhythm(2), color: colors.gray[6] }}>
-          <a href={discussUrl} target="_blank" rel="noopener noreferrer">
+        <p className="text-gray-600 mt-6">
+          <a
+            className="text-orange"
+            href={discussUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Discuss on Twitter
           </a>
           <span> • </span>
-          <a href={editUrl} target="_blank" rel="noopener noreferrer">
+          <a
+            className="text-orange"
+            href={editUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Edit on GitHub
           </a>
           <span> • </span>
-          <a href="/rss.xml">RSS Feed</a>
+          <a className="text-orange" href="/rss.xml">
+            RSS Feed
+          </a>
         </p>
 
-        <div
-          style={{
-            padding: rhythm(1.2),
-            marginTop: rhythm(1),
-            boxShadow: '0 2px 15px 0 rgba(210,214,220,.5)',
-            borderRadius: 5
-          }}
-        >
-          <h3 style={{ marginTop: 0 }}>
-            <Link
-              style={{
-                boxShadow: 'none',
-                textDecoration: 'none',
-                color: '#f26d21'
-              }}
-              to="/"
-            >
+        <div className="px-6 py-8 mt-6 shadow-xl border border-gray-100 rounded-lg">
+          <h3 className="font-semibold mb-6 text-lg">
+            <Link className="text-orange" to="/">
               Hope you enjoyed the read! 📝
             </Link>
           </h3>
@@ -123,17 +94,7 @@ export default function BlogPostTemplate(props) {
         </div>
       </div>
 
-      <ul
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
-          listStyle: 'none',
-          padding: 0,
-          marginLeft: 0,
-          marginTop: rhythm(2)
-        }}
-      >
+      <ul className="flex flex-wrap justify-between p-0 ml-0 mt-12">
         <li>
           {previous && (
             <Link
@@ -141,6 +102,7 @@ export default function BlogPostTemplate(props) {
               rel="prev"
               itemScope
               itemType="https://schema.org/BlogPosting"
+              className="text-orange"
             >
               ← <span itemProp="name">{previous.frontmatter.title}</span>
             </Link>
@@ -153,6 +115,7 @@ export default function BlogPostTemplate(props) {
               rel="next"
               itemScope
               itemType="https://schema.org/BlogPosting"
+              className="text-orange"
             >
               <span itemProp="name">{next.frontmatter.title}</span> →
             </Link>

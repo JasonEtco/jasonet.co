@@ -1,39 +1,16 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { any } from 'prop-types'
-import { rhythm, scale } from '../utils/typography'
 
 export default function Layout(props) {
   const { children } = props
 
   return (
     <main>
-      <div
-        style={{
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          maxWidth: rhythm(28),
-          padding: `${rhythm(1.5)} ${rhythm(1)}`
-        }}
-      >
-        <h3
-          style={{
-            ...scale(0.1),
-            fontFamily: 'Inter UI, sans-serif',
-            margin: 0
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: '#f26d21'
-            }}
-            to="/"
-          >
-            ← Back
-          </Link>
-        </h3>
+      <div className="mx-auto px-3 md:px-8 py-3 max-w-3xl">
+        <Link className="text-orange" to="/">
+          ← Back
+        </Link>
         {children}
       </div>
     </main>
