@@ -1,55 +1,20 @@
 import React from 'react'
 import { rhythm, scale, colors } from '../utils/typography'
-import { any, string, number, bool, shape } from 'prop-types'
-
-function Block(props) {
-  return (
-    <div
-      style={{
-        height: rhythm(0.5 || props.height),
-        width: props.width,
-        backgroundColor: colors.gray[2],
-        borderRadius: 3,
-        ...props.style
-      }}
-    />
-  )
-}
-
-Block.propTypes = {
-  width: number.isRequired,
-  height: number,
-  style: any
-}
+import { string, number, bool, shape } from 'prop-types'
 
 export default function Repo(props) {
   const { repo, loading } = props
   if (loading)
     return (
-      <div
-        style={{
-          height: rhythm(5.7),
-          padding: rhythm(0.8),
-          border: '1px solid',
-          borderColor: colors.gray[2],
-          borderRadius: 3
-        }}
-      >
-        <div
-          className="pulse"
-          style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
-        >
-          <Block
-            height={0.7}
-            width="50%"
-            style={{ marginBottom: rhythm(0.2) }}
-          />
-          <Block width="100%" style={{ marginBottom: rhythm(0.1) }} />
-          <Block width="30%" />
-          <div style={{ display: 'flex', marginTop: 'auto' }}>
-            <Block width="30%" />
-            <Block width="10%" style={{ marginLeft: 16 }} />
-            <Block width="10%" style={{ marginLeft: 16 }} />
+      <div className="p-6 border border-solid border-gray-200 rounded">
+        <div className="flex flex-col h-full pulse">
+          <div className="bg-gray-200 rounded-lg mb-2 h-4 w-1/2" />
+          <div className="bg-gray-200 rounded-lg mb-2 h-3 w-full" />
+          <div className="bg-gray-200 rounded-lg mb-2 h-3 w-1/3" />
+          <div className="flex mt-2">
+            <div className="bg-gray-200 rounded-lg mb-2 h-3 w-1/3" />
+            <div className="bg-gray-200 rounded-lg mb-2 h-3 ml-3 w-1/5" />
+            <div className="bg-gray-200 rounded-lg mb-2 h-3 ml-3 w-1/5" />
           </div>
         </div>
       </div>
