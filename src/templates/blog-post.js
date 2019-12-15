@@ -16,7 +16,6 @@ export default function BlogPostTemplate(props) {
   const post = props.data.markdownRemark
   const { title: siteTitle, siteUrl } = props.data.site.siteMetadata
   const { previous, next, slug } = props.pageContext
-  console.log(post.tableOfContents)
 
   const urlSlug = slug.slice(1, -1)
   const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${urlSlug}.md`
@@ -57,7 +56,29 @@ export default function BlogPostTemplate(props) {
         </header>
 
         {post.frontmatter.toc && (
-          <aside dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
+          <aside
+            style={{
+              paddingLeft: rhythm(0.6),
+              paddingRight: rhythm(0.6),
+              paddingTop: rhythm(0.6),
+              paddingBottom: rhythm(0.4),
+              marginBottom: rhythm(1),
+              marginTop: rhythm(1),
+              border: `1px solid ${colors.gray[3]}`,
+              borderRadius: 4
+            }}
+          >
+            <p
+              style={{
+                ...scale(0.05),
+                color: colors.gray[7],
+                marginBottom: rhythm(0.5)
+              }}
+            >
+              Table of Contents
+            </p>
+            <div dangerouslySetInnerHTML={{ __html: post.tableOfContents }} />
+          </aside>
         )}
 
         <div
