@@ -78,7 +78,7 @@ app.post('/', (req, res) => {
 })
 ```
 
-If you're paying attention, you'll recognize that `@octokit/webhooks` does a lot of potential event handling, very similar to `EventEmitter` (and Probot). This isn't a coincidence, `@octokit/webooks` was born from Probot's intentions - but I'm showing a little bit of what drives that logic instead of using it outright/
+If you're paying attention, you'll recognize that `@octokit/webhooks` does a lot of potential event handling, very similar to `EventEmitter` (and Probot). This isn't a coincidence, `@octokit/webooks` was born from Probot's intentions - but I'm showing a little bit of what drives that logic instead of using it outright.
 
 If your app is deployed to a public URL, GitHub can make an HTTP request; but if you're just working locally, you'll have to use something like `localtunnel` or `ngrok` to expose your local machine to the internet. We built [Smee.io](https://smee.io) specifically for Probot, to receive webhook events locally - it's its own topic, so if you're interested in a post on Smee [let me know](https://twitter.com/JasonEtco)!
 
@@ -106,7 +106,7 @@ This was the most complicated part of Probot for a long time, until [@gr2m](http
 
 If you're here, I'll guess that you're familiar with what GitHub Apps are. They're an "actor" on GitHub, and can authenticate in two distinct ways:
 
-* As itself, as an app
+* As itself, as an app. Used for collecting stats about the app, or for access information about a particular installation.
 * As an installation. When you install an app on an account (a user or an organization), that creates an installation. Each installation has a unique `id` (the aforementioned payload value), and we can use that to create an API access token.
 
 Usually, when your Probot app calls `context.github...`, `github` is an authenticated `Octokit` client that uses an **installation token**. We can get one of these _installation tokens_ from GitHub, using a JSON Web Token (JWT) that securely proves our app’s identity to GitHub.
@@ -177,19 +177,18 @@ Probot apps export a function, where `app` is the only argument. Probot calls th
 Here's what it looks like (this isn't exactly Probot's code - I took some liberties to simplify the code and remove some edge-case handling):
 
 ```ts
-import { App } from '@octokit/app'
+import { App as OctokitApp } from '@octokit/app'
 import { Octokit } from '@octokit/rest'
 
 class Application extends EventEmitter {
-  app: App
+  app: OctokitApp
 
   async auth (installationId?: number): Promise<Octokit> {
     // If installation ID passed, instantiate and authenticate Octokit, then cache the instance
     // so that it can be used across received webhook events.
     if (installationId) {
       const accessToken = await this.app.getInstallationAccessToken({ installationId })
-      const authString = `token ${accessToken}`
-      return new Octokit({ auth: authString })
+      return new Octokit({ auth: `token ${accessToken}` })
     }
   
     // Otherwise, authenticate as the app using a JWT
@@ -223,7 +222,7 @@ events.on('github-event', ({ event, payload }) => {
 app.post('/', ...)
 ```
 
-A common question I hear is "how do I access `context` outside of an event handler?" - hopefully, this has helped explain how `context` is created and is dependent on the `installation.id` value of the payload. If you have another way to get an installation ID (possibly through [API endpoints for finding an ID](https://developer.github.com/v3/apps/#get-a-repository-installation)), then you can totally do that!
+A common question I hear is "how do I access `context` outside of an event handler?" - hopefully, this has helped explain how `context` is created and is dependent on the `installation.id` value of the payload. If you have another way to get an installation ID (possibly through [API endpoints for finding an ID](https://developer.github.com/v3/apps/#get-a-repository-installation)), then you can totally construct your own `Context` is similar object.
 
 ## Loading your App's code
 
@@ -294,7 +293,7 @@ class Application extends EventEmitter {
 
 // Create and use our Application instance
 const application = new Application()
-yourAppCode(app)
+yourAppCode(application)
 
 // Create our internal EventEmitter
 const events = new EventEmitter()
@@ -400,7 +399,7 @@ class Context {
     }
 
     return {
-      owner: repo.owner.login || repo.owner.name!,
+      owner: repo.owner.login || repo.owner.name,
       repo: repo.name
     }
   }
@@ -413,11 +412,11 @@ This is a really small getter, that just grabs some info from the payload. But y
 
 I can't speak to the original motivation; Probot started before I came on board. But, here's my take on what it brought to the ecosystem, and how it helped push the topic of workflow automation forward.
 
-Authentication is hard. GitHub Apps have a lot of authentication. If you want people to use your platform, it needs to be easy to use - and that's an immensely difficult balance to strike. GitHub Apps are an awesome platform, but there's a lot going on. This is where frameworks and tooling can come in to help us out.
+**Authentication is hard.** GitHub Apps have a lot of authentication. If you want people to use your platform, it needs to be easy to use - and that's an immensely difficult balance to strike. GitHub Apps are an awesome platform, but there's a lot going on. This is where frameworks and tooling can come in to help us out.
 
-JavaScript is an approachable language. You may not love it, it has its faults, but ultimately people use JavaScript. While GitHub is a Ruby shop, and a lot of examples and documentation for building GitHub Apps are in Ruby, the choice to use JS for Probot simply meant that more developers could use it without having to learn a new language.
+**JavaScript is an approachable language.** You may not love it, it has its faults, but ultimately people use JavaScript. While GitHub is a Ruby shop, and a lot of examples and documentation for building GitHub Apps are in Ruby, the choice to use JS for Probot simply meant that more developers could use it without having to learn a new language.
 
-It makes the hard stuff easy, and the advanced stuff is still hard. By that, I mean that you can write a fully-functional Probot app without having to poke at its internals or understand how it works under the hood. But, with a complex app (like [GitHub Learning Lab](https://lab.github.com), or the [GitHub/Slack integration](https://slack.github.com)), you'll inevitably hit the limits of what Probot can do. That's fine - there are thousands of apps that are, for all intents and purposes, _simple_, but bring serious value (like [Stale](https://github.com/probot/stale)). That's because all the hard stuff is still there, just hidden away.
+**It makes the hard stuff easy, and the advanced stuff is still hard.** By that, I mean that you can write a fully-functional Probot app without having to poke at its internals or understand how it works under the hood. But, with a complex app (like [GitHub Learning Lab](https://lab.github.com), or the [GitHub/Slack integration](https://slack.github.com)), you'll inevitably hit the limits of what Probot can do. That's fine - there are thousands of apps that are, for all intents and purposes, _simple_, but bring serious value (like [Stale](https://github.com/probot/stale)). That's because all the hard stuff is still there, just hidden away.
 
 ---
 
