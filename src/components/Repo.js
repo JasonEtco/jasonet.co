@@ -1,5 +1,5 @@
 import React from 'react'
-import Octicon, { Star, RepoForked } from '@githubprimer/octicons-react'
+import Octicon, { Star, RepoForked } from '@primer/octicons-react'
 import { string, number, bool, shape } from 'prop-types'
 
 export default function Repo(props) {
