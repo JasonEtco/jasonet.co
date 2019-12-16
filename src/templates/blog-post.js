@@ -94,7 +94,7 @@ export default function BlogPostTemplate(props) {
         </div>
       </div>
 
-      <ul className="flex flex-wrap justify-between p-0 ml-0 mt-12">
+      <ul className="list-none flex flex-wrap justify-between p-0 ml-0 mt-12">
         <li>
           {previous && (
             <Link
