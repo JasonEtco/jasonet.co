@@ -85,7 +85,7 @@ export default function BlogPostTemplate(props) {
         </p>
 
         <div className="px-6 py-8 mt-6 shadow-xl border border-gray-100 rounded-lg">
-          <h3 className="font-semibold mb-6 text-lg">
+          <h3 className="font-semibold mt-0 mb-6 text-lg">
             <Link className="text-orange" to="/">
               Hope you enjoyed the read! 📝
             </Link>
