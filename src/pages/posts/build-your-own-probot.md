@@ -101,7 +101,7 @@ To me, it's the inherent simplicity of "something happened, so now run this code
 
 Next, Probot looks for a particular value in the JSON payload, `installation.id`. Along with your App's credentials (a Private Key and App ID), it uses that installation ID to create a temporary API token.
 
-This was the most complicated part of Probot for a long time, until [@gr2m](https://twitter.com/gr2m) pulled it out into its own repository, [`@octokit/app.js`](https://github.com/octokit/app.js). I'll talk about what it does, then show some code using it!
+This was the most complicated part of Probot for a long time, until [@gr2m](https://twitter.com/gr2m) pulled it out into its own repository, [`@octokit/auth-app.js`](https://github.com/octokit/auth-app.js). I'll talk about what it does, then show some code using it!
 
 ### Two ways for GitHub Apps to authenticate
 
@@ -159,7 +159,7 @@ async function getInstallationAccessToken ({
 }
 ```
 
-Code mostly copied from [`@octokit/app.js](https://github.com/octokit/app.js) which abstracts it all, through a handy method called `getInstallationAccessToken`! In practice, we want to say:
+Code mostly copied from [`@octokit/auth-app.js](https://github.com/octokit/auth-app.js) which abstracts it all, through a handy method called `getInstallationAccessToken`! In practice, we want to say:
 
 > When we receive an event from GitHub, create an authenticated GitHub client and emit an event
 
@@ -178,23 +178,25 @@ Probot apps export a function, where `app` is the only argument. Probot calls th
 Here's what it looks like (this isn't exactly Probot's code - I took some liberties to simplify the code and remove some edge-case handling):
 
 ```ts
-import { App as OctokitApp } from '@octokit/app'
+import { createAppAuth } from '@octokit/auth-app'
 import { Octokit } from '@octokit/rest'
 
 class Application extends EventEmitter {
-  app: OctokitApp
+  constructor () {
+    this.auth = createAppAuth({ ... })
+  }
 
   async auth (installationId?: number): Promise<Octokit> {
     // If installation ID passed, instantiate and authenticate Octokit, then cache the instance
     // so that it can be used across received webhook events.
     if (installationId) {
-      const accessToken = await this.app.getInstallationAccessToken({ installationId })
-      return new Octokit({ auth: `token ${accessToken}` })
+      const installationAuthentication = await this.auth({ type: 'installation', installationId })
+      return new Octokit({ auth: `token ${installationAuthentication.token}` })
     }
   
     // Otherwise, authenticate as the app using a JWT
-    const token = this.githubToken || this.app.getSignedJsonWebToken()
-    return new Octokit({ auth: `Bearer ${token}` })
+    const appAuthentication = await this.auth({ type: 'app' })
+    return new Octokit({ auth: `Bearer ${appAuthentication.token}` })
   }
 }
 ```
@@ -269,7 +271,7 @@ Using all of the above information, I wanted to take a crack at a simplified ver
 const express = require('express')
 const EventEmitter = require('events')
 const { Octokit } = require('@octokit/rest')
-const OctokitApp = require('@octokit/app').App
+const { createAppAuth } = require('@octokit/auth-app')
 const app = express()
 
 // Get the `index.js` file of wherever you're running this server
@@ -278,7 +280,7 @@ const yourAppCode = require(path.join(process.cwd(), 'index.js'))
 // Define our Application class, which handles the authentication logic
 class Application extends EventEmitter {
   constructor () {
-    this.app = new OctokitApp({
+    this.auth = createAppAuth({
       id: process.env.APP_ID,
       privateKey: process.env.PRIVATE_KEY
     })
@@ -286,9 +288,9 @@ class Application extends EventEmitter {
 
   async auth (installationId) {
     // Get an installation access token for the given ID
-    const accessToken = await this.app.getInstallationAccessToken({ installationId })
+    const installationAuth = await this.auth({ type: 'installation', installationId })
     // Return an Octokit client using the token
-    return new Octokit({ auth: `token ${accessToken}` })
+    return new Octokit({ auth: `token ${installationAuth.token}` })
   }
 }
 
