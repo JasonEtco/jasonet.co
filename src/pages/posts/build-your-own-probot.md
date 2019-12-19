@@ -159,7 +159,7 @@ async function getInstallationAccessToken ({
 }
 ```
 
-Code mostly copied from [`@octokit/auth-app.js](https://github.com/octokit/auth-app.js) which abstracts it all, through a handy method called `getInstallationAccessToken`! In practice, we want to say:
+Code mostly copied from [`@octokit/auth-app.js`](https://github.com/octokit/auth-app.js) which abstracts it all, through a handy method called `getInstallationAccessToken`! In practice, we want to say:
 
 > When we receive an event from GitHub, create an authenticated GitHub client and emit an event
 
