@@ -8,6 +8,7 @@
 
 <!--START_POSTS-->
 
+- [Probot App or GitHub Action? (Updated)](https://jasonet.co/posts/probot-app-or-github-action-v2)
 - [Build your own Probot](https://jasonet.co/posts/build-your-own-probot)
 - [New features of GitHub Actions v2](https://jasonet.co/posts/new-features-of-github-actions)
 - [Run your GitHub Actions workflow on a schedule](https://jasonet.co/posts/scheduled-actions)
@@ -17,7 +18,7 @@
 - [What are GitHub Workflows?](https://jasonet.co/posts/what-are-github-workflows)
 - [Building GitHub Actions in Node.js](https://jasonet.co/posts/building-github-actions-in-node)
 - [Probot App or GitHub Action?](https://jasonet.co/posts/probot-app-or-github-action)
-  <!--END_POSTS-->
+<!--END_POSTS-->
 
 ### Run locally
 
