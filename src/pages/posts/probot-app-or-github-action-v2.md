@@ -50,7 +50,7 @@ In v1 of this post, I cited performance as one of Actions' major downsides. In t
 
 Currently, GitHub Actions only act within repositories, and only on repository-focused events. For example, if you create an issue within a repository, you can kick off an Actions workflow from that trigger. You won't be able to trigger an Actions workflow when something happens at the organization level - like a new member being added, or a repository being created. I've seen a ton of feature requests around this functionality, so I'm optimistic that there's more coming down the line.
 
-### Logs show up in the repository
+#### Logs show up in the repository
 
 This is a really great feature - your automation tool can write logs that are accessible directly in the GitHub UI. Compared to a separate service with its own logging system, this can really bring the context of workflow activity to the right people, without a ton of effort or context-switching.
 
@@ -61,6 +61,16 @@ I've [written a whole article on this](/posts/build-your-own-probot), but GitHub
 ### Metrics/usage data
 
 There aren't any ways to see how frequently an Action is used, or how many workflows include it. There's no error reporting or observability - Actions run in the end-user's repository, and there's no way for the Action author to get insights into its usage. I would expect this to change in the future, so this is an observation of the current state. Probot, as a regular old Express app, can hook into whatever metrics tooling you're interested in using.
+
+### Composability
+
+Actions are designed to be composed into different workflows. They can live as separate repos, and can be imported into a workflow by just pointing to the Actions' repo:
+
+```yaml
+- uses: owner/repo@ref
+```
+
+This can save a ton of time, when an Action already exists that fits your need.
 
 ### When Probot is distinctly not right
 
