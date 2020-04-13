@@ -1,5 +1,5 @@
 ---
-title: Probot App or GitHub Action (v2)?
+title: Probot App or GitHub Action? (Updated)
 date: '2020-04-13'
 spoiler: Should your next automation tool be built in GitHub Actions, or as a separate service with Probot?
 ---
@@ -31,7 +31,16 @@ At the time of writing, Actions has a timeout of 6 hours. That means that (and t
 
 Actions are intended to be reused across workflows - you can "import" an action and use it, even if the code lives outside of your repository, sort of like a dependency. One vitally important Action is [actions/checkout](https://github.com/actions/checkout) - it clones the repository that the workflow is running in, and allows your workflow to interact directly with the repo's code.
 
-So to me, the best use for Actions is something that makes use of your codebase. Things like deployment or publishing tools, formatters, CLI tools - things that need access to your code. These are also all use-cases that aren't required to be really fast - if your NPM package takes a few minutes to publish, that's slow but not the end of the world.
+So to me, the best use for Actions is something that makes use of your codebase. Things like deployment or publishing tools, formatters, CLI tools - things that need access to your code. One concrete example - let's say you want to simply log all instances of a string in your codebase, maybe for auditing reasons:
+
+```yaml
+- uses: actions/checkout@v2
+- runs: grep "GitHub Actions" -r .
+```
+
+This will log all instance of `GitHub Actions` - no muss, no fuss, that's all you'd need to do (plus the other workflow file boilerplate).
+
+### Speed
 
 In v1 of this post, I cited performance as one of Actions' major downsides. In the time since, Actions have become _way_ faster - and while they won't match the immediacy of a Probot app, they're more than fast enough for most automation tools. This is still a point of interest though - if you need your automation tool to act immediately after something happens on GitHub, Actions will need to spin up a virtual machine and start running code. A Probot app will always be running, and will immediately receive a webhook payload and begin executing the relevant handler.
 
