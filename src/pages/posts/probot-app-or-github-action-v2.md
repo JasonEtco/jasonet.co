@@ -12,6 +12,8 @@ GitHub Actions and Probot are two totally separate projects with the same end go
 
 ## GitHub Actions
 
+I won't go too deep into what Actions are - you can check out [the official docs](https://help.github.com/en/actions) to learn more. The important notes for right now are:
+
 1. Run code to respond to an event on GitHub
 2. GitHub will run _anything_ in a virtual machine
 
