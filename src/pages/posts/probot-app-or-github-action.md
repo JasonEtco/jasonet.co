@@ -4,6 +4,8 @@ date: '2019-01-20'
 spoiler: Should your next automation tool be built in GitHub Actions, or as a separate service with Probot?
 ---
 
+_There is a newer version of this post that is more up-to-date with changes to GitHub Actions. [Check it out!](/posts/probot-app-or-github-action-v2)_
+
 **Spoiler: it depends.**
 
 Since GitHub announced the beta release of [GitHub Actions](https://github.com/features/actions) in October 2018, there's been a new excitement around building automation - and that's awesome! But I wanted to take a look at the various pros and cons of GitHub Actions and Probot, where each excels and where each might not be the best tool for the job.

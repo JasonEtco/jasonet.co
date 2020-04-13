@@ -1,16 +1,17 @@
-name: CI
+name: Node CI
 
-on: [push]
+on:
+  pull_request:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v1
-      - name: npm install, build, and test
-        run: |
-          npm ci
-          npm run build
-          npm test
-        env:
-          CI: true
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
