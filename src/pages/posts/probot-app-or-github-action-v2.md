@@ -44,13 +44,15 @@ This will log all instance of `GitHub Actions` - no muss, no fuss, that's all yo
 
 ### Speed
 
-In v1 of this post, I cited performance as one of Actions' major downsides. In the time since, Actions have become _way_ faster - and while they won't match the immediacy of a Probot app, they're more than fast enough for most automation tools. This is still a point of interest though - if you need your automation tool to act immediately after something happens on GitHub, Actions will need to spin up a virtual machine and start running code. A Probot app will always be running, and will immediately receive a webhook payload and begin executing the relevant handler.
+In v1 of this post, I cited performance as one of Actions' major downsides. In the time since, Actions have become _way_ faster - and while they won't match the immediacy of a Probot app, they're more than fast enough for most automation tools.
+
+This is still a point of interest though - if you need your automation tool to act immediately after something happens on GitHub, Actions will need to spin up a virtual machine and start running code. A Probot app will always be running, and will immediately receive a webhook payload and begin executing the relevant handler.
 
 ### Actions are scoped to repositories
 
 Currently, GitHub Actions only act within repositories, and only on repository-focused events. For example, if you create an issue within a repository, you can kick off an Actions workflow from that trigger. You won't be able to trigger an Actions workflow when something happens at the organization level - like a new member being added, or a repository being created. I've seen a ton of feature requests around this functionality, so I'm optimistic that there's more coming down the line.
 
-#### Logs show up in the repository
+#### Actions' logs show up in the repository
 
 This is a really great feature - your automation tool can write logs that are accessible directly in the GitHub UI. Compared to a separate service with its own logging system, this can really bring the context of workflow activity to the right people, without a ton of effort or context-switching.
 
