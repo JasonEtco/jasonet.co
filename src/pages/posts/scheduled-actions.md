@@ -9,7 +9,7 @@ When I first heard about Actions in its current form, I was excited about the po
 The `schedule` event lets you **define a schedule for your workflow to run on**. Using the [cron syntax](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07), you basically tell GitHub "run this workflow, independent of any activity on the repo - just run it on my schedule."
 
 <img alt="Screenshot of the GitHub Actions UI while adding a scheduled workflow" src="https://user-images.githubusercontent.com/9831992/55425271-ade4c200-5547-11e9-8245-d37e3305e6ec.png" />
-<small>From <a href="https://developer.github.com/actions/changes/2019-04-05-scheduling-workflows/">the GitHub Actions changelog<a>. This UI no longer exists, but it's still a cool image!</small>
+<small>From <a href="https://developer.github.com/actions/changes/2019-04-05-scheduling-workflows/">the GitHub Actions changelog</a>. This UI no longer exists, but it's still a cool image!</small>
 
 ## The cron syntax
 
