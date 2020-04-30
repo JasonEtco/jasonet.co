@@ -9,16 +9,17 @@ When I first heard about Actions in its current form, I was excited about the po
 The `schedule` event lets you **define a schedule for your workflow to run on**. Using the [cron syntax](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07), you basically tell GitHub "run this workflow, independent of any activity on the repo - just run it on my schedule."
 
 <img alt="Screenshot of the GitHub Actions UI while adding a scheduled workflow" src="https://user-images.githubusercontent.com/9831992/55425271-ade4c200-5547-11e9-8245-d37e3305e6ec.png" />
-<small>From <a href="https://developer.github.com/actions/changes/2019-04-05-scheduling-workflows/">the GitHub Actions changelog<a>.</small>
+<small>From <a href="https://developer.github.com/actions/changes/2019-04-05-scheduling-workflows/">the GitHub Actions changelog<a>. This UI no longer exists, but it's still a cool image!</small>
 
 ## The cron syntax
 
 It's spooky. If you've never used it before (I haven't) it looks different from other things. Let's dive in!
 
-```hcl{2}
-workflow "Do things every 5 minutes" {
-  on = "schedule(*/5 * * * *)
-}
+```yaml{3}
+name: Do things every 5 minutes
+on:
+  schedule:
+    - cron: "*/5 * * * *"
 ```
 
 This says to run the workflow every five minutes. Cron syntax is separated into five pieces; from [the GitHub Docs](https://developer.github.com/actions/managing-workflows/creating-and-cancelling-a-workflow/#scheduling-a-workflow):
@@ -58,18 +59,25 @@ Who cares about how it works, **what can we do with it**? It's still brand new, 
 
 ### probot/stale-action
 
-You may already know about [probot/stale](https://github.com/probot/stale), a popular Probot App that comments on and closes issues that have become inactive. Well, we designed [a hack](https://github.com/probot/scheduler) for it to run on a timer, because we didn't have anything better. [@tcbyrd](https://github.com/tcbyrd) has been working on [rewriting Stale as a GitHub Action](https://github.com/probot/stale-action). Now, we can leverage the `schedule` event to properly run it whenever we want:
+You may already know about [probot/stale](https://github.com/probot/stale), a popular Probot App that comments on and closes issues that have become inactive. Well, we designed [a hack](https://github.com/probot/scheduler) for it to run on a timer, because we didn't have anything better. There's now an Actions equivalent, [actions/stale-action](https://github.com/actions/stale).
 
-```hcl
-workflow "Mark issues/PRs as stale" {
-  on = "schedule(0 * * * *)" # Every hour
-  resolves = ["Stale"]
-}
+We can leverage the `schedule` event to properly run it whenever we want:
 
-action "Stale" {
-  uses = "probot/stale-action@master"
-  secrets = ["GITHUB_TOKEN"]
-}
+```yaml
+name: "Close stale issues"
+on:
+  schedule:
+  - cron: "0 0 * * *"
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/stale@v1.1.0
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        stale-issue-message: 'Message to comment on stale issues. If none provided, will not mark issues stale'
+        stale-pr-message: 'Message to comment on stale PRs. If none provided, will not mark PRs stale'
 ```
 
 ### electron/unreleased
@@ -82,17 +90,21 @@ This will help them keep track of new features & bug fixes that folks are waitin
 
 An Action made by one brilliant blog author, [`create-an-issue`](https://github.com/JasonEtco/create-an-issue), does what it says on the box. When I first made it many moons ago, I had a feeling that scheduled Actions would be a thing one day, so I built in support for dates. This lets us create an issue on a schedule, with helpful date stamps. Here's a workflow that I made for my team's weekly meeting notes:
 
-```hcl
-workflow "Weekly Meeting notes" {
-  on = "schedule(* 13 * * 1)"
-  resolves = ["Create an issue"]
-}
-
-action "Create an issue" {
-  uses = "JasonEtco/create-an-issue@v1.1.4"
-  args = ".github/ISSUE_TEMPLATE/meeting-notes.md"
-  secrets = ["GITHUB_TOKEN"]
-}
+```yaml
+name: Create our Weekly Meeting notes issue
+on:
+  schedule:
+    - cron: '0 14 * * 1'
+jobs:
+  issue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/ISSUE_TEMPLATE/meeting-notes.md
 ```
 
 And the `meeting-notes.md` issue template:
@@ -118,19 +130,21 @@ This is a small but helpful piece of automation that takes one task off of my to
 
 So the `schedule` trigger is awesome, but **it doesn't need to stop here**. Actions already works with [a list of webhook event types](https://developer.github.com/v3/activity/events/types/), and `schedule` isn't on that list - that means that GitHub Actions has the ability to register and act upon **custom events**. Going even further, the event isn't static - it's parsed with granular information about the event:
 
-```js
-schedule(* * * * *)
-function(arguments)
+```yaml
+schedule:
+  - cron: "* * * * *"
 ```
 
 This opens up a whole new world of possibilities for more granular events (these are imaginary):
 
-```js
-// Matches @-mentions in an issue comment
-mention('JasonEtco')
+```yaml
+# Matches @-mentions in an issue comment
+mention:
+  - user: JasonEtco
+  - team: github/cool-people
 
-// Matches slash commands, like `/deploy` in an issue comment
-command('deploy')
+# Matches slash commands, like `/deploy` in an issue comment
+command: deploy
 ```
 
 Who knows if any of those will be implemented, or if they're even a good idea! The point here is that `schedule` proves that Actions has an opportunity to do even more than the already huge list of webhook events allows for!
