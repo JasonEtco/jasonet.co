@@ -1,5 +1,5 @@
 import React from 'react'
-import Octicon, { Star, RepoForked } from '@primer/octicons-react'
+import { StarIcon, RepoForkedIcon } from '@primer/octicons-react'
 import { string, number, bool, shape } from 'prop-types'
 
 export default function Repo(props) {
@@ -39,16 +39,16 @@ export default function Repo(props) {
             style={{
               backgroundColor: repo.primaryLanguage
                 ? repo.primaryLanguage.color
-                : 'gray'
+                : 'gray',
             }}
           />{' '}
           {repo.primaryLanguage ? repo.primaryLanguage.name : 'Code'}
           <a href={`${repo.url}/stargazers`} className="ml-3 text-gray-600">
-            <Octicon icon={Star} className="mr-1" />
+            <StarIcon className="mr-1" />
             {repo.stargazers.totalCount}
           </a>
           <a href={`${repo.url}/network`} className="ml-3 text-gray-600">
-            <Octicon icon={RepoForked} className="mr-1" />
+            <RepoForkedIcon className="mr-1" />
             {repo.forkCount}
           </a>
         </p>
@@ -64,12 +64,12 @@ Repo.propTypes = {
     name: string.isRequired,
     forkCount: number.isRequired,
     stargazers: shape({
-      totalCount: number.isRequired
+      totalCount: number.isRequired,
     }),
     description: string.isRequired,
     primaryLanguage: shape({
       name: string,
-      color: string
-    })
-  })
+      color: string,
+    }),
+  }),
 }
