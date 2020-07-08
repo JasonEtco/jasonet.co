@@ -8,7 +8,7 @@ I've written a [couple](../building-github-actions-in-node) of [times](../use-gi
 
 This post will talk about the basics of Docker, with a focus on configuring Docker containers for [GitHub Actions](https://github.com/features/actions)—but the fundamentals can be used for any project.
 
-One note: I'm intentionally simplifying certain things here. I firmly believe in avoiding information overload, and bombarding people with more knowledge than is necessary is harmful to their learning experience. If you're a Docker expert thinking "well yeah _but_"—remember that building amazing things using a technology does not require one to be a master of it!
+One note: I'm intentionally simplifying certain things here. I firmly believe in avoiding information overload, and bombarding people with more knowledge than is necessary is harmful to their learning experience. If you're a Docker expert thinking "well yeah _but_"—remember that building amazing things using a technology does not require one to be an expert in it!
 
 ## What is Docker?
 

@@ -85,7 +85,7 @@ This has been something the Probot Community (and I) have been thinking about fo
 
 ```hcl
 action "Some action" {
-  uses = "actions/npm@master"
+  uses = "actions/npm@v1"
   secrets = [ "NPM_TOKEN" ]
 }
 ```
@@ -109,7 +109,7 @@ workflow "My Workflow" {
 }
 
 action "Some action" {
-  uses = "actions/npm@master"
+  uses = "actions/npm@v1"
 }
 ```
 
