@@ -12,17 +12,19 @@ My definition is this: quietly observing other teams' conversations with the int
 
 I lurk in a ton of channels. I don't work on GitHub's mobile apps, but I love 'em and want to see what the team is working on. I don't work on GitHub Sponsors, but I think it's a massively important project and I want to follow along.
 
-This can only work in a culture that prioritizes openness. GitHub is good at that - we believe that if it's not written down it didn't happen, which helps the nosy people like me follow along.
+This **can only work in a culture that prioritizes openness**. GitHub is good at that - we believe that if it's not written down it didn't happen, which helps the nosy people like me follow along.
 
 ### Why I lurk
 
-It's 95% because I'm curious and nosy and its fun, 5% because I think it's useful. At a company the size of GitHub (we're about 1500 people now) there are a ton of interesting projects going on. If you could be a fly on the wall in your favorite products' Slack, wouldn't you want to listen in? That's my primary motivation.
+It's 95% because I'm curious and nosy and it's fun, 5% because I think it's useful. At a company the size of GitHub (we're about 1500 people now) there are a ton of interesting projects going on. If you could be a fly on the wall in your favorite products' Slack, wouldn't you want to listen in? That's my primary motivation.
 
 However, this comes with serious side-benefits. My being tapped into the company-wide deluge of information means that I know a little bit about a lot of projects. In my own work, I can say "Hey we want to implement this thing, but this other team is working on something similar. Maybe we should chat?" And it has exponentially positive effects - every channel I lurk in gives me more information to both collect and share.
 
 ## How to make people like you
 
-First of all, hell if I know. But I think I'm good at building relationships, especially over Slack, by lurking selectively and being supportive. Remember my primary reason for lurking - because the work that others are doing is _amazing_. Tell them that. Be supportive, react to ideas/features with 😍emojis. When it's relevant, tell them _why_ you're so interested in their work. Being positive is something that you can bring to every team for free, and it helps so much.
+First of all, hell if I know. But I think I'm good at building relationships, especially over Slack, by lurking selectively and being supportive. Remember my primary reason for lurking - because the work that others are doing is _amazing_.
+
+**Tell them that**. Be supportive, react to ideas/features with 😍 emojis. When it's relevant, tell them _why_ you're so interested in their work. Being positive is something that you can bring to every team for free, and it helps so much.
 
 ### Walking the line between helpful and obtrusive
 
