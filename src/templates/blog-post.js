@@ -17,7 +17,7 @@ export default function BlogPostTemplate(props) {
   const { previous, next, slug } = props.pageContext
 
   const urlSlug = slug.slice(1, -1)
-  const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/HEAD/src/pages/${urlSlug}.md`
+  const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/main/src/pages/${urlSlug}.md`
   const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
     `https://jasonet.co${slug}`
   )}`
