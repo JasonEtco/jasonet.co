@@ -4,7 +4,7 @@ date: '2020-07-08'
 spoiler: Some thoughts on "lurking" - hanging around in communities for the sake of learning.
 ---
 
-This is a bit of a different post than what I usually write, but I feel like lurking is a significant part of my identity as an engineer. I'm told that it helps others, and I know it helps me, so I wanted to share what I've learned.
+This is a bit of a different post than what I usually write, but I feel like lurking is a significant part of my identity as an engineer - in fact, in GitHub's intranet, my role is "Chief Lurking Officer." I'm told that it helps others, and I know it helps me, so I wanted to share what I've learned.
 
 ## What is lurking?
 
@@ -32,9 +32,13 @@ This is important: **you were not invited to these conversations**, so your part
 
 That doesn't mean you _can't_ be helpful, but you need to be conscious of how much of the conversation you're a part of. The wording is vital too; consider these two statements:
 
-> ❌ You should make it purple, because purple is the best color.
->
-> ✅ My 2 cents - I think that purple is a great color.
+```
+❌ You should make it purple, because purple is the best color.
+```
+
+```
+✅ My 2 cents - I think that purple is a great color.
+```
 
 The difference there is in the approach. Rather than being prescriptive and asserting your opinion, you're making a suggestion that they can choose to completely ignore. And they can ignore it! Remember, no one said "we really need Jason's opinion here" - your opinion wasn't requested, so it doesn't need to be considered seriously.
 
