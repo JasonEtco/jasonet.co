@@ -12,11 +12,13 @@ My definition is this: quietly observing other teams' conversations with the int
 
 I lurk in a ton of channels. I don't work on GitHub's mobile apps, but I love 'em and want to see what the team is working on. I don't work on GitHub Sponsors, but I think it's a massively important project and I want to follow along.
 
+This can only work in a culture that prioritizes openness. GitHub is good at that - we believe that if it's not written down it didn't happen, which helps the nosy people like me follow along.
+
 ### Why I lurk
 
 It's 95% because I'm curious and nosy and its fun, 5% because I think it's useful. At a company the size of GitHub (we're about 1500 people now) there are a ton of interesting projects going on. If you could be a fly on the wall in your favorite products' Slack, wouldn't you want to listen in? That's my primary motivation.
 
-However, this comes with serious side-benefits. My being tapped into the company-wide deluge of information means that I know a little bit about a lot of projects. In my own work, I can say "Hey we want to implement this thing, but this other team is working on something similar. Maybe we should chat?"
+However, this comes with serious side-benefits. My being tapped into the company-wide deluge of information means that I know a little bit about a lot of projects. In my own work, I can say "Hey we want to implement this thing, but this other team is working on something similar. Maybe we should chat?" And it has exponentially positive effects - every channel I lurk in gives me more information to both collect and share.
 
 ## How to make people like you
 
@@ -39,12 +41,23 @@ The difference there is in the approach. Rather than being prescriptive and asse
 
 Always be ready to stop talking. Always be ready to leave a channel if you don't feel like they want you there. This is their space, not yours.
 
-## Who you are matters here
+### Who you are matters here
 
-It doesn't make sense to ignore the biases and identity that you bring to the channels that you lurk in - it's not realistic, and can be harmful if ignored. Being a white man, I need to be extra-careful about where and how frequently I communicate. This comes back to being a visitor in others' spaces; my opinion isn't more important than those of the people who are actually working on these projects. Steamrolling as an uninvited guest is about as rude as it gets. Respecting the position of the other people involved is paramount to being a _kind_ lurker.
+It doesn't make sense to ignore the biases and identity that you bring to the channels that you lurk in - it's not realistic, and can be harmful if ignored. This comes back to being a visitor in others' spaces; my opinion isn't more important than those of the people who are actually working on these projects. Steamrolling as an uninvited guest is about as rude as it gets. Respecting the position of the other people involved is paramount to being a _kind_ lurker.
 
 This is true for your role as well; not all companies deal with hierarchy in the same way, but your level in the company influences how your opinions are considered. Trust is key here. For example, if you're the CTO and you lurk in an engieering team's channel, _think before you speak_. Trust that they'll come to the best conclusion.
 
 ## Dealing with the onslaught of messages
 
 Lurking implies that you spend a ton of time reading. There's no getting around the fact that it takes time and energy. Acknowledge that - it's a tradeoff to make, where sometimes you're actively listening and reading at the expense of doing real work. It can be worthwhile, but this time doesn't just magically appear. If you're busy with real work, leave some channels, quit lurking so much.
+
+---
+
+I hope this was helpful. Remember:
+
+* Your conduct as a lurker influences the success of your lurking
+* Do it because it's interesting, not because you need to
+* Acknowledge that it takes time, and that time comes from somewhere else
+* Use lurking for good, share your learnings
+* Be respectful of the spaces you're intruding in
+* Lurkers can't have egos
