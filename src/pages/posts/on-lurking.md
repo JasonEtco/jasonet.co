@@ -20,6 +20,8 @@ It's 95% because I'm curious and nosy and it's fun, 5% because I think it's usef
 
 However, this comes with serious side-benefits. My being tapped into the company-wide deluge of information means that I know a little bit about a lot of projects. In my own work, I can say "Hey we want to implement this thing, but this other team is working on something similar. Maybe we should chat?" And it has exponentially positive effects - every channel I lurk in gives me more information to both collect and share.
 
+It's a superpower, where you know more simply by listening more.
+
 ## How to make people like you
 
 First of all, hell if I know. But I think I'm good at building relationships, especially over Slack, by lurking selectively and being supportive. Remember my primary reason for lurking - because the work that others are doing is _amazing_.
@@ -42,7 +44,7 @@ That doesn't mean you _can't_ be helpful, but you need to be conscious of how mu
 ✅ My 2 cents - I think that purple is a great color.
 ```
 
-The difference there is in the approach. Rather than being prescriptive and asserting your opinion, you're making a suggestion that they can choose to completely ignore. And they can ignore it! Remember, no one said "we really need Jason's opinion here" - your opinion wasn't requested, so it doesn't need to be considered seriously.
+The difference there is in the approach. Rather than being prescriptive and asserting your opinion, you're making a suggestion that they can choose to completely ignore. And they can ignore it! Remember, no one said "we really need Jason's opinion here" - your input wasn't requested, so it doesn't need to be considered seriously.
 
 **You can't bring your ego into channels that you're not supposed to be a part of.**
 
@@ -50,9 +52,9 @@ Always be ready to stop talking. Always be ready to leave a channel if you don't
 
 ### Who you are matters here
 
-It doesn't make sense to ignore the biases and identity that you bring to the channels that you lurk in - it's not realistic, and can be harmful if ignored. This comes back to being a visitor in others' spaces; my opinion isn't more important than those of the people who are actually working on these projects. Steamrolling as an uninvited guest is about as rude as it gets. Respecting the position of the other people involved is paramount to being a _kind_ lurker.
+It doesn't make sense to ignore the biases and identity that you bring to the channels that you lurk in - it's not realistic, and can be harmful if ignored. This comes back to being a visitor in others' spaces; my opinion isn't more important than those of the people who are actually working on these projects. Steamrolling as an uninvited guest is about as rude and destructive as it gets. Respecting the position of the other people involved is paramount to being a _kind_ lurker.
 
-This is true for your role as well; not all companies deal with hierarchy in the same way, but your level in the company influences how your opinions are considered. Trust is key here. For example, if you're the CTO and you lurk in an engieering team's channel, _think before you speak_. Trust that they'll come to the best conclusion.
+This is true for your role as well; not all companies deal with hierarchy in the same way, but your level in the company influences how your opinions are considered. Trust is key here. For example, if you're the CTO and you lurk in an engieering team's channel, _think before you speak_. Trust that they'll come to the best conclusion, even without your 2 cents.
 
 ## Dealing with the onslaught of messages
 
