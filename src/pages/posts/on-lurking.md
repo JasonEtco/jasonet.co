@@ -54,11 +54,11 @@ Always be ready to stop talking. Always be ready to leave a channel if you don't
 
 It doesn't make sense to ignore the biases and identity that you bring to the channels that you lurk in - it's not realistic, and can be harmful if ignored. This comes back to being a visitor in others' spaces; my opinion isn't more important than those of the people who are actually working on these projects. Steamrolling as an uninvited guest is about as rude and destructive as it gets. Respecting the position of the other people involved is paramount to being a _kind_ lurker.
 
-This is true for your role as well; not all companies deal with hierarchy in the same way, but your level in the company influences how your opinions are considered. Trust is key here. For example, if you're the CTO and you lurk in an engieering team's channel, _think before you speak_. Trust that they'll come to the best conclusion, even without your 2 cents.
+This is true for your role as well; not all companies deal with hierarchy in the same way, but your level in the company influences how your opinions are considered. Trust is key here. For example, if you're the CTO and you lurk in an engineering team's channel, _think before you speak_. Trust that they'll come to the best conclusion, even without your 2 cents.
 
 ## Dealing with the onslaught of messages
 
-Lurking implies that you spend a ton of time reading. There's no getting around the fact that it takes time and energy. Acknowledge that - it's a tradeoff to make, where sometimes you're actively listening and reading at the expense of doing real work. It can be worthwhile, but this time doesn't just magically appear. If you're busy with real work, leave some channels, quit lurking so much.
+Lurking implies that you spend a ton of time reading. There's no getting around the fact that it takes time and energy. Acknowledge that - it's a trade off to make, where sometimes you're actively listening and reading at the expense of doing real work. It can be worthwhile, but this time doesn't just magically appear. If you're busy with real work, leave some channels, quit lurking so much.
 
 ---
 
@@ -67,6 +67,6 @@ I hope this was helpful. Remember:
 * Your conduct as a lurker influences the success of your lurking
 * Do it because it's interesting, not because you need to
 * Acknowledge that it takes time, and that time comes from somewhere else
-* Use lurking for good, share your learnings
+* Use lurking for good, share what you learn
 * Be respectful of the spaces you're intruding in
 * Lurkers can't have egos
