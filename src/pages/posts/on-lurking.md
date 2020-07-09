@@ -12,7 +12,7 @@ My definition is this: quietly observing other teams' conversations with the int
 
 I lurk in a ton of channels. I don't work on GitHub's mobile apps, but I love 'em and want to see what the team is working on. I don't work on GitHub Sponsors, but I think it's a massively important project and I want to follow along.
 
-This **can only work in a culture that prioritizes openness**. GitHub is good at that - we believe that if it's not written down it didn't happen, which helps the nosy people like me follow along. Paraphrasing [@jeffrafter](https:/twitter.com/jeffrafter):
+This **can only work in a culture that prioritizes openness**. GitHub is good at that - we believe that if it's not written down it didn't happen, which helps the nosy people like me follow along. Paraphrasing [@jeffrafter](https://twitter.com/jeffrafter):
 
 > If there are 100 concurrent meetings in 100 separate rooms you can't participate in 99 of them.
 
