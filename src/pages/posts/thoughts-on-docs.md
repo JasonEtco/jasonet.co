@@ -14,7 +14,15 @@ This is the big question, and I'm going to separate it into three parts: content
 
 ### Content
 
-I want to start here, because you can have the most features, the best tooling, all the bells and whistles - but if your content isn't helpful, your docs just aren't going to be good. So what makes content "good"? I think it comes down to focusing on what users **want to accomplish**.
+I want to start here, because you can have the most features, the best tooling, all the bells and whistles - but if your content isn't helpful, your docs just aren't going to be good. So what makes content "good"? I think it comes down to focusing on what users **want to accomplish**. Most people don't want to see the entire API surface - they have a goal in mind with your library and want to get there with as little friction and ambiguity as possible.
+
+#### Prioritize use-case-driven examples
+
+This is tricky in practice, because it extends into API design - documenting something complex in nature is going to make for complex documentation. So when you're writing down documentation, try to take the perspective of someone who doesn't know anything about your library, why it exists or how it works - only what it _does_.
+
+For example, let's say we have a library called `math`. It exposes four methods: `add`, `subtract`, `divide`, and `validate`. That last one, `validate`, is used in the first three to validate the arguments passed to each method. We can assume that _most_ users don't need to see that method right away when looking at the docs. They have a problem, like "math is hard" and want to solve that problem, not absorb the complexity of your library.
+
+That's not to say that `validate` shouldn't be documented, far from it. But prioritize use-case-driven examples, _then_ expose reference content.
 
 ### Tooling
 
