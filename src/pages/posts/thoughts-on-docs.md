@@ -2,7 +2,6 @@
 title: Assorted thoughts on documentation
 date: '2020-07-26'
 spoiler: Been thinking about documentation a lot recently and wanted to write down what I've seen and learned.
-toc: true
 ---
 
 Documentation is a fundamental part of software, both open source and proprietary. There are lots of methods for building great docs, and lots of examples of fantastic software with docs that just don't help their users. There have been studies that show that documentation is ["is highly valued, but often overlooked"](https://opensourcesurvey.org/2017/#insights) and my own experience lines up with those findings. So I wanted to share what I know and how I think about documentation, and some recommendations for you (and me).
@@ -114,7 +113,7 @@ Firstly, I think that "documentation tooling" is one of the development world's 
 
 [GitBook](https://www.gitbook.com/)'s GitHub integration is the closest I've seen to a workflow that is sort-of-toolless and still pretty good. That said, here are some of the tools I've tried and liked:
 
-* [Vuepress](https://vuepress.vuejs.org/) makes for a pretty site. It has features like search and localization built-in. It takes some work to configure the way you want it though.
+* [Vuepress](https://vuepress.vuejs.org/) makes for a pretty site. It has features like search (via [Algolia](https://www.algolia.com/)) and localization built-in. It takes some work to configure the way you want it though.
 * [Docusaurus](https://docusaurus.io/) is pretty similar, it calls out Crowdin in its docs.
 * Just regular old markdown files in a GitHub repository. Missing all the features I mentioned above, but hey, at least it's simple.
 
@@ -172,11 +171,21 @@ It's gorgeous, but it _is_ for a design system. What I really love about it is h
 
 <img width="980" alt="Header of Tailwind CSS' website, showing a hotkey to focus search input" src="https://user-images.githubusercontent.com/10660468/88499524-186b0e00-cf94-11ea-8098-1bf9310cba59.png" />
 
-And search works really well, using [Algolia](https://www.algolia.com/):
+And search works really well, using [Algolia](https://www.algolia.com/) (who also [has a free-for-open-source plan](https://www.algolia.com/for-open-source/)):
 
 <img width="971" alt="Search results" src="https://user-images.githubusercontent.com/10660468/88499569-3f294480-cf94-11ea-8683-4ff72b8f0175.png" />
 
 There's more though - they start with the fundamentals of Tailwind before going into each utility class. First is installation, and then they include a section about **Using with Preprocessors**. I think this is really smart, because while you don't _need_ a preprocessor to use Tailwind, most of their users _want_ to (I'm guessing). It's about meeting your users where they are, not where you want them to be.
+
+### [Stripe](https://stripe.com/docs)
+
+<img class="shadow-md rounded-sm" src="https://user-images.githubusercontent.com/10660468/88501012-320e5480-cf98-11ea-8272-0850cb47271d.png" alt="Stripe's docs homepage" />
+
+Stripe's docs are awesome. There's _so much_, but they do a good job of organizing the content into reasonable and understandable categories. One (of oh so many) nice touches is the little `API` labels beside links that point to a Stripe API:
+
+<img width="569" alt="image" src="https://user-images.githubusercontent.com/10660468/88500798-b7453980-cf97-11ea-981e-4629758420f2.png">
+
+It helps readers understand context, find more information if they need to, and provide a holistic experience without distracting from the content they're actively reading.
 
 ### [Starship](https://starship.rs/)
 
