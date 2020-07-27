@@ -105,7 +105,7 @@ There are exceptions - projects that deal heavily in visuals like [TailwindCSS](
 
 ### Auto-generated documentation
 
-I've never gotten a good result from tools that purport to generate great documentation from your code. I've tried [TypeDoc](https://github.com/TypeStrong/typedoc/), [JSDoc](https://jsdoc.app/), [Godoc](https://godoc.org/), written my own nonsense, and probably some other ones I'm forgetting. Thhe value in those tools is that they make it easier to document the API - but they don't help to write _good_ docs. Simply documenting your whole API is _not_ going to be helpful for your users. That doesn't mean these tools aren't useful, but they aren't enough on their own, and I've struggled getting them to work together with other tooling.
+I've never gotten a good result from tools that purport to generate great documentation from your code. I've tried [TypeDoc](https://github.com/TypeStrong/typedoc/), [JSDoc](https://jsdoc.app/), [GoDoc](https://godoc.org/), written my own nonsense, and probably some other ones I'm forgetting. Thhe value in those tools is that they make it easier to document the API - but they don't help to write _good_ docs. Simply documenting your whole API is _not_ going to be helpful for your users. That doesn't mean these tools aren't useful, but they aren't enough on their own, and I've struggled getting them to work together with other tooling.
 
 ### Jason's favorite tools
 
