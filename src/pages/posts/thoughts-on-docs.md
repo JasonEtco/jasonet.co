@@ -90,12 +90,18 @@ This isn't meant to point fingers at `unifiedjs` - they have a distributed ecosy
 
 Building your own tooling for documentation is silly, and I can say that because I've done it and it was silly. There are plenty of great tools out there, and while none of them are perfect, they are largely good and bad at the same things.
 
+Remember, the point of documentation tooling is to help you write good docs for your users, and to help them find what they're looking for. If you're spending more time building a website than writing example code or usage content, then you're building a website, not writing docs (which is totally fine, but not everyone wants to do that).
+
 ### Features of good docs
 
-* Search - users often have an idea of what they want, but either can't verbalize it or can't find it. Search is vital here.
-* Localization - even if your project doesn't have the capacity for building all the translations you'd want, the tools you use should still support it. Don't choose a documentation tool that can't expand past one language.
+When evaluating a "place to put your content", here's a list of table-stakes features that I think every docs site should have:
+
 * Syntax highlighted code blocks - every once in a while I come across some docs that miss this. It's surprisingly jarring and confusing.
 * Navigation, table of contents, etc - ways to find what you're looking for.
+* Search - users often have an idea of what they want, but either can't verbalize it or can't find it. Search is vital here.
+* Localization - even if your project doesn't have the capacity for building all the translations you'd want, the tools you use should still support it. Don't choose a documentation tool that can't expand past one language.
+
+Those first two are quite common, but I see a variety of good, bad or non-existent search features and very rarely localized docs. Actually translation the content aside, the tools we use need to support that capability.
 
 ### Just write markdown
 
@@ -106,6 +112,12 @@ There are exceptions - projects that deal heavily in visuals like [TailwindCSS](
 ### Auto-generated documentation
 
 I've never gotten a good result from tools that purport to generate great documentation from your code. I've tried [TypeDoc](https://github.com/TypeStrong/typedoc/), [JSDoc](https://jsdoc.app/), [GoDoc](https://godoc.org/), written my own nonsense, and probably some other ones I'm forgetting. Thhe value in those tools is that they make it easier to document the API - but they don't help to write _good_ docs. Simply documenting your whole API is _not_ going to be helpful for your users. That doesn't mean these tools aren't useful, but they aren't enough on their own, and I've struggled getting them to work together with other tooling.
+
+### Where the files live
+
+You write markdown files. Now where do you put 'em? You basically have two options: in the repository with your source code, or in a separate repository called something like `<project>-docs`. I've done both, and there are pros & cons - but **keeping docs co-located with your code can be really, really useful**. It's easier to manage changes to docs and code together, and having one repository is generally simpler for both maintainers and contributors.
+
+It can be a pain to include docs site code, like HTML/CSS files or static site generator configuration files. When you start talking about entire websites, I hesitate to call that "documentation" tooling though - you're designing and building a whole site that happens to have docs content. That's fine, but it is inherently more complicated than "just writing markdown."
 
 ### Jason's favorite tools
 
