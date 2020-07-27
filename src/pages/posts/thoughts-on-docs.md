@@ -100,6 +100,7 @@ When evaluating a "place to put your content", here's a list of table-stakes fea
 * Navigation, table of contents, etc - ways to find what you're looking for.
 * Search - users often have an idea of what they want, but either can't verbalize it or can't find it. Search is vital here.
 * Localization - even if your project doesn't have the capacity for building all the translations you'd want, the tools you use should still support it. Don't choose a documentation tool that can't expand past one language.
+* Docs should be fast. Sounds obvious, but tacking on JavaScript frameworks and gigantic images just prevents people from reading the information, and that's what your docs need to focus on.
 
 Those first two are quite common, but I see a variety of good, bad or non-existent search features and very rarely localized docs. Actually translation the content aside, the tools we use need to support that capability.
 
