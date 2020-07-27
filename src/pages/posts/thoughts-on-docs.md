@@ -143,7 +143,7 @@ TODO
 
 ## Inspiration
 
-This is a not-at-all extensive list of docs that I, in my subjective opinion, think are good.
+This is a not-at-all extensive list of docs that I, in my subjective opinion, think are good. I won't go in-depth, some of these are quite large, but let me know if you're interested in more of a deep-dive.
 
 ### [Nunjucks](https://mozilla.github.io/nunjucks/)
 
