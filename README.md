@@ -8,6 +8,7 @@
 
 <!--START_POSTS-->
 
+- [On "lurking"](https://jasonet.co/posts/on-lurking)
 - [Probot App or GitHub Action? (Updated)](https://jasonet.co/posts/probot-app-or-github-action-v2)
 - [Build your own Probot](https://jasonet.co/posts/build-your-own-probot)
 - [New features of GitHub Actions v2](https://jasonet.co/posts/new-features-of-github-actions)

@@ -152,7 +152,7 @@ inputs:
     default: world
 ```
 
-You can also mark an input as required via [actions/toolkit's `core.getInput`](https://github.com/actions/toolkit/tree/master/packages/core#inputsoutputs):
+You can also mark an input as required via [actions/toolkit's `core.getInput`](https://github.com/actions/toolkit/tree/HEAD/packages/core#inputsoutputs):
 
 ```js
 core.getInput('name', { required: true })

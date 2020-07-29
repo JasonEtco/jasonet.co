@@ -87,7 +87,7 @@ To build this in a Probot App, you'd need to ensure that wherever you deploy the
 This has been something the Probot Community (and I) have been thinking about for a while - how do users of an automation tool pass secret keys to the tool? With GitHub Actions, its as simple as adding your key through the GitHub UI, and passing it along to your action:
 
 ```yaml
-- uses: JasonEtco/create-an-issue@master
+- uses: JasonEtco/create-an-issue@v2
   with:
     repo-token: ${{ secrets.GITHUB_TOKEN }}
 ```

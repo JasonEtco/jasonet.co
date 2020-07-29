@@ -19,12 +19,12 @@ workflow "Test my code" {
 }
 
 action "npm install" {
-  uses = "actions/npm@master"
+  uses = "actions/npm@v1"
   args = ["install"]
 }
 
 action "npm test" {
-  uses = "actions/npm@master"
+  uses = "actions/npm@v1"
   args = ["test"]
   needs = ["npm install"]
 }
@@ -111,12 +111,12 @@ This property allows you to pass information to your workflow via command line a
 
 ```hcl{3}
 action "npm install" {
-  uses = "actions/npm@master"
+  uses = "actions/npm@v1"
   args = "install"
 }
 ```
 
-This will use the [`actions/npm`](https://github.com/actions/npm) action, whose [entrypoint command](https://github.com/actions/npm/blob/master/entrypoint.sh#L15) runs `npm $*`. We're passing the argument `install`; so at the end of the day, it'll be `npm install`.
+This will use the [`actions/npm`](https://github.com/actions/npm) action, whose [entrypoint command](https://github.com/actions/npm/blob/HEAD/entrypoint.sh#L15) runs `npm $*`. We're passing the argument `install`; so at the end of the day, it'll be `npm install`.
 
 It's a fairly straightforward field, but let's take a look at some practical examples and how you might design an action that depends on user-set `args`.
 
@@ -124,7 +124,7 @@ My action [`JasonEtco/create-an-issue`](https://github.com/JasonEtco/create-an-i
 
 ```hcl{3}
 action "Create issue" {
-  uses = "JasonEtco/create-an-issue@master"
+  uses = "JasonEtco/create-an-issue@v2"
   secrets = ["GITHUB_TOKEN"]
   args = ".github/some-other-template.md"
 }
@@ -147,19 +147,19 @@ workflow "Publish" {
 }
 
 action "npm ci" {
-  uses = "actions/npm@master"
+  uses = "actions/npm@v1"
   args = "ci"
 }
 
 action "npm run build" {
   needs = ["npm ci"]
-  uses = "actions/npm@master"
+  uses = "actions/npm@v1"
   args = "run build"
 }
 
 action "npm publish" {
   needs = ["npm run build"]
-  uses = "actions/npm@master"
+  uses = "actions/npm@v1"
   args = "publish"
   secrets = ["NPM_TOKEN"]
 }

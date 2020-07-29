@@ -16,7 +16,7 @@ In this post, I'll share a workflow that I've been using for my Node.js projects
 
 I'll be delving into the nitty-gritty of writing a workflow file, including some lesser-known functionality. I'd encourage you to read [my previous blog post on GitHub Actions workflows](../what-are-github-workflows), where I talk a bit about workflows as a whole.
 
-You may also want to familiarize yourself with the [actions/bin repo](https://github.com/actions/bin), a collection of actions that are highly scoped and useful for composing a workflow without writing any custom code (especially [actions/bin/filter](https://github.com/actions/bin/blob/master/filter)).
+You may also want to familiarize yourself with the [actions/bin repo](https://github.com/actions/bin), a collection of actions that are highly scoped and useful for composing a workflow without writing any custom code (especially [actions/bin/filter](https://github.com/actions/bin/blob/HEAD/filter)).
 
 ## But I love `{{ ci_provider }}` - why should I care?
 
@@ -176,7 +176,7 @@ workflow "Test my code in node@latest" {
 We're going to convert the `.travis.yml` file in the [facebook/jest](https://github.com/facebook/jest/blob/130547baaca44171464c9e1b5bc8dec6b26565ff/.travis.yml) repository (one of my favorite libraries) over to a `main.workflow` file. At the time of writing, here's what it looks like:
 
 ```yaml
-# https://github.com/facebook/jest/blob/master/.travis.yml
+# https://github.com/facebook/jest/blob/HEAD/.travis.yml
 language: node_js
 node_js:
   - '10'
@@ -242,7 +242,7 @@ Still, I'd love to see first-class support in the future :fingers_crossed:
 
 ## Running CI on pull requests from forks
 
-GitHub Actions and forked repositories are currently in a weird state. I expect this to improve quickly, but right now when a pull request is opened from a fork to the upstream, there are a few oddities. The first is that it will only trigger the `pull_request` event - that makes sense because the associated `push` isn't happening on the upstream repo. However, this leads to the actual issues: the tests are run against the master branch, and the status isn't reflected back to the pull request.
+GitHub Actions and forked repositories are currently in a weird state. I expect this to improve quickly, but right now when a pull request is opened from a fork to the upstream, there are a few oddities. The first is that it will only trigger the `pull_request` event - that makes sense because the associated `push` isn't happening on the upstream repo. However, this leads to the actual issues: the tests are run against the default branch, and the status isn't reflected back to the pull request.
 
 [@gr2m](https://twitter.com/gr2m) created [git-checkout-pull-request-action](https://github.com/gr2m/git-checkout-pull-request-action) to checkout the fork's branch before running tests - it'll intercept the workflow and, if necessary, make sure the tests are running against the appropriate code. This solves the first of those two problems, but not the second - the PR isn't updated with the status of the checks :disappointed:. The only way to check that status is to open the `Actions` tab and try to find the correct run.
 

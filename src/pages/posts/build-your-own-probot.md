@@ -173,7 +173,7 @@ module.exports = app => {
 }
 ```
 
-Probot apps export a function, where `app` is the only argument. Probot calls that function on startup with an instance of a class called [`Application`](https://github.com/probot/probot/blob/master/src/application.ts). It has an API similar to the `EventEmitter`, with important methods on it for handling the lifecycle of an event, the most important of which is [`Application#auth`](https://github.com/probot/probot/blob/61c05ea76e9ea31fbdea15c99f7c1cc613321db5/src/application.ts#L485).
+Probot apps export a function, where `app` is the only argument. Probot calls that function on startup with an instance of a class called [`Application`](https://github.com/probot/probot/blob/HEAD/src/application.ts). It has an API similar to the `EventEmitter`, with important methods on it for handling the lifecycle of an event, the most important of which is [`Application#auth`](https://github.com/probot/probot/blob/61c05ea76e9ea31fbdea15c99f7c1cc613321db5/src/application.ts#L485).
 
 Here's what it looks like (this isn't exactly Probot's code - I took some liberties to simplify the code and remove some edge-case handling):
 
@@ -242,7 +242,7 @@ This is a fun part of Probot - you write code that exports a function, but then 
 This tells Probot to `require()` the `./index.js` file, and run the exported function with an instance of `Application`. That's done through [`Probot#load`](https://github.com/probot/probot/blob/61c05ea76e9ea31fbdea15c99f7c1cc613321db5/src/index.ts#L179), and somewhere down the line we have code like this:
 
 ```ts
-// From https://github.com/probot/probot/blob/master/src/resolver.ts
+// From https://github.com/probot/probot/blob/HEAD/src/resolver.ts
 import { sync } from 'resolve'
 
 export function resolve (appFnId: string) {
@@ -329,7 +329,7 @@ app.listen(3000)
 
 This is a mostly functional Probot framework, but some immediate ways that Probot improves upon the above code:
 
-* Probot loads multiple `Application` instances, with some "internal" apps. For example, there's [a special Sentry integration](https://github.com/probot/probot/tree/master/src/apps/sentry.ts) that Probot loads as a Probot app itself!
+* Probot loads multiple `Application` instances, with some "internal" apps. For example, there's [a special Sentry integration](https://github.com/probot/probot/tree/HEAD/src/apps/sentry.ts) that Probot loads as a Probot app itself!
 * Installation tokens are cached, to avoid making a ton of requests for the same thing.
 * `Context` is a real class with helper methods.
 * Probot uses [`promise-events`](https://npmjs.com/package/promise-events) for clearer, Promise-based event handling.
