@@ -157,10 +157,10 @@ BlogPostTemplate.propTypes = {
   pageContext: shape({
     previous: p.post,
     next: p.post,
-    slug: string.isRequired
+    slug: string.isRequired,
   }),
   data: shape({
     site: p.site,
-    markdownRemark: p.post
-  })
+    markdownRemark: p.post,
+  }),
 }
