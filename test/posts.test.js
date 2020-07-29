@@ -3,7 +3,7 @@
 const fs = require('fs')
 const fm = require('front-matter')
 const path = require('path')
-const Joi = require('@hapi/joi')
+const Joi = require('joi')
 const pathToPosts = path.join(__dirname, '..', 'src', 'pages', 'posts')
 const pathToReadme = path.join(__dirname, '..', 'README.md')
 
@@ -14,28 +14,28 @@ const schema = Joi.object({
       .regex(/^\d{4}-\d{2}-\d{2}$/)
       .required(),
     spoiler: Joi.string().required(),
-    toc: Joi.boolean()
+    toc: Joi.boolean(),
   }),
   body: Joi.string().required(),
-  frontmatter: Joi.string().required()
+  frontmatter: Joi.string().required(),
 })
 
 describe('posts', () => {
   const dir = fs
     .readdirSync(pathToPosts)
     .filter(
-      file =>
+      (file) =>
         file.endsWith('.md') ||
         (fs.statSync(path.join(pathToPosts, file)).isDirectory() &&
           fs.existsSync(path.join(pathToPosts, file, 'index.md')))
     )
-    .map(file =>
+    .map((file) =>
       fs.statSync(path.join(pathToPosts, file)).isDirectory()
         ? path.join(file, 'index.md')
         : file
     )
 
-  const posts = dir.map(file => {
+  const posts = dir.map((file) => {
     const contents = fs.readFileSync(path.join(pathToPosts, file), 'utf8')
     return [file, fm(contents)]
   })
