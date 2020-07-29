@@ -5,8 +5,8 @@ module.exports = {
     description: 'Personal blog by Jason Etcovitch.',
     siteUrl: 'https://jasonet.co',
     social: {
-      twitter: '@JasonEtco'
-    }
+      twitter: '@JasonEtco',
+    },
   },
   pathPrefix: '/',
   plugins: [
@@ -14,8 +14,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/pages`,
-        name: 'pages'
-      }
+        name: 'pages',
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -24,35 +24,35 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590
-            }
+              maxWidth: 590,
+            },
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`
-            }
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
           },
           'gatsby-remark-autolink-headers',
           {
             resolve: 'gatsby-remark-prismjs',
             options: {
-              inlineCodeMarker: '÷'
-            }
+              inlineCodeMarker: '÷',
+            },
           },
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
-          `gatsby-remark-emoji`
-        ]
-      }
+          `gatsby-remark-emoji`,
+        ],
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-72564268-1`
-      }
+        trackingId: `UA-72564268-1`,
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -63,15 +63,15 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#f26d21`,
         display: `minimal-ui`,
-        icon: `src/assets/icon.png`
-      }
+        icon: `src/assets/icon.png`,
+      },
     },
     `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: 'src/utils/typography'
-      }
+        pathToConfigModule: 'src/utils/typography',
+      },
     },
     `gatsby-plugin-catch-links`,
     {
@@ -79,14 +79,15 @@ module.exports = {
       options: {
         feeds: [
           {
+            title: 'jasonet.co | Personal blog by Jason Etcovitch.',
             serialize({ query: { site, allMarkdownRemark } }) {
-              return allMarkdownRemark.edges.map(edge => ({
+              return allMarkdownRemark.edges.map((edge) => ({
                 ...edge.node.frontmatter,
                 description: edge.node.frontmatter.spoiler,
                 date: edge.node.frontmatter.date,
                 url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                 guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                custom_elements: [{ 'content:encoded': edge.node.html }]
+                custom_elements: [{ 'content:encoded': edge.node.html }],
               }))
             },
             query: `
@@ -109,14 +110,14 @@ module.exports = {
                 }
               }
             `,
-            output: '/rss.xml'
-          }
-        ]
-      }
+            output: '/rss.xml',
+          },
+        ],
+      },
     },
     `gatsby-plugin-netlify`,
     'gatsby-plugin-remove-serviceworker',
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-postcss'
-  ]
+    'gatsby-plugin-postcss',
+  ],
 }
