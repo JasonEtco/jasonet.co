@@ -48,15 +48,15 @@ Short description
 ## API reference
 ```
 
-That's a great place to start from. Start simple, lean on default values of your library, then go more and more complex. Ending with the API details can be really helpful, because you don't know _exactly_ what users want from your library. It _is_ important to share examples of each of those methods though.
+Start simple, lean on default values of your library, then go more and more complex. Ending with the API details can be really helpful, because you don't know _exactly_ what users want from your library. It _is_ important to share examples of each of those methods though.
 
-I think about [Sequelize's documentation](https://sequelize.org) a lot, specifically their [API reference](https://sequelize.org/v5/identifiers.html). Sequelize is an <abbr title="Object-relational mapping">ORM</abbr>, so it is fairly complex and will have a lot to document. Their docs suffer from a really common problem: auto-generated documentation simply isn't helpful enough. They document _everything_, focusing on very little. Here's an example of what I mean ([source](https://sequelize.org/v5/class/lib/query-interface.js~QueryInterface.html#instance-method-dropAllTables)):
+I think about [Sequelize's documentation](https://sequelize.org) a lot, specifically their [API reference](https://sequelize.org/v5/identifiers.html). Sequelize is an <abbr title="Object-relational mapping">ORM</abbr>, so it's fairly complex and will have a lot to document. Their docs suffer from a common problem: auto-generated docs simply aren't helpful enough. They document _everything_, focusing on very little. Here's an example of what I mean ([source](https://sequelize.org/v5/class/lib/query-interface.js~QueryInterface.html#instance-method-dropAllTables)):
 
 <img width="1153" alt="image" src="https://user-images.githubusercontent.com/10660468/88492040-bdc2b980-cf75-11ea-85f1-05e5313e04b5.png">
 
 Because there's no example code here, I have to follow the table of options while making guesses about where and how this method should be used.
 
-There are lots of cases where Sequelize does this really well, outside of the API reference - but when I'm looking at a method's documentation trying to understand what an option does, I need to know what it's for and why I would use it. If you're asking users to read 3 pages, ask yourself if you can condense that or provide links in between.
+There are lots of cases where Sequelize does this really well, outside of the API reference - but when I'm looking at a method's documentation trying to understand what an option does, I need to know what it's for and why I would use it.
 
 But my _favorite_ docs site to dunk on is [Discord.js](https://discord.js.org/). I'm going to be extra critical here because it has been a source of personal frustration, despite it being a really well designed library. It is the leading examplar of relying too heavily on auto-generated docs, to the point where the docs are written for robots, not humans. There is almost no example code and each method has a bajillion options without clear descriptions or use-cases. They've documented everything the library can do, but each method/option needs way more detail and realistic content.
 
@@ -79,14 +79,6 @@ This is a quick win - wherever possible, use real words and real scenarios when 
 ```
 
 Treat your examples like real code and they'll end up more clear and more helpful.
-
-### Keep the naming to a minimum
-
-There are micro-ecosystems that have a lot of concepts to wrap your head around. For example, [`unifiedjs`](https://github.com/unifiedjs/unified) - a super powerful and customizable toolchain for manipulating markdown.
-
-I find their documentation really confusing because they reference so many repositories that are built to work within this grouping of plugins. You look at one of those plugins (ex: [`remark-toc`](https://github.com/remarkjs/remark-toc), [`remark-slug`](https://github.com/remarkjs/remark-slug)) and it's really difficult to see how it all comes together. The best resource I found was [an entire tutorial](https://unifiedjs.com/learn/guide/introduction-to-unified/) dedicated to putting those pieces together. 
-
-This isn't meant to point fingers at `unifiedjs` - they have a distributed ecosystem of plugins and pulling everything together is tough. But as a clueless user, finding the best entrypoint is difficult when you have one specific goal. You can help users avoid a rabbit hole of links and jargon by repeating information and bringing context to specific sections of your docs.
 
 ## Tooling
 
@@ -120,11 +112,11 @@ I've never gotten a good result from tools that purport to generate great docume
 
 You write markdown files. Now where do you put 'em? You basically have two options: in the repository with your source code, or in a separate repository called something like `<project>-docs`. I've done both, and there are pros & cons - but **keeping docs co-located with your code can be really, really useful**. It's easier to manage changes to docs and code together, and having one repository is generally simpler for both maintainers and contributors.
 
-It can be a pain to include docs site code, like HTML/CSS files or static site generator configuration files. When you start talking about entire websites, I hesitate to call that "documentation" tooling though - you're designing and building a whole site that happens to have docs content. That's fine, but it is inherently more complicated than "just writing markdown."
+Including docs site code, like HTML/CSS files or static site generator configuration files, is troublesome. When you start talking about entire websites, I hesitate to call that "documentation" tooling though - you're designing and building a whole site that happens to have docs content. That's fine, but it is inherently more complicated than "just writing markdown." I'll talk more about why some projects really  want a website later on.
 
 ### Jason's favorite tools
 
-Firstly, I think that "documentation tooling" is one of the development world's biggest mistakes. It simply shouldn't be necessary to "build" your docs, or spend hours setting up the perfect docs site. Writing code shouldn't require design or web dev skills just to have great docs.
+Firstly, I think that "documentation tooling" is one of the development world's most unfortunate necessities. It simply shouldn't be necessary to "build" your docs, or spend hours setting up the perfect docs site. Writing code shouldn't require design or web dev skills just to have great docs.
 
 [GitBook](https://www.gitbook.com/)'s GitHub integration is the closest I've seen to a workflow that is sort-of-toolless and still pretty good. That said, here are some of the tools I've tried and liked:
 
@@ -134,11 +126,26 @@ Firstly, I think that "documentation tooling" is one of the development world's 
 
 ## Discoverability
 
-TODO
+The best docs in the world don't mean anything if your users can't find 'em. Think about where they come from and what's important to them.
 
 ### Reduce context switching
 
-TODO: External websites are interesting.
+Communities that have a thriving repository and a set of docs often decide to build a website. I think there are two reasons:
+
+* Branding and marketing
+* Where else would you put the docs?
+
+The first one is super interesting. Projects like [Babel](https://babeljs.io/), [Webpack](https://webpack.js.org/), [Formik](https://formik.org/) all have websites that show great designs, really productizing it. That's awesome, and it can contribute to a project's success by making it seem polished and high quality, while communicating the functionality in ways that are more expressive than static text (animations, demos, <abbr title="Read-Eval-Print Loop">REPLs</abbr>, etc).
+
+However, there are so many projects that build, design and host a separate website - because if they didn't, where would they put their docs? That's what tools like Vuepress try to simplify. As good as those tools are, asking a user to go to yet another docs site isn't awesome. You're separating them from their regular workflows, adding more of a burden to their attempt at learning, and introducing opportunity for inconsistency between your docs and everyone else's.
+
+### Keep the naming to a minimum
+
+There are micro-ecosystems that have a lot of concepts to wrap your head around. For example, [`unifiedjs`](https://github.com/unifiedjs/unified) - a super powerful and customizable toolchain for manipulating markdown.
+
+I find their documentation confusing because they reference so many repositories that are built to work within this grouping of plugins. You look at one of those plugins (ex: [`remark-toc`](https://github.com/remarkjs/remark-toc), [`remark-slug`](https://github.com/remarkjs/remark-slug)) and it's difficult to see how it all comes together. The best resource I found was [an entire tutorial](https://unifiedjs.com/learn/guide/introduction-to-unified/) and I really had to dig around to get there.
+
+This isn't meant to point fingers at `unifiedjs` - they have a distributed ecosystem of plugins and pulling everything together is tough. But as a clueless user, finding the best entrypoint is difficult when you have one specific goal. You can help users avoid a rabbit hole of links and jargon by repeating information and bringing context to specific sections of your docs.
 
 ### More on localization
 
@@ -150,11 +157,11 @@ Crowdin integrates with GitHub, so if your docs are markdown files in your repos
 
 ### Discovery in reverse: source code
 
-TODO
+Docs aren't _only_ for telling users about the public APIs. They're also about getting contributors knowledgeable about the code and teaching how it works. Source code and docs are interconnected - when you're writing out some example code, think about linking to the underlying source code. You can give your users an opportunity to go deeper, and come away having learned something more than just how to apply your code.
 
 ## Bonus: contribution workflow
 
-TODO
+Encouraging people to contribute to documentation is a great way to improve your docs, and to get them involved in the project. Contributing to open source is hard, contributing to docs should be easy. Keep that in mind when choosing tooling. Asking contributors to clone the repo, download dependencies and build a site just to change verify some wording change can be a barrier for folks to get involved in the project.
 
 ## Jason's hot take
 
@@ -172,7 +179,7 @@ This is a not-at-all extensive list of docs that I, in my subjective opinion, th
 
 <img class="shadow-md rounded-sm" src="https://user-images.githubusercontent.com/10660468/88499014-ae9e3480-cf92-11ea-8b6e-405a9928af33.png" alt="Nunjucks' homepage" />
 
-It's simple and concise. Navigation is clear and well organized. Their [Getting Started guide](https://mozilla.github.io/nunjucks/getting-started.html) is similarly distraction-free - clear headings for Browser vs. Node, and then under **Usage** they literally have this:
+It's simple and concise. Navigation is clear and well organized. Their [Getting Started guide](https://mozilla.github.io/nunjucks/getting-started.html) is similarly distraction-free - clear headings for Browser vs. Node, and then under **Usage** they literally have this by some example code:
 
 > This is the simplest way to use nunjucks.
 
