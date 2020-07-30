@@ -96,17 +96,17 @@ When evaluating a "place to put your content", here's a list of table-stakes fea
 * Localization - even if your project doesn't have the capacity for building all the translations you'd want, the tools you use should still support it. Don't choose a documentation tool that can't expand past one language.
 * Docs should be fast. Sounds obvious, but tacking on JavaScript frameworks and gigantic images just prevents people from reading the information, and that's what your docs need to focus on.
 
-Those first two are quite common, but I see a variety of good, bad or non-existent search features and very rarely localized docs. Actually translation the content aside, the tools we use need to support that capability.
+Those first two are quite common, but I see a variety of good, bad or non-existent search features and very rarely localized docs. Actually translating the content aside, the tools we use need to support that capability.
 
 ### Just write markdown
 
 Most (not all) projects should just have markdown for their documentation. If you're writing HTML and styling your docs, you're adding complexity to what should be a simple toolchain.
 
-There are exceptions - projects that deal heavily in visuals like [TailwindCSS](https://tailwindcss.com/) or [Bootstrap](https://getbootstrap.com/) will need some customized designs. That's fine, but for the projects that are entirely code-for-other-code, markdown is more than enough. Of couse
+There are exceptions - projects that deal heavily in visuals like [TailwindCSS](https://tailwindcss.com/) or [Bootstrap](https://getbootstrap.com/) will need some customized designs. That's fine, but for the projects that are entirely code-for-other-code, markdown is more than enough.
 
 ### Auto-generated documentation
 
-I've never gotten a good result from tools that purport to generate great documentation from your code. I've tried [TypeDoc](https://github.com/TypeStrong/typedoc/), [JSDoc](https://jsdoc.app/), [GoDoc](https://godoc.org/), written my own nonsense, and probably some other ones I'm forgetting. Thhe value in those tools is that they make it easier to document the API - but they don't help to write _good_ docs. Simply documenting your whole API is _not_ going to be helpful for your users. That doesn't mean these tools aren't useful, but they aren't enough on their own, and I've struggled getting them to work together with other tooling.
+I've never gotten a good result from tools that purport to generate great documentation from your code. I've tried [TypeDoc](https://github.com/TypeStrong/typedoc/), [JSDoc](https://jsdoc.app/), [GoDoc](https://godoc.org/), written my own nonsense, and probably some other ones I'm forgetting. The value in those tools is that they make it easier to document the API - but they don't help to write _good_ docs. Simply documenting your whole API is _not_ going to be helpful for your users. That doesn't mean these tools aren't useful, but they aren't enough on their own, and I've struggled getting them to work together with other tooling.
 
 ### Where the files live
 
@@ -161,7 +161,7 @@ Docs aren't _only_ for telling users about the public APIs. They're also about g
 
 ## Bonus: contribution workflow
 
-Encouraging people to contribute to documentation is a great way to improve your docs, and to get them involved in the project. Contributing to open source is hard, contributing to docs should be easy. Keep that in mind when choosing tooling. Asking contributors to clone the repo, download dependencies and build a site just to change verify some wording change can be a barrier for folks to get involved in the project.
+Encouraging people to contribute to documentation is a great way to improve your docs, and to get them involved in the project. Contributing to open source is hard, contributing to docs should be easy. Keep that in mind when choosing tooling. Asking contributors to clone the repo, download dependencies and build a site just to change and verify some wording change can be a barrier for folks to get involved in the project.
 
 ## Jason's hot take
 
