@@ -12,7 +12,7 @@ Even something as complex and dynamic as [Figma](https://www.figma.com/) has a l
 
 ## What makes good documentation
 
-This is the big question, and I'm going to separate it into three<sup>ish<sup> parts: content, tooling and discoverability.
+This is the big question, and I'm going to separate it into three<sup>ish</sup> parts: content, tooling and discoverability.
 
 Ultimately, we write documentation to remove the barrier of entry for people who may want to use our code. There can be some branding and marketing involved, but I'd like to focus solely on the actual documentation.
 
