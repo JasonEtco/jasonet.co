@@ -4,9 +4,9 @@ date: '2020-07-26'
 spoiler: Been thinking about documentation a lot recently and wanted to write down what I've seen and learned.
 ---
 
-Documentation is a fundamental part of software, both open source and proprietary. There are lots of methods for building great docs, and lots of examples of fantastic software with docs that just don't help their users. There have been studies that show that documentation is ["is highly valued, but often overlooked"](https://opensourcesurvey.org/2017/#insights) and my own experience lines up with those findings. So I wanted to share what I know and how I think about documentation, and some recommendations for you (and me).
+Documentation is a fundamental part of software, both open source and proprietary. There are lots of methods for building great docs, and lots of examples of fantastic software with docs that just don't help their users. Still, we know that documentation is ["is highly valued, but often overlooked"](https://opensourcesurvey.org/2017/#insights); my own experience lines up with those findings. So I wanted to share what I know and how I think about documentation, and some recommendations for you (and me).
 
-One note before we get into it: documentation for software is by and large very different from documentation for a product. With the latter, there is a fixed number of actions a user can take.
+One note before we get into it: documentation for software is very different from documentation for a product. With the latter, there is a fixed number of actions a user can take.
 
 Even something as complex and dynamic as [Figma](https://www.figma.com/) has a limit to what a user can do. But when writing docs for software, like a reusable open source library, we need to think about how consumers of that library will use the code. It's not about having that answer, but about giving them the tools to use the code however they want.
 
@@ -20,11 +20,11 @@ I'm not an authority on what makes docs good, but I'll be sharing some pretty cl
 
 ## Content
 
-I want to start here, because you can have the most features, the best tooling, all the bells and whistles - but if your content isn't helpful, your docs just aren't going to be good. So what makes content "good"? I think it comes down to focusing on what users **want to accomplish**. Most people don't want to see the entire API surface - they have a goal in mind with your library and want to get there with as little friction and ambiguity as possible.
+I want to start here, because you can have the most features, the best tooling, all the bells and whistles - but if your content isn't helpful, your docs just aren't going to be good. So what makes content "good"? I think it comes down to focusing on what users **want to accomplish**. Most people don't need to see the entire API surface - they have a goal in mind with your library and want to get there with as little friction and ambiguity as possible.
 
 ### Prioritize use-case-driven examples
 
-Users approach your library with a problem they're looking to solve. Put the clear, "here's how to do the thing" information first.
+Users approach your library with a problem they're looking to solve. Put the clear "here's how to do the thing" information first.
 
 This is tricky in practice, because it extends into API design - documenting something complex in nature is going to make for complex documentation. So when you're writing docs, try to take the perspective of someone who doesn't know anything about your library, why it exists or how it works - only what it _does_.
 
@@ -52,7 +52,7 @@ Short description
 
 Start simple, lean on default values of your library, then go more and more complex. Ending with the API details can be really helpful, because you don't know _exactly_ what users want from your library. It _is_ important to share examples of each of those methods though.
 
-I think about [Sequelize's documentation](https://sequelize.org) a lot, specifically their [API reference](https://sequelize.org/v5/identifiers.html). Sequelize is an <abbr title="Object-relational mapping">ORM</abbr>, so it's fairly complex and will have a lot to document. Their docs suffer from a common problem: auto-generated docs simply aren't helpful enough. They document _everything_, focusing on very little. Here's an example of what I mean ([source](https://sequelize.org/v5/class/lib/query-interface.js~QueryInterface.html#instance-method-dropAllTables)):
+I think about [Sequelize's documentation](https://sequelize.org) a lot, specifically their [API reference](https://sequelize.org/v5/identifiers.html). Sequelize is an <abbr title="Object-relational mapping">ORM</abbr>, so it's fairly complex and will have a lot to document. Their docs suffer from a common problem: auto-generated content simply isn't helpful enough. They document _everything_, focusing on very little. Here's an example of what I mean ([source](https://sequelize.org/v5/class/lib/query-interface.js~QueryInterface.html#instance-method-dropAllTables)):
 
 <img width="1153" alt="image" src="https://user-images.githubusercontent.com/10660468/88492040-bdc2b980-cf75-11ea-85f1-05e5313e04b5.png">
 
@@ -106,19 +106,23 @@ Those first two are quite common, but I see a variety of good, bad or non-existe
 
 ### Just write markdown
 
+Markdown is an approachable way to format text. It's easy to contribute to and there's a ton of tooling around it.
+
 Most (not all) projects should just have markdown for their documentation. If you're writing HTML and styling your docs, you're adding complexity to what should be a simple toolchain.
 
 There are exceptions - projects that deal heavily in visuals like [TailwindCSS](https://tailwindcss.com/) or [Bootstrap](https://getbootstrap.com/) will need some customized designs. That's fine, but for the projects that are entirely code-for-other-code, markdown is more than enough.
 
 ### Auto-generated documentation
 
-I've never gotten a good result from tools that purport to generate great documentation from your code. I've tried [TypeDoc](https://github.com/TypeStrong/typedoc/), [JSDoc](https://jsdoc.app/), [GoDoc](https://godoc.org/), written my own nonsense, and probably some other ones I'm forgetting. The value in those tools is that they make it easier to document the API - but they don't help to write _good_ docs. Simply documenting your whole API is _not_ going to be helpful for your users. That doesn't mean these tools aren't useful, but they aren't enough on their own, and I've struggled getting them to work together with other tooling.
+I've never gotten a good result from tools that purport to generate great documentation from your code. I've tried [TypeDoc](https://github.com/TypeStrong/typedoc/), [JSDoc](https://jsdoc.app/), [GoDoc](https://godoc.org/), written my own nonsense, and probably some other ones I'm forgetting.
+
+The value in those tools is that they make it easier to document the API - but they don't help to write _good_ docs. Simply **documenting your whole API is not going to be helpful** for your users. That doesn't mean these tools aren't useful, but they aren't enough on their own. Consider how auto-generated content will fit in with hand-written docs.
 
 ### Where the files live
 
 You write markdown files. Now where do you put 'em? You basically have two options: in the repository with your source code, or in a separate repository called something like `<project>-docs`. I've done both, and there are pros & cons - but **keeping docs co-located with your code can be really, really useful**. It's easier to manage changes to docs and code together, and having one repository is generally simpler for both maintainers and contributors.
 
-Including docs site code, like HTML/CSS files or static site generator configuration files, is troublesome. When you start talking about entire websites, I hesitate to call that "documentation" tooling though - you're designing and building a whole site that happens to have docs content. That's fine, but it is inherently more complicated than "just writing markdown." I'll talk more about why some projects really  want a website later on.
+Checking in docs site code to git, like HTML/CSS files or static site generator configuration files, is a bit annoying. When you start talking about entire websites, I hesitate to call that "documentation" tooling though - you're designing and building a whole site that happens to have docs content. That's fine, but it is inherently more complicated than "just writing markdown." I'll talk more about why some projects really want a website later on.
 
 ### Jason's favorite tools
 
@@ -183,10 +187,10 @@ Open source projects shouldn't **need** separate websites. [This tweet](https://
 
 > the number of high-impact open-source projects that could really use some help building a good website is mind bogglingly high
 
-So I asked myself: **what do these projects need a website for?**
+I asked myself: **what do these projects need a website for?**
 
 The answer is, by and large, documentation - because there's not a better place to put it. You may see what I'm getting at, but I think the tools we already use should do more here.
 
-### Ending thoughts
+### Closing thoughts
 
 In an earlier iteration of this post, I included a number of examples of open source documentation. I removed them for the sake of brevity, but the list included [Tailwind CSS](https://tailwindcss.com/), [Stripe](https://stripe.com/docs) and [Lodash](https://lodash.com/). I'll be doing some deep dives into these in the future, I think they merit a more focused look.
