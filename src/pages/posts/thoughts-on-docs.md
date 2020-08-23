@@ -161,7 +161,7 @@ This isn't meant to point fingers at `unifiedjs` - they have a distributed ecosy
 
 ### More on localization
 
-I am far from an expert here, but the one thing I've learned is that localization, or internationilzation, is _hard_. Use tools that make it easier.
+I am far from an expert here, but the one thing I've learned is that localization, or internationalization, is _hard_. Use tools that make it easier.
 
 [Crowdin](https://crowdin.com/) is a great tool for letting contributors write translations. Their pricing page includes a callout for open source projects, though you do [have to request approval](https://crowdin.com/page/open-source-project-setup-request).
 
