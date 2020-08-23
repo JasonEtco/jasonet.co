@@ -116,7 +116,7 @@ There are exceptions - projects that deal heavily in visuals like [TailwindCSS](
 
 ### Auto-generated documentation
 
-I've never gotten a good result from tools that purport to generate great documentation from your code. I've tried [TypeDoc](https://github.com/TypeStrong/typedoc/), [JSDoc](https://jsdoc.app/), [GoDoc](https://godoc.org/), written my own nonsense, and probably some other ones I'm forgetting.
+I've never gotten a good result from tools that purport to generate great documentation from your code. I've tried [TypeDoc](https://github.com/TypeStrong/typedoc/), [JSDoc](https://jsdoc.app/), [GoDoc](https://godoc.org/), written my own nonsense, and many others.
 
 The value in those tools is that they make it easier to document the API - but they don't help to write _good_ docs. Simply **documenting your whole API is not going to be helpful** for your users. That doesn't mean these tools aren't useful, but they aren't enough on their own. Consider how auto-generated content will fit in with hand-written docs.
 
@@ -147,7 +147,7 @@ Communities that have a thriving repository and a set of docs often decide to bu
 * Branding and marketing
 * Where else would you put the docs?
 
-The first one is super interesting. Projects like [Babel](https://babeljs.io/), [Webpack](https://webpack.js.org/), [Formik](https://formik.org/) all have websites that show great designs, really productizing it. That's awesome, and it can contribute to a project's success by making it seem polished and high quality, while communicating the functionality in ways that are more expressive than static text (animations, demos, <abbr title="Read-Eval-Print Loop">REPLs</abbr>, etc).
+The first one is super interesting. Projects like [Babel](https://babeljs.io/), [Webpack](https://webpack.js.org/), and [Formik](https://formik.org/) all have websites that show great designs, really productizing it. That's awesome, and it can contribute to a project's success by making it seem polished and high quality, while communicating the functionality in ways that are more expressive than static text (animations, demos, <abbr title="Read-Eval-Print Loop">REPLs</abbr>, etc).
 
 However, there are so many projects that build, design and host a separate website - because if they didn't, where would they put their docs? That's what tools like Vuepress try to simplify. As good as those tools are, asking a user to go to yet another docs site isn't awesome. You're separating them from their regular workflows, adding more of a burden to their attempt at learning, and introducing opportunity for inconsistency between your docs and everyone else's.
 
@@ -196,3 +196,5 @@ The answer is, by and large, documentation - because there's not a better place 
 ### Closing thoughts
 
 In an earlier iteration of this post, I included a number of examples of open source documentation. I removed them for the sake of brevity, but the list included [Tailwind CSS](https://tailwindcss.com/), [Stripe](https://stripe.com/docs) and [Lodash](https://lodash.com/). I'll be doing some deep dives into these in the future, I think they merit a more focused look.
+
+I would [love to hear](https://twitter.com/JasonEtco) what y'all are doing for docs right now, and what you wish was easier.
