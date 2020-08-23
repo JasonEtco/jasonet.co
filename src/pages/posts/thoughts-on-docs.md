@@ -1,7 +1,7 @@
 ---
 title: Assorted thoughts on documentation
 date: '2020-08-24'
-spoiler: Been thinking about documentation a lot recently and wanted to write down what I've seen and learned.
+spoiler: I've been thinking a lot about documentation recently, and wanted to share some thoughhts & hot takes.
 ---
 
 Documentation is a fundamental part of software, both open source and proprietary. There are lots of methods for building great docs, and lots of examples of fantastic software with docs that just don't help their users. Still, we know that documentation is ["is highly valued, but often overlooked"](https://opensourcesurvey.org/2017/#insights). So I wanted to share what I know and how I think about documentation, and some recommendations for you (and me).
