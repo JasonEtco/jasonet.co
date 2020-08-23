@@ -1,6 +1,6 @@
 ---
 title: Assorted thoughts on documentation
-date: '2020-07-26'
+date: '2020-08-24'
 spoiler: Been thinking about documentation a lot recently and wanted to write down what I've seen and learned.
 ---
 
