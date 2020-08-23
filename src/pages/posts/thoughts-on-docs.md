@@ -169,6 +169,8 @@ It is important, however, to optimize for the right things. More people will rea
 
 This is a bit of a gray area - earlier I noted that documenting a product is different from software, but there are platforms that have to do a bit of both. Take GitHub for example - it has a robust API that intersects with many of the same product areas as the UI on GitHub.com.
 
+Documenting that much information, keeping it all up-to-date, and ensuring consistency and clarity across it all is really, really difficult. 
+
 ## Jason's hot take
 
 Open source projects shouldn't **need** separate websites. [This tweet](https://twitter.com/bitandbang/status/1285358078511251456?s=20) was an interesting point of reflection:
@@ -177,7 +179,7 @@ Open source projects shouldn't **need** separate websites. [This tweet](https://
 
 So I asked myself: **what do these projects need a website for?**
 
-And I think there are two answers: branding/marketing, and fully-featured documentation. The former is totally valid, and can have an impact on a project's adoption. The latter should not be necessary, but it is. You may see what I'm getting at, but I think the tools we already use (like GitHub) should do more here.
+The answer is, by and large, documentation - because there's not a better place to put it. You may see what I'm getting at, but I think the tools we already use should do more here.
 
 ### Ending thoughts
 
