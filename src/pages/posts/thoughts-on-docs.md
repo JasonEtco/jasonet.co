@@ -157,11 +157,17 @@ Crowdin integrates with GitHub, so if your docs are markdown files in your repos
 
 ### Discovery in reverse: source code
 
-Docs aren't _only_ for telling users about the public APIs. They're also about getting contributors knowledgeable about the code and teaching how it works. Source code and docs are interconnected - when you're writing out some example code, think about linking to the underlying source code. You can give your users an opportunity to go deeper, and come away having learned something more than just how to apply your code.
+Docs aren't _only_ for telling users about the public APIs. They offer a way to onboard contributors into the codebase, and teach them how it works. Source code and docs are interconnected - when you're writing out some example code, think about linking to the underlying source code. You can give your users an opportunity to go deeper, and come away having learned something more than just how to apply your code.
 
 ## Bonus: contribution workflow
 
 Encouraging people to contribute to documentation is a great way to improve your docs, and to get them involved in the project. Contributing to open source is hard, contributing to docs should be easy. Keep that in mind when choosing tooling. Asking contributors to clone the repo, download dependencies and build a site just to change and verify some wording change can be a barrier for folks to get involved in the project.
+
+It is important, however, to optimize for the right things. More people will read your docs than contribute to them. It's really easy to organize your content in a way that makes sense for your tooling, but doesn't support users' expectations or needs.
+
+## Docs for a product's SDK or API
+
+This is a bit of a gray area - earlier I noted that documenting a product is different from software, but there are platforms that have to do a bit of both. Take GitHub for example - it has a robust API that intersects with many of the same product areas as the UI on GitHub.com.
 
 ## Jason's hot take
 
@@ -169,64 +175,10 @@ Open source projects shouldn't **need** separate websites. [This tweet](https://
 
 > the number of high-impact open-source projects that could really use some help building a good website is mind bogglingly high
 
-So I asked myself: what do these projects need a website for? And I think there are two answers: branding/marketing, and fully-featured documentation. The former is totally valid, and can have an impact on a project's adoption. The latter should not be necessary, but it is. You may see what I'm getting at, but I think the tools we already use (like GitHub) should do more here.
+So I asked myself: **what do these projects need a website for?**
 
-## Inspiration
+And I think there are two answers: branding/marketing, and fully-featured documentation. The former is totally valid, and can have an impact on a project's adoption. The latter should not be necessary, but it is. You may see what I'm getting at, but I think the tools we already use (like GitHub) should do more here.
 
-This is a not-at-all extensive list of docs that I, in my subjective opinion, think are good. I won't go in-depth, some of these are quite large, but let me know if you're interested in more of a deep-dive.
+### Ending thoughts
 
-### [Nunjucks](https://mozilla.github.io/nunjucks/)
-
-<img class="shadow-md rounded-sm" src="https://user-images.githubusercontent.com/10660468/88499014-ae9e3480-cf92-11ea-8b6e-405a9928af33.png" alt="Nunjucks' homepage" />
-
-It's simple and concise. Navigation is clear and well organized. Their [Getting Started guide](https://mozilla.github.io/nunjucks/getting-started.html) is similarly distraction-free - clear headings for Browser vs. Node, and then under **Usage** they literally have this by some example code:
-
-> This is the simplest way to use nunjucks.
-
-It's beautiful. Show me the simple stuff, then build on that.
-
-One nit though - there's no search. There are only a few pages so you _can_ use the browser's "find in page", but searching by natural language like "cache a template" would be a really nice addition.
-
-### [Lodash](https://lodash.com/)
-
-<img class="shadow-md rounded-sm" src="https://user-images.githubusercontent.com/10660468/88499091-e907d180-cf92-11ea-9551-a70bf2bc889d.png" alt="Lodash's homepage" />
-
-I mentioned this one earlier, but it's super clean and straight to the point. Their code examples are realistic, show inputs and outputs, and even have a **Try in REPL** button that opens a [Runkit](https://runkit.com/) embed. This is _awesome_, and we should have something similar everywhere that docs exist (cough cough GitHub). Being able to try and experiment with a library before you install it is incredibly powerful.
-
-### [Tailwind CSS](https://tailwindcss.com/)
-
-<img class="shadow-md rounded-sm" src="https://user-images.githubusercontent.com/10660468/88499728-b9f25f80-cf94-11ea-9930-672b36e69d69.png" alt="Tailwind CSS' homepage" />
-
-It's gorgeous, but it _is_ for a design system. What I really love about it is how well-considered search is. You'll see this in the header:
-
-<img width="980" alt="Header of Tailwind CSS' website, showing a hotkey to focus search input" src="https://user-images.githubusercontent.com/10660468/88499524-186b0e00-cf94-11ea-8098-1bf9310cba59.png" />
-
-And search works really well, using [Algolia](https://www.algolia.com/) (who also [has a free-for-open-source plan](https://www.algolia.com/for-open-source/)):
-
-<img width="971" alt="Search results" src="https://user-images.githubusercontent.com/10660468/88499569-3f294480-cf94-11ea-8683-4ff72b8f0175.png" />
-
-There's more though - they start with the fundamentals of Tailwind before going into each utility class. First is installation, and then they include a section about **Using with Preprocessors**. I think this is really smart, because while you don't _need_ a preprocessor to use Tailwind, most of their users _want_ to (I'm guessing). It's about meeting your users where they are, not where you want them to be.
-
-### [Stripe](https://stripe.com/docs)
-
-<img class="shadow-md rounded-sm" src="https://user-images.githubusercontent.com/10660468/88501012-320e5480-cf98-11ea-8272-0850cb47271d.png" alt="Stripe's docs homepage" />
-
-Stripe's docs are awesome. There's _so much_, but they do a good job of organizing the content into reasonable and understandable categories. One (of oh so many) nice touches is the little `API` labels beside links that point to a Stripe API:
-
-<img width="569" alt="image" src="https://user-images.githubusercontent.com/10660468/88500798-b7453980-cf97-11ea-981e-4629758420f2.png">
-
-It helps readers understand context, find more information if they need to, and provide a holistic experience without distracting from the content they're actively reading.
-
-### [Starship](https://starship.rs/)
-
-<img class="shadow-md rounded-sm" src="https://user-images.githubusercontent.com/10660468/88499833-0c338080-cf95-11ea-9fb5-3dbec4ab0314.png" alt="Starship's homepage" />
-
-<small>Hey [@matchai](https://twitter.com/matchai) 😗</small>
-
-I love this one and it makes me sad. It's a pretty standard [Vuepress](https://vuepress.vuejs.org/) site, so it has search and localizaton built-in (Yay!). If you were to scroll down in the above screenshot, you'd see a great little GIF that shows Starship, a command prompt, in action. The homepage goes right into installation, which is great. Each configuration option comes with a little TOML example.
-
-But this is a perfect example of great software that has to have a dedicated website for documentation. Unlike the previous examples, Starship isn't part of the web ecosystem. What if the Starship developers weren't web devs? Would they have the know-how to set up a site like this? They seem smart, they can figure it out - but why should they have to?
-
-## Docs for a product's SDK or API
-
-This is a bit of a gray area - earlier I noted that documenting a product is different from software, but there are platforms that have to do a bit of both. Take GitHub for example - it has a robust API that intersects with many of the same product areas as the UI on GitHub.com.
+In an earlier iteration of this post, I included a number of examples of open source documentation. I removed them for the sake of brevity, but the list included [Tailwind CSS](https://tailwindcss.com/), [Stripe](https://stripe.com/docs) and [Lodash](https://lodash.com/). I'll be doing some deep dives into these in the future, I think they merit a more focused look.
