@@ -6,15 +6,17 @@ spoiler: Been thinking about documentation a lot recently and wanted to write do
 
 Documentation is a fundamental part of software, both open source and proprietary. There are lots of methods for building great docs, and lots of examples of fantastic software with docs that just don't help their users. There have been studies that show that documentation is ["is highly valued, but often overlooked"](https://opensourcesurvey.org/2017/#insights) and my own experience lines up with those findings. So I wanted to share what I know and how I think about documentation, and some recommendations for you (and me).
 
-One note before we get into it: documentation for software is by and large very different from documentation for a product. With the latter, there is a fixed number of actions a user can take. Even something as complex and dynamic as [Figma](https://www.figma.com/) has a limit to what a user can do (more on plugin systems and SDKs later on). But when writing docs for software, like a reusable open source library, you need to expect the unexpected - how will consumers of that library use the code? It's not about having that answer, but about giving them the tools to use the code however they want.
+One note before we get into it: documentation for software is by and large very different from documentation for a product. With the latter, there is a fixed number of actions a user can take.
+
+Even something as complex and dynamic as [Figma](https://www.figma.com/) has a limit to what a user can do. But when writing docs for software, like a reusable open source library, we need to think about how consumers of that library will use the code. It's not about having that answer, but about giving them the tools to use the code however they want.
 
 ## What makes good documentation
 
-This is the big question, and I'm going to separate it into three parts: content, tooling and discoverability.
+This is the big question, and I'm going to separate it into three<sup>ish<sup> parts: content, tooling and discoverability.
 
 Ultimately, we write documentation to remove the barrier of entry for people who may want to use our code. There can be some branding and marketing involved, but I'd like to focus solely on the actual documentation.
 
-I'll also include some examples, but I'm not an authority on what makes docs good - so I'd love to [hear from you](https://twitter.com/JasonEtco).
+I'm not an authority on what makes docs good, but I'll be sharing some pretty clear opinions. Feel free to disagree 😗
 
 ## Content
 
@@ -79,6 +81,10 @@ This is a quick win - wherever possible, use real words and real scenarios when 
 ```
 
 Treat your examples like real code and they'll end up more clear and more helpful.
+
+### Technical writing is a skill
+
+This should go without saying but I'll say it anyway. We're not all experts at building useful content, and helping users understand our work. Experts in that field do exist, and their contributions are massively important.
 
 ## Tooling
 
