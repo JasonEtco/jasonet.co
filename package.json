@@ -43,7 +43,7 @@
     "gatsby-transformer-sharp": "^2.5.11",
     "inter-ui": "^3.13.1",
     "joi": "^17.1.1",
-    "prismjs": "^1.23.0",
+    "prismjs": "^1.24.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
