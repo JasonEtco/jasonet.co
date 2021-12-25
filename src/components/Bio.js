@@ -9,7 +9,7 @@ export default function Bio() {
       itemType="http://schema.org/Person"
       className="block md:flex"
     >
-      <img src={profilePic} alt="Jason Etcovitch" className="mr-6 w-16 h-16" />
+      <img src="https://github.com/JasonEtco.png" alt="Jason Etcovitch" className="mr-6 w-16 h-16 circle" />
       <p className="m-0">
         👋 Personal blog by{' '}
         <a href="https://twitter.com/JasonEtco" itemProp="name">

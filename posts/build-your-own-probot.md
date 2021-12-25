@@ -32,7 +32,7 @@ app.post('/', (req, res) => {
 
 When a Probot server receives a Webhook, it does a few things before actually running your code:
 
-![Probot webhook handling flow](/images/probot-flow.png)
+![Probot webhook handling flow](/assets/images/probot-flow.png)
 
 First, it verifies the webhook signature; along with the JSON payload, GitHub sends an `X-GitHub-Secret` header. The value of the header is a combination of a secret key and the contents of the payload itself. GitHub and your Probot app both have the secret key (Probot uses the `WEBHOOK_SECRET` environment variable), so when the two services generate the header they should match exactly. If they don't, Probot ignores the request.
 

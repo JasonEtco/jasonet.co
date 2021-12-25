@@ -1,25 +1,8 @@
+@import "./theme.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.blog-post hr {
-  @apply my-6 bg-gray-300;
-}
-
-/* Image caption */
-.blog-post img + small {
-  position: relative;
-  bottom: 1em;
-  @apply text-gray-500;
-}
-
-.blog-post img + small a {
-  @apply text-gray-700;
-}
-
-.blog-post h3 {
-  @apply mt-6 !important;
-}
 
 @keyframes pulse {
   0% {
