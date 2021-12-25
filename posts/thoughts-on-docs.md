@@ -73,13 +73,15 @@ I won't pretend that documenting an ORM is as easy as something like `lodash`, b
 This is a quick win - wherever possible, use real words and real scenarios when showing example code. This comes back to use-case driven content; the typical `foo/bar/baz` wording is ambiguous.
 
 ```js
-❌ const foo = math.add(1, 2)
-   const bar = math.subtract(2, 1)
+// Bad
+const foo = math.add(1, 2)
+const bar = math.subtract(2, 1)
 ```
 
 ```js
-✅ const sum = math.add(1, 2)
-   const difference = math.subtract(1, 2)
+// Good
+const sum = math.add(1, 2)
+const difference = math.subtract(1, 2)
 ```
 
 Treat your examples like real code and they'll end up more clear and more helpful.

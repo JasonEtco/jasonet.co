@@ -79,32 +79,34 @@ layout: "layouts/_default.njk"
       </div>
     </div>
 
-    <ul class="list-none flex flex-wrap justify-between p-0 ml-0 mt-12">
+    <ul class="list-none flex flex-wrap justify-between p-0 ml-0 mt-12 mb-6">
+      {% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+      {% set nextPost = collections.posts | getNextCollectionItem(page) %}
       <li>
-        {previous && (
-          <Link
-            to={previous.fields.slug}
+        {% if previousPost %}
+          <a
+            href="{{ previousPost.url }}"
             rel="prev"
             itemScope
             itemType="https://schema.org/BlogPosting"
             class="text-orange"
           >
-            ← <span itemProp="name">{previous.frontmatter.title}</span>
-          </Link>
-        )}
+            ← <span itemProp="name">{{ previousPost.data.title }}</span>
+          </a>
+        {% endif %}
       </li>
       <li>
-        {next && (
-          <Link
-            to={next.fields.slug}
+        {% if nextPost %}
+          <a
+            href="{{ nextPost.url }}"
             rel="next"
             itemScope
             itemType="https://schema.org/BlogPosting"
             class="text-orange"
           >
-            <span itemProp="name">{next.frontmatter.title}</span> →
-          </Link>
-        )}
+            <span itemProp="name">{{ nextPost.data.title }}</span> →
+          </a>
+        {% endif %}
       </li>
     </ul>
   </div>
