@@ -55,7 +55,7 @@ export default function BlogPostTemplate(props) {
         )}
 
         <div
-          className="blog-post"
+          className="blog-pos prose lg:prose-xlt"
           itemProp="articleBody text"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
