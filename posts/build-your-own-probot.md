@@ -167,7 +167,7 @@ Code mostly copied from [`@octokit/auth-app.js`](https://github.com/octokit/auth
 
 Let's talk about this line here:
 
-```js{1}
+```js/1
 module.exports = app => {
   app.on('event', handler)
 }
@@ -231,7 +231,7 @@ A common question I hear is "how do I access `context` outside of an event handl
 
 This is a fun part of Probot - you write code that exports a function, but then Probot magically runs that function. Most Probot apps use a CLI the Probot provides, called `probot run`. For example, [`JasonEtco/todo`'s](https://github.com/JasonEtco/todo) `npm start` command is this:
 
-```json{3}
+```json/3
 {
   "scripts": {
     "start": "probot run ./index.js"
@@ -362,7 +362,7 @@ One important note though: build your library in a way that doesn't _require_ th
 
 We didn't talk much about the `Context` class, aside from creating `context.github`, but many Probot apps end up calling methods like `context.repo()`. This returns some data from the webhook payload, and takes an optional argument with additional data. You would use it like this:
 
-```js{2,3}
+```js/2,3
 app.on('example', async context => {
   const params = context.repo({ title: 'New issue!' })
   // -> { owner: 'JasonEtco', name: 'my-repo', title: 'New issue! }

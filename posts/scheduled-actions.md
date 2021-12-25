@@ -15,7 +15,7 @@ The `schedule` event lets you **define a schedule for your workflow to run on**.
 
 It's spooky. If you've never used it before (I haven't) it looks different from other things. Let's dive in!
 
-```yaml{3}
+```yaml/3
 name: Do things every 5 minutes
 on:
   schedule:

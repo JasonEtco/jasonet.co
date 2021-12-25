@@ -1,0 +1,108 @@
+---
+title: Missing post title!
+layout: "layouts/_default.njk"
+---
+
+<main>
+  <div class="mx-auto px-3 md:px-8 py-3 max-w-3xl">
+    <a class="text-orange" href="/">
+      ← Back
+    </a>
+
+    <div itemScope itemType="http://schema.org/BlogPosting">
+      <header>
+        <h1
+          itemProp="name"
+          style="font-size: 3rem; font-weight: 900; line-height: 1.1"
+          class="mb-0 pb-3"
+        >
+          {{ title }}
+        </h1>
+        <p class="text-sm mt-3 mb-6">
+          <time itemProp="datePublished">{{ page.date | date }}</time>
+          <span> • </span>
+          <time itemProp="timeRequired">
+            {{ content | timeToRead }}
+          </time>
+        </p>
+        <meta itemProp="url" content={`${siteUrl}${slug}`} />
+      </header>
+
+      {% if toc %}
+        <aside class="p-6 my-6 border-solid border border-gray-300 rounded-lg">
+          <p class="text-sm text-gray-700 mb-3">Table of Contents</p>
+          <div>GENERATED TOC</div>
+        </aside>
+      {% endif %}
+
+      <div
+        class="blog-pos prose prose-a:text-orange prose-a:no-underline lg:prose-xlt"
+        itemProp="articleBody text"
+      >
+        {{ content | safe }}
+      </div>
+
+      <p class="text-gray-600 mt-6">
+        <a
+          class="text-orange"
+          href={discussUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Discuss on Twitter
+        </a>
+        <span> • </span>
+        <a
+          class="text-orange"
+          href={editUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Edit on GitHub
+        </a>
+        <span> • </span>
+        <a class="text-orange" href="/rss.xml">
+          RSS Feed
+        </a>
+      </p>
+
+      <div class="px-6 py-8 mt-6 shadow-xl border border-gray-100 rounded-lg">
+        <h3 class="font-semibold mt-0 mb-6 text-lg">
+          <a class="text-orange" href="/">
+            Hope you enjoyed the read! 📝
+          </a>
+        </h3>
+        <Bio />
+      </div>
+    </div>
+
+    <ul class="list-none flex flex-wrap justify-between p-0 ml-0 mt-12">
+      <li>
+        {previous && (
+          <Link
+            to={previous.fields.slug}
+            rel="prev"
+            itemScope
+            itemType="https://schema.org/BlogPosting"
+            class="text-orange"
+          >
+            ← <span itemProp="name">{previous.frontmatter.title}</span>
+          </Link>
+        )}
+      </li>
+      <li>
+        {next && (
+          <Link
+            to={next.fields.slug}
+            rel="next"
+            itemScope
+            itemType="https://schema.org/BlogPosting"
+            class="text-orange"
+          >
+            <span itemProp="name">{next.frontmatter.title}</span> →
+          </Link>
+        )}
+      </li>
+    </ul>
+  </div>
+</main>

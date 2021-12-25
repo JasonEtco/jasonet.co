@@ -1,0 +1,22 @@
+<div
+  itemScope
+  itemType="https://schema.org/BlogPosting"
+  class="mt-8"
+>
+  <h3
+    itemProp="name"
+    class="mb-1 text-orange text-2xl font-semibold"
+  >
+    <a href="{{ post.url }}">{{ post.data.title }}</a>
+  </h3>
+  <small class="text-gray-700">
+    <time itemProp="datePublished">{{ post.data.date | date }}</time>
+    <span> • </span>
+    <time itemProp="timeRequired">
+      {{ post.templateContent | timeToRead }}
+    </time>
+  </small>
+  <p itemProp="about headline comment">
+    {{ post.data.spoiler }}
+  </p>
+</div>

@@ -3,6 +3,7 @@ title: New features of GitHub Actions v2
 date: '2019-09-01'
 spoiler: GitHub Actions got a massive update, with a ton of new features to talk about!
 ---
+
 You might have read about [a big update to GitHub Actions](https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/) - <abbr title="Too long, didn't read">TLDR</abbr>, a lot is different but the overall concept is the same. It's a thing-doer; it lets you run arbitrary "jobs" in GitHub-orchestrated VMs.
 
 In August, a ton of new functionality and changes were introduced to the platform. These centered around using Actions for CI, but in continuation with my previous blog posts, I want to highlight some features for doing more than just running your tests. Let's goooo ➡️
