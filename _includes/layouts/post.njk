@@ -5,16 +5,15 @@ layout: "layouts/_default.njk"
 
 <main>
   <div class="mx-auto px-3 md:px-8 py-3 max-w-3xl">
-    <a class="text-orange" href="/">
-      ← Back
-    </a>
+    <div class="mb-8">
+      <a class="text-orange" href="/">← Back</a>
+    </div>
 
     <div itemScope itemType="http://schema.org/BlogPosting">
       <header>
         <h1
           itemProp="name"
-          style="font-size: 3rem; font-weight: 900; line-height: 1.1"
-          class="mb-0 pb-3"
+          class="mb-0 pb-3 post-title"
         >
           {{ title }}
         </h1>
@@ -36,7 +35,11 @@ layout: "layouts/_default.njk"
       {% endif %}
 
       <div
-        class="prose prose-a:text-orange prose-a:no-underline prose-pre:bg-gray-100 lg:prose-xlt"
+        class="prose
+          prose-a:text-orange
+          prose-a:no-underline
+          prose-pre:bg-gray-100
+          lg:prose-xlt"
         itemProp="articleBody text"
       >
         {{ content | safe }}

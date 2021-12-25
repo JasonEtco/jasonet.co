@@ -231,7 +231,7 @@ A common question I hear is "how do I access `context` outside of an event handl
 
 This is a fun part of Probot - you write code that exports a function, but then Probot magically runs that function. Most Probot apps use a CLI the Probot provides, called `probot run`. For example, [`JasonEtco/todo`'s](https://github.com/JasonEtco/todo) `npm start` command is this:
 
-```json/3
+```json/2
 {
   "scripts": {
     "start": "probot run ./index.js"
