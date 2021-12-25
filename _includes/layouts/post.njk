@@ -48,7 +48,7 @@ layout: "layouts/_default.njk"
       <p class="text-gray-600 mt-6">
         <a
           class="text-orange"
-          href={discussUrl}
+          href="https://mobile.twitter.com/search?q={{ ["https://jasonet.co", page.url] | join | urlencode }}"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -57,7 +57,7 @@ layout: "layouts/_default.njk"
         <span> • </span>
         <a
           class="text-orange"
-          href={editUrl}
+          href="https://github.com/jasonetco/jasonet.co/blob/main/{{ page.inputPath }}"
           target="_blank"
           rel="noopener noreferrer"
         >

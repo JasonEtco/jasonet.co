@@ -10,12 +10,11 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf _site",
-    "hasher": "node csshash.js",
     "start": "npm-run-all clean --parallel dev:*",
     "dev:postcss": "TAILWIND_MODE=watch postcss assets/css/index.css -o _site/css/index.css --config ./postcss.config.js -w",
     "dev:eleventy": "ELEVENTY_ENV=development npx @11ty/eleventy --serve --quiet --incremental",
-    "build": "NODE_ENV=production npm-run-all clean hasher --parallel prod:*",
-    "prod:postcss": "postcss src/assets/css/index.css -o _site/css/$(cat csshash) --config ./postcss.config.js",
+    "build": "NODE_ENV=production npm-run-all clean --parallel prod:*",
+    "prod:postcss": "postcss assets/css/index.css -o _site/css/index.css --config ./postcss.config.js",
     "prod:eleventy": "ELEVENTY_ENV=production npx @11ty/eleventy --output=./_site",
     "test": "jest && npm run lint",
     "compile-readme": "node bin/compile-readme.js"

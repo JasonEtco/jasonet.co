@@ -4,24 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes pulse {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
-  }
-}
-
 a:hover {
   text-decoration: underline;
-}
-
-.pulse {
-  animation-name: pulse;
-  animation-iteration-count: infinite;
-  animation-duration: 1000ms;
-  animation-direction: alternate-reverse;
 }
 
 .post-title {
@@ -62,6 +46,24 @@ a:hover {
 .repo--loaded {
   animation: fade-in 200ms;
 }
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+
+.pulse {
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-duration: 1000ms;
+  animation-direction: alternate-reverse;
+}
+
 
 .octicon {
   fill: currentColor;
