@@ -18,10 +18,14 @@
     <meta name="description" content="{{ spoiler }}" />
     <meta property="og:description" content="{{ spoiler }}" />
     <meta property="og:url" content="{{ constants.siteUrl }}{{ page.url }}" />
+    <meta name="twitter:description" content="{{ spoiler }}" />
+    <meta name="twitter:title" content="{{ title }}" />
   {% else %}
     <meta name="description" content="{{ constants.siteDescription }}" />
     <meta property="og:description" content="{{ constants.siteDescription }}" />
     <meta property="og:url" content="{{ constants.siteUrl }}/" />
+    <meta name="twitter:description" content="{{ constants.siteDescription }}" />
+    <meta name="twitter:title" content="{{ constants.siteTitle }}" />
   {% endif %}
 
   <!-- Twitter meta -->
@@ -36,15 +40,7 @@
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="{{ constants.siteUrl }}/assets/card.png" />
-  <meta name="og:image" content="{{ constants.siteUrl }}/assets/card.png" />
-
-  {% if page.spoiler %}
-    <meta name="twitter:description" content="{{ spoiler }}" />
-    <meta name="twitter:title" content="{{ title }}" />
-  {% else %}
-    <meta name="twitter:description" content="{{ constants.siteDescription }}" />
-    <meta name="twitter:title" content="{{ constants.siteTitle }}" />
-  {% endif %}
+  <meta property="og:image" content="{{ constants.siteUrl }}/assets/card.png" />
 
   <link rel="icon" type="image/png" href="/assets/favicon.ico" sizes="16x16" />
   
