@@ -24,7 +24,7 @@ layout: "layouts/_default.njk"
             {{ content | timeToRead }}
           </time>
         </p>
-        <meta itemProp="url" content="https://jasonet.co/{{ page.url }}" />
+        <meta itemProp="url" content="{{ constants.baseUrl }}/{{ page.url }}" />
       </header>
 
       {% if toc %}
@@ -48,7 +48,7 @@ layout: "layouts/_default.njk"
       <p class="text-gray-600 mt-6">
         <a
           class="text-orange"
-          href="https://mobile.twitter.com/search?q={{ ["https://jasonet.co", page.url] | join | urlencode }}"
+          href="https://mobile.twitter.com/search?q={{ [constants.baseUrl, page.url] | join | urlencode }}"
           target="_blank"
           rel="noopener noreferrer"
         >

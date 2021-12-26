@@ -1,47 +1,46 @@
-{% set fallbackImg = "typewriter-monochrome_2242164_6260x4374.jpg" %}
 {% set eleventyVersion = pkg.devDependencies['@11ty/eleventy'] | replace("^", "") %}
-{% set eleventyEnv = projEnv.environment %}
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="generator" content="Eleventy v{{ eleventyVersion }}" />
-           
-    {% if page.url == "/" %}
-      <title>{{ siteparams.siteTitle }}</title>
-      <meta property="og:title" content="{{ siteparams.siteTitle }}" />
-    {% else %}
-      <title>{{ title }} | {{ siteparams.siteTitle }}</title>
-      <meta property="og:title" content="{{ title }} | {{ siteparams.siteTitle }}" />
-    {% endif %}
+  <meta name="generator" content="Eleventy v{{ eleventyVersion }}" />
+          
+  {% if title %}
+    <title>{{ title }} | {{ constants.siteTitle }}</title>
+    <meta property="og:title" content="{{ title }} | {{ constants.siteTitle }}" />
+  {% else %}
+    <title>{{ constants.siteTitle }}</title>
+    <meta property="og:title" content="{{ constants.siteTitle }}" />
+  {% endif %}
 
-    <meta property="og:image" content="/images/{% if featured_image %}{{ featured_image }}{% else %}{{ fallbackImg }}{% endif %}" />
+  <meta property="og:image" content="/images/{% if featured_image %}{{ featured_image }}{% else %}{{ fallbackImg }}{% endif %}" />
 
-    {% if page.url == "/" %}
-      <meta name="description" content="{{ siteparams.siteDescription }}" />
-      <meta property="og:description" content="{{ siteparams.siteDescription }}" />
-      <meta property="og:url" content = "{{ siteparams.siteURLforOG }}/" />
-    {% else %}
-      <meta name="description" content="{{ description }}" />
-      <meta property="og:description" content="{{ description }}" />
-      <meta property="og:url" content="{{ siteparams.siteURLforOG }}{{ page.url }}" />
-    {% endif %}
+  {% if page.spoiler %}
+    <meta name="description" content="{{ spoiler }}" />
+    <meta property="og:description" content="{{ spoiler }}" />
+    <meta property="og:url" content="{{ siteparams.siteURLforOG }}{{ page.url }}" />
+  {% else %}
+    <meta name="description" content="{{ constants.siteDescription }}" />
+    <meta property="og:description" content="{{ constants.siteDescription }}" />
+    <meta property="og:url" content = "{{ siteparams.siteURLforOG }}/" />
+  {% endif %}
 
-    <!-- Twitter meta -->
-    <meta name="twitter:site" content="@JasonEtco">
-    <meta name="twitter:creator" content="@JasonEtco">
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/images/{% if featured_image %}{{ featured_image }}{% else %}{{ fallbackImg }}{% endif %}" />
-    {% if page.url !== "/" %}
-      <meta name="twitter:description" content="{{ description }}" />
-      <meta name="twitter:title" content="{{ title }}" />
-    {% else %}
-      <meta name="twitter:description" content="{{ siteparams.siteDescription }}" />
-      <meta name="twitter:title" content="{{ siteparams.siteTitle }}" />
-    {% endif %}
+  <!-- Twitter meta -->
+  <meta name="twitter:site" content="@JasonEtco">
+  <meta name="twitter:creator" content="@JasonEtco">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="/images/{% if featured_image %}{{ featured_image }}{% else %}{{ fallbackImg }}{% endif %}" />
 
-    <link rel="icon" type="image/png" href="/assets/favicon.ico" sizes="16x16" />
-    
-    <link rel="stylesheet" href="/css/index.css" type="text/css" />
-  </head>
+  {% if page.spoiler %}
+    <meta name="twitter:description" content="{{ spoiler }}" />
+    <meta name="twitter:title" content="{{ title }}" />
+  {% else %}
+    <meta name="twitter:description" content="{{ constants.siteDescription }}" />
+    <meta name="twitter:title" content="{{ constants.siteTitle }}" />
+  {% endif %}
+
+  <link rel="icon" type="image/png" href="/assets/favicon.ico" sizes="16x16" />
+  
+  <link rel="stylesheet" href="/css/index.css" type="text/css" />
+</head>
