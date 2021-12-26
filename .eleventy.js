@@ -22,12 +22,6 @@ module.exports = (eleventyConfig) => {
     const result = octicons[name].toSVG()
     return result
   })
-  
-  const linkAfterHeader = markdownItAnchor.permalink.linkAfterHeader({
-    class: "anchor",
-    symbol: "<span hidden>#</span>",
-    style: "aria-labelledby",
-  })
 
   const markdownItAnchorOptions = {
     level: [1, 2, 3],
@@ -35,7 +29,6 @@ module.exports = (eleventyConfig) => {
     tabIndex: false,
     permalink(slug, opts, state, idx) {
       state.tokens.splice(idx, 0, Object.assign(new state.Token("div_open", "div", 1), {
-          // Add class "header-wrapper [h1 or h2 or h3]"
           attrs: [["class", `heading-wrapper ${state.tokens[idx].tag}`]],
           block: true,
         })
@@ -46,7 +39,11 @@ module.exports = (eleventyConfig) => {
         })
       )
   
-      linkAfterHeader(slug, opts, state, idx + 1)
+      markdownItAnchor.permalink.linkAfterHeader({
+        class: "anchor",
+        symbol: "<span hidden>#</span>",
+        style: "aria-labelledby",
+      })
     },
   }
   
