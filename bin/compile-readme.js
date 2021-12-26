@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const parseFrontMatter = require('front-matter')
-const { siteUrl } = require('../gatsby-config').siteMetadata
+const { siteUrl } = require('../_data/constants.json')
 
 const START_COMMENT = '<!--START_POSTS-->'
 const END_COMMENT = '<!--END_POSTS-->'
@@ -13,9 +13,9 @@ function readFm(pathToPost) {
 }
 
 function getPosts() {
-  const postsDir = path.join(__dirname, '..', 'src', 'pages', 'posts')
+  const postsDir = path.join(__dirname, '..', 'posts')
   const posts = fs.readdirSync(postsDir)
-  return posts.map(post => ({
+  return posts.filter(post => post.endsWith('.md')).map(post => ({
     fm: readFm(path.join(postsDir, post)),
     slug: post.replace(path.extname(post), '')
   }))
