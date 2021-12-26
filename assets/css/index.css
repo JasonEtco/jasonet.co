@@ -34,35 +34,6 @@ a:hover {
   background-color: transparent;
 }
 
-@keyframes fade-in {
-  0% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.repo--loaded {
-  animation: fade-in 200ms;
-}
-
-@keyframes pulse {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
-  }
-}
-
-.pulse {
-  animation-name: pulse;
-  animation-iteration-count: infinite;
-  animation-duration: 1000ms;
-  animation-direction: alternate-reverse;
-}
-
 .octicon {
   fill: currentColor;
   vertical-align: text-bottom;

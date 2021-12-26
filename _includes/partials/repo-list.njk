@@ -1,17 +1,14 @@
 {% include "partials/repo.njk" %}
-{% include "partials/repo-loading.njk" %}
 
 <script type="module">
   import {TemplateInstance} from 'https://unpkg.com/@github/template-parts@latest/lib/index.js'
 
   const repoTemplate = document.querySelector('template.js-repo-template')
-  const repoLoadingTemplate = document.querySelector('template.js-repo-loading-template')
   const repoTarget = document.querySelector('.js-repo-target')
 
   async function fetchRepos() {
     try {
-      // const res = await window.fetch('/.netlify/functions/get-repos')
-      const res = await window.fetch('http://127.0.0.1:40313/.netlify/functions/get-repos')
+      const res = await window.fetch('/.netlify/functions/get-repos')
 
       if (!res.ok) {
         console.error(await res.text())
