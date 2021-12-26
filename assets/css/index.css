@@ -56,14 +56,12 @@ a:hover {
   }
 }
 
-
 .pulse {
   animation-name: pulse;
   animation-iteration-count: infinite;
   animation-duration: 1000ms;
   animation-direction: alternate-reverse;
 }
-
 
 .octicon {
   fill: currentColor;

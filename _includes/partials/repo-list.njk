@@ -1,0 +1,47 @@
+{% include "partials/repo.njk" %}
+{% include "partials/repo-loading.njk" %}
+
+<script type="module">
+  import {TemplateInstance} from 'https://unpkg.com/@github/template-parts@latest/lib/index.js'
+
+  const repoTemplate = document.querySelector('template.js-repo-template')
+  const repoLoadingTemplate = document.querySelector('template.js-repo-loading-template')
+  const repoTarget = document.querySelector('.js-repo-target')
+
+  async function fetchRepos() {
+    try {
+      // const res = await window.fetch('/.netlify/functions/get-repos')
+      const res = await window.fetch('http://127.0.0.1:40313/.netlify/functions/get-repos')
+
+      if (!res.ok) {
+        console.error(await res.text())
+        return
+      }
+
+      const json = await res.json()
+      for (const repo of json) {
+        const tpl = new TemplateInstance(repoTemplate, {
+          url: repo.url,
+          name: repo.name,
+          description: repo.description,
+          stargazerCount: repo.stargazers.totalCount,
+          forkCount: repo.forkCount,
+          codeColor: repo.primaryLanguage ? repo.primaryLanguage.color : 'gray',
+          codeLanguage: repo.primaryLanguage ? repo.primaryLanguage.name : 'Code'
+        })
+
+        repoTarget.appendChild(tpl)
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  fetchRepos()
+</script>
+
+<div class="js-repo-list">
+  <h5 class="text-sm text-gray-700 font-semibold mb-2">Recently worked on:</h5>
+  <ul class="js-repo-target block md:flex -mx-1 p-0 my-0 list-none">
+  </ul>
+</div>
