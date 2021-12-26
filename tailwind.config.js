@@ -14,10 +14,5 @@ module.exports = {
   variants: {},
   plugins: [
     require('@tailwindcss/typography'),
-  ],
-  safelist: [
-    {
-      pattern: /.*/,
-    },
-  ],
+  ]
 }
