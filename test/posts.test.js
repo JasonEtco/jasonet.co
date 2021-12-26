@@ -1,5 +1,5 @@
 // This test suite validates all of the post
-// markdown files contained in `/src/pages/posts/*.md`.
+// markdown files contained in `/posts/*.md`.
 const fs = require('fs')
 const fm = require('front-matter')
 const path = require('path')
