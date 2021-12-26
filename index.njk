@@ -1,0 +1,52 @@
+---
+layout: "layouts/_default.njk"
+---
+
+<main class="mx-auto max-w-xl py-8 px-3">
+  <header class="md:flex items-end border-solid border-0 border-b border-gray-200 pb-3 mb-10">
+    <h1
+      class="border-0 my-0 pb-0"
+      style="font-size: 3.5rem; font-weight: 900; line-height: 0.9"
+    >
+      Jason
+      <br />
+      Etcovitch
+    </h1>
+
+    <div class="flex-end mt-6 mb-0 md:mt-0 md:ml-3">
+      <p class="mb-1">
+        🐙 Engineer at
+        <a
+          class="text-orange hover:underline"
+          href="https://github.com/JasonEtco"
+        >
+          GitHub
+        </a>
+      </p>
+      <p class="mb-0">
+        🐦 Follow me on
+        <a
+          class="text-orange hover:underline"
+          href="https://twitter.com/JasonEtco"
+        >
+          Twitter
+        </a>
+      </p>
+    </div>
+  </header>
+
+  <div class="py-6 border-b border-gray-200">
+    <h5 class="text-sm text-gray-700 font-semibold">Posts:</h5>
+    {%- for post in collections.posts | reverse -%}
+      {% include "partials/post.njk" %}
+    {%- endfor -%}
+  </div>
+
+  <div class="mt-20">
+    {% include "partials/repo-list.njk" %}
+  </div>
+
+  <div class="p-8 mt-10 shadow-lg border border-gray-100 rounded-lg">
+    {% include "partials/bio.njk" %}
+  </div>
+</main>

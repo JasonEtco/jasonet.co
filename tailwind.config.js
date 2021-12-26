@@ -1,4 +1,9 @@
 module.exports = {
+  content: [
+    './posts/**/*.md',
+    './_includes/**/*.njk',
+    './index.njk',
+  ],
   theme: {
     extend: {
       colors: {
@@ -7,5 +12,12 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: []
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
+  safelist: [
+    {
+      pattern: /.*/,
+    },
+  ],
 }

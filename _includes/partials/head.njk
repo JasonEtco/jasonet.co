@@ -1,0 +1,52 @@
+{% set eleventyVersion = pkg.devDependencies['@11ty/eleventy'] | replace("^", "") %}
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="generator" content="Eleventy v{{ eleventyVersion }}" />
+          
+  {% if title %}
+    <title>{{ title }} | {{ constants.siteTitle }}</title>
+    <meta property="og:title" content="{{ title }} | {{ constants.siteTitle }}" />
+  {% else %}
+    <title>{{ constants.siteTitle }}</title>
+    <meta property="og:title" content="{{ constants.siteTitle }}" />
+  {% endif %}
+
+  {% if page.spoiler %}
+    <meta name="description" content="{{ spoiler }}" />
+    <meta property="og:description" content="{{ spoiler }}" />
+    <meta property="og:url" content="{{ constants.siteUrl }}/{{ page.url }}" />
+  {% else %}
+    <meta name="description" content="{{ constants.siteDescription }}" />
+    <meta property="og:description" content="{{ constants.siteDescription }}" />
+    <meta property="og:url" content = "{{ constants.siteUrl }}/" />
+  {% endif %}
+
+  <!-- Twitter meta -->
+  <meta name="twitter:site" content="@JasonEtco">
+  <meta name="twitter:creator" content="@JasonEtco">
+  
+  {#
+    TODO: Auto-generated cards
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="/images/{% if featured_image %}{{ featured_image }}{% else %}{{ fallbackImg }}{% endif %}" />
+  #}
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="{{ constants.siteUrl }}/assets/card.png" />
+  <meta name="og:image" content="{{ constants.siteUrl }}/assets/card.png" />
+
+  {% if page.spoiler %}
+    <meta name="twitter:description" content="{{ spoiler }}" />
+    <meta name="twitter:title" content="{{ title }}" />
+  {% else %}
+    <meta name="twitter:description" content="{{ constants.siteDescription }}" />
+    <meta name="twitter:title" content="{{ constants.siteTitle }}" />
+  {% endif %}
+
+  <link rel="icon" type="image/png" href="/assets/favicon.ico" sizes="16x16" />
+  
+  <link rel="stylesheet" href="/css/index.css" type="text/css" />
+</head>

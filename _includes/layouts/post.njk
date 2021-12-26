@@ -1,0 +1,113 @@
+---
+title: Missing post title!
+layout: "layouts/_default.njk"
+---
+
+<main>
+  <div class="mx-auto px-3 md:px-8 py-3 max-w-3xl">
+    <div class="mb-8">
+      <a class="text-orange" href="/">← Back</a>
+    </div>
+
+    <div itemScope itemType="http://schema.org/BlogPosting">
+      <header>
+        <h1
+          itemProp="name"
+          class="mb-0 pb-3 post-title"
+        >
+          {{ title }}
+        </h1>
+        <p class="text-sm mt-3 mb-6">
+          <time itemProp="datePublished">{{ page.date | date }}</time>
+          <span> • </span>
+          <time itemProp="timeRequired">
+            {{ content | timeToRead }}
+          </time>
+        </p>
+        <meta itemProp="url" content="{{ constants.baseUrl }}/{{ page.url }}" />
+      </header>
+
+      {% if toc %}
+        <aside class="prose prose-a:text-orange prose-a:no-underline p-6 my-6 border-solid border border-gray-300 rounded-lg">
+          <p class="text-sm text-gray-700 mb-3">Table of Contents</p>
+          {{ content | toc | safe }}
+        </aside>
+      {% endif %}
+
+      <div
+        class="prose
+          prose-a:text-orange
+          prose-a:no-underline
+          prose-pre:bg-gray-100
+          lg:prose-xlt"
+        itemProp="articleBody text"
+      >
+        {{ content | safe }}
+      </div>
+
+      <p class="text-gray-600 mt-6">
+        <a
+          class="text-orange"
+          href="https://mobile.twitter.com/search?q={{ [constants.baseUrl, page.url] | join | urlencode }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Discuss on Twitter
+        </a>
+        <span> • </span>
+        <a
+          class="text-orange"
+          href="https://github.com/jasonetco/jasonet.co/blob/main/{{ page.inputPath }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Edit on GitHub
+        </a>
+        <span> • </span>
+        <a class="text-orange" href="/rss.xml">
+          RSS Feed
+        </a>
+      </p>
+
+      <div class="px-6 py-8 mt-6 shadow-xl border border-gray-100 rounded-lg">
+        <h3 class="font-semibold mt-0 mb-6 text-lg">
+          <a class="text-orange" href="/">
+            Hope you enjoyed the read! 📝
+          </a>
+        </h3>
+        {% include "partials/bio.njk" %}
+      </div>
+    </div>
+
+    <ul class="list-none flex flex-wrap justify-between p-0 ml-0 mt-12 mb-6">
+      {% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+      {% set nextPost = collections.posts | getNextCollectionItem(page) %}
+      <li>
+        {% if previousPost %}
+          <a
+            href="{{ previousPost.url }}"
+            rel="prev"
+            itemScope
+            itemType="https://schema.org/BlogPosting"
+            class="text-orange"
+          >
+            ← <span itemProp="name">{{ previousPost.data.title }}</span>
+          </a>
+        {% endif %}
+      </li>
+      <li>
+        {% if nextPost %}
+          <a
+            href="{{ nextPost.url }}"
+            rel="next"
+            itemScope
+            itemType="https://schema.org/BlogPosting"
+            class="text-orange"
+          >
+            <span itemProp="name">{{ nextPost.data.title }}</span> →
+          </a>
+        {% endif %}
+      </li>
+    </ul>
+  </div>
+</main>

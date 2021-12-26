@@ -1,10 +1,10 @@
 // This test suite validates all of the post
-// markdown files contained in `/src/pages/posts/*.md`.
+// markdown files contained in `/posts/*.md`.
 const fs = require('fs')
 const fm = require('front-matter')
 const path = require('path')
 const Joi = require('joi')
-const pathToPosts = path.join(__dirname, '..', 'src', 'pages', 'posts')
+const pathToPosts = path.join(__dirname, '..', 'posts')
 const pathToReadme = path.join(__dirname, '..', 'README.md')
 
 const schema = Joi.object({
