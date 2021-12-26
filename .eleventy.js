@@ -23,33 +23,27 @@ module.exports = (eleventyConfig) => {
     return result
   })
 
-  const markdownItAnchorOptions = {
+  eleventyConfig.setLibrary('md', markdownIt({ html: true }).use(markdownItAnchor, {
     level: [1, 2, 3],
-    slugify: (str) => slugify(str, { lower: true, strict: true, remove: /["]/g, }),
+    slugify: (str) => slugify(str, { lower: true, strict: true, remove: /[']/g, }),
     tabIndex: false,
     permalink(slug, opts, state, idx) {
-      state.tokens.splice(idx, 0, Object.assign(new state.Token("div_open", "div", 1), {
-          attrs: [["class", `heading-wrapper ${state.tokens[idx].tag}`]],
+      state.tokens.splice(idx, 0, Object.assign(new state.Token('div_open', 'div', 1), {
+          attrs: [['class', `heading-wrapper ${state.tokens[idx].tag}`]],
           block: true,
         })
       )
   
-      state.tokens.splice(idx + 4, 0, Object.assign(new state.Token("div_close", "div", -1), {
+      state.tokens.splice(idx + 4, 0, Object.assign(new state.Token('div_close', 'div', -1), {
           block: true,
         })
       )
   
       markdownItAnchor.permalink.linkAfterHeader({
-        class: "anchor",
-        symbol: "<span hidden>#</span>",
-        style: "aria-labelledby",
+        class: 'anchor',
+        symbol: '<span hidden>#</span>',
+        style: 'aria-labelledby',
       })
     },
-  }
-  
-  /* Markdown Overrides */
-  const markdownLibrary = markdownIt({ html: true }).use(markdownItAnchor, markdownItAnchorOptions)
-  
-  // This is the part that tells 11ty to swap to our custom config
-  eleventyConfig.setLibrary("md", markdownLibrary)
+  }))
 }
