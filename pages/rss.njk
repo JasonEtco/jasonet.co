@@ -14,7 +14,7 @@ eleventyExcludeFromCollections: true
     <name>Jason Etcovitch</name>
     <email>jasonetco@gmail.com</email>
   </author>
-  {%- for post in collections.posts %}
+  {%- for post in collections.posts | reverse %}
   {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(constants.siteUrl) }}{% endset %}
   <entry>
     <title>{{ post.data.title }}</title>
