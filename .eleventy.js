@@ -19,8 +19,9 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('assets')
 
   eleventyConfig.addShortcode('octicon', (name) => {
-    const result = octicons[name].toSVG()
-    return result
+    const octicon = octicons[name]
+    if (!octicon) throw new Error(`Octicon [${name}] does not exist`)
+    return octicon.toSVG()
   })
 
   eleventyConfig.setLibrary('md', markdownIt({ html: true }).use(markdownItAnchor, {
