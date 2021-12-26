@@ -17,11 +17,11 @@
   {% if page.spoiler %}
     <meta name="description" content="{{ spoiler }}" />
     <meta property="og:description" content="{{ spoiler }}" />
-    <meta property="og:url" content="{{ siteparams.siteURLforOG }}{{ page.url }}" />
+    <meta property="og:url" content="{{ constants.siteUrl }}/{{ page.url }}" />
   {% else %}
     <meta name="description" content="{{ constants.siteDescription }}" />
     <meta property="og:description" content="{{ constants.siteDescription }}" />
-    <meta property="og:url" content = "{{ siteparams.siteURLforOG }}/" />
+    <meta property="og:url" content = "{{ constants.siteUrl }}/" />
   {% endif %}
 
   <!-- Twitter meta -->
