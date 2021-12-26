@@ -14,8 +14,6 @@
     <meta property="og:title" content="{{ constants.siteTitle }}" />
   {% endif %}
 
-  <meta property="og:image" content="/images/{% if featured_image %}{{ featured_image }}{% else %}{{ fallbackImg }}{% endif %}" />
-
   {% if page.spoiler %}
     <meta name="description" content="{{ spoiler }}" />
     <meta property="og:description" content="{{ spoiler }}" />
@@ -29,8 +27,16 @@
   <!-- Twitter meta -->
   <meta name="twitter:site" content="@JasonEtco">
   <meta name="twitter:creator" content="@JasonEtco">
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="/images/{% if featured_image %}{{ featured_image }}{% else %}{{ fallbackImg }}{% endif %}" />
+  
+  {#
+    TODO: Auto-generated cards
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="/images/{% if featured_image %}{{ featured_image }}{% else %}{{ fallbackImg }}{% endif %}" />
+  #}
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image" content="{{ constants.siteUrl }}/assets/card.png" />
+  <meta name="og:image" content="{{ constants.siteUrl }}/assets/card.png" />
 
   {% if page.spoiler %}
     <meta name="twitter:description" content="{{ spoiler }}" />
