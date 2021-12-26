@@ -38,3 +38,24 @@ a:hover {
   fill: currentColor;
   vertical-align: text-bottom;
 }
+
+.heading-wrapper {
+  padding: 0 1em;
+  margin: 0 -1em;
+  position: relative;
+
+  & .anchor {
+    display: none;
+    position: absolute;
+    top: 0.2em;
+    left: 0;
+
+    [hidden] {
+      display: block;
+    }
+  }
+
+  &:hover .anchor {
+    display: block;
+  }
+}

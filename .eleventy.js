@@ -24,6 +24,13 @@ module.exports = (eleventyConfig) => {
     return octicon.toSVG()
   })
 
+
+
+  const linkAfterHeader = markdownItAnchor.permalink.linkAfterHeader({
+    class: "anchor",
+    symbol: "<span hidden>#</span>",
+    style: "aria-labelledby",
+  })
   eleventyConfig.setLibrary('md', markdownIt({ html: true }).use(markdownItAnchor, {
     level: [1, 2, 3],
     slugify: (str) => slugify(str, { lower: true, strict: true, remove: /[']/g, }),
@@ -39,12 +46,8 @@ module.exports = (eleventyConfig) => {
           block: true,
         })
       )
-  
-      markdownItAnchor.permalink.linkAfterHeader({
-        class: 'anchor',
-        symbol: '<span hidden>#</span>',
-        style: 'aria-labelledby',
-      })
+
+      linkAfterHeader(slug, opts, state, idx + 1)
     },
   }))
 }
