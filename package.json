@@ -26,7 +26,9 @@
     "@tailwindcss/typography": "^0.5.0",
     "eleventy-plugin-time-to-read": "^1.1.1",
     "eleventy-plugin-toc": "^1.1.5",
+    "markdown-it-anchor": "^8.4.1",
     "nunjucks-date-filter": "^0.1.1",
+    "slugify": "^1.6.4",
     "tailwindcss": "^3.0.7"
   },
   "devDependencies": {

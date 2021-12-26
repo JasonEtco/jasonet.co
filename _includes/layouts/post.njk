@@ -24,13 +24,13 @@ layout: "layouts/_default.njk"
             {{ content | timeToRead }}
           </time>
         </p>
-        <meta itemProp="url" content={`${siteUrl}${slug}`} />
+        <meta itemProp="url" content="https://jasonet.co/{{ page.url }}" />
       </header>
 
       {% if toc %}
-        <aside class="p-6 my-6 border-solid border border-gray-300 rounded-lg">
+        <aside class="prose prose-a:text-orange prose-a:no-underline p-6 my-6 border-solid border border-gray-300 rounded-lg">
           <p class="text-sm text-gray-700 mb-3">Table of Contents</p>
-          {{ content | toc }}
+          {{ content | toc | safe }}
         </aside>
       {% endif %}
 
