@@ -16,7 +16,7 @@
     "build": "NODE_ENV=production npm-run-all clean --parallel prod:*",
     "prod:postcss": "postcss css/index.css -o _site/css/index.css --config ./postcss.config.js",
     "prod:eleventy": "ELEVENTY_ENV=production npx @11ty/eleventy --output=./_site",
-    "test": "jest && npm run lint",
+    "test": "jest",
     "compile-readme": "node bin/compile-readme.js"
   },
   "dependencies": {
