@@ -8,6 +8,11 @@ a:hover {
   text-decoration: underline;
 }
 
+.octicon {
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
 .post-title {
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.07);
   font-size: 3rem;
@@ -16,29 +21,97 @@ a:hover {
   @apply pb-3;
 }
 
-.prose pre {
-  @apply py-6;
-  color: black;
+.prose {
+  pre {
+    @apply py-6;
+    color: black;
+  }
+
+  /* Override for code in a tags, like [`example`](...) */
+  a > code {
+    @apply text-orange;
+  }
+
+  /* Highlighted lines, when using ```js/1,2 */
+  .highlight-line:not(.highlight-line-active),
+  .highlight-line:not(.highlight-line-active) * {
+    @apply text-gray-500;
+  }
+
+  .highlight-line-active {
+    background-color: transparent;
+  }
+
+  /* Syntax highlighted language bits */
+  pre[class*='language-'] {
+    position: relative;
+    min-width: 100%;
+  }
+
+  pre[class*='language-']::before {
+    content: 'code';
+    background: #ddd;
+    border-radius: 0 0 0 4px;
+    color: #000000;
+    font-size: 0.75rem;
+    letter-spacing: 0.075em;
+    line-height: 1;
+    padding: 0.25rem 0.4rem 0.25rem 0.5rem;
+    position: absolute;
+    right: 0;
+    text-transform: uppercase;
+    top: 0;
+  }
+
+  pre[class*='language-js']::before,
+  pre[class*='language-javascript']::before {
+    content: 'js';
+    background: #f7df1e;
+  }
+
+  pre[class*='language-ts']::before,
+  pre[class*='language-typescript']::before {
+    content: 'ts';
+    background: #0076c6;
+    color: white;
+  }
+
+  pre[class*='language-yml']::before,
+  pre[class*='language-yaml']::before {
+    content: 'yaml';
+    background: #f71e6a;
+    color: white;
+  }
+
+  pre[class*='language-hcl']::before {
+    content: 'hcl';
+    background: #6cdcfe;
+    color: white;
+  }
+
+  pre[class*='language-docker']::before {
+    content: 'docker';
+    background: #3597d4;
+    color: white;
+  }
+
+  pre[class*='language-shell']::before {
+    content: 'shell';
+    background: #c5d0da;
+  }
+
+  pre[class*='language-diff']::before,
+  pre[class*='language-text']::before {
+    display: none;
+  }
+
+  pre[class*='language-markdown']::before {
+    content: 'md';
+    background: #c5d0da;
+  }
 }
 
-.prose a > code {
-  @apply text-orange;
-}
-
-.highlight-line:not(.highlight-line-active),
-.highlight-line:not(.highlight-line-active) * {
-  @apply text-gray-500;
-}
-
-.highlight-line-active {
-  background-color: transparent;
-}
-
-.octicon {
-  fill: currentColor;
-  vertical-align: text-bottom;
-}
-
+/* Heading anchors */
 .heading-wrapper {
   padding: 0 1em;
   margin: 0 -1em;
@@ -47,8 +120,9 @@ a:hover {
   & .anchor {
     display: none;
     position: absolute;
-    top: 0.2em;
+    top: 0;
     left: 0;
+    padding: 0.2em;
 
     [hidden] {
       display: block;
