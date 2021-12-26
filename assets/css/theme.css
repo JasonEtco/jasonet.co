@@ -126,7 +126,6 @@ blockquote :not(pre) > code[class*='language-'] {
 
 .prose pre[class*='language-'] {
   position: relative;
-  float: left;
   min-width: 100%;
 }
 
