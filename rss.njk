@@ -1,0 +1,28 @@
+---
+permalink: rss.xml
+eleventyExcludeFromCollections: true
+---
+
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ constants.siteTitle }}</title>
+  <subtitle>{{ constants.siteDescription }}</subtitle>
+  <link href="{{ constants.siteUrl }}/rss.xml" rel="self"/>
+  <link href="{{ constants.siteUrl }}"/>
+  <updated>{{ collections.posts | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <id>{{ constants.siteUrl }}</id>
+  <author>
+    <name>Jason Etcovitch</name>
+    <email>jasonetco@gmail.com</email>
+  </author>
+  {%- for post in collections.posts %}
+  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(constants.siteUrl) }}{% endset %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ absolutePostUrl }}"/>
+    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <id>{{ absolutePostUrl }}</id>
+    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+  </entry>
+  {%- endfor %}
+</feed>
