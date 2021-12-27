@@ -43,6 +43,8 @@ async function main () {
   const filepath = path.join(PATH_TO_POSTS, `${answers.slug}.md`)
   await fs.promises.writeFile(filepath, content)
   console.log(`📝 ${filepath} was created - have fun writing!`)
+
+  require('./compile-readme')
 }
 
 main()
