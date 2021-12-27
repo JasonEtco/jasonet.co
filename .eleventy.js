@@ -55,7 +55,9 @@ module.exports = (eleventyConfig) => {
   }))
 
   eleventyConfig.on('afterBuild', () => {
-    compileReadme()
-    generateImages()
+    if (process.env.NODE_ENV !== 'production') {
+      compileReadme()
+      generateImages()
+    }
   })
 }

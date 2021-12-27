@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const FILES_DIR = path.join(__dirname, '../_site/og')
+const DEST_DIRS = ['../_site/assets/og', '../assets/og']
 
 const PUPPETEER_OPTIONS = {
   headless: true,
@@ -100,8 +101,10 @@ async function main() {
   for (const file of htmlFiles) {
     const withCSS = `<style>${css}</style>${file.content}`
     const image = await generateImage(browser, withCSS)
-    const filepath = path.join(FILES_DIR, file.file.replace(path.extname(file.file), '.png'))
-    await fs.promises.writeFile(filepath, image)
+    const filepath = file.file.replace(path.extname(file.file), '.png')
+    for (const destDir of DEST_DIRS) {
+      await fs.promises.writeFile(path.join(__dirname, destDir, filepath), image)
+    }
     process.stdout.write('.')
   }
   await browser.close()
