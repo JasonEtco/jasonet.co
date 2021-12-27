@@ -43,6 +43,7 @@
     "postcss-csso": "^6.0.0",
     "postcss-import": "^14.0.2",
     "prompts": "^2.4.2",
+    "puppeteer": "^13.0.1",
     "slugify": "^1.6.4",
     "tailwindcss": "^3.0.7"
   },
