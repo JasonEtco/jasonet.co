@@ -87,7 +87,7 @@ function getHTMLFiles() {
   const files = fs.readdirSync(FILES_DIR).filter(file => file.endsWith('.html'))
   return files.map(file => ({
     file,
-    content: fs.readFileSync(path.join(FILES_DIR, file))
+    content: fs.readFileSync(path.join(FILES_DIR, file), 'utf8')
   }))
 }
 
@@ -95,14 +95,17 @@ async function main() {
   console.log('📷 Generating OG images...')
   const browser = await createBrowser()
   const htmlFiles = getHTMLFiles()
+  const css = await fs.promises.readFile(path.join(__dirname, '../_site/css/index.css'), 'utf8')
+
   for (const file of htmlFiles) {
-    const image = await generateImage(browser, file.content.toString('utf8'))
+    const withCSS = `<style>${css}</style>${file.content}`
+    const image = await generateImage(browser, withCSS)
     const filepath = path.join(FILES_DIR, file.file.replace(path.extname(file.file), '.png'))
     await fs.promises.writeFile(filepath, image)
     process.stdout.write('.')
   }
   await browser.close()
-  console.log('✅ Done generating OG images!')
+  console.log('\n✅ Done generating OG images!')
 }
 
 if (require.main === module) {
