@@ -24,20 +24,21 @@
     <meta property='twitter:title' content="some title"/>
     <meta property="twitter:image" content="{{ constants.siteUrl }}/assets/og/{{ page.fileSlug }}.png" />
     <meta property="og:image" content="{{ constants.siteUrl }}/assets/og/{{ page.fileSlug }}.png" />
-    <meta property="og:image:width" content="1200"/>
-    <meta property="og:image:height" content="600"/>
-    <meta property="og:image:alt" content="{{ spoiler }}"/>
+    <meta property="og:image:secure_url" content="{{ constants.siteUrl }}/assets/og/{{ page.fileSlug }}.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:image:alt" content="{{ spoiler }}" />
   {% else %}
     <meta property="description" content="{{ constants.siteDescription }}" />
     <meta property="og:description" content="{{ constants.siteDescription }}" />
-    <meta property="og:url" content="{{ constants.siteUrl }}/" />
+    <meta property="og:url" content="{{ constants.siteUrl }}" />
     <meta property="twitter:description" content="{{ constants.siteDescription }}" />
     <meta property="twitter:title" content="{{ constants.siteTitle }}" />
     <meta property="twitter:card" content="summary" />
     <meta property="twitter:image" content="{{ constants.siteUrl }}/assets/card.png" />
     <meta property="og:image" content="{{ constants.siteUrl }}/assets/card.png" />
-    <meta property="og:image:width" content="256"/>
-    <meta property="og:image:height" content="256"/>
+    <meta property="og:image:width" content="256" />
+    <meta property="og:image:height" content="256" />
   {% endif %}
 
   <meta property`="twitter:site" content="@JasonEtco" />
