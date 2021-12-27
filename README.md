@@ -24,5 +24,3 @@
 ### Run locally
 
 To run locally, `npm install`, then `npm start`, then open https://localhost:8000.
-
-> "Forked" from [gaearon/overreacted.io](https://github.com/gaearon/overreacted.io). Built on [GatsbyJS](https://www.gatsbyjs.org/)

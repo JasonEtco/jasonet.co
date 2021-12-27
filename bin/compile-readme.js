@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require('fs')
 const path = require('path')
 const parseFrontMatter = require('front-matter')
@@ -45,7 +47,7 @@ function main() {
   const pathToReadme = path.join(__dirname, '..', 'README.md')
   const newContents = replaceReadmeBlock(pathToReadme, list)
   fs.writeFileSync(pathToReadme, newContents)
-  console.log('Done!')
+  console.log('✅ Done compiling README!')
 }
 
 main()
