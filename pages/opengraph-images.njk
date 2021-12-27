@@ -6,15 +6,15 @@ pagination:
 permalink: "og/{{ post.fileSlug }}.html"
 layout: layouts/_default.njk
 ---
-<div class="p-12 flex" style="height: 100vh">
+<div class="p-20 flex" style="height: 100vh">
   <div class="mr-6 text-8xl pt-1">
     📝
   </div>
 
   <div class="flex flex-col">
-    <h1 class="text-8xl" style="font-weight: 900; line-height: 1.1;">{{ post.data.title }}</h1>
-    <p class="text-4xl my-6 text-gray-700">{{ post.data.spoiler }}</p>
-    
+    <h1 class="{% if post.data.title | length <= 32 %}text-8xl{% else %}text-7xl{% endif %}" style="font-weight: 900; line-height: 1.1;">{{ post.data.title }}</h1>
+    <p class="text-4xl my-6 text-gray-700">{{ post.data.spoiler | truncate(200) }}</p>
+
     <footer class="mt-auto text-2xl">
       <div class="text-gray-700">
         <time itemProp="datePublished">{{ post.data.date | date }}</time>
