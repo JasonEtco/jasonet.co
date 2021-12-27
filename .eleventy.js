@@ -8,6 +8,9 @@ const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const slugify = require('slugify')
 
+const compileReadme = require('./bin/compile-readme')
+const generateImages = require('./bin/generate-images')
+
 module.exports = (eleventyConfig) => {
   dateFilter.setDefaultFormat('MMMM D, YYYY')
   
@@ -50,4 +53,11 @@ module.exports = (eleventyConfig) => {
       linkAfterHeader(slug, opts, state, idx + 1)
     },
   }))
+
+  eleventyConfig.on('afterBuild', () => {
+    if (process.env.NODE_ENV !== 'production') {
+      compileReadme()
+      generateImages()
+    }
+  })
 }

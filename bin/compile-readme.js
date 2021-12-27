@@ -42,6 +42,7 @@ function replaceReadmeBlock(pathToReadme, list) {
 }
 
 function main() {
+  console.log('📝 Compiling README...')
   const posts = getPosts()
   const list = generateList(posts)
   const pathToReadme = path.join(__dirname, '..', 'README.md')
@@ -50,4 +51,8 @@ function main() {
   console.log('✅ Done compiling README!')
 }
 
-main()
+if (require.main === module) {
+  main()
+} else {
+  module.exports = main
+}
