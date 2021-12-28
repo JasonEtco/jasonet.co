@@ -51,7 +51,7 @@ When it comes time to actually chunk out your PRs, here are some tips that may h
 
 ### Atomic(ish) commits
 
-It starts with making many, small commits. There's a concept of **Atomic commits**:
+It starts with making many, small commits into a spike branch. There's a concept of **Atomic commits**:
 
 > the commit should only have changes pertaining to one fix or feature (or whatever you were working on). Don’t have commits where you “fixed that bug and also implemented the feature and then also refactored some class”.
 
@@ -66,6 +66,8 @@ The only difference is that with spike work it really doesn't matter if you're b
 
 ### `git cherry-pick`
 
+Git's [`cherry-pick` command](https://git-scm.com/docs/git-cherry-pick) allows you to effectively[^1] copy commits from one branch to another, using their SHA (unique identifier for each commit).
+
 If you've organized your spike PR well, you'll have a list of commits that you want to cherry-pick. These are some example commits of a spike PR I've worked on: 
 
 * `0c2a240`: Create database migration
@@ -75,3 +77,26 @@ If you've organized your spike PR well, you'll have a list of commits that you w
 * `9a71a8f`: Add view
 * `624747a`: Make it not horrible
 
+In those 6 commits, there's probably about 20-30 files changed between migration files, controllers, configs, UI stuff, partials/components, etc. It sounds like a lot, because it is - but let's see what it looks like to separate them out:
+
+{% capture openPR %}<span class="text-green-500">{% octicon "git-pull-request" %}</span>{% endcapture %}
+
+* {{ openPR }} **[1/3] Create `repository_lists` table**
+* {{ openPR }} **[2/3] Create `RepositoryList` model**
+* {{ openPR }} **[3/3] Create `RepositoryListController` and view**
+
+Those don't sound quite as scary as a single PR called **Do everything**. Now to actually create those PRs, here's how we would use `cherry-pick`:
+
+```bash
+# Checkout to a new feature branch from `main`:
+git checkout main && git checkout -b lists/create-table
+# cherry-pick the relevant commits:
+git cherry-pick 0c2a240 360591a
+# Open the PR (ex: with the gh cli):
+gh pr create -b lists/create-table -t "Create `repository_lists` table"
+```
+
+Do that for each of the chunks, switching out the commits you're cherry-picking, and 💥 you have a bunch of reviewable PRs instead of one giant one.
+
+
+[^1]: It's not an _actual_ copy - the changes are copied over, but a new commit is created with a new SHA.
