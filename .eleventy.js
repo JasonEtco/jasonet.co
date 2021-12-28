@@ -6,6 +6,7 @@ const dateFilter = require('nunjucks-date-filter')
 const octicons = require('@primer/octicons')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
+const markdownItFootnote = require('markdown-it-footnote')
 const slugify = require('slugify')
 
 const compileReadme = require('./bin/compile-readme')
@@ -34,25 +35,29 @@ module.exports = (eleventyConfig) => {
     symbol: "<span hidden>#</span>",
     style: "aria-labelledby",
   })
-  eleventyConfig.setLibrary('md', markdownIt({ html: true }).use(markdownItAnchor, {
-    level: [1, 2, 3],
-    slugify: (str) => slugify(str, { lower: true, strict: true, remove: /[']/g, }),
-    tabIndex: false,
-    permalink(slug, opts, state, idx) {
-      state.tokens.splice(idx, 0, Object.assign(new state.Token('div_open', 'div', 1), {
-          attrs: [['class', `heading-wrapper ${state.tokens[idx].tag}`]],
-          block: true,
-        })
-      )
-  
-      state.tokens.splice(idx + 4, 0, Object.assign(new state.Token('div_close', 'div', -1), {
-          block: true,
-        })
-      )
 
-      linkAfterHeader(slug, opts, state, idx + 1)
-    },
-  }))
+  const markdown = markdownIt({ html: true })
+    .use(markdownItFootnote)
+    .use(markdownItAnchor, {
+      level: [1, 2, 3],
+      slugify: (str) => slugify(str, { lower: true, strict: true, remove: /[']/g, }),
+      tabIndex: false,
+      permalink(slug, opts, state, idx) {
+        state.tokens.splice(idx, 0, Object.assign(new state.Token('div_open', 'div', 1), {
+            attrs: [['class', `heading-wrapper ${state.tokens[idx].tag}`]],
+            block: true,
+          })
+        )
+    
+        state.tokens.splice(idx + 4, 0, Object.assign(new state.Token('div_close', 'div', -1), {
+            block: true,
+          })
+        )
+
+        linkAfterHeader(slug, opts, state, idx + 1)
+      },
+    })
+  eleventyConfig.setLibrary('md', markdown)
 
   eleventyConfig.on('afterBuild', () => {
     if (process.env.NODE_ENV !== 'production') {

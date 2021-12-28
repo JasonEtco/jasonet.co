@@ -9,6 +9,7 @@ a:hover {
 }
 
 .octicon {
+  display: inline;
   fill: currentColor;
   vertical-align: text-bottom;
 }
@@ -108,6 +109,18 @@ a:hover {
   pre[class*='language-markdown']::before {
     content: 'md';
     background: #c5d0da;
+  }
+
+  pre[class*='language-bash']::before {
+    content: 'bash';
+    color: #4cd40e;
+    background: #232c34;
+  }
+
+  .footnotes {
+    @apply text-gray-500;
+    @apply text-sm;
+    @apply pb-3;
   }
 }
 
