@@ -5,7 +5,11 @@ spoiler: >-
 date: '2021-12-27'
 ---
 
-Spike work is a tool I use to make meaningful progress on medium-sized projects, to be efficient with my time and get to the hard parts as quickly as possible. In practice, it looks like this:
+Spike work is a tool I use to make meaningful progress on medium-sized projects, to be efficient with my time and get to the hard parts as quickly as possible.
+
+**Get a feature working with as little work as possible (but still correctly) in one branch. Then, move those changes into small, scoped pull requests to ship them iteratively.**
+
+In practice, it looks like this:
 
 1. Understand the feature proposal - this can mean reading the issue, talking to people, reading code to list out the integration points, or just getting a handle on what will need to change. We're not looking to enumerate the actual steps, just get a vague idea of what areas of the codebase you'll need to touch.
 1. Get it working - this is, of course, the meat of it. Start a new feature branch and _just go for it_. Doesn't matter if you create bugs. Don't bother writing tests. Don't worry about the code quality. The goal now is to just get it working.
