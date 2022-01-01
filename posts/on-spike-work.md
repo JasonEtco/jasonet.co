@@ -11,7 +11,7 @@ Spike work is a tool I use to make meaningful progress on medium-sized projects 
 
 In practice, it looks like this:
 
-1. Understand the feature proposal - this can mean reading the issue, talking to people, reading code to list out the integration points, or just getting a handle on what will need to change. We're not looking to enumerate the actual steps, just get a vague idea of what areas of the codebase you'll need to touch.
+1. Understand the feature proposal - this can mean reading the issue, talking to people, reading code to list out the integration points, or just getting a handle on what will need to change. We're not looking to enumerate the actual steps, just to get a vague idea of what areas of the codebase you'll need to touch.
 1. Get it working - this is, of course, the meat of it. Start a new feature branch and _just go for it_. Doesn't matter if you create bugs. Don't bother writing tests. Don't worry about the code quality. The goal now is to just get it working.
 1. From there, you should have an idea of "the hard parts." Do you need to talk to other teams/people? Are there obvious performance concerns? Should you be looping in Security early on? Those are questions that you can better answer after you've done that initial sweep of work.
 1. Once you've got that, you can start to chunk out the work into smaller pieces. More on that later.
@@ -128,7 +128,7 @@ If you did it right, each of those spike PRs will be missing some things. Tests,
 
 ---
 
-That's it - spike work isn't some magical tool, it's just a way of approaching feature development in a way that's fun for you, efficient, and can be a real help to the team's understanding of the change.
+That's it - spike work isn't some magical tool. It's just a way of approaching feature development in a way that's fun for you, efficient, and can be a real help to the team's understanding of the change.
 
 ---
 
