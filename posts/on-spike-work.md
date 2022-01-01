@@ -5,7 +5,7 @@ spoiler: >-
 date: '2021-12-27'
 ---
 
-Spike work is a tool I use to make meaningful progress on medium-sized projects, to be efficient with my time and get to the hard parts as quickly as possible.
+Spike work is a tool I use to make meaningful progress on medium-sized projects, to be efficient with my time and to get to the hard parts as quickly as possible.
 
 **Get a feature working with as little work as possible (but still correctly) in one branch. Then, move those changes into small, scoped pull requests to ship them iteratively.**
 
@@ -13,30 +13,30 @@ In practice, it looks like this:
 
 1. Understand the feature proposal - this can mean reading the issue, talking to people, reading code to list out the integration points, or just getting a handle on what will need to change. We're not looking to enumerate the actual steps, just get a vague idea of what areas of the codebase you'll need to touch.
 1. Get it working - this is, of course, the meat of it. Start a new feature branch and _just go for it_. Doesn't matter if you create bugs. Don't bother writing tests. Don't worry about the code quality. The goal now is to just get it working.
-1. From there, you should have an idea of "the hard parts." Do you need to talk to other teams/people? Are there obvious performance concerns? Should you be looping in Security early on? Those are quesitons that you can better answer after you've done that initial sweep of work.
+1. From there, you should have an idea of "the hard parts." Do you need to talk to other teams/people? Are there obvious performance concerns? Should you be looping in Security early on? Those are questions that you can better answer after you've done that initial sweep of work.
 1. Once you've got that, you can start to chunk out the work into smaller pieces. More on that later.
 
 ## Why you'd do it
 
-What's the point of spike work if you don't have a clear plan? The whole point is to create a plan.
+What's the point of spike work if you don't have a clear plan? Well, the whole point is to _create_ a plan. It's a method for figuring out what you don't know.
 
-I firmly believe that too much process before engineers can hit the ground running is a bad thing. It hinders exploration and slows understanding. There's a balance for sure, but when you have the opportunity to jump into a problem and _just figure it out_, that's way more fun _and_ often more productive.
+Too much process and planning before engineers hit the ground running can be a bad thing. It hinders exploration and slows understanding. There's a balance for sure, but when you have the opportunity to jump into a problem and _just figure it out_, that's way more fun _and_ often more productive.
 
 How does spike work make your whole team better?
 
 **More, smaller PRs are easier to ship**
 
-Have you ever reviewed your teammates pull request, with 92 changed files and a diff looking like <code><span class="text-green-500">+7,830</span>, <span class="text-red-500">−24,766</span></code>? How is anyone supposed to give a meaningful review of a PR that large?
+Have you ever reviewed your teammate's pull request, with 92 changed files and a diff looking like <code><span class="text-green-500">+24,766</span>, <span class="text-red-500">−7,830</span></code>? How is anyone supposed to give a meaningful review of a PR that large?
 
-If you can be the person that fully understands how to build a feature, the best way you can communicate that to your team is by showing them the pieces one-by-one. Show them the spike work, but ask them to review individual parts.
+If you're the person that fully understands how to build a feature, the best way you can communicate that to your team is by showing them the pieces one-by-one. Ask them to review individual parts, and have the "look it works" spike work available for even more context.
 
-For example, lets take GitHub's new [Star Lists feature](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars#organizing-starred-repositories-with-lists). There are three distinct parts to shipping a feature like that:
+For example, lets take GitHub's new [Starred Repository Lists feature](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars#organizing-starred-repositories-with-lists). There are three distinct parts to shipping a feature like that:
 
 * Database changes - adding a new table to store lists
 * Backend changes - API endpoints, model changes, tests, etc.
 * Frontend changes - views for lists, UI changes to enable adding repos to lists
 
-The real-world breakdown is usually even smaller, with each step being further broken down into scoped pull requests. The idea is to have a single spike PR that covers all of the work, and then have the team review the individual parts.
+The real-world breakdown is usually even smaller, with each step being further broken down into tightly scoped pull requests. The idea is to have a single spike PR that covers all of the foundational work, and then have the team review the individual parts.
 
 **Feature flags enable iterative development**
 
@@ -47,7 +47,7 @@ The real-world breakdown is usually even smaller, with each step being further b
 [- Mike Coutermarsh, 2021](https://twitter.com/mscccc/status/1474500548615450634)
 </caption>
 
-All of this assumes that your project has some way of shipping changes without users hitting them yet. [At GitHub, we use feature flags heavily](https://github.blog/2021-04-27-ship-code-faster-safer-feature-flags/) - it lets us ship small parts of a larger feature, review them safely and easily, then enable the feature when we're ready. It's a larger topic, but in essence, you'd have code in your app like this:
+All of this assumes that your project has some way of shipping changes without users hitting them yet. [At GitHub, we use feature flags heavily](https://github.blog/2021-04-27-ship-code-faster-safer-feature-flags/) - it lets us ship small parts of a larger feature, review them safely and easily, then enable the feature when we're ready. It's a larger topic, but in essence, you'd have a simple `if` statement in your app like this:
 
 ```js
 if (await user.featureEnabled("star-lists")) {
@@ -72,7 +72,7 @@ It starts with making many, small commits into a spike branch. There's a concept
 [- Pauline Vos](https://dev.to/paulinevos/atomic-commits-will-help-you-git-legit-35i7)
 </caption>
 
-Truely atomic commits are always passing, and one feature at a time. For spike work, this is a really useful concept - you want to commit bits at a time that are easily cherry-pick-able. This comes in handy later when deciding which changes belong in which PR.
+Truely atomic commits always pass CI, and change one feature at a time. For spike work, this is a really useful concept - you want to commit bits at a time that are easily cherry-pick-able. This comes in handy later when deciding which changes belong in which PR.
 
 The only difference is that with spike work it really doesn't matter if you're breaking the build. In fact, it can be useful to **send your changes to CI and see what breaks**, especially on large projects where running the entire CI suite locally is prohibitively slow (or just impossible).
 
@@ -97,7 +97,7 @@ In those 6 commits, there's probably about 20-30 files changed between migration
 * {{ openPR }} **[2/3] Create `RepositoryList` model**
 * {{ openPR }} **[3/3] Create `RepositoryListController` and view**
 
-Those don't sound quite as scary as a single PR called **Do everything**. Now to actually create those PRs, here's how we would use `cherry-pick`:
+Those don't sound quite as scary as a single PR called **Do everything, all at once**. Now to actually create those PRs, here's how we would use `cherry-pick`:
 
 ```bash
 # Checkout to a new feature branch from `main`:
@@ -120,11 +120,11 @@ In this example, when `feature/step-one` is merged and the branch is deleted, an
 
 ![Screenshot of GitHub UI showing pull request timeline event that base branch was automatically retargeted from feature/step-one to main](https://user-images.githubusercontent.com/10660468/147856756-9f94213f-ff9a-45ff-8b80-fd7175486fdd.png)
 
-This helps me open all the PRs together without waiting for each one to be merged, without them being a combination of multiple PRs.
+This enables you to open all the PRs together without waiting for each one to be merged.
 
 ### Polish
 
-If you did it right, each of those spike PRs will be missing polish. Tests, known bugs, performance questions - the idea is that you can focus on the right areas in each of the PRs, instead of doing all the _hard_ stuff at once. Nows the time to get the PRs into a reviewable state, which means getting ahead of comments like "what about a test here?" or "could this be slow in production?".
+If you did it right, each of those spike PRs will be missing some things. Tests, known bugs, performance questions - but now, you can focus on the right areas in each of the PRs, instead of doing all the _hard_ stuff at once. Now iss the time to get the PRs into a reviewable state, which means getting ahead of comments like "what about a test here?" or "could this be slow in production?".
 
 ---
 
