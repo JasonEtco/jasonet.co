@@ -5,7 +5,7 @@ spoiler: >-
 date: '2021-12-27'
 ---
 
-Spike work is a tool I use to make meaningful progress on medium-sized projects, to be efficient with my time and to get to the hard parts as quickly as possible.
+Spike work is a tool I use to make meaningful progress on medium-sized projects to be efficient with my time and to get to the hard parts as quickly as possible.
 
 **Get a feature working with as little work as possible (but still correctly) in one branch. Then, move those changes into small, scoped pull requests to ship them iteratively.**
 
@@ -30,7 +30,7 @@ Have you ever reviewed your teammate's pull request, with 92 changed files and a
 
 If you're the person that fully understands how to build a feature, the best way you can communicate that to your team is by showing them the pieces one-by-one. Ask them to review individual parts, and have the "look it works" spike work available for even more context.
 
-For example, lets take GitHub's new [Starred Repository Lists feature](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars#organizing-starred-repositories-with-lists). There are three distinct parts to shipping a feature like that:
+For example, let's take GitHub's new [Starred Repository Lists feature](https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars#organizing-starred-repositories-with-lists). There are three distinct parts to shipping a feature like that:
 
 * Database changes - adding a new table to store lists
 * Backend changes - API endpoints, model changes, tests, etc.
@@ -72,9 +72,9 @@ It starts with making many, small commits into a spike branch. There's a concept
 [- Pauline Vos](https://dev.to/paulinevos/atomic-commits-will-help-you-git-legit-35i7)
 </caption>
 
-Truely atomic commits always pass CI, and change one feature at a time. For spike work, this is a really useful concept - you want to commit bits at a time that are easily cherry-pick-able. This comes in handy later when deciding which changes belong in which PR.
+Truly atomic commits always pass CI, and change one feature at a time. For spike work, this is a really useful concept - you want to commit bits at a time that are easily cherry-pick-able. This comes in handy later when deciding which changes belong in which PR.
 
-The only difference is that with spike work it really doesn't matter if you're breaking the build. In fact, it can be useful to **send your changes to CI and see what breaks**, especially on large projects where running the entire CI suite locally is prohibitively slow (or just impossible).
+The only difference is that with spike work, it really doesn't matter if you're breaking the build. In fact, it can be useful to **send your changes to CI and see what breaks**, especially on large projects where running the entire CI suite locally is prohibitively slow (or just impossible).
 
 ### `git cherry-pick`
 
@@ -112,7 +112,7 @@ Do that for each of the chunks, switching out the commits you're cherry-picking,
 
 ### PRs that change base
 
-When you open a pull request (or after you've opened it) you can choose a _base branch_. This is the branch your PR is going to change when merged - if you're working on a feature branch, that's usually going to be `main`. When doing spike work, it can be really helpful to organize your smaller PRs by setting the base branch to the preceeding "step":
+When you open a pull request (or after you've opened it), you can choose a _base branch_. This is the branch your PR is going to change when merged - if you're working on a feature branch, that's usually going to be `main`. When doing spike work, it can be really helpful to organize your smaller PRs by setting the base branch to the preceding "step":
 
 ![Screenshot of GitHub UI showing pull request base branch option](https://user-images.githubusercontent.com/10660468/147856698-9726a7fe-00fa-44ab-989e-bb8287fd5a60.png)
 
@@ -124,7 +124,7 @@ This enables you to open all the PRs together without waiting for each one to be
 
 ### Polish
 
-If you did it right, each of those spike PRs will be missing some things. Tests, known bugs, performance questions - but now, you can focus on the right areas in each of the PRs, instead of doing all the _hard_ stuff at once. Now iss the time to get the PRs into a reviewable state, which means getting ahead of comments like "what about a test here?" or "could this be slow in production?".
+If you did it right, each of those spike PRs will be missing some things. Tests, known bugs, performance questions - but now, you can focus on the right areas in each of the PRs, instead of doing all the _hard_ stuff at once. Now is the time to get the PRs into a reviewable state, which means getting ahead of comments like "what about a test here?" or "could this be slow in production?".
 
 ---
 
