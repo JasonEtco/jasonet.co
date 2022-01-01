@@ -61,7 +61,7 @@ Let's break this down. There are some decisions I've made here that may not be p
 
 The first thing that may look new to you is this `docker://` line:
 
-```hcl/2
+```hcl/1
 action "npm ci" {
   uses = "docker://node:alpine"
   runs = "npm"
