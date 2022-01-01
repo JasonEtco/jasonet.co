@@ -26,7 +26,7 @@ How does spike work make your whole team better?
 
 **More, smaller PRs are easier to ship**
 
-Have you ever reviewed your teammates pull request, with 92 changed files and a diff looking like <code><span class="text-green-500">+7,830</span>, <span class="text-red-500">−24,766</span></code>? How is anyone supposed to give a meaninful review of a PR that large?
+Have you ever reviewed your teammates pull request, with 92 changed files and a diff looking like <code><span class="text-green-500">+7,830</span>, <span class="text-red-500">−24,766</span></code>? How is anyone supposed to give a meaningful review of a PR that large?
 
 If you can be the person that fully understands how to build a feature, the best way you can communicate that to your team is by showing them the pieces one-by-one. Show them the spike work, but ask them to review individual parts.
 
@@ -40,8 +40,6 @@ The real-world breakdown is usually even smaller, with each step being further b
 
 **Feature flags enable iterative development**
 
-All of this assumes that your project has some way of shipping changes without users hitting them yet. [At GitHub, we use feature flags heavily](https://github.blog/2021-04-27-ship-code-faster-safer-feature-flags/) - it lets us ship small parts of a larger feature, review them safely and easily, then enable the feature when we're ready. 
-
 > Feature flags are the cure to giant PRs.
 
 <caption>
@@ -49,9 +47,19 @@ All of this assumes that your project has some way of shipping changes without u
 [- Mike Coutermarsh, 2021](https://twitter.com/mscccc/status/1474500548615450634)
 </caption>
 
+All of this assumes that your project has some way of shipping changes without users hitting them yet. [At GitHub, we use feature flags heavily](https://github.blog/2021-04-27-ship-code-faster-safer-feature-flags/) - it lets us ship small parts of a larger feature, review them safely and easily, then enable the feature when we're ready. It's a larger topic, but in essence, you'd have code in your app like this:
+
+```js
+if (await user.featureEnabled("star-lists")) {
+  // do stuff
+}
+```
+
+`featureEnabled` would check a database record of some kind, created either automatically or through some admin panel, or staff-only API. [LaunchDarkly](https://launchdarkly.com/) is a feature-flags-as-a-service tool if you'd rather just pay for the service.
+
 ## How to do it
 
-When it comes time to actually chunk out your PRs, here are some tips that may help.
+When it comes time to actually chunk out your pull requests, here are some tips that may help. Remember that once you've figured out how to get the thing working, your goal is to best communicate those changes to your team and to the people that are going to review the PR.
 
 ### Atomic(ish) commits
 
@@ -64,7 +72,7 @@ It starts with making many, small commits into a spike branch. There's a concept
 [- Pauline Vos](https://dev.to/paulinevos/atomic-commits-will-help-you-git-legit-35i7)
 </caption>
 
-Truely atomic commits are always passing, and one feature at a time. For spike work, this is a really useful concept - you want to commit bits at a time that are easily cherry-pick-able.
+Truely atomic commits are always passing, and one feature at a time. For spike work, this is a really useful concept - you want to commit bits at a time that are easily cherry-pick-able. This comes in handy later when deciding which changes belong in which PR.
 
 The only difference is that with spike work it really doesn't matter if you're breaking the build. In fact, it can be useful to **send your changes to CI and see what breaks**, especially on large projects where running the entire CI suite locally is prohibitively slow (or just impossible).
 
@@ -102,5 +110,26 @@ gh pr create -b lists/create-table -t "Create `repository_lists` table"
 
 Do that for each of the chunks, switching out the commits you're cherry-picking, and 💥 you have a bunch of reviewable PRs instead of one giant one.
 
+### PRs that change base
+
+When you open a pull request (or after you've opened it) you can choose a _base branch_. This is the branch your PR is going to change when merged - if you're working on a feature branch, that's usually going to be `main`. When doing spike work, it can be really helpful to organize your smaller PRs by setting the base branch to the preceeding "step":
+
+![Screenshot of GitHub UI showing pull request base branch option](https://user-images.githubusercontent.com/10660468/147856698-9726a7fe-00fa-44ab-989e-bb8287fd5a60.png)
+
+In this example, when `feature/step-one` is merged and the branch is deleted, any PR that has it set as the base branch will automatically be retargeted to `main`:
+
+![Screenshot of GitHub UI showing pull request timeline event that base branch was automatically retargeted from feature/step-one to main](https://user-images.githubusercontent.com/10660468/147856756-9f94213f-ff9a-45ff-8b80-fd7175486fdd.png)
+
+This helps me open all the PRs together without waiting for each one to be merged, without them being a combination of multiple PRs.
+
+### Polish
+
+If you did it right, each of those spike PRs will be missing polish. Tests, known bugs, performance questions - the idea is that you can focus on the right areas in each of the PRs, instead of doing all the _hard_ stuff at once. Nows the time to get the PRs into a reviewable state, which means getting ahead of comments like "what about a test here?" or "could this be slow in production?".
+
+---
+
+That's it - spike work isn't some magical tool, it's just a way of approaching feature development in a way that's fun for you, efficient, and can be a real help to the team's understanding of the change.
+
+---
 
 [^1]: It's not an _actual_ copy - the changes are copied over, but a new commit is created with a new SHA.

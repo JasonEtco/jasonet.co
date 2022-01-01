@@ -122,6 +122,10 @@ a:hover {
     @apply text-sm;
     @apply pb-3;
   }
+
+  hr + hr.footnotes-sep {
+    display: none;
+  }
 }
 
 /* Heading anchors */
