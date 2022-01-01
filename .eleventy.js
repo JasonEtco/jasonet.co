@@ -7,6 +7,7 @@ const octicons = require('@primer/octicons')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const markdownItFootnote = require('markdown-it-footnote')
+const markdownItEmoji = require('markdown-it-emoji')
 const slugify = require('slugify')
 
 const compileReadme = require('./bin/compile-readme')
@@ -38,6 +39,7 @@ module.exports = (eleventyConfig) => {
 
   const markdown = markdownIt({ html: true })
     .use(markdownItFootnote)
+    .use(markdownItEmoji)
     .use(markdownItAnchor, {
       level: [1, 2, 3],
       slugify: (str) => slugify(str, { lower: true, strict: true, remove: /[']/g, }),

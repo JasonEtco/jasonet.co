@@ -89,7 +89,7 @@ This has been something the Probot Community (and I) have been thinking about fo
 ```yaml
 - uses: JasonEtco/create-an-issue@v2
   with:
-    repo-token: ${{ secrets.GITHUB_TOKEN }}
+    repo-token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
 ```
 
 This enables your automation tools to talk to third-party services without needing to store users' credentials. Pretty rad ⚡

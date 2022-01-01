@@ -362,7 +362,7 @@ One important note though: build your library in a way that doesn't _require_ th
 
 We didn't talk much about the `Context` class, aside from creating `context.github`, but many Probot apps end up calling methods like `context.repo()`. This returns some data from the webhook payload, and takes an optional argument with additional data. You would use it like this:
 
-```js/2,3
+```js/1,2
 app.on('example', async context => {
   const params = context.repo({ title: 'New issue!' })
   // -> { owner: 'JasonEtco', name: 'my-repo', title: 'New issue! }

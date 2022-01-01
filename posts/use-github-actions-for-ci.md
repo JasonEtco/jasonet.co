@@ -18,7 +18,7 @@ I'll be delving into the nitty-gritty of writing a workflow file, including some
 
 You may also want to familiarize yourself with the [actions/bin repo](https://github.com/actions/bin), a collection of actions that are highly scoped and useful for composing a workflow without writing any custom code (especially [actions/bin/filter](https://github.com/actions/bin/blob/HEAD/filter)).
 
-## But I love `{{ ci_provider }}` - why should I care?
+## But I love `{% raw %}{{ ci_provider }}{% endraw %}` - why should I care?
 
 I'm not saying that existing projects should migrate their CI to Actions. Rather, new projects benefit from the minimal setup of a CI workflow if you know what you're doing. Are GitHub Actions the _best_ CI platform? I'd say it really depends on your needs; if you're just running tests and viewing the logs/status, you can get a lot of functionality with very little effort (I know, the dream :heart_eyes:).
 
@@ -61,7 +61,7 @@ Let's break this down. There are some decisions I've made here that may not be p
 
 The first thing that may look new to you is this `docker://` line:
 
-```hcl/2
+```hcl/1
 action "npm ci" {
   uses = "docker://node:alpine"
   runs = "npm"

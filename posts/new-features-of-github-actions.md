@@ -91,7 +91,7 @@ steps:
   - name: Tweet
     run: |
       curl -X POST \
-        -d '{ "message": "Version ${{ steps.get_metadata.outputs.version }} of ${{ steps.get_metadata.outputs.name }} was just published!" }'\
+        -d '{ "message": "Version ${% raw %}{{ steps.get_metadata.outputs.version }} of ${{ steps.get_metadata.outputs.name }}{% endraw %} was just published!" }'\
         "https://twitter-example.com/tweet"
 ```
 
@@ -175,10 +175,10 @@ jobs:
         node-version: [10.x, 12.x]
     steps:
     - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js {% raw %}${{ matrix.node-version }}{% endraw %}
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: {% raw %}${{ matrix.node-version }}{% endraw %}
     - name: npm install, build, and test
       run: npm ci && npm run build && npm test
       env:
@@ -196,7 +196,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - run: npm ci
-      - run: jest --testPathPattern ${{ matrix.testPath }}
+      - run: jest --testPathPattern {% raw %}${{ matrix.testPath }}{% endraw %}
 ```
 
 This example lets us run separate CI jobs for our `client` and `server` tests - effectively parallelizing test suites!
