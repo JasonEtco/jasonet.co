@@ -3,80 +3,77 @@ title: Missing post title!
 layout: "layouts/_default.njk"
 ---
 
-<main>
-  <div class="mx-auto px-3 md:px-8 py-3 max-w-3xl">
+<main itemScope itemType="http://schema.org/BlogPosting" class="mx-auto px-3 md:px-8 py-3 max-w-3xl">
+  <header>
     <div class="mb-8">
       <a class="text-orange" href="/">← Back</a>
     </div>
 
-    <div itemScope itemType="http://schema.org/BlogPosting">
-      <header>
-        <h1
-          itemProp="name"
-          class="mb-0 pb-3 post-title"
-        >
-          {{ title }}
-        </h1>
-        <p class="text-sm mt-3 mb-6">
-          <time itemProp="datePublished">{{ page.date | date }}</time>
-          <span> • </span>
-          <time itemProp="timeRequired">
-            {{ content | timeToRead }}
-          </time>
-        </p>
-        <meta itemProp="url" content="{{ constants.siteUrl }}/{{ page.url }}" />
-      </header>
+    <h1 itemProp="name" class="mb-0 pb-3 post-title">
+      {{ title }}
+    </h1>
+    <p class="text-sm mt-3 mb-6">
+      <time itemProp="datePublished">{{ page.date | date }}</time>
+      <span> • </span>
+      <time itemProp="timeRequired">
+        {{ content | timeToRead }}
+      </time>
+    </p>
+    <meta itemProp="url" content="{{ constants.siteUrl }}/{{ page.url }}" />
+  </header>
 
-      {% if toc %}
-        <aside class="prose prose-a:text-orange prose-a:no-underline p-6 my-6 border-solid border border-gray-300 rounded-lg">
-          <p class="text-sm text-gray-700 mb-3">Table of Contents</p>
-          {{ content | toc | safe }}
-        </aside>
-      {% endif %}
+  <div>
+    {% if toc %}
+      <aside class="prose prose-a:text-orange prose-a:no-underline p-6 my-6 border-solid border border-gray-300 rounded-lg">
+        <p class="text-sm text-gray-700 mb-3">Table of Contents</p>
+        {{ content | toc | safe }}
+      </aside>
+    {% endif %}
 
-      <div
-        class="prose
-          prose-a:text-orange
-          prose-a:no-underline
-          prose-pre:bg-gray-100
-          lg:prose-xlt"
-        itemProp="articleBody text"
+    <div
+      class="prose
+        prose-a:text-orange
+        prose-a:no-underline
+        prose-pre:bg-gray-100
+        lg:prose-xlt"
+      itemProp="articleBody text"
+    >
+      {{ content | safe }}
+    </div>
+  </div>
+
+  <footer class="pt-12 mt-12 border-t">
+    <p class="text-gray-600">
+      <a
+        class="text-orange"
+        href="https://mobile.twitter.com/search?q={{ [constants.siteUrl, page.url] | join | urlencode }}"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        {{ content | safe }}
-      </div>
+        Discuss on Twitter
+      </a>
+      <span> • </span>
+      <a
+        class="text-orange"
+        href="https://github.com/jasonetco/jasonet.co/blob/main/{{ page.inputPath }}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Edit on GitHub
+      </a>
+      <span> • </span>
+      <a class="text-orange" href="/rss.xml">
+        RSS Feed
+      </a>
+    </p>
 
-      <p class="text-gray-600 mt-6">
-        <a
-          class="text-orange"
-          href="https://mobile.twitter.com/search?q={{ [constants.siteUrl, page.url] | join | urlencode }}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Discuss on Twitter
+    <div class="px-6 py-8 mt-6 shadow-xl border border-gray-100 rounded-lg">
+      <h3 class="font-semibold mt-0 mb-6 text-lg">
+        <a class="text-orange" href="/">
+          Hope you enjoyed the read! 📝
         </a>
-        <span> • </span>
-        <a
-          class="text-orange"
-          href="https://github.com/jasonetco/jasonet.co/blob/main/{{ page.inputPath }}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Edit on GitHub
-        </a>
-        <span> • </span>
-        <a class="text-orange" href="/rss.xml">
-          RSS Feed
-        </a>
-      </p>
-
-      <div class="px-6 py-8 mt-6 shadow-xl border border-gray-100 rounded-lg">
-        <h3 class="font-semibold mt-0 mb-6 text-lg">
-          <a class="text-orange" href="/">
-            Hope you enjoyed the read! 📝
-          </a>
-        </h3>
-        {% include "partials/bio.njk" %}
-      </div>
+      </h3>
+      {% include "partials/bio.njk" %}
     </div>
 
     <ul class="list-none flex flex-wrap justify-between p-0 ml-0 mt-12 mb-6">
@@ -109,5 +106,5 @@ layout: "layouts/_default.njk"
         {% endif %}
       </li>
     </ul>
-  </div>
+  </footer>
 </main>
