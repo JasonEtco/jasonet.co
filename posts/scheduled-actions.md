@@ -75,7 +75,7 @@ jobs:
     steps:
     - uses: actions/stale@v1.1.0
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
         stale-issue-message: 'Message to comment on stale issues. If none provided, will not mark issues stale'
         stale-pr-message: 'Message to comment on stale PRs. If none provided, will not mark PRs stale'
 ```
@@ -102,7 +102,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: JasonEtco/create-an-issue@v2
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
         with:
           filename: .github/ISSUE_TEMPLATE/meeting-notes.md
 ```
@@ -113,11 +113,11 @@ And the `meeting-notes.md` issue template:
 ---
 name: Weekly Meeting Notes
 about: Used for taking notes in our daily standups, with a new issue every week.
-title: "Weekly Meeting Notes: {{ date | date('MMMM Do') }} - {{ date | date('add', 5, 'days') | date('Do') }}"
+title: "Weekly Meeting Notes: {% raw %}{{ date | date('MMMM Do') }} - {{ date | date('add', 5, 'days') | date('Do') }}{% endraw %}"
 labels:
   - "Meeting 💬"
 ---
-### Monday, {{ date | date('MMM Do') }}
+### Monday, {% raw %}{{ date | date('MMM Do') }}{% endraw %}
 ```
 
 I've done some real fanciness with the title by having the dates at the start and end of the week - here's what the generated issue looks like:

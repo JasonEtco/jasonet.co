@@ -15,7 +15,7 @@ a:hover {
 
 .post-title {
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.07);
-  font-size: 3rem;
+  font-size: 4.5rem;
   font-weight: 900;
   line-height: 1.1;
   @apply pb-3;

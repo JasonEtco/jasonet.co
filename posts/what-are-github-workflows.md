@@ -85,7 +85,7 @@ Now, you can also point your workflow to a folder in the same repository; so giv
 
 You can point your workflow to the `my-action` directory. Your `uses` key **must start with a `./`**, to specify that you want to use a file in this repo:
 
-```hcl/2
+```hcl/1
 action "My action" {
   uses = "./my-action"
 }
@@ -95,7 +95,7 @@ One important note: **any path must have a valid `Dockerfile`**; otherwise, the 
 
 Lastly, and this is a really awesome feature, you can just use an arbitrary Docker image. This is _amazing_, because if all you want to do is run a command you don't even need a whole action:
 
-```hcl/2
+```hcl/1
 action "My action" {
   uses = "docker://alpine"
   run = "echo"
@@ -109,7 +109,7 @@ Like with most things I talk about, you should [check out the GitHub Action docs
 
 This property allows you to pass information to your workflow via command line arguments. So, given a workflow like this:
 
-```hcl/3
+```hcl/2
 action "npm install" {
   uses = "actions/npm@v1"
   args = "install"
@@ -122,7 +122,7 @@ It's a fairly straightforward field, but let's take a look at some practical exa
 
 My action [`JasonEtco/create-an-issue`](https://github.com/JasonEtco/create-an-issue) creates a new issue from a given template. By default, it will read from the `.github/ISSUE_TEMPLATE.md` file&mdash;but you can pass an argument to specify a different file:
 
-```hcl/3
+```hcl/2
 action "Create issue" {
   uses = "JasonEtco/create-an-issue@v2"
   secrets = ["GITHUB_TOKEN"]
@@ -140,7 +140,7 @@ Need to interact with a third party API? Want to make requests directly back to 
 
 Let's take a look at a practical example. Here's a workflow that compiles a TypeScript project, then publishes the compiled version to NPM:
 
-```hcl/17-22
+```hcl/16-21
 workflow "Publish" {
   on = "release"
   resolves = ["npm publish"]

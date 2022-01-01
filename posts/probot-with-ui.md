@@ -30,7 +30,7 @@ export const createServer = (args: ServerArgs) => {
 
 The above snippet is taken from [Probot's codebase](https://github.com/probot/probot/blob/40cbfb1b5fd8b59d4ecc90d639ac2bf97fa9c333/src/server.ts#L11-L22), and illustrates the internals.
 
-```typescript/2
+```typescript/1
 app.use('/probot/static/', express.static(path.join(__dirname, '..', 'static')))
 app.use(args.webhook)
 app.set('view engine', 'hbs')
@@ -44,7 +44,7 @@ This is important because wherever we are in our Probot app, **we can access and
 
 This method is a great way to grab the Express server and start doing stuff with it. You can add middleware, routes - it really is a regular Express server! The one "gotcha" is that Probot's internal routes are registered _before_ your app's code is run, so middleware won't apply retroactively.
 
-```js/2,3
+```js/1,2
 module.exports = app => {
   const server = app.route()
   server.get('/example', (_, res) => res.send('Yay!'))
@@ -53,7 +53,7 @@ module.exports = app => {
 
 You can now make use of Probot's authentication functionality **outside of the webhook handler**. Let's create a `GET` route that will respond with [the app's identity](https://developer.github.com/v3/apps/#get-the-authenticated-github-app) - we'll use an Octokit client that's [authenticated as the app](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app):
 
-```js/4-6
+```js/3-5
 module.exports = app => {
   const server = app.route()
   server.get('/whoami', async (req, res) => {
@@ -184,7 +184,7 @@ server.get('/:owner/:repo', async (req, res) => {
 When used with a library like [`cookie-session`](https://github.com/expressjs/cookie-session), your app can persist user sessions - so users visiting your site will stay logged in. 
 
 
-```js/3,4
+```js/2,3
 // Get the currently authenticated user
 const { data } = await octokit.users.getAuthenticated()
 req.session.user = data
