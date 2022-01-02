@@ -1,0 +1,70 @@
+.tooltipped {
+  position: relative;
+}
+
+.tooltipped::after {
+  @apply px-3 py-2 text-gray-200 bg-gray-800 rounded text-xs;
+  position: absolute;
+  z-index: 1000000;
+  display: none;
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: break-word;
+  white-space: pre;
+  pointer-events: none;
+  content: attr(aria-label);
+  opacity: 0;
+  right: 50%;
+  bottom: 100%;
+  margin-bottom: 6px;
+  transform: translateX(50%);
+}
+
+.tooltipped::before {
+  @apply text-gray-800;
+  position: absolute;
+  z-index: 1000001;
+  display: none;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  content: '';
+
+  border: 6px solid transparent;
+  opacity: 0;
+
+  top: -7px;
+  right: 50%;
+  bottom: auto;
+  margin-right: -6px;
+  border-top-color: currentColor;
+}
+
+@keyframes tooltip-appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.tooltipped:hover,
+.tooltipped:active,
+.tooltipped:focus {
+  &::before,
+  &::after {
+    display: inline-block;
+    text-decoration: none;
+    animation-name: tooltip-appear;
+    animation-duration: $tooltip-duration;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+    animation-delay: $tooltip-delay;
+  }
+}
