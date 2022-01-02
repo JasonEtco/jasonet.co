@@ -15,6 +15,11 @@ const schema = Joi.object({
       .required(),
     spoiler: Joi.string().required(),
     toc: Joi.boolean(),
+    reviewers: Joi.array().min(1).items({
+      name: Joi.string().required(),
+      link: Joi.string().uri().required(),
+      avatarUrl: Joi.string().uri().required(),
+    })
   }),
   body: Joi.string().required(),
   frontmatter: Joi.string().required(),
