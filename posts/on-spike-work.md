@@ -3,6 +3,13 @@ title: On "Spike work"
 spoiler: >-
   Quickly getting to something that works, then chunk it into reviewable/shippable pieces. The why and the how of it!
 date: '2022-01-02'
+reviewers:
+  - name: "@matchai"
+    link: https://twitter.com/matchai
+    avatarUrl: https://github.com/matchai.png
+  - name: "@jasonlaster11"
+    link: https://twitter.com/jasonlaster11
+    avatarUrl: https://github.com/jasonlaster.png
 ---
 
 Spike work is a tool I use to make meaningful progress on medium-sized projects to be efficient with my time and to get to the hard parts as quickly as possible.
