@@ -139,8 +139,6 @@ This enables you to open all the PRs together without waiting for each one to be
 
 If you did it right, each of those spike PRs will be missing some things. Tests, known bugs, performance questions - but now, you can focus on the right areas in each of the PRs, instead of doing all the _hard_ stuff at once. Now is the time to get the PRs into a reviewable state, which means getting ahead of comments like "what about a test here?" or "could this be slow in production?".
 
----
-
 That's it - spike work isn't some magical tool. It's just a way of approaching feature development in a way that's fun for you, efficient, and can be a real help to the team's understanding of the change.
 
 ---

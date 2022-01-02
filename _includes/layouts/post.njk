@@ -45,7 +45,8 @@ layout: "layouts/_default.njk"
   <footer class="pt-12 mt-12 border-t">
     {% if reviewers and reviewers.length > 0 %}
       <div class="mb-6">
-        <h3 class="text-lg font-semibold mb-3">Thanks for reviewing this post ❤️</h3>
+        <h3 class="text-lg font-semibold">Thanks for reviewing this post ❤️</h3>
+        <p class="text-xs text-gray-500 mb-3">These folks were kind enough to review this post, provide feedback and find (probably many) typos. I asked their permission before putting their face here.</p>
         <ul class="flex">
           {% for reviewer in reviewers %}
             <li class="mb-3 mr-2">
@@ -53,9 +54,9 @@ layout: "layouts/_default.njk"
                 <img
                   src="{{ reviewer.avatarUrl }}"
                   alt="{{ reviewer.name }}"
-                  class="rounded-full w-12 h-12"
-                  height="12"
-                  width="12"
+                  class="rounded-full w-8 h-8"
+                  height="8"
+                  width="8"
                 />
               </a>
             </li>
