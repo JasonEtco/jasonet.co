@@ -2,7 +2,7 @@
 title: On "Spike work"
 spoiler: >-
   Quickly getting to something that works, then chunk it into reviewable/shippable pieces. The why and the how of it!
-date: '2021-12-27'
+date: '2022-01-02'
 ---
 
 Spike work is a tool I use to make meaningful progress on medium-sized projects to be efficient with my time and to get to the hard parts as quickly as possible.
@@ -24,7 +24,13 @@ Too much process and planning before engineers hit the ground running can be a b
 
 How does spike work make your whole team better?
 
-**More, smaller PRs are easier to ship**
+### Build consensus, early
+
+Show, don't tell. It's easier to communicate your plan by showing the actual changes, even if they're imperfect. Share that with your team to build consensus and understanding early in the process, to avoid hours-long Zoom calls postulating about the implementation before even writing any code. I guarantee you that having something tangible to talk about will be more productive than aetherial, vague hypotheses. 
+
+<small>Inspired by <a href="https://twitter.com/jasonlaster11/status/1477736511617613824?s=20">this Tweet</a> from <a href="https://twitter.com/jasonlaster11">@jasonlaster11</a></small>
+
+### More, smaller PRs are easier to ship
 
 Have you ever reviewed your teammate's pull request, with 92 changed files and a diff looking like <code><span class="text-green-500">+24,766</span>, <span class="text-red-500">−7,830</span></code>? How is anyone supposed to give a meaningful review of a PR that large?
 
@@ -38,7 +44,7 @@ For example, let's take GitHub's new [Starred Repository Lists feature](https://
 
 The real-world breakdown is usually even smaller, with each step being further broken down into tightly scoped pull requests. The idea is to have a single spike PR that covers all of the foundational work, and then have the team review the individual parts.
 
-**Feature flags enable iterative development**
+### Feature flags enable iterative development
 
 > Feature flags are the cure to giant PRs.
 
