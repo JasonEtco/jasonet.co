@@ -3,6 +3,13 @@ title: On "Spike work"
 spoiler: >-
   Quickly getting to something that works, then chunk it into reviewable/shippable pieces. The why and the how of it!
 date: '2022-01-02'
+reviewers:
+  - name: "@matchai"
+    link: https://twitter.com/matchai
+    avatarUrl: https://github.com/matchai.png
+  - name: "@jasonlaster11"
+    link: https://twitter.com/jasonlaster11
+    avatarUrl: https://github.com/jasonlaster.png
 ---
 
 Spike work is a tool I use to make meaningful progress on medium-sized projects to be efficient with my time and to get to the hard parts as quickly as possible.
@@ -131,8 +138,6 @@ This enables you to open all the PRs together without waiting for each one to be
 ### Polish
 
 If you did it right, each of those spike PRs will be missing some things. Tests, known bugs, performance questions - but now, you can focus on the right areas in each of the PRs, instead of doing all the _hard_ stuff at once. Now is the time to get the PRs into a reviewable state, which means getting ahead of comments like "what about a test here?" or "could this be slow in production?".
-
----
 
 That's it - spike work isn't some magical tool. It's just a way of approaching feature development in a way that's fun for you, efficient, and can be a real help to the team's understanding of the change.
 
