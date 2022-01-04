@@ -6,9 +6,14 @@ pagination:
 permalink: "og/{{ post.fileSlug }}.html"
 layout: layouts/_default.njk
 ---
-<div class="p-20 flex" style="height: 100vh">
-  <div class="mr-6 text-8xl pt-1">
-    📝
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
+  * { font-family: 'Inter', sans-serif; }
+</style>
+
+<div class="p-20 flex" style="height: 100vh;">
+  <div class="mr-6 pt-1 flex-shrink-0">
+    <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/81/memo_1f4dd.png" class="block w-24 h-24" width="24" height="24" />
   </div>
 
   <div class="flex flex-col">
@@ -18,7 +23,7 @@ layout: layouts/_default.njk
     <footer class="mt-auto text-2xl">
       <div class="text-gray-700">
         <time itemProp="datePublished">{{ post.data.date | date }}</time>
-        <span> • </span>
+        <span class="text-gray-500"> • </span>
         <time itemProp="timeRequired">
           {{ post.templateContent | timeToRead }}
         </time>
