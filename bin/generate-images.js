@@ -103,10 +103,11 @@ async function main() {
   for (const file of htmlFiles) {
     const withCSS = `<style>${css}</style>${file.content}`
     const image = await generateImage(browser, withCSS)
-    const filepath = file.file.replace(path.extname(file.file), '.png')
-    await fs.promises.writeFile(path.join(__dirname, DEST_DIR, filepath), image)
+    const filePath = file.file.replace(path.extname(file.file), '.png')
+    await fs.promises.writeFile(path.join(__dirname, DEST_DIR, filePath), image)
     process.stdout.write('.')
   }
+
   await browser.close()
   console.log('\n✅ Done generating OG images!')
 }
