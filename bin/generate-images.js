@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 
 const FILES_DIR = path.join(__dirname, '../_site/og')
-const DEST_DIRS = ['../_site/assets/og', '../assets/og']
+const DEST_DIR = '../_site/assets/og'
 
 const PUPPETEER_OPTIONS = {
   headless: true,
@@ -100,15 +100,14 @@ async function main() {
   const htmlFiles = getHTMLFiles()
   const css = await fs.promises.readFile(path.join(__dirname, '../_site/css/index.css'), 'utf8')
 
-  for (const file of htmlFiles) {
+  await Promise.all(htmlFiles.map(async (file) => {
     const withCSS = `<style>${css}</style>${file.content}`
     const image = await generateImage(browser, withCSS)
-    const filepath = file.file.replace(path.extname(file.file), '.png')
-    for (const destDir of DEST_DIRS) {
-      await fs.promises.writeFile(path.join(__dirname, destDir, filepath), image)
-    }
+    const filePath = file.file.replace(path.extname(file.file), '.png')
+    await fs.promises.writeFile(path.join(__dirname, DEST_DIR, filePath), image)
     process.stdout.write('.')
-  }
+  }))
+
   await browser.close()
   console.log('\n✅ Done generating OG images!')
 }

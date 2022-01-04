@@ -14,7 +14,7 @@
     "start": "npm-run-all clean --parallel dev:*",
     "dev:postcss": "TAILWIND_MODE=watch postcss css/index.css -o _site/css/index.css --config ./postcss.config.js -w",
     "dev:eleventy": "ELEVENTY_ENV=development npx @11ty/eleventy --serve --quiet --incremental",
-    "build": "NODE_ENV=production npm-run-all clean --parallel prod:*",
+    "build": "NODE_ENV=production npm-run-all clean prod:*",
     "prod:postcss": "postcss css/index.css -o _site/css/index.css --config ./postcss.config.js",
     "prod:eleventy": "ELEVENTY_ENV=production npx @11ty/eleventy --output=./_site",
     "test": "jest",
@@ -38,6 +38,7 @@
     "postcss-cli": "^9.1.0",
     "postcss-csso": "^6.0.0",
     "postcss-import": "^14.0.2",
+    "puppeteer": "^13.0.1",
     "slugify": "^1.6.4",
     "tailwindcss": "^3.0.8"
   },
@@ -47,8 +48,7 @@
     "joi": "^17.5.0",
     "js-yaml": "^4.1.0",
     "netlify": "^10.1.0",
-    "prompts": "^2.4.2",
-    "puppeteer": "^13.0.1"
+    "prompts": "^2.4.2"
   },
   "jest": {
     "testPathIgnorePatterns": [

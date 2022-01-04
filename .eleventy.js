@@ -62,9 +62,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.setLibrary('md', markdown)
 
   eleventyConfig.on('afterBuild', () => {
-    if (process.env.NODE_ENV !== 'production') {
-      compileReadme()
-      generateImages()
-    }
+    compileReadme()
+    generateImages()
   })
 }
