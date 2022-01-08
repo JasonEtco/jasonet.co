@@ -225,8 +225,8 @@ Pretty cool. I can't say that I've used it fully still, but being able to connec
 
 ## Wrap-up
 
-All in all, I'm pretty happy with Remix. It makes compromises and tradeoffs, but what tool doesn't—and the decisions the developers have made for it feel really nice to use. None of the above nitpicks are blockers, and I haven't found anything that feels really horrible to do using Remix. I think that with some more time, we'll find the right balance of abstractions and Remix-related libraries to knock out most of those nitpicks anyway.
+All in all, I'm pretty happy with Remix. Although it makes compromises and tradeoffs (what tool doesn't?), the decisions the developers have made for it feel really nice to use. None of the above nitpicks are blockers, and I haven't found anything that feels really horrible to do using Remix. I think that with some more time, we'll find the right balance of abstractions and Remix-related libraries to knock out most of those nitpicks anyway.
 
 Their docs are "good not great", with some stuff undocumented (like supporting ESM) and some stuff just stubbed out. What _is_ there is detailed, specific and helpful when actually building things.
 
-I'd suggest reading [their Technical Explanation doc](https://remix.run/docs/en/v1/pages/technical-explanation); it's well written, and helped me understand why things like `loader`s work the way they do. Remix is also still pretty new, so it can (probably) only get better.
+I'd suggest reading [their Technical Explanation doc](https://remix.run/docs/en/v1/pages/technical-explanation); it's well written, and helped me understand why things like `loader`s work the way they do. Remix is also still pretty new, so it can (probably) only get better 🚀
