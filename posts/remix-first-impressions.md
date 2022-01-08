@@ -3,28 +3,28 @@ title: Remix first impressions
 spoiler: "I was poking around at Remix + PlanetScale + Prisma + TailwindCSS. I have no idea what I'm doing, so I'm sharing some thoughts and random discoveries with y'all!"
 date: '2022-01-08'
 ---
-I'm working on a ~~complicated, innovative product~~ glorified CMS, and what's the fun in building things if you don't learn something along the way? So I've been trying to use some new-ish tools that seem interesting to me:
+I'm working on a ~~complicated, innovative product~~ glorified CMS, and what's the fun in building things if you don't learn something along the way? So I've been trying to use some new-ish tools that seem interesting to me. Descriptions yoinked from their respective websites:
 
 * [Remix](https://remix.run/): "...a full stack web framework that lets you focus on the user interface and work back through web fundamentals to deliver a fast, slick, and resilient user experience."
 * [PlanetScale](https://planetscale.com/): "The MySQL-compatible serverless database platform."
 * [Prisma](https://prisma.io/): "Next-generation Node.js and TypeScript ORM"
 * [TailwindCSS](https://tailwindcss.com/) (not new to me, because its awesome and I love using it)
 
-Of these, Remix (partially because of its position as a framework, and partially because of its opinionated design) is the most substantial part of this stack. The other tools mentioned there sort of fall into the background. The interesting parts are where those tools combine, how to get them working well with each other, and the very random niche problems one encounters when trying to use them together.
+Of these, Remix (partially because of it's position as a framework, and partially because of it's opinionated design) is the most prominent part of this stack. Most interesting is seeing where and how those tools combine, getting them working well with each other, and the very random niche problems one encounters when trying to use them together.
 
-This isn't a proper "review" of these tools - I firmly believe that tools are both good and bad depending on the context in which you're using them. I just wanted to share some thoughts on my experience so far.
+This isn't a proper "review" of these tools; I firmly believe that tools are both good and bad depending on the context in which you're using them. This is more of a brain-dump of my experience of using these tools so far.
 
-Also, and this is important: **I'm very new to Remix** so its totally possible that I write "gee whiz I wish this existed" and it actually does, is well documented, and I haven't found it. Please tell me!
+Also, and this is important: **I'm very new to Remix** so its totally possible that I write "gee whiz I wish this existed" and it actually does, is well documented, and I haven't found it. [Please tell me!](https://twitter.com/JasonEtco)
 
 ## Remix
 
-Remix is a pretty new open source Node.js framework to hit the interwebz. It leans heavily into web fundamentals (`<form>`s over AJAX, supporting no-JavaScript), and has a focus on making performant experiences by intelligently loading/reloading parts of a page. Your app is "built" and "run", versus something like [Ruby on Rails](https://rubyonrails.org/) that doesn't have a build step at all.
+Remix is a fairly new open source Node.js framework to hit the interwebz. It leans heavily into web fundamentals (`<form>`s over AJAX, supporting no-JavaScript), and has a focus on making performant experiences by intelligently loading/reloading parts of a page. Your app is "built" and "run", versus something like [Ruby on Rails](https://rubyonrails.org/) that does most of its work at runtime.
 
 Remix uses that build step to create multiple "bundles", ensuring that routes are only loading the code/dependencies they actually need. Keeps everything nice and snappy.
 
 ### Reading/rendering data
 
-While Remix is not a "React framework" (it will support more than just React), that's the paved-path for Remix at the moment. It does a _great_ job at server-rendering - I really like [the API for loading data](https://remix.run/docs/en/v1/api/conventions#loader).
+While Remix is not a "React framework" (it will support more than just React), that's the paved path for Remix at the moment. It does a _great_ job at server-rendering - I really like [the API for loading data](https://remix.run/docs/en/v1/api/conventions#loader).
 
 Routes can export a `loader` function that runs only on the server. You can then call Remix's `useLoaderData` within the route to load whatever is returned from that `loader`. Here's what that looks like:
 
@@ -46,7 +46,7 @@ export default function IndexPage() {
 
 #### Organize data lookups with the view itself
 
-What's neat is that `loader` can fetch and return just about anything. It can read local files, call APIs, or talk to a database. This just feels like such a clean API to me. And because of React, your "view" doesn't need to be complicated, you can chunk it out nicely into smaller components.
+That `loader` can fetch and return just about anything. It can read local files, call APIs, or talk to a database. This just feels like such a clean API to me; I find seeing the data fetching next to the view to be clear and require less jumping around between files. And because of React, your "view" doesn't need to be complicated and you can chunk it out nicely into smaller components.
 
 #### File paths as routes
 
@@ -56,12 +56,10 @@ A file named `/app/routes/index.tsx` means that when you `GET /`, the exported `
 
 ### Writing data
 
-It does data _writes_ similarly, by calling an exported `action` function - I find the `Form` submission behavior a little finicky (more later) but overall I dig the approach.
-
-That's reading data and rendering it, but what if you want to write data? Well there's a similarly designed (cool, consistency is nice) API for that:
+That's _reading_ data and rendering it, but what if you want to _write_ data? Well, there's a similarly designed API for that. Routes can export an `action` function:
 
 ```tsx/0-5
-const action: ActionFunction = async ({ request }) => {
+export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData()
   return db.posts.create({
     data: { title: formData.title }
@@ -69,7 +67,7 @@ const action: ActionFunction = async ({ request }) => {
 }
 ```
 
-Similar to `loader`s, that function is automatically called when a request is made - except with `action`, it responds to things like `POST` or `PATCH` requests. You can trigger those using [Remix's `<Form />` component](https://remix.run/docs/en/v1/api/remix#form):
+Similar to `loader`s, `action` functions are automatically called when a request is made - except with `action`, it responds to things like `POST` or `PATCH` requests. You can trigger those using [Remix's `<Form />` component](https://remix.run/docs/en/v1/api/remix#form):
 
 ```tsx/6-8
 export default function IndexPage() {
@@ -86,11 +84,11 @@ export default function IndexPage() {
 }
 ```
 
-I think that **seeing the `<Form />` and the "endpoint" (AKA `action`) right next to each other** is a clear way to see the lifecycle of that endpoint.
-
 Remix is smart enough to re-render _this whole component_, including re-calling the `loader` in the same file, after the `<Form />` is submitted. So in this very simple example, "adding a post" will _also_ update the UI to show an updated number of posts - without having to fully refresh the page. What's impressive is that its all being done server-side, but re-rendered on the client transparently and without any work from me.
 
-One part of this that irks me is that `Form` always sends an instance of `FormData` (and encodes it to transport over HTTP). To serialize a form's submission, you call `request.formData()`:
+I think that **seeing the `<Form />` and the "endpoint" (AKA `action`) right next to each other** is a clear way to see the lifecycle of that endpoint.
+
+One part of this API that irks me is that `Form` always sends an instance of `FormData` (and encodes it to transport over HTTP). To serialize a form's submission, you call `request.formData()`:
 
 ```ts/1-3
 const action: ActionFunction = async ({ request }) => {
@@ -100,7 +98,7 @@ const action: ActionFunction = async ({ request }) => {
 }
 ```
 
-`FormData` is more powerful than plain JSON objects, with methods like [`getAll`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/getAll) (representing multiple values for the same key) - but it plays poorly with strictly typed libraries like Prisma. You can't easily do this without fudging the types a bit:
+`FormData` is more powerful than plain JSON objects, with methods like [`getAll`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/getAll) (representing multiple values for the same key) - but it plays poorly with strictly typed libraries like Prisma. You can't easily just pass user-submitted values to the Prisma client without fudging the types a bit:
 
 ```ts
 const formData = await request.formData()
@@ -189,7 +187,7 @@ All of those dynamic imports makes me extremely sad 😭 but that's the best I'v
 
 ### Authentication
 
-The [`remix-auth` library](https://github.com/sergiodxa/remix-auth) has popped up as a go-to way to handle authentication in Remix. Setting it up is easy, it gives all the info necessary and pairs really nicely with Remix's "server-run only `loader`s" behavior. My experience with it has overall been pretty good, but I find myself wishing for a more deeply integrated approach - because there's no way to compose loaders, I end up writing the same boilerplate code to either get the authenticated user or ensure that there is one:
+The [`remix-auth` library](https://github.com/sergiodxa/remix-auth) has popped up as the go-to way to handle authentication in Remix. Setting it up is easy, it gives all the info necessary and pairs really nicely with Remix's "server-run only `loader`s" behavior. My experience with it has overall been pretty good, but I find myself wishing for a more deeply integrated approach - because there's no way to compose loaders, I end up writing the same boilerplate code to either get the authenticated user or ensure that there is one:
 
 ```ts
 export const loader: LoaderFunction = async ({ request }) => {
