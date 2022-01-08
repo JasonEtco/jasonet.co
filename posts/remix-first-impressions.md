@@ -3,7 +3,7 @@ title: Remix first impressions
 spoiler: "I was poking around at Remix + PlanetScale + Prisma + TailwindCSS. I have no idea what I'm doing, so I'm sharing some thoughts and random discoveries with y'all!"
 date: '2022-01-08'
 ---
-I'm working on ~~an extremely complicated, innovative product~~ a glorified CMS, and what's the fun in building things if you don't learn something along the way? So I've been trying to use some new-ish tools that seems interesting to me:
+I'm working on ~~an extremely complicated, innovative product~~ a glorified CMS, and what's the fun in building things if you don't learn something along the way? So I've been trying to use some new-ish tools that seem interesting to me:
 
 * [Remix](https://remix.run/): "...a full stack web framework that lets you focus on the user interface and work back through web fundamentals to deliver a fast, slick, and resilient user experience."
 * [PlanetScale](https://planetscale.com/): "The MySQL-compatible serverless database platform."
@@ -187,7 +187,9 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 It's a small thing, but it'd be great to have some kind of "middleware loader" so that I could, for example, populate the `request` object with something like `request.user.id` to save some steps down the line.
 
-## Prisma
+## Other tools
+
+### Prisma
 
 Prisma is just great. I'm using TypeScript, and having a typed ORM is just magical. I do end up writing "helper functions" to abstract complex queries, which has me wishing I could extend the generated client more programatically, but this works just fine:
 
@@ -206,6 +208,14 @@ export default class ProjectHelper {
 }
 ```
 
-## PlanetScale
+### PlanetScale
 
 Pretty cool. I can't say that I've used it fully still, but being able to connect to an external dev database via a CLI is nifty, I've used it to clear my dev database while messing with seed data. Other than that, its kind of just chilling in the background, which is exactly what one wants from a database (IMO).
+
+## Wrap-up
+
+All in all, I'm pretty happy with Remix. It makes compromises and tradeoffs, but what tool doesn't - and the decisions the developers have made for it feel really nice to use. None of the above nitpicks are blockers, and I haven't found anything that feels really horrible to do using Remix. I think that with some more time, we'll find the right balance of abstractions and Remix-related libraries to knock out most of those nitpicks anyway.
+
+Their docs are "good not great", with some stuff undocumented (like supporting ESM) and some stuff just stubbed out. What _is_ there is detailed, specific and helpful when actually building things.
+
+I'd suggest reading [their Technical Explanation doc](https://remix.run/docs/en/v1/pages/technical-explanation) - it is really well written, and helped me understand why things like `loader`s work the way they do. Remix is also still pretty new, so it can (probably) only get better.
