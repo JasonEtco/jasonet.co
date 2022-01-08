@@ -86,6 +86,8 @@ export default function IndexPage() {
 }
 ```
 
+I think that **seeing the `<Form />` and the "endpoint" (AKA `action`) right next to each other** is a clear way to see the lifecycle of that endpoint.
+
 Remix is smart enough to re-render _this whole component_, including re-calling the `loader` in the same file, after the `<Form />` is submitted. So in this very simple example, "adding a post" will _also_ update the UI to show an updated number of posts - without having to fully refresh the page. What's impressive is that its all being done server-side, but re-rendered on the client transparently and without any work from me.
 
 One part of this that irks me is that `Form` always sends an instance of `FormData` (and encodes it to transport over HTTP). To serialize a form's submission, you call `request.formData()`:
