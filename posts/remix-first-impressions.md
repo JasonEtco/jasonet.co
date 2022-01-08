@@ -86,9 +86,9 @@ export default function IndexPage() {
 }
 ```
 
-Remix is smart enough to re-render _this whole component_, including re-calling the `loader` in the same file, after the `<Form />` is submitted. So in this very simple example, "adding a post" will _also_ update the UI to show an updated number of posts. What's impressive is that its all being done server-side, but re-rendered on the client transparently and without any work from me.
+Remix is smart enough to re-render _this whole component_, including re-calling the `loader` in the same file, after the `<Form />` is submitted. So in this very simple example, "adding a post" will _also_ update the UI to show an updated number of posts - without having to fully refresh the page. What's impressive is that its all being done server-side, but re-rendered on the client transparently and without any work from me.
 
-One part of this that irks me (but is actually smart) is that `Form` always ends up submitting a `FormData` object. To serialize a form's submission, you call `request.formData()`:
+One part of this that irks me is that `Form` always sends an instance of `FormData` (and encodes it to transport over HTTP). To serialize a form's submission, you call `request.formData()`:
 
 ```ts/1-3
 const action: ActionFunction = async ({ request }) => {
@@ -109,7 +109,7 @@ return db.posts.create({
 })
 ```
 
-Now of course, we should be validating the input and thereby inferring the right type - but from an ease-of-pluggability perspective, converting the `FormData` to a plain object is kind of a pain.
+Now of course, we should be validating the input and thereby inferring the right type - but from an ease-of-pluggability perspective, I find converting the `FormData` to a plain object to be kind of a pain.
 
 ### Composing loaders
 
