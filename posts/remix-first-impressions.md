@@ -2,6 +2,13 @@
 title: Remix first impressions
 spoiler: "I was poking around at Remix + PlanetScale + Prisma + TailwindCSS. I have no idea what I'm doing, so I'm sharing some thoughts and random discoveries with y'all!"
 date: '2022-01-08'
+reviewers:
+  - name: "@Neurotic"
+    url: "https://twitter.com/Neurotic"
+    avatarUrl: https://pbs.twimg.com/profile_images/1388582832449101825/aA9ULpyf_400x400.jpg
+  - name: "@directxman12"
+    url: "https://twitter.com/directxman12"
+    avatarUrl: https://pbs.twimg.com/profile_images/1231749389548314625/VJCgwT6n_400x400.jpg
 ---
 I'm working on a ~~complicated, innovative product~~ glorified CMS, and what's the fun in building things if you don't learn something along the way? So I've been trying to use some new-ish tools that seem interesting to me. Descriptions yoinked from their respective websites:
 
