@@ -3,7 +3,7 @@ title: Remix first impressions
 spoiler: "I was poking around at Remix + PlanetScale + Prisma + TailwindCSS. I have no idea what I'm doing, so I'm sharing some thoughts and random discoveries with y'all!"
 date: '2022-01-08'
 ---
-I'm working on ~~an extremely complicated, innovative product~~ a glorified CMS, and what's the fun in building things if you don't learn something along the way? So I've been trying to use some new-ish tools that seem interesting to me:
+I'm working on a ~~complicated, innovative product~~ glorified CMS, and what's the fun in building things if you don't learn something along the way? So I've been trying to use some new-ish tools that seem interesting to me:
 
 * [Remix](https://remix.run/): "...a full stack web framework that lets you focus on the user interface and work back through web fundamentals to deliver a fast, slick, and resilient user experience."
 * [PlanetScale](https://planetscale.com/): "The MySQL-compatible serverless database platform."
@@ -69,7 +69,7 @@ const action: ActionFunction = async ({ request }) => {
 }
 ```
 
-Similar to `loader`s, that function is automatically called when a request is made - except with `action`, it responds to things like `POST` or `PATCH` requests. You can easily trigger those using [Remix's `<Form />` component](https://remix.run/docs/en/v1/api/remix#form):
+Similar to `loader`s, that function is automatically called when a request is made - except with `action`, it responds to things like `POST` or `PATCH` requests. You can trigger those using [Remix's `<Form />` component](https://remix.run/docs/en/v1/api/remix#form):
 
 ```tsx/6-8
 export default function IndexPage() {
