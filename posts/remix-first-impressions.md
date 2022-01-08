@@ -30,16 +30,16 @@ Routes can export a `loader` function that runs only on the server. You can then
 
 ```tsx
 // /app/routes/index.tsx
-import { useLoaderData } from 'remix'
+import { useLoaderData, LoaderFunction } from 'remix'
 
-export const loader = async () => {
-  // Query your database (ex: via Prisma) - `loader` is only called on the server
-  // so it can include credentials and other sensitive information
+export const loader: LoaderFunction = async () => {
+  // Query your database (ex: via Prisma) - `loader` is only called on
+  // the server so it can include credentials and sensitive information
   return db.posts.findMany()
 }
 
 export default function IndexPage() {
-  const posts = useLoaderData()
+  const posts = useLoaderData<Posts[]>()
   return <h1>There are {posts.length} posts!</h1>
 }
 ```
