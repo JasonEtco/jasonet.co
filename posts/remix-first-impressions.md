@@ -120,9 +120,9 @@ This is probably my biggest gripe with Remix, and it took me some time to unders
 ```
 app/
 ├── routes/
-│   ├── $projectSlug.tsx
+│   ├── $projectSlug.tsx (Layout Route)
 │   └── $projectSlug/
-│       └── index.tsx
+│       └── index.tsx    (Regular Route)
 └── root.tsx
 ```
 
@@ -139,7 +139,9 @@ export default function ProjectLayout() {
 }
 ```
 
-Any route under `/$projectSlug/*.tsx` will use this layout, and those routes' exported components will be injected via `<Outlet />`.
+Any route under `/$projectSlug/*.tsx` will use this layout, and those routes' exported components will be injected via Remix's special `<Outlet />` component - like a _magical child component_ 🌈
+
+#### Layouts + child `loader`s
 
 Now let's talk about how that interacts with the `loader` function. Both the layout and the route will be rendered, each with their own loader - the layout's loader will be called first, and the route's loader will be called second. There's not a way to "share" data easily between those two loaders. Consider this:
 

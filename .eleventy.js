@@ -15,7 +15,7 @@ const generateImages = require('./bin/generate-images')
 
 module.exports = (eleventyConfig) => {
   dateFilter.setDefaultFormat('MMMM D, YYYY')
-  
+
   eleventyConfig.addPlugin(pluginRss)
   eleventyConfig.addPlugin(tableOfContents, { tags: ['h2'] })
   eleventyConfig.addPlugin(syntaxHighlight)
@@ -46,15 +46,13 @@ module.exports = (eleventyConfig) => {
       tabIndex: false,
       permalink(slug, opts, state, idx) {
         state.tokens.splice(idx, 0, Object.assign(new state.Token('div_open', 'div', 1), {
-            attrs: [['class', `heading-wrapper ${state.tokens[idx].tag}`]],
-            block: true,
-          })
-        )
-    
+          attrs: [['class', `heading-wrapper ${state.tokens[idx].tag}`]],
+          block: true,
+        }))
+
         state.tokens.splice(idx + 4, 0, Object.assign(new state.Token('div_close', 'div', -1), {
-            block: true,
-          })
-        )
+          block: true,
+        }))
 
         linkAfterHeader(slug, opts, state, idx + 1)
       },
