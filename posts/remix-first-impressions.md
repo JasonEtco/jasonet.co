@@ -22,32 +22,41 @@ Remix is a pretty new open source Node.js framework to hit the interwebz. It lea
 
 Remix uses that build step to create multiple "bundles", ensuring that routes are only loading the code/dependencies they actually need. Keeps everything nice and snappy.
 
-While Remix is not a "React framework" (it will support more than just React), that's the paved-path for Remix at the moment. It does a _great_ job at server-rendering - I really like [the API for loading data](https://remix.run/docs/en/v1/api/conventions#loader). Here's what that looks like:
+### Reading/rendering data
+
+While Remix is not a "React framework" (it will support more than just React), that's the paved-path for Remix at the moment. It does a _great_ job at server-rendering - I really like [the API for loading data](https://remix.run/docs/en/v1/api/conventions#loader).
+
+Routes can export a `loader` function that runs only on the server. You can then call Remix's `useLoaderData` within the route to load whatever is returned from that `loader`. Here's what that looks like:
 
 ```tsx
 // /app/routes/index.tsx
-import { LoaderFunction, useLoaderData } from 'remix'
+import { useLoaderData } from 'remix'
 
-type LoaderData = Post[]
-
-export const loader: LoaderFunction = async (): Promise<LoaderData> => {
-  const posts = await db.posts.findMany()
-  return posts
+export const loader = async () => {
+  // Query your database (ex: via Prisma) - `loader` is only called on the server
+  // so it can include credentials and other sensitive information
+  return db.posts.findMany()
 }
 
 export default function IndexPage() {
-  const posts = useLoaderData<LoaderData>()
+  const posts = useLoaderData()
   return <h1>There are {posts.length} posts!</h1>
 }
 ```
 
-The file path is what decides the route - Remix has [conventions for how files are named](https://remix.run/docs/en/v1/api/conventions#route-file-conventions), so you don't need to have in-code route strings to manage. `/app/routes/index.tsx` means that when you `GET /`, the exported `loader` function will automatically be called, and the data will be available in the `IndexPage` component by calling `useLoaderData`. The page is then _server-rendered_ and hydrated on the client in case you need to do anything interactive.
+#### Organize data lookups with the view itself
 
-What's neat is that `loader` can fetch and return just about anything. It can read local files, call APIs, or talk to a database. This just feels like such a clean API to me, to group basic data lookups with the view itself. And because of React, your "view" doesn't need to be complicated, you can chunk it out nicely into smaller components.
+What's neat is that `loader` can fetch and return just about anything. It can read local files, call APIs, or talk to a database. This just feels like such a clean API to me. And because of React, your "view" doesn't need to be complicated, you can chunk it out nicely into smaller components.
+
+#### File paths as routes
+
+The file path is what decides the route - Remix has [conventions for how files are named](https://remix.run/docs/en/v1/api/conventions#route-file-conventions), so you don't need to have in-code route strings to manage.
+
+A file named `/app/routes/index.tsx` means that when you `GET /`, the exported `loader` function will automatically be called, and the data will be available in the `IndexPage` component by calling `useLoaderData`. The page is then _server-rendered_ and hydrated on the client in case you need to do anything interactive.
+
+### Writing data
 
 It does data _writes_ similarly, by calling an exported `action` function - I find the `Form` submission behavior a little finicky (more later) but overall I dig the approach.
-
-### _Writing_ data
 
 That's reading data and rendering it, but what if you want to write data? Well there's a similarly designed (cool, consistency is nice) API for that:
 
