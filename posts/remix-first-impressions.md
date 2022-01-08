@@ -8,13 +8,13 @@ I'm working on a ~~complicated, innovative product~~ glorified CMS, and what's t
 * [Remix](https://remix.run/): "...a full stack web framework that lets you focus on the user interface and work back through web fundamentals to deliver a fast, slick, and resilient user experience."
 * [PlanetScale](https://planetscale.com/): "The MySQL-compatible serverless database platform."
 * [Prisma](https://prisma.io/): "Next-generation Node.js and TypeScript ORM"
-* [TailwindCSS](https://tailwindcss.com/) (not new to me, because its awesome and I love using it)
+* [TailwindCSS](https://tailwindcss.com/) (not new to me, because it's awesome and I love using it)
 
 Of these, Remix (partially because of it's position as a framework, and partially because of it's opinionated design) is the most prominent part of this stack. Most interesting is seeing where and how those tools combine, getting them working well with each other, and the very random niche problems one encounters when trying to use them together.
 
 This isn't a proper "review" of these tools; I firmly believe that tools are both good and bad depending on the context in which you're using them. This is more of a brain-dump of my experience of using these tools so far.
 
-Also, and this is important: **I'm very new to Remix** so its totally possible that I write "gee whiz I wish this existed" and it actually does, is well documented, and I haven't found it. [Please tell me!](https://twitter.com/JasonEtco)
+Also, and this is important: **I'm very new to Remix** so it's totally possible that I write "gee whiz I wish this existed" and it actually does, is well documented, and I haven't found it. [Please tell me!](https://twitter.com/JasonEtco)
 
 ## Remix
 
@@ -84,7 +84,7 @@ export default function IndexPage() {
 }
 ```
 
-Remix is smart enough to re-render _this whole component_, including re-calling the `loader` in the same file, after the `<Form />` is submitted. So in this very simple example, "adding a post" will _also_ update the UI to show an updated number of posts - without having to fully refresh the page. What's impressive is that its all being done server-side, but re-rendered on the client transparently and without any work from me.
+Remix is smart enough to re-render _this whole component_, including re-calling the `loader` in the same file, after the `<Form />` is submitted. So in this very simple example, "adding a post" will _also_ update the UI to show an updated number of posts - without having to fully refresh the page. What's impressive is that it's all being done server-side, but re-rendered on the client transparently and without any work from me.
 
 I think that **seeing the `<Form />` and the "endpoint" (AKA `action`) right next to each other** is a clear way to see the lifecycle of that endpoint.
 
@@ -221,7 +221,7 @@ export default class ProjectHelper {
 
 ### PlanetScale
 
-Pretty cool. I can't say that I've used it fully still, but being able to connect to an external dev database via a CLI is nifty, I've used it to clear my dev database while messing with seed data. Other than that, its kind of just chilling in the background, which is exactly what one wants from a database (IMO).
+Pretty cool. I can't say that I've used it fully still, but being able to connect to an external dev database via a CLI is nifty, I've used it to clear my dev database while messing with seed data. Other than that, it's kind of just chilling in the background, which is exactly what I want from a database.
 
 ## Wrap-up
 
