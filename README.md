@@ -7,6 +7,7 @@
 ## Posts
 
 <!--START_POSTS-->
+- [Remix first impressions](https://jasonet.co/posts/remix-first-impressions)
 - [On "Spike work"](https://jasonet.co/posts/on-spike-work)
 - [Assorted thoughts on documentation](https://jasonet.co/posts/thoughts-on-docs)
 - [On "lurking"](https://jasonet.co/posts/on-lurking)

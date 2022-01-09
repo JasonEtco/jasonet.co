@@ -36,7 +36,9 @@ a:hover {
 
   /* Highlighted lines, when using ```js/1,2 */
   .highlight-line:not(.highlight-line-active),
-  .highlight-line:not(.highlight-line-active) * {
+  .highlight-line:not(.highlight-line-active) *,
+  .highlight-line-active ~ .token,
+  .highlight-line-active ~ .token * {
     @apply text-gray-500;
   }
 
@@ -74,6 +76,12 @@ a:hover {
   pre[class*='language-ts']::before,
   pre[class*='language-typescript']::before {
     content: 'ts';
+    background: #0076c6;
+    color: white;
+  }
+
+  pre[class*='language-tsx']::before {
+    content: 'tsx';
     background: #0076c6;
     color: white;
   }

@@ -4,7 +4,7 @@
  */
 
 code[class*='language-'],
-pre[class*='language-'] {
+pre[class*='language-'], .prose pre {
   color: #393a34;
   font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier,
     monospace;
