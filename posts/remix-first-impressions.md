@@ -1,6 +1,6 @@
 ---
 title: Remix first impressions
-spoiler: "I was poking around at Remix + PlanetScale + Prisma + TailwindCSS. I have only a slight idea what I'm doing, so I'm sharing some thoughts and random discoveries with y'all!"
+spoiler: "In poking around at Remix (and PlanetScale, Prisma, TailwindCSS), I have some thoughts on Remix that I wanted to share!"
 date: '2022-01-09'
 reviewers:
   - name: "@Neurotic"
