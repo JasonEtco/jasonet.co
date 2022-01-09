@@ -148,7 +148,7 @@ Any route under `/$projectSlug/*.tsx` will use this layout, and those routes' ex
 
 #### Layouts + child `loader`s
 
-Now let's talk about how that interacts with the `loader` function. Both the layout and the route will be rendered, each with their own loader. The layout's loader will be called first, and the route's loader will be called second. There's not a way to "share" data easily between those two loaders. Consider this:
+Now let's talk about how that interacts with the `loader` function. Both the layout and the route will be rendered, each with their own loader. They'll be called in parallel, but independent of one another. There's not a way to "share" data easily between those two loaders. Consider this:
 
 ```tsx
 // /app/routes/$projectSlug.tsx
