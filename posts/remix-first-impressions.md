@@ -1,7 +1,7 @@
 ---
 title: Remix first impressions
 spoiler: "I was poking around at Remix + PlanetScale + Prisma + TailwindCSS. I have only a slight idea what I'm doing, so I'm sharing some thoughts and random discoveries with y'all!"
-date: '2022-01-08'
+date: '2022-01-09'
 reviewers:
   - name: "@Neurotic"
     url: "https://twitter.com/Neurotic"
