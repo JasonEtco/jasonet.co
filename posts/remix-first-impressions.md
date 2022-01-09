@@ -1,6 +1,6 @@
 ---
 title: Remix first impressions
-spoiler: "I was poking around at Remix + PlanetScale + Prisma + TailwindCSS. I have no idea what I'm doing, so I'm sharing some thoughts and random discoveries with y'all!"
+spoiler: "I was poking around at Remix + PlanetScale + Prisma + TailwindCSS. I have only a slight idea what I'm doing, so I'm sharing some thoughts and random discoveries with y'all!"
 date: '2022-01-08'
 reviewers:
   - name: "@Neurotic"
@@ -228,7 +228,9 @@ export default class ProjectHelper {
 
 ### PlanetScale
 
-Pretty cool. I can't say that I've used it fully still, but being able to connect to an external dev database via a CLI is nifty, I've used it to clear my dev database while messing with seed data. Other than that, it's kind of just chilling in the background, which is exactly what I want from a database.
+Pretty cool. I can't say that I've used it fully still, but being able to connect to an external dev database via their CLI, without having to deal with credentials or connection strings, is nifty. I've used it to clear my dev database while messing with seed data. Other than that, it's kind of just chilling in the background, which is exactly what I want from a database.
+
+The integration with Prisma is really confusing though. Both PlantScale and Prisma have [documentation](https://docs.planetscale.com/tutorials/automatic-prisma-migrations) about that pairing, but it's out of date and doesn't cover every use case. The best resource for understanding the necessary changes is [this GitHub issue](https://github.com/prisma/prisma/issues/7292), which is _not_ easy to read. The right info is all in there, it's just all so recent and in flux that it hasn't yet been well documented. Once I got it to connect properly and run push schema changes, everything was ✨
 
 ## Wrap-up
 
