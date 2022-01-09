@@ -178,7 +178,7 @@ There's nothing special here—Remix doesn't have any opinionated Tailwind integ
 
 ### ESM fun times
 
-**Extremely niche** but I was trying to use some of the [`unified`](https://unifiedjs.com/) library of Markdown AST-related libraries. These have all been published exclusively as ESM modules; which made for some wonky imports. This is super messy, but it's the only way I've figured out how to properly import them:
+**Extremely niche** but I was trying to use some of the [`unified`](https://unifiedjs.com/) library of Markdown AST-related libraries. These have all been [published exclusively as ESM modules](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#pure-esm-package), which made for some wonky imports. I find this to be ugly, but it's the only way I've figured out how to properly import them:
 
 ```ts
 export async function renderMarkdown(md: string) {
@@ -190,7 +190,7 @@ export async function renderMarkdown(md: string) {
 }
 ```
 
-All of those dynamic imports makes me extremely sad 😭 but that's the best I've come up with. I've read various issues/discussions that suggest better ESM support might be coming for Remix, so I'm still hopeful!
+All of those dynamic imports makes me extremely sad 😭 but it's the best I've come up with. I've read various issues/discussions that suggest better ESM support might be coming for Remix, so I'm still hopeful!
 
 ### Authentication
 
