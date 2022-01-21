@@ -230,7 +230,11 @@ export default class ProjectHelper {
 
 Pretty cool. I can't say that I've used it fully still, but being able to connect to an external dev database via their CLI, without having to deal with credentials or connection strings, is nifty. I've used it to clear my dev database while messing with seed data. Other than that, it's kind of just chilling in the background, which is exactly what I want from a database.
 
-The integration with Prisma is really confusing though. Both PlantScale and Prisma have [documentation](https://docs.planetscale.com/tutorials/automatic-prisma-migrations) about that pairing~~, but it's out of date and doesn't cover every use case. The best resource for understanding the necessary changes is [this GitHub issue](https://github.com/prisma/prisma/issues/7292), which is _not_ easy to read. The right info is all in there, it's just all so recent and in flux that it hasn't yet been well documented~~. Nevermind! The doc was recently update to be way more clear about best practices when connecting the two systems. Once I got it to connect properly and push schema changes, everything was ✨
+Being able to view schema changes in a UI is awesome. There are some minor performance nits (creating a branch takes a couple seconds, so you can't create a branch and then immediately connect to it) but as the platform matures, I think it'll be even more compelling.
+
+~~The integration with Prisma is really confusing though. Both PlantScale and Prisma have [documentation](https://docs.planetscale.com/tutorials/automatic-prisma-migrations) about that pairing, but it's out of date and doesn't cover every use case. The best resource for understanding the necessary changes is [this GitHub issue](https://github.com/prisma/prisma/issues/7292), which is _not_ easy to read. The right info is all in there, it's just all so recent and in flux that it hasn't yet been well documented~~.
+
+Nevermind! The doc was recently update to be way more clear about best practices when connecting the two systems. Once I got it to connect properly and push schema changes, everything was ✨
 
 ## Wrap-up
 
