@@ -1,13 +1,14 @@
 /**
  * GHColors theme by Avi Aryan (http://aviaryan.in)
- * Inspired by Github syntax coloring
+ * Inspired by GitHub syntax coloring
  */
 
-code[class*='language-'],
-pre[class*='language-'], .prose pre {
+code[class*="language-"],
+pre[class*="language-"],
+.prose pre {
   color: #393a34;
-  font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier,
-    monospace;
+  font-family: Menlo, "Consolas", "Bitstream Vera Sans Mono", "Courier New",
+    Courier, monospace;
   direction: ltr;
   text-align: left;
   white-space: pre;
@@ -26,22 +27,22 @@ pre[class*='language-'], .prose pre {
   hyphens: none;
 }
 
-pre[class*='language-']::-moz-selection,
-pre[class*='language-'] ::-moz-selection,
-code[class*='language-']::-moz-selection,
-code[class*='language-'] ::-moz-selection {
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
   background: #b3d4fc;
 }
 
-pre[class*='language-']::selection,
-pre[class*='language-'] ::selection,
-code[class*='language-']::selection,
-code[class*='language-'] ::selection {
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
   background: #b3d4fc;
 }
 
 /* Code blocks */
-pre[class*='language-'] {
+pre[class*="language-"] {
   padding: 1em;
   margin: 0.5em 0;
   overflow: auto;
