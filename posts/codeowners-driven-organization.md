@@ -1,5 +1,5 @@
 ---
-title: CODEOWNERS-driven organization
+title: CODEOWNERS-driven file organization
 spoiler: Noodling on how to organize a big codebase using CODEOWNERS
 date: '2022-11-14'
 ---
@@ -18,7 +18,7 @@ How can code review work in a monolith with thousands of files? How can you ensu
 
 This is where [GitHub's concept of CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) comes in. You can mark specific files, directories or globs as "owned" by a particular user or team. When a pull request is opened that touches those files, the CODEOWNERS are automatically requested for review.
 
-## CODEOWNERS-driven code organization
+## Let CODEOWNERS do its job
 
 The idea of CODEOWNERS-driven code organization is to lean on CODEOWNERS to organize your code into logical chunks. It means forcing the code to be split up into feature areas, even when that means splitting up a file into "sub-files" where you otherwise wouldn't bother.
 
