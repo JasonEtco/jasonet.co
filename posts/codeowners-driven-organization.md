@@ -8,11 +8,11 @@ I spotted a conversation in the ol' work Slack that had me thinking. Sarah, <abb
 
 > I saw you were changing `user_settings_controller.rb` - if y'all were able to split that file up, we could move `#update_profile` to a different file so my team would get pinged for reviews when it gets modified...
 
-What Sarah was suggesting was splitting up a big file that had mixed ownership, where multiple teams cared about different parts of the file. Not for clarity or readability (those too), but for clearer _ownership_. This is something that small projects with only a few people don't really have to deal with, but in a [Majestic Monolith](https://m.signalvnoise.com/the-majestic-monolith/)[^1] thoughtful code ownership is vital to productivity and a high (but safe) rate of change.
+Sarah was suggesting splitting up a big file that had mixed ownership, where multiple teams cared about different parts of the file. Not for clarity or readability (those too), but for clearer _ownership_. This is something that small projects with only a few people don't really have to deal with, but in a [Majestic Monolith](https://m.signalvnoise.com/the-majestic-monolith/)[^1] thoughtful code ownership is vital to productivity and a high (but safe) rate of change.
 
 ## The "problem" with monoliths
 
-The core of GitHub.com is a Ruby on Rails monolith. This isn't a secret, I don't intend to share any spicy secrets in here, nor is GitHub the only one. Shopify, Stripe and many more major tech companies operate around huge monoliths that hundreds (if not thousands) of developers contribute to every day. There are microservices as needed, but the monolith is the glue that holds it all together.
+The core of GitHub.com is a Ruby on Rails monolith. This isn't a secret, nor is GitHub the only one. Shopify, Stripe and many more major tech companies operate around huge monoliths that hundreds (if not thousands) of developers contribute to every day. There are microservices as needed, but the monolith is the glue that holds it all together.
 
 How can code review work in a monolith with thousands of files? How can you ensure that the right people are reviewing the right code?
 
@@ -20,11 +20,11 @@ This is where [GitHub's concept of CODEOWNERS](https://docs.github.com/en/reposi
 
 ## CODEOWNERS-driven code organization
 
-The idea of CODEOWNERS-driven code organization is to lean on CODEOWNERS to organize your code into logical chunks. It means forcing the code to be split up into feature areas, even when that means splitting up a file into "sub-files" where you otherwise wouldn't.
+The idea of CODEOWNERS-driven code organization is to lean on CODEOWNERS to organize your code into logical chunks. It means forcing the code to be split up into feature areas, even when that means splitting up a file into "sub-files" where you otherwise wouldn't bother.
 
-In a Rails world, that means splitting up your controllers into smaller files, so that they can be owned by different teams. It means splitting up your models into smaller files, so that they can be owned by different teams. It means splitting up your views into smaller files, so that they can be owned by different teams.
+In a Rails world, that can mean splitting up your controllers into smaller files, so that they can be owned by different teams. This applies to anything - models, views, helpers. It's not specific to Rails either, it's just a general programming concept to think about.
 
-You're probably seeing a pattern there! I'm a big proponent of smaller files where possible, and this is a great way to enforce that.
+I'm a big proponent of smaller files where possible for readability, and this is a great way to enforce that.
 
 ## A practical example
 
