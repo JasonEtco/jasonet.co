@@ -8,7 +8,7 @@ I spotted a conversation in the ol' work Slack that had me thinking. Sarah, <abb
 
 > I saw you were changing `user_settings_controller.rb` - if y'all were able to split that file up, we could move `#update_profile` to a different file so my team would get pinged for reviews when it gets modified...
 
-What Sarah was suggesting was chunking out a part of a file being changed into a separate file - not for clarity or readability, but for _ownership_. This is something that small projects with only a few people don't really have to deal with, but in a [Majestic Monolith](https://m.signalvnoise.com/the-majestic-monolith/)[^1] thoughtful code ownership is vital to productivity and a high (but safe) rate of change.
+What Sarah was suggesting was splitting up a big file that had mixed ownership, where multiple teams cared about different parts of the file. Not for clarity or readability (those too), but for clearer _ownership_. This is something that small projects with only a few people don't really have to deal with, but in a [Majestic Monolith](https://m.signalvnoise.com/the-majestic-monolith/)[^1] thoughtful code ownership is vital to productivity and a high (but safe) rate of change.
 
 ## The "problem" with monoliths
 
