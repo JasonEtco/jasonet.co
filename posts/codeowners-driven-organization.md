@@ -85,4 +85,6 @@ There are a few benefits to this approach:
 - **The reverse is true too**: Your team will be requested for a review whenever someone makes a change to a file that you own. This is a great way to keep up to date with what's going on in a busy codebase.
 - **Smaller, more readable files**: As a side-benefit of thinking this way, your files will be smaller and easier to parse. Diffs will be smaller as a result - smaller diffs will be easier to review!
 
+It's not a big change to make, it's just a minor shift in thinking and deciding when to split up a chunky file.
+
 [^1]: I don't agree with a lot of DHH's opinions, but I do think this is a great article. You don't need to have a small team to see the value of a monolith, and more importantly [you should treat your employees as people](https://www.theverge.com/2021/5/3/22418208/basecamp-all-hands-meeting-employee-resignations-buyouts-implosion).
