@@ -25,6 +25,7 @@
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
     "@primer/octicons": "^17.9.0",
+    "@sparticuz/chromium": "^108.0.1",
     "@tailwindcss/typography": "^0.5.8",
     "autoprefixer": "^10.4.13",
     "eleventy-plugin-time-to-read": "^1.2.0",
@@ -38,7 +39,7 @@
     "postcss-cli": "^10.0.0",
     "postcss-csso": "^6.0.1",
     "postcss-import": "^15.0.0",
-    "puppeteer": "^19.2.2",
+    "puppeteer-core": "^19.2.2",
     "slugify": "^1.6.5",
     "tailwindcss": "^3.2.4"
   },

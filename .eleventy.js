@@ -29,8 +29,6 @@ module.exports = (eleventyConfig) => {
     return octicon.toSVG()
   })
 
-
-
   const linkAfterHeader = markdownItAnchor.permalink.linkAfterHeader({
     class: "anchor",
     symbol: "<span hidden>#</span>",
