@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
+const chromium = require("@sparticuz/chromium");
+
 const fs = require("fs");
 const path = require("path");
 
-const FILES_DIR = path.join(__dirname, '../_site/og')
-const DEST_DIR = '../_site/assets/og'
+const FILES_DIR = path.join(__dirname, "../_site/og")
+const DEST_DIR = "../_site/assets/og"
 
 const PUPPETEER_OPTIONS = {
   headless: true,
@@ -54,7 +56,11 @@ const PUPPETEER_OPTIONS = {
 };
 
 async function createBrowser() {
-  return puppeteer.launch(PUPPETEER_OPTIONS);
+  console.log(await chromium.executablePath)
+  return puppeteer.launch({
+    ...PUPPETEER_OPTIONS,
+    executablePath: await chromium.executablePath
+  });
 }
 
 async function generateImage(browser, html) {
@@ -87,29 +93,29 @@ async function generateImage(browser, html) {
 }
 
 function getHTMLFiles() {
-  const files = fs.readdirSync(FILES_DIR).filter(file => file.endsWith('.html'))
+  const files = fs.readdirSync(FILES_DIR).filter(file => file.endsWith(".html"))
   return files.map(file => ({
     file,
-    content: fs.readFileSync(path.join(FILES_DIR, file), 'utf8')
+    content: fs.readFileSync(path.join(FILES_DIR, file), "utf8")
   }))
 }
 
 async function main() {
-  console.log('📷 Generating OG images...')
+  console.log("📷 Generating OG images...")
   const browser = await createBrowser()
   const htmlFiles = getHTMLFiles()
-  const css = await fs.promises.readFile(path.join(__dirname, '../_site/css/index.css'), 'utf8')
+  const css = await fs.promises.readFile(path.join(__dirname, "../_site/css/index.css"), "utf8")
 
   await Promise.all(htmlFiles.map(async (file) => {
     const withCSS = `<style>${css}</style>${file.content}`
     const image = await generateImage(browser, withCSS)
-    const filePath = file.file.replace(path.extname(file.file), '.png')
+    const filePath = file.file.replace(path.extname(file.file), ".png")
     await fs.promises.writeFile(path.join(__dirname, DEST_DIR, filePath), image)
-    process.stdout.write('.')
+    process.stdout.write(".")
   }))
 
   await browser.close()
-  console.log('\n✅ Done generating OG images!')
+  console.log("\n✅ Done generating OG images!")
 }
 
 if (require.main === module) {
