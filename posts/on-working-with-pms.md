@@ -3,7 +3,7 @@ title: On working with PMs
 spoiler: >-
   I'm told that PMs like working with me, so I wanted to chronicle why I think
   that is, to share with folks.
-date: 2022-12-7
+date: 2022-12-07
 ---
 
 From a wonderful co-worker:
