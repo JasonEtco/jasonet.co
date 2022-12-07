@@ -17,7 +17,7 @@
 - [New features of GitHub Actions v2](https://jasonet.co/posts/new-features-of-github-actions)
 - [Just enough Docker](https://jasonet.co/posts/just-enough-docker)
 - [Building GitHub Actions in Node.js](https://jasonet.co/posts/building-github-actions-in-node)
-- [On working with PMs](https://jasonet.co/posts/on-working-with-pms)
+- [On working with product managers](https://jasonet.co/posts/on-working-with-pms)
 - [Run your GitHub Actions workflow on a schedule](https://jasonet.co/posts/scheduled-actions)
 - [How to start using GitHub Actions for CI](https://jasonet.co/posts/use-github-actions-for-ci)
 - [Probot Apps with a UI](https://jasonet.co/posts/probot-with-ui)
