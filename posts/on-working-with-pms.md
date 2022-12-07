@@ -8,7 +8,7 @@ date: 2022-12-07
 
 From a wonderful co-worker:
 
-> You got a shoutout [in a] meeting, which I heartily +1 :hugging_face:
+> You got a shoutout [in a] meeting, which I heartily +1 🤗
 > you work well with PMs, giving them options, and DEMOS and spikes
 
 They asked me if I'd written or giving a talk about this topic, and how I work with PMs, and I hadn't - so here that is.
