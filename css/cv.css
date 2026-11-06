@@ -37,7 +37,7 @@
 
 @page {
   size: letter;
-  margin: 0.5in 0.75in;
+  margin: 0.45in 0.75in;
 }
 
 @media print {

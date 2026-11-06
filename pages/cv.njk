@@ -13,7 +13,7 @@ title: CV
     <a class="text-orange font-semibold" href="/cv.pdf" download>Download PDF</a>
   </nav>
 
-  <header class="flex items-start justify-between mb-14 print:mb-10">
+  <header class="flex items-start justify-between mb-14 print:mb-7">
     <div class="flex items-stretch">
       <h1 class="cv-name">
         <span class="font-extrabold">{{ cv.name.first }}</span>
@@ -33,7 +33,7 @@ title: CV
 
   {%- for section in cv.sections %}
     {%- if not loop.first %}
-      <div class="cv-divider md:ml-[37%] print:ml-[37%] my-10 print:my-6" aria-hidden="true"></div>
+      <div class="cv-divider md:ml-[37%] print:ml-[37%] my-10 print:my-4" aria-hidden="true"></div>
     {%- endif %}
 
     <section class="cv-section md:flex print:flex">
@@ -57,7 +57,7 @@ title: CV
             {%- endif %}
 
             {%- for role in entry.roles %}
-              <div class="cv-role mt-1 {% if not loop.first %}mt-4{% endif %}">
+              <div class="cv-role mt-1 {% if not loop.first %}mt-4 print:mt-2{% endif %}">
                 <h4 class="text-sm font-semibold text-gray-500">{{ role.title }}, {{ role.dates }}</h4>
                 {%- if role.description %}
                   <p class="text-gray-500">{{ role.description | markdownInline | safe }}</p>
