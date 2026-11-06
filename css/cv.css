@@ -29,6 +29,28 @@
   transform: skewX(-14deg);
 }
 
+.cv-entry p strong {
+  @apply font-semibold text-gray-800;
+}
+
+.cv-highlights {
+  @apply list-none m-0 mt-1 p-0 text-gray-700;
+
+  & li {
+    @apply relative pl-4;
+  }
+
+  & li::before {
+    @apply absolute left-0 text-orange;
+    content: "–";
+  }
+}
+
+.cv-dates {
+  @apply text-sm text-gray-500 whitespace-nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
 .cv-divider {
   @apply bg-orange;
   height: 2px;
@@ -47,6 +69,11 @@
 
     & .text-sm {
       font-size: 0.92em;
+    }
+
+    & .cv-summary {
+      font-size: 1.1em;
+      line-height: 1.5;
     }
   }
 

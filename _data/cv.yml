@@ -1,5 +1,7 @@
 # Source of truth for /cv/ and /cv.pdf. Edit this file and rebuild.
-# Descriptions support Markdown.
+# Entries take heading, subheading, dates, description (Markdown), and roles.
+# Roles take title, dates, description, and an optional highlights list.
+# Entries with no description or roles render as a compact one-liner.
 
 name:
   first: Jason
@@ -17,6 +19,12 @@ contact:
   # - label: 647.936.1934
   #   url: tel:+16479361934
 
+summary: >-
+  Principal software engineer at GitHub, building Copilot's agent products.
+  I bring a product and design eye to deep technical work, moving between
+  hands-on engineering and technical leadership. Open source maintainer,
+  writer, and speaker.
+
 sections:
   - title: Work Experience
     entries:
@@ -25,10 +33,14 @@ sections:
           - title: Principal Software Engineer
             dates: 2026–Present
             description: >-
-              Engineering leader working across GitHub's Copilot products, with
-              a focus on cloud agents: setting technical direction, connecting
-              work across teams, and shipping the experiences that let Copilot
-              take on real work on its own.
+              Engineering leader across GitHub's Copilot products, with a focus
+              on cloud agents. Helped build each of these through a mix of
+              hands-on engineering and technical leadership:
+            highlights:
+              - Copilot cloud agent
+              - Copilot Automations
+              - Copilot CLI
+              - Copilot Desktop App
           - title: Staff Software Engineer
             dates: 2022–2026
             description: >-
@@ -50,35 +62,24 @@ sections:
           - title: Graphic Design Intern
             dates: "2017"
             description: >-
-              Designed and built content on the Services Training team to market
-              GitHub Professional Services and teach companies about Git and
-              GitHub.
+              Designed and built training and marketing content for GitHub
+              Professional Services.
 
-      - heading: UI Developer at Spently
+      - heading: Spently
+        subheading: UI Developer
         dates: 2016–2017
-        description: >-
-          UI Designer and Front-end developer at a Shopify Expert and Shopify
-          app developer. Redesigned and rebuilt the entire application's design
-          and front-end.
-
-      - heading: Compatibility Tester at VMC
+      - heading: VMC
+        subheading: Compatibility Tester
         dates: "2015"
-        description: >-
-          Quality assurance in the Compatibility department, focusing on Web and
-          Hardware compatibility for large-scale video games and promotional
-          websites.
-
       - heading: The Fenway Group
+        subheading: Print Designer
         dates: 2013–2014
-        description: |-
-          Graphic Design Firm and Printing Facility / Boston, MA
-          Designer, Print and Pre-Press Technician
 
   - title: Education
     entries:
-      - heading: Bachelor of Design, Graphic Design
-        description: OCAD University, Toronto, Ontario
-        note: "[2015–2018]"
-      - heading: D.E.C., Graphic Design
-        description: Dawson College, Montreal, Quebec
-        note: "[2012–2015] – Honours List"
+      - heading: OCAD University
+        description: Bachelor of Design, Graphic Design
+        dates: 2015–2018
+      - heading: Dawson College
+        description: D.E.C., Graphic Design (Honours List)
+        dates: 2012–2015

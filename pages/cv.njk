@@ -31,6 +31,12 @@ title: CV
     </ul>
   </header>
 
+  {%- if cv.summary %}
+    <p class="cv-summary mb-12 print:mb-8 text-lg text-gray-700">
+      {{ cv.summary | markdownInline | safe }}
+    </p>
+  {%- endif %}
+
   {%- for section in cv.sections %}
     {%- if not loop.first %}
       <div class="cv-divider md:ml-[37%] print:ml-[37%] my-10 print:my-4" aria-hidden="true"></div>
@@ -43,24 +49,36 @@ title: CV
 
       <div class="flex-1">
         {%- for entry in section.entries %}
-          <article class="cv-entry mb-5 print:mb-3">
-            <h3 class="font-semibold text-gray-900">
-              {{ entry.heading }}{% if entry.dates %}, {{ entry.dates }}{% endif %}
-            </h3>
+          {%- set compact = not entry.description and not entry.roles %}
+          <article class="cv-entry {% if compact and not loop.last %}mb-1.5 print:mb-1{% else %}mb-6 print:mb-4{% endif %}">
+            <div class="flex items-baseline justify-between gap-4">
+              <h3 class="font-semibold text-gray-900">
+                {{ entry.heading }}{% if entry.subheading %}<span class="font-normal text-gray-600">, {{ entry.subheading }}</span>{% endif %}
+              </h3>
+              {%- if entry.dates %}
+                <span class="cv-dates">{{ entry.dates }}</span>
+              {%- endif %}
+            </div>
 
             {%- if entry.description %}
-              <p class="text-gray-500">{{ entry.description | markdownInline | safe }}</p>
-            {%- endif %}
-
-            {%- if entry.note %}
-              <p class="text-gray-500 italic font-semibold text-sm">{{ entry.note }}</p>
+              <p class="text-gray-600">{{ entry.description | markdownInline | safe }}</p>
             {%- endif %}
 
             {%- for role in entry.roles %}
-              <div class="cv-role mt-1 {% if not loop.first %}mt-4 print:mt-2{% endif %}">
-                <h4 class="text-sm font-semibold text-gray-500">{{ role.title }}, {{ role.dates }}</h4>
+              <div class="cv-role {% if loop.first %}mt-1.5{% else %}mt-4 print:mt-2.5{% endif %}">
+                <div class="flex items-baseline justify-between gap-4">
+                  <h4 class="font-semibold text-gray-800">{{ role.title }}</h4>
+                  <span class="cv-dates">{{ role.dates }}</span>
+                </div>
                 {%- if role.description %}
-                  <p class="text-gray-500">{{ role.description | markdownInline | safe }}</p>
+                  <p class="text-gray-600">{{ role.description | markdownInline | safe }}</p>
+                {%- endif %}
+                {%- if role.highlights %}
+                  <ul class="cv-highlights">
+                    {%- for item in role.highlights %}
+                      <li>{{ item | markdownInline | safe }}</li>
+                    {%- endfor %}
+                  </ul>
                 {%- endif %}
               </div>
             {%- endfor %}
