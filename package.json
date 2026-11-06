@@ -18,7 +18,8 @@
     "prod:postcss": "postcss css/index.css -o _site/css/index.css --config ./postcss.config.js",
     "prod:eleventy": "ELEVENTY_ENV=production npx @11ty/eleventy --output=./_site",
     "test": "jest",
-    "compile-readme": "node bin/compile-readme.js"
+    "compile-readme": "node bin/compile-readme.js",
+    "cv:pdf": "node bin/generate-cv-pdf.js"
   },
   "dependencies": {
     "@11ty/eleventy": "^1.0.2",

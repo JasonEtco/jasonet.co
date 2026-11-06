@@ -9,9 +9,11 @@ const markdownItAnchor = require('markdown-it-anchor')
 const markdownItFootnote = require('markdown-it-footnote')
 const markdownItEmoji = require('markdown-it-emoji')
 const slugify = require('slugify')
+const yaml = require('js-yaml')
 
 const compileReadme = require('./bin/compile-readme')
 const generateImages = require('./bin/generate-images')
+const generateCvPdf = require('./bin/generate-cv-pdf')
 
 module.exports = (eleventyConfig) => {
   dateFilter.setDefaultFormat('MMMM D, YYYY')
@@ -22,6 +24,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPlugin(timeToRead)
   eleventyConfig.addNunjucksFilter('date', dateFilter)
   eleventyConfig.addPassthroughCopy('assets')
+  eleventyConfig.addDataExtension('yml', (contents) => yaml.load(contents))
 
   eleventyConfig.addShortcode('octicon', (name) => {
     const octicon = octicons[name]
@@ -56,9 +59,15 @@ module.exports = (eleventyConfig) => {
       },
     })
   eleventyConfig.setLibrary('md', markdown)
+  eleventyConfig.addFilter('markdownInline', (str) => markdown.renderInline(str || '').replace(/\n/g, '<br />'))
 
-  eleventyConfig.on('afterBuild', () => {
+  eleventyConfig.on('afterBuild', async () => {
     compileReadme()
-    generateImages()
+    const imagesDone = generateImages()
+    if (process.env.ELEVENTY_ENV === 'production') {
+      // Both steps unpack Chromium to the same path, so they can't run concurrently
+      await imagesDone
+      await generateCvPdf()
+    }
   })
 }

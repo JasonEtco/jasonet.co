@@ -1,0 +1,84 @@
+# Source of truth for /cv/ and /cv.pdf. Edit this file and rebuild.
+# Descriptions support Markdown.
+
+name:
+  first: Jason
+  last: Etcovitch
+
+contact:
+  - label: www.jasonet.co
+    url: https://jasonet.co
+    highlight: true
+  - label: github.com/JasonEtco
+    url: https://github.com/JasonEtco
+  - label: hello@jasonet.co
+    url: mailto:hello@jasonet.co
+  # This page is public, so the phone number is left out by default.
+  # - label: 647.936.1934
+  #   url: tel:+16479361934
+
+sections:
+  - title: Work Experience
+    entries:
+      - heading: GitHub
+        roles:
+          - title: Principal Software Engineer
+            dates: 2026–Present
+            description: >-
+              Engineering leader working across GitHub's Copilot products, with
+              a focus on cloud agents: setting technical direction, connecting
+              work across teams, and shipping the experiences that let Copilot
+              take on real work on its own.
+          - title: Staff Software Engineer
+            dates: 2022–2026
+            description: >-
+              Led second-horizon explorations on the Special Projects team,
+              turning early ideas into working prototypes and new product
+              directions, then helped build out GitHub's Copilot products.
+          - title: Senior Software Engineer
+            dates: 2019–2022
+            description: >-
+              Led a small team of engineers building GitHub Learning Lab, then
+              joined Special Projects to work on new feature exploration,
+              prototypes, and improvements across the product.
+          - title: Software Engineer
+            dates: 2017–2019
+            description: >-
+              Built, designed, and planned GitHub Learning Lab. Also contributed
+              to open source projects around GitHub, including Probot and the
+              JavaScript language group.
+          - title: Graphic Design Intern
+            dates: "2017"
+            description: >-
+              Designed and built content on the Services Training team to market
+              GitHub Professional Services and teach companies about Git and
+              GitHub.
+
+      - heading: UI Developer at Spently
+        dates: 2016–2017
+        description: >-
+          UI Designer and Front-end developer at a Shopify Expert and Shopify
+          app developer. Redesigned and rebuilt the entire application's design
+          and front-end.
+
+      - heading: Compatibility Tester at VMC
+        dates: "2015"
+        description: >-
+          Quality assurance in the Compatibility department, focusing on Web and
+          Hardware compatibility for large-scale video games and promotional
+          websites.
+
+      - heading: The Fenway Group
+        dates: 2013–2014
+        description: |-
+          Graphic Design Firm and Printing Facility / Boston, MA
+          Designer, Print and Pre-Press Technician
+
+  - title: Education
+    entries:
+      - heading: Bachelor of Design, Graphic Design
+        description: OCAD University, Toronto, Ontario
+        note: "[2015–2018]"
+      - heading: D.E.C., Graphic Design
+        description: Dawson College, Montreal, Quebec
+        note: "[2012–2015] – Honours List"
