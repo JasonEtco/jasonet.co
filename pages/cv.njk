@@ -67,6 +67,13 @@ title: CV
                 {%- if role.description %}
                   <p class="text-gray-600">{{ role.description | markdownInline | safe }}</p>
                 {%- endif %}
+                {%- if role.highlights %}
+                  <ul class="cv-highlights">
+                    {%- for item in role.highlights %}
+                      <li>{{ item | markdownInline | safe }}</li>
+                    {%- endfor %}
+                  </ul>
+                {%- endif %}
               </div>
             {%- endfor %}
           </article>

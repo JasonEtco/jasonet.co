@@ -33,6 +33,22 @@
   @apply font-semibold text-gray-800;
 }
 
+.cv-highlights {
+  @apply list-none m-0 mt-1 p-0 text-gray-700;
+
+  & li {
+    @apply relative pl-4;
+  }
+
+  & li::before {
+    @apply absolute left-0 bg-orange;
+    content: "";
+    top: 0.75em;
+    width: 0.4rem;
+    height: 2px;
+  }
+}
+
 .cv-dates {
   @apply text-sm text-gray-500 whitespace-nowrap;
   font-variant-numeric: tabular-nums;

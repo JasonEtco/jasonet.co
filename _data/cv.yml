@@ -1,5 +1,6 @@
 # Source of truth for /cv/ and /cv.pdf. Edit this file and rebuild.
 # Entries take heading, subheading, dates, description (Markdown), and roles.
+# Roles take title, dates, description, and an optional highlights list.
 # Entries with no description or roles render as a compact one-liner.
 
 name:
@@ -27,9 +28,13 @@ sections:
             dates: 2026–Present
             description: >-
               Engineering leader across GitHub's Copilot products, with a focus
-              on cloud agents. Helped build **Copilot cloud agent**, **Copilot
-              Automations**, **Copilot CLI**, and the **Copilot Desktop App**
-              through a mix of hands-on engineering and technical leadership.
+              on cloud agents. Helped build each of these through a mix of
+              hands-on engineering and technical leadership:
+            highlights:
+              - Copilot cloud agent
+              - Copilot Automations
+              - Copilot CLI
+              - Copilot Desktop App
           - title: Staff Software Engineer
             dates: 2022–2026
             description: >-
