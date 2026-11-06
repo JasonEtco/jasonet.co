@@ -29,6 +29,10 @@
   transform: skewX(-14deg);
 }
 
+.cv-entry p strong {
+  @apply font-semibold text-gray-800;
+}
+
 .cv-dates {
   @apply text-sm text-gray-500 whitespace-nowrap;
   font-variant-numeric: tabular-nums;
