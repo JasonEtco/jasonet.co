@@ -1,0 +1,57 @@
+.cv {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.6;
+
+  & a:hover {
+    text-decoration: none;
+  }
+}
+
+.cv-name {
+  @apply m-0 text-gray-700 uppercase;
+  font-size: 2.6rem;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+
+  & span {
+    display: block;
+  }
+
+  & span + span {
+    font-size: 0.72em;
+    letter-spacing: 0.06em;
+  }
+}
+
+.cv-slash {
+  @apply bg-orange ml-2;
+  width: 0.5rem;
+  transform: skewX(-14deg);
+}
+
+.cv-divider {
+  @apply bg-orange;
+  height: 2px;
+  width: 6rem;
+}
+
+@page {
+  size: letter;
+  margin: 0.5in 0.75in;
+}
+
+@media print {
+  .cv {
+    font-size: 9.5pt;
+    line-height: 1.45;
+
+    & .text-sm {
+      font-size: 0.92em;
+    }
+  }
+
+  .cv-entry,
+  .cv-role {
+    break-inside: avoid;
+  }
+}

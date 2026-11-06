@@ -1,5 +1,6 @@
 @import "./theme.css";
 @import "./tooltip.css";
+@import "./cv.css";
 
 @tailwind base;
 @tailwind components;

@@ -1,0 +1,74 @@
+# Source of truth for /cv/ and /cv.pdf. Edit this file and rebuild.
+# Descriptions support Markdown.
+
+name:
+  first: Jason
+  last: Etcovitch
+
+contact:
+  - label: www.jasonet.co
+    url: https://jasonet.co
+    highlight: true
+  - label: github.com/JasonEtco
+    url: https://github.com/JasonEtco
+  - label: hello@jasonet.co
+    url: mailto:hello@jasonet.co
+  # This page is public, so the phone number is left out by default.
+  # - label: 647.936.1934
+  #   url: tel:+16479361934
+
+sections:
+  - title: Work Experience
+    entries:
+      - heading: GitHub
+        roles:
+          - title: Senior Software Engineer
+            dates: 2018–Present
+            description: >-
+              Leading the GitHub Learning Lab project, and then helping to build
+              and maintain the GitHub Documentation platform.
+          - title: Training Application Engineer
+            dates: 2017–2018
+            description: >-
+              Building integrations and applications using the GitHub API for
+              training purposes, both internally and externally for corporate
+              customers.
+          - title: Graphic Design Intern
+            dates: "2017"
+            description: >-
+              Responsible for designing/building promotional websites and
+              graphic assets used in training, as a part of GitHub's Training
+              team. Also participated in Training engagements and in creating
+              course materials.
+
+      - heading: UI Developer at Spently
+        dates: 2016–2017
+        description: >-
+          UI Designer and Front-end developer at a Shopify Expert and Shopify
+          app developer. Redesigned and rebuilt the entire application's design
+          and front-end.
+
+      - heading: Compatibility Tester at VMC
+        dates: "2015"
+        description: >-
+          Quality assurance in the Compatibility department, focusing on Web and
+          Hardware compatibility for large-scale video games and promotional
+          websites.
+
+      - heading: The Fenway Group
+        dates: 2013–2014
+        description: |-
+          Graphic Design Firm and Printing Facility / Boston, MA
+          Designer, Print and Pre-Press Technician
+
+  - title: Education
+    entries:
+      - heading: Bachelor of Design
+        description: Ontario College of Art and Design, Toronto, Ontario
+        note: "[2015–2018]"
+      - heading: D.E.C., Graphic Design
+        description: Dawson College, Montreal, Quebec
+        note: "[2012–2015] – Honours List"
+      - heading: High School Diploma
+        description: Bialik High School, Montreal, Quebec
+        note: "[2007–2012]"

@@ -1,0 +1,72 @@
+---
+layout: "layouts/_default.njk"
+permalink: /cv/
+title: CV
+---
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+</style>
+
+<main class="cv mx-auto max-w-3xl px-6 py-12 md:px-12 print:max-w-none print:p-0">
+  <nav class="flex justify-between text-sm mb-10 print:hidden">
+    <a class="text-gray-500" href="/">← jasonet.co</a>
+    <a class="text-orange font-semibold" href="/cv.pdf" download>Download PDF</a>
+  </nav>
+
+  <header class="flex items-start justify-between mb-14 print:mb-10">
+    <div class="flex items-stretch">
+      <h1 class="cv-name">
+        <span class="font-extrabold">{{ cv.name.first }}</span>
+        <span class="font-light">{{ cv.name.last }}</span>
+      </h1>
+      <span class="cv-slash" aria-hidden="true"></span>
+    </div>
+
+    <ul class="text-right text-sm leading-relaxed list-none m-0 p-0">
+      {%- for item in cv.contact %}
+        <li>
+          <a class="{% if item.highlight %}text-orange{% else %}text-gray-900{% endif %}" href="{{ item.url }}">{{ item.label }}</a>
+        </li>
+      {%- endfor %}
+    </ul>
+  </header>
+
+  {%- for section in cv.sections %}
+    {%- if not loop.first %}
+      <div class="cv-divider md:ml-[37%] print:ml-[37%] my-10 print:my-6" aria-hidden="true"></div>
+    {%- endif %}
+
+    <section class="cv-section md:flex print:flex">
+      <h2 class="cv-section-title md:w-[37%] print:w-[37%] flex-shrink-0 text-xl font-bold text-gray-900 mb-4 md:mb-0">
+        {{ section.title }}
+      </h2>
+
+      <div class="flex-1">
+        {%- for entry in section.entries %}
+          <article class="cv-entry mb-5 print:mb-3">
+            <h3 class="font-semibold text-gray-900">
+              {{ entry.heading }}{% if entry.dates %}, {{ entry.dates }}{% endif %}
+            </h3>
+
+            {%- if entry.description %}
+              <p class="text-gray-500">{{ entry.description | markdownInline | safe }}</p>
+            {%- endif %}
+
+            {%- if entry.note %}
+              <p class="text-gray-500 italic font-semibold text-sm">{{ entry.note }}</p>
+            {%- endif %}
+
+            {%- for role in entry.roles %}
+              <div class="cv-role mt-1 {% if not loop.first %}mt-4{% endif %}">
+                <h4 class="text-sm font-semibold text-gray-500">{{ role.title }}, {{ role.dates }}</h4>
+                {%- if role.description %}
+                  <p class="text-gray-500">{{ role.description | markdownInline | safe }}</p>
+                {%- endif %}
+              </div>
+            {%- endfor %}
+          </article>
+        {%- endfor %}
+      </div>
+    </section>
+  {%- endfor %}
+</main>
