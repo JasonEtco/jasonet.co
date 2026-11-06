@@ -31,6 +31,12 @@ title: CV
     </ul>
   </header>
 
+  {%- if cv.summary %}
+    <p class="cv-summary mb-12 print:mb-8 text-lg text-gray-700">
+      {{ cv.summary | markdownInline | safe }}
+    </p>
+  {%- endif %}
+
   {%- for section in cv.sections %}
     {%- if not loop.first %}
       <div class="cv-divider md:ml-[37%] print:ml-[37%] my-10 print:my-4" aria-hidden="true"></div>
