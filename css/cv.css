@@ -41,11 +41,8 @@
   }
 
   & li::before {
-    @apply absolute left-0 bg-orange;
-    content: "";
-    top: 0.75em;
-    width: 0.4rem;
-    height: 2px;
+    @apply absolute left-0 text-orange;
+    content: "–";
   }
 }
 
