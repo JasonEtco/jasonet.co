@@ -63,8 +63,10 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.on('afterBuild', async () => {
     compileReadme()
-    generateImages()
+    const imagesDone = generateImages()
     if (process.env.ELEVENTY_ENV === 'production') {
+      // Both steps unpack Chromium to the same path, so they can't run concurrently
+      await imagesDone
       await generateCvPdf()
     }
   })
