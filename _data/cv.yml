@@ -50,29 +50,14 @@ sections:
           - title: Graphic Design Intern
             dates: "2017"
             description: >-
-              Designed and built content on the Services Training team to market
-              GitHub Professional Services and teach companies about Git and
-              GitHub.
+              Designed and built training and marketing content for GitHub
+              Professional Services.
 
-      - heading: UI Developer at Spently
-        dates: 2016–2017
-        description: >-
-          UI Designer and Front-end developer at a Shopify Expert and Shopify
-          app developer. Redesigned and rebuilt the entire application's design
-          and front-end.
-
-      - heading: Compatibility Tester at VMC
-        dates: "2015"
-        description: >-
-          Quality assurance in the Compatibility department, focusing on Web and
-          Hardware compatibility for large-scale video games and promotional
-          websites.
-
-      - heading: The Fenway Group
-        dates: 2013–2014
+      - heading: Before GitHub
         description: |-
-          Graphic Design Firm and Printing Facility / Boston, MA
-          Designer, Print and Pre-Press Technician
+          **UI Developer**, Spently (Shopify app), Toronto, 2016–2017
+          **Compatibility Tester**, VMC, Montreal, 2015
+          **Designer & Pre-Press Tech**, The Fenway Group, Boston, 2013–2014
 
   - title: Education
     entries:
