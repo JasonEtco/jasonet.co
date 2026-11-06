@@ -29,6 +29,11 @@
   transform: skewX(-14deg);
 }
 
+.cv-dates {
+  @apply text-sm text-gray-500 whitespace-nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
 .cv-divider {
   @apply bg-orange;
   height: 2px;

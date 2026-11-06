@@ -1,5 +1,6 @@
 # Source of truth for /cv/ and /cv.pdf. Edit this file and rebuild.
-# Descriptions support Markdown.
+# Entries take heading, subheading, dates, description (Markdown), and roles.
+# Entries with no description or roles render as a compact one-liner.
 
 name:
   first: Jason
@@ -53,17 +54,21 @@ sections:
               Designed and built training and marketing content for GitHub
               Professional Services.
 
-      - heading: Before GitHub
-        description: |-
-          **UI Developer**, Spently (Shopify app), Toronto, 2016–2017
-          **Compatibility Tester**, VMC, Montreal, 2015
-          **Designer & Pre-Press Tech**, The Fenway Group, Boston, 2013–2014
+      - heading: Spently
+        subheading: UI Developer
+        dates: 2016–2017
+      - heading: VMC
+        subheading: Compatibility Tester
+        dates: "2015"
+      - heading: The Fenway Group
+        subheading: Print Designer
+        dates: 2013–2014
 
   - title: Education
     entries:
-      - heading: Bachelor of Design, Graphic Design
-        description: OCAD University, Toronto, Ontario
-        note: "[2015–2018]"
-      - heading: D.E.C., Graphic Design
-        description: Dawson College, Montreal, Quebec
-        note: "[2012–2015] – Honours List"
+      - heading: OCAD University
+        description: Bachelor of Design, Graphic Design
+        dates: 2015–2018
+      - heading: Dawson College
+        description: D.E.C., Graphic Design (Honours List)
+        dates: 2012–2015
